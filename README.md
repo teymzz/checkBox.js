@@ -1,4 +1,4 @@
-# CheckBox.js 
+# checkBox.js 
 
 This is a javascript plugin for handling custom checkboxes.
 
