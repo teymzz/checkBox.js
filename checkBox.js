@@ -1,13 +1,13 @@
 class CheckBox {
 
-    constructor(controls) {
+    constructor(config) {
 
         let checkbox = this;
         
-        let defaults, itemSelector, selectors, init, toggle, size, checkEvent;
+        let defaults, customBoxes, init, toggle, size, checkEvent;
 
         defaults = {
-            control: '[checkbox]',
+            target: '[checkbox]',
             marker: '[marker]',
             init:   function(){},
             toggle: function(){},
@@ -15,66 +15,66 @@ class CheckBox {
             size: null,
         };
 
-        controls = {...defaults, ...controls};
+        config = {...defaults, ...config};
 
-        checkbox.control = controls.control;
-        checkbox.marker = controls.marker;
-        checkbox.flip = controls.flip;
+        checkbox.target = config.target;
+        checkbox.marker = config.marker;
+        checkbox.flip = config.flip;
 
-        init = controls.init;
-        toggle = controls.toggle;
-        size = controls.size;
+        init = config.init;
+        toggle = config.toggle;
+        size = config.size;
 
         if(typeof Selector === 'function'){
-            itemSelector = new Selector;
-            selectors = itemSelector.select(checkbox.control);
+            let selector = new Selector;
+            customBoxes = selector.select(checkbox.target);
         }else{
-            selectors = document.querySelectorAll(checkbox.control)
+            customBoxes = document.querySelectorAll(checkbox.target)
         }
         
         checkEvent = function(input){
-            let selector, controls = {};
+            let customBox, checker = {};
                     
             //get input element 
-            selector = input.previousElementSibling;
+            customBox = input.previousElementSibling;
 
             if(input.tagName === 'INPUT'){
 
-                //get marker 
-                controls.selector = selector;
-                controls.marker  = selector.querySelectorAll(checkbox.marker);
-                controls.control = input;
+                checker.native = input;
+                checker.custom = customBox;
+                checker.marker = customBox.querySelectorAll(checkbox.marker);
+                checker.value = input.value;
 
                 let marker1, marker2;
 
                 if(checkbox.flip && (checkbox.marker.length > 1)){
-                    marker1 = controls.marker[0];
-                    marker2 = controls.marker[1];
+                    marker1 = checker.marker[0];
+                    marker2 = checker.marker[1];
                 }
 
                 if(input.checked) {
                     //run for check
-                    controls.checked = true;
+                    checker.checked = true;
                     input.setAttribute('checked', 'checked');
-                    selector.setAttribute('checkbox', 'checked');
+                    customBox.setAttribute('checkbox', 'checked');
                     if(marker2){
                         marker1.setAttribute('hidden','');
                         marker2.removeAttribute('hidden');
                     }
                 }else{
                     //run for uncheck 
-                    controls.checked = false;
+                    checker.checked = false;
                     input.removeAttribute('checked');
-                    selector.setAttribute('checkbox', 'unchecked'); 
+                    customBox.setAttribute('checkbox', 'unchecked'); 
                     if(marker2){
                         marker1.removeAttribute('hidden');
                         marker2.setAttribute('hidden','');
                     }
                 }
 
-                controls.init = init;
+                checker.init = init;
 
-                if(typeof toggle === 'function') toggle(controls);
+                if(typeof toggle === 'function') toggle(checker);
 
             }else{
 
@@ -83,20 +83,20 @@ class CheckBox {
             }
         }
         
-        selectors.forEach(selector => {
+        customBoxes.forEach(customBox => {
 
             //set custom checkbox sibling
-            let checker = selector.nextElementSibling;
-            let inputType = checker.getAttribute('type');
+            let input = customBox.nextElementSibling;
+            let inputType = input.getAttribute('type');
 
             if(
-                (checker.tagName === 'INPUT') && inputType &&
+                (input.tagName === 'INPUT') && inputType &&
                 (inputType.toLowerCase() === 'checkbox')
             ){
 
-                checker.setAttribute('hidden', '');
+                input.setAttribute('hidden', '');
 
-                let marker  = selector.querySelectorAll(checkbox.marker);
+                let marker  = customBox.querySelectorAll(checkbox.marker);
 
                 let marker1, marker2;
 
@@ -112,14 +112,14 @@ class CheckBox {
                 }
 
                 //set default behaviour
-                if(checker.checked){
-                    selector.setAttribute('checkbox', 'checked'); 
+                if(input.checked){
+                    customBox.setAttribute('checkbox', 'checked'); 
                     if(marker2){
                         marker1.setAttribute('hidden','');
                         marker2.removeAttribute('hidden');
                     }
                 }else{
-                    selector.setAttribute('checkbox', 'unchecked');
+                    customBox.setAttribute('checkbox', 'unchecked');
                     if(marker2){
                         marker1.removeAttribute('hidden');
                         marker2.setAttribute('hidden','');
@@ -127,14 +127,14 @@ class CheckBox {
                 }
 
                 if(typeof init === 'function'){
-                    init({selector: selector, control:checker, checked: (checker.checked)});
+                    init({native:input, custom: customBox, marker: marker, checked: (input.checked), value: (input.value)});
                 }
 
-                selector.addEventListener('click', function(){
-                    checker.click();
+                customBox.addEventListener('click', function(){
+                    input.click();
                 })
 
-                checker.addEventListener('click', function(){
+                input.addEventListener('click', function(){
                     
                     checkEvent(this)
 

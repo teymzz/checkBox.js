@@ -73,13 +73,14 @@ new CheckBox({
 ```
 
 > The toggle callback will execute once the checkbox is clicked. The supplied callback argument _checkBox_ is an object that returns the information about the 
-selected items. The properties returned by this object include the _checked_, _selector_, _marker_ and _init_ methods. 
+selected items. The properties returned by this object include the _custom_, _native_, _marker_, _checked_, _value_ and _init_ methods. 
 
- + ```checked```  : This returns true when a custom checkbox is checked
- + ```selector``` : This refers to the relatively selected item
- + ```control```  : This refers to the default checkbox item
- + ```marker```   : When a custom checkbox element has a child element used as indicator item, the marker property is used to target that child indicator element within the custom checkbox. 
- + ```init```     : This returns the default function that is called immediately the plugin is loaded. 
+ + ```custom```  : This refers to the relatively selected custom box or target element
+ + ```native```  : This refers to the original (or native) html input checkbox element
+ + ```marker```  : When a custom checkbox element has a child element used as indicator item, the marker property is used to target that child indicator element within the custom checkbox. 
+ + ```checked``` : This returns true when a custom checkbox is checked
+ + ```value```   : This returns the relative value of a native checkbox element
+ + ```init```    : This returns the default function that is called immediately the plugin is loaded. 
 
 ### Examples of Plugin Usage
 
@@ -106,7 +107,7 @@ Assuming we have a default css sample as shown below:
 
 There are different ways by which the plugin can be utilized. Some samples are shown below 
 
-   #### #Example 1 (Simple Usage)
+   #### #Example 1 (Basic Usage)
 
    The sample html structure below is a simple application of the checkbox plugin 
 
@@ -117,15 +118,15 @@ There are different ways by which the plugin can be utilized. Some samples are s
    </div>
    ```   
    
-   > By default, checkbox selectors are identified by the attribute of _[checkbox]_. The plugin takes advantage of this and provides us with the ```.selector``` property which targets the custom checkbox element. We can then change the background color of the checkbox easily by adding or removing the ```".bc-green"``` class when it is checked or unchecked. This is shown below: 
+   > By default, checkbox selectors are identified by the attribute of _[checkbox]_. The plugin takes advantage of this and provides us with the ```.custom``` property which targets the custom checkbox element. We can then change the background color of the checkbox easily by adding or removing the ```".bc-green"``` class when it is checked or unchecked. This is shown below: 
 
    ```js 
    new CheckBox({
        toggle: function(checkBox){
            if(checkBox.checked){
-               checkBox.selector.classList.add('bc-green')
+               checkBox.custom.classList.add('bc-green')
            }else{
-               checkBox.selector.classList.remove('bc-green')
+               checkBox.custom.classList.remove('bc-green')
            }
        }
    })
@@ -144,7 +145,7 @@ There are different ways by which the plugin can be utilized. Some samples are s
    </div>
    ```   
 
-   > By default, checkbox markers are identified by the attribute of _[markers]_ and they must exist within the _[checkbok]_ elements. The plugin takes advantage of this and provides us with the _.marker_ property which targets the marker of the custom checkbox element. We can then change the background color of the marker easily by adding or removing the ".bc-green" class when it is checked or unchecked. This is shown below: 
+   > By default, checkbox markers are identified by the attribute of ```[markers]``` and they must exist within the ```[checkbox]``` elements. The plugin takes advantage of this and provides us with the _marker_ property which targets the marker of the custom checkbox element. We can then change the background color of the marker easily by adding or removing the ".bc-green" class when it is checked or unchecked. This is shown below: 
 
    ```js 
    new CheckBox({
@@ -193,7 +194,7 @@ There are different ways by which the plugin can be utilized. Some samples are s
    </style>
    ```   
 
-   > Whenever a custom checkbox is checked, a value of ```"checked"``` is usually assigned to this attribute. Taking advantage of this, the css above defines that the first marker should only be displayed when the checkbox attribute has an value of "checked" while the second marker should only be displayed when the checkbox does not have a value that is equivalent to "checked". This css format will result to creating a custom toggle effect. The html structure is shown below:
+   > Whenever a custom checkbox is checked, a value of ```"checked"``` is usually assigned to this attribute. Taking advantage of this, the css above defines that the first marker should only be displayed when the checkbox attribute has an value of ```"checked"``` while the second marker should only be displayed when the checkbox does not have a value that is equivalent to ```"checked"```. This css format will result to creating a custom toggle effect. The html structure is shown below:
 
    ```html 
    <div>
@@ -254,11 +255,11 @@ new CheckBox({
 
 ### Custom Selectors
 
-Both the checkbox selector and the marker selector are defaulted as ```[checkbox]``` and ```[marker]``` respectively. However, we can define a custom selector when initializing the class by using the _control_ key for the selector and using the _marker_ to define the marker as shown below
+Both the checkbox selector and the marker selector are defaulted as ```[checkbox]``` and ```[marker]``` respectively. However, we can define a custom selector when initializing the class by using the _target_ key for the selector and using the _marker_ to define the marker as shown below
 
 ```js 
 new CheckBox({
-    control: '[checkbox]', //custom selector
+    target: '[checkbox]', //custom selector
     marker: '[marker]', //custom marker
     toggle: function(checkBox){
         //callback function
@@ -303,7 +304,7 @@ new CheckBox({
 })
 ```
 
-> In the code above, the ```init``` function will first run immediately the page is loaded. However, the code seems to be long because there is a bit of repetition. We can shorten this in the toggle function by taking advantage of the argument that gives an access to the ```init``` function. This code can be improved as shown below: 
+> In the code above, the ```init``` method will first run immediately the page is loaded. However, the code seems to be long because there is a bit of repetition. We can shorten this in the toggle method by taking advantage of the argument that gives an access to the ```init``` method. This code can be improved as shown below: 
 
 ```js 
 new CheckBox({
