@@ -3,13 +3,19 @@
 This is a javascript plugin for handling custom checkboxes.
 
 ### Integrations 
-To use this plugin is integrated to work with the _[selector.js](https://github.com/teymzz/selector.js)_ plugin which is used for selecting items. Without this plugin it will still be able to run efficiently with all supported basic javascript element query selectors, however, the element selection range may be limited.
+This plugin is integrated to work with the _[selector.js](https://github.com/teymzz/selector.js)_ plugin which is used for selecting items. Without this plugin it will still be able to run efficiently with all supported basic javascript query selectors. However, the element selection range may be limited.
 
 ### Installation
-Add the javascript plugin into the head or footer of your project application 
+Download the javascript plugin and add into the head or footer of your project application 
 
 ```html
-<script src="checkBox.js">
+<script src="src/checkBox.js">
+```
+
+You can also use the cdn link below in your script tag file
+
+```html
+<script src="https://cdn.jsdelivr.net/gh/teymzz/checkBox.js@main/checkBox.js">
 ```
 
 ### Html Structure
@@ -51,7 +57,14 @@ Using css, we can design our custom checkbox by setting a default size for the c
 After the plugin has been added to the project file, we can initialize this plugin as shown below 
 
 ```js 
-let checkBox = new CheckBox;
+let checkBox = new CheckBox; //initialize and start execution
+```
+
+We can also use the method below to intialize the plugin 
+
+```js
+let checkBox = new CheckBox(true) //delay execution
+checkBox.check() //start execution.
 ```
 
 > Once the plugin is initialized, all html elements having the custom _checkbox_ html format will automatically hide the default checkboxes that immediately follows them.
@@ -75,12 +88,13 @@ new CheckBox({
 > The toggle callback will execute once the checkbox is clicked. The supplied callback argument _checkBox_ is an object that returns the information about the 
 selected items. The properties returned by this object include the _custom_, _native_, _marker_, _checked_, _value_ and _init_ methods. 
 
- + ```custom```  : This refers to the relatively selected custom box or target element
- + ```native```  : This refers to the original (or native) html input checkbox element
- + ```marker```  : When a custom checkbox element has a child element used as indicator item, the marker property is used to target that child indicator element within the custom checkbox. 
- + ```checked``` : This returns true when a custom checkbox is checked
- + ```value```   : This returns the relative value of a native checkbox element
- + ```init```    : This returns the default function that is called immediately the plugin is loaded. 
+ + ```target```   : This refers to the relatively selected custom box or target element
+ + ```native```   : This refers to the original (or native) html input checkbox element
+ + ```marker```   : When a custom checkbox element has a child element used as indicator item, the marker property is used to target that child indicator element within the custom checkbox. 
+ + ```checked```  : This returns true when a native checkbox is checked
+ + ```disabled``` : This returns true when a native checkbox is disabled
+ + ```value```    : This returns the relative value of a native checkbox element
+ + ```init```     : This returns the default function that is called immediately the plugin is loaded. 
 
 ### Examples of Plugin Usage
 
@@ -343,9 +357,9 @@ The checkbox plugin supports custom css animations. In order to add some special
 new CheckBox({
     toggle: function(checkbox) {
         if(checkbox.checked){
-            checkbox.marker[1].addClass('animate__bounceIn');
+            checkbox.marker[1].classList.add('animate__animated', 'animate__bounceIn');
         }else{
-            checkbox.marker[1].removeClass('animate__bounceIn');
+            checkbox.marker[1].classList.remove('animate__animated', 'animate__bounceIn');
         }
     },
     flip: true,
@@ -361,8 +375,8 @@ Although the css can be used to set marker's sizes, the plugin can also help to 
 ```html 
 <div>
     <div checkbox>
-        <div class="bc-red animation" marker></div>
-        <div class="bc-green animation" marker></div>
+        <div class="bc-red" marker></div>
+        <div class="bc-green" marker></div>
     </div>
     <input type="checkbox">
 </div>
@@ -374,9 +388,9 @@ Although the css can be used to set marker's sizes, the plugin can also help to 
 new CheckBox({
     toggle: function(checkbox) {
         if(checkbox.checked){
-            checkbox.marker[1].addClass('animate__bounceIn');
+            checkbox.marker[1].classList.add('animate__animated', 'animate__bounceIn');
         }else{
-            checkbox.marker[1].removeClass('animate__bounceIn');
+            checkbox.marker[1].classList.remove('animate__animated','animate__bounceIn');
         }
     },
     flip: true,
@@ -385,6 +399,9 @@ new CheckBox({
 ```
 
 > In the code above, the "size" option is used to add a defualt size to the custom markers. This sizes will be applied on all the markers.
+
+### Other features 
+There are couple of other features supported by this plugin. The full documentation is provided in the ```index.html``` file that comes with this plugin along with some few custom examples of how custom checkboxes can be easily controlled.
 
 ### Suggestions 
 For an easier way to select items, we suggest to download the [selector.js](https://github.com/teymzz/selector.js) plugin which helps to improve the query selection capacity of this plugin if a custom query selector is required.
