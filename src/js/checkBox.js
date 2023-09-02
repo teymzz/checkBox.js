@@ -169,7 +169,7 @@ class CheckBox {
              * @param {array} markers 
              */        
             animeAttr = (box, checked, assignAnime, markers) => {
-                let assigned;
+
                 let iniAssign  = assign.attr;
                 let dataAssign = iniAssign;
 
@@ -180,7 +180,6 @@ class CheckBox {
                     //split handle string value
                     let attrSplit = assignAnime.split('|');
 
-                    // console.log(attrSplit)
                     if((attrSplit.length === 1) && (iniAssign.length > 1)){
                         assignAnime = attrSplit[0];
                         dataAssign[0] = iniAssign[0];
@@ -196,8 +195,6 @@ class CheckBox {
                 }
 
                 let attrs = dataAssign;
-
-                    // console.log(assignAnime, assign.attr, '............')
                 if(attrs.length > 1){
                     //when three argument supplied source, dest, type
                     let sourceAttr = attrs[0]; //source attribute
@@ -216,6 +213,7 @@ class CheckBox {
                             console.error('unknown attribute animation type "'+animator+'" assigned to checkbox')
                         }
                     }
+
                     if(animated !== 'false'){
                         if(animated === 'both'){
                             animate = true;
@@ -234,9 +232,10 @@ class CheckBox {
                             animateMarker = 2;
                         }
                     }
-                    let destValue = '', sourceValue, sourceValue2, animVals;
+                    let destValue = '', sourceValue, sourceValue2;
 
                     sourceValue = at(box, sourceAttr).value('');
+                    
 
                     if(!animateMarker) {
                         destValue = at(box, destAttr).value('');
@@ -248,6 +247,7 @@ class CheckBox {
                     //set unchecked toggle values in array
                     sourceValue = animeValues[0].split(' ');
                     destValue = destValue.split(' ');
+
                     if(animeValues.length > 1){
                        //set checked toggle values in array
                        sourceValue2 = animeValues[1].split(' ');
@@ -391,13 +391,12 @@ class CheckBox {
 
                                     //remove source from marker 2
                                     M2NewDestVals = marker2Val.filter(val => !M2SourceValue.includes(val));
+                                    
                                 }else{
                                     console.error(`Markers must be 2 when set as ':markers'`)
                                 }   
 
                             }
-
-                            markers[0].setAttribute(destAttr, '')
                             
                             //set marker 1 and marker 2 new values ... 
                             if(M1NewDestVals) {
@@ -1007,7 +1006,7 @@ class CheckBox {
                         animeAttr(customBox, input.checked, customBox.getAttribute('data-assign'), marker)
                     }
                 }
-                
+
                 if(eager && callback !== ''){
                     window[callback]({
                         native:input, 
