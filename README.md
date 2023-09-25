@@ -9,13 +9,13 @@ This plugin is integrated to work with the _[selector.js](https://github.com/tey
 Download the javascript plugin and add into the head or footer of your project application 
 
 ```html
-<script src="src/checkBox.js">
+<script src="checkbox/checkBox.js">
 ```
 
 You can also use the cdn link below in your script tag file
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/teymzz/checkBox.js@main/checkBox.js">
+<script src="https://cdn.jsdelivr.net/gh/teymzz/checkBox/checkBox.js">
 ```
 
 ### Html Structure
