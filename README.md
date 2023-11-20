@@ -12,10 +12,10 @@ Download the javascript plugin and add into the head or footer of your project a
 <script src="checkbox/checkBox.js">
 ```
 
-You can also use the cdn link below in your script tag file
+You can also use the cdn link below in your html script tag
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/teymzz/checkBox/checkBox.js">
+https://cdn.jsdelivr.net/gh/teymzz/checkBox/checkBox.js
 ```
 
 ### Html Structure
