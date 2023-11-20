@@ -3,7 +3,7 @@
 This is a javascript plugin for handling custom checkboxes.
 
 ### Integrations 
-This plugin is integrated to work with the _[selector.js](https://github.com/teymzz/selector.js)_ plugin which is used for selecting items. Without this plugin it will still be able to run efficiently with all supported basic javascript query selectors. However, the element selection range may be limited.
+This [plugin](https://teymzz/github.io/teymzz/checkBox) is integrated to work with the _[selector.js](https://github.com/teymzz/selector.js)_ plugin which is used for selecting items. Without the _selector.js_ query selector plugin, it will still be able to run efficiently with all supported basic javascript query selectors. However, the element selection range may be limited. 
 
 ### Installation
 Download the javascript plugin and add into the head or footer of your project application 
@@ -20,7 +20,7 @@ You can also use the cdn link below in your script tag file
 
 ### Html Structure
 
-In order to use the plugin the html structure of the custom checkbox should resemble the format below in which the custom selector that is identified with the default ```[checkbox]``` selector comes immediately before the input checkbox html element as shown below: 
+In order to use this plugin, the html structure of the custom checkbox should resemble the format below in which the custom selector identified by the default ```[checkbox]``` selector comes immediately before the input checkbox html element as shown below: 
 
 ```html 
 <div>
@@ -42,7 +42,7 @@ Using css, we can design our custom checkbox by setting a default size for the c
 }
 ```
 
-> We can also add more design like border radius to the custom box 
+> We can also add more designs like ```border-radius``` to the custom box 
 
 ```css
 [checkbox] {
