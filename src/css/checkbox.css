@@ -24,6 +24,19 @@
     gap: .2em;
 }
 
+.basic[checkbox] {
+    width: 20px;
+    height: 20px;
+}
+
+.basic[checkbox][checked="unchecked"] {
+    background-color: white;
+}
+
+.basic[checkbox][checked="checked"] {
+    background-color: lime;
+  }
+
 .checkers{
     margin: .5em;
     margin-left: 0;
