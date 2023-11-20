@@ -3,7 +3,7 @@
 This is a javascript plugin for handling custom checkboxes.
 
 ### Integrations 
-This [plugin](https://teymzz.github.io/checkBox) is integrated to work with the _[selector.js](https://github.com/teymzz/selector.js)_ plugin which is used for selecting items. Without the _selector.js_ query selector plugin, it will still be able to run efficiently with all supported basic javascript query selectors. However, the element selection range may be limited. 
+This [plugin](https://teymzz.github.io/checkBox) is integrated to work with the _[selectorJs](https://github.com/teymzz/selector)_ plugin which is used for selecting items. Without the _selectorJs_ query selector plugin, it will still be able to run efficiently with all supported basic javascript query selectors. However, the element selection range may be limited. 
 
 ### Installation
 Download the javascript plugin and add into the head or footer of your project application 
