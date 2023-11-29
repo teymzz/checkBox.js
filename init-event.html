@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>checkbox</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+        <link rel="stylesheet" type="text/css" href="src/css/all.css">
+        <script src="checkBox.js"></script>        
+    </head>
+    
+    <body>
+        <section class="bc-deeper-blue">
+
+            <div class="" style="font-size: 1.2em;"> <br>
+                <h1 style="color:#51ceff">CheckBox.js</h1> <br>
+                <h4 style="color:#51ceff">Init Event</h4> <br>
+            </div>
+            
+            <div class="">
+              Init event is an event that is expected to run immediately the plugin is 
+              initialized or instantiated. This event occurs immediately the page loads before 
+              any user activity is detected on the checkbox. Assuming we have a checkbox as shown below:
+            </div> <br>
+            
+            <!-- checkbox -->
+            <div class="code">
+                <div class="flex">
+                    <div class="">
+                        Custom CheckBox
+                    </div>
+                    <div class="">
+                        <span class="copy-btn">Copy</span>
+                    </div>
+                </div>
+<pre>
+<span class="tag">&lt;div <span>checkbox=""</span>&gt;</span>
+  <span class="tag">&lt;div <span>marker=""</span>&gt;&lt;/div&gt;</span> 
+  <span class="tag">&lt;div <span>marker=""</span>&gt;&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;input <span>type="<span>checkbox</span>"</span>&gt; &lt;br&gt;</span> 
+<span class="tag">&lt;div <span>class="<span>response</span>"</span>&gt;&lt;/div&gt;</span>
+</pre>
+            </div> <br>           
+            
+            <div class="">
+              We can setup an initial function as shown below
+            </div> <br>           
+            
+            <div class="code">
+                <div class="flex">
+                    <div class="">
+                        Script
+                    </div>
+                    <div class="">
+                        <span class="copy-btn">Copy</span>
+                    </div>
+                </div>
+<pre>
+<span class="var">let</span> checkbox = <span class="var">new</span> <span class="func">CheckBox(<span class="bool">true</span>)</span>;
+
+checkbox.<span class="func">check({</span>
+
+  <span class="var">init:</span> <span class="func">function(<span class="key">checkbox</span>){</span>
+   
+     <span class="var">let</span> <span class="">responseField</span> = <span class="val">document</span>.<span class="func">querySelector(<span class="string">'.response'</span>)</span>;
+     
+     <span class="">responseField</span>.<span class="val">innerHTML</span> = <span class="string">'CheckBox Plugin Initialized'</span>;
+   
+  <span class="func">}</span>
+  
+})</span>;
+</pre>
+            </div> <br>          
+            
+            <div class="">
+              From the sample above, the <code class="c-note">init</code> function will run when the page loads.
+            </div> <br>
+            
+            <div class="code">
+                <div class="flex">
+                    <div class="">
+                        HTML View (Toggle on checkbox)
+                    </div>
+                </div>
+                <div class="" style="padding:10px">
+<div checkers data-size="20px">
+  <div marker="" style="background-color:white"></div>
+  <div marker="" style="background-color:lime"></div>
+</div>
+<input type="checkbox" value="foo"> <br>
+<span class="response"></span>
+                </div>
+            </div> <br>
+            
+            <div class="" style="padding:10px 5px">
+              <a href="custom-marker.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:left; text-decoration: none">
+                <i class="bi-arrow-left-circle"></i> 
+              </a> 
+              
+              <a href="toggle-event.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:right; text-decoration: none">
+                <i class="bi-arrow-right-circle"></i> toggle event
+              </a> 
+            </div><br><br><br>
+            
+
+        </section>
+
+        <script src="src/js/docs.js"></script>
+        
+        <script>
+          let checkers = new CheckBox(true);
+
+          checkers.check({
+             
+            target: '[checkers]',
+            flip: true,
+            init: function(checkbox){
+              
+               let responseField = document.querySelector('.response');
+               
+               responseField.innerHTML = 'CheckBox Plugin Initialized';
+             
+            }
+            
+          });
+
+        </script>
+    </body>
+</html>

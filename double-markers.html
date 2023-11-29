@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>checkbox</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+        <link rel="stylesheet" type="text/css" href="src/css/all.css">
+        <script src="checkBox.js"></script>
+        <style>
+          [checkbox] {
+              width: fit-content;
+              border-radius: 5px;
+              border: solid;
+              padding: 4px;
+          }
+
+          [checkbox] > [marker] {
+              width: 20px;
+              height: 20px;
+          }
+          
+          [checkbox] > [marker]:nth-child(1) {
+              background-color: white;
+          }
+          
+          [checkbox] [marker]:nth-child(2) {
+              background-color: lime;
+          }
+        </style>
+    </head>
+    
+    <body>
+        <section class="bc-deeper-blue">
+
+            <div class="" style="font-size: 1.2em;"> <br>
+                <h1 style="color:#51ceff">CheckBox.js</h1> <br>
+                <h4 style="color:#51ceff">Markers (double)</h4> <br>
+            </div>
+            
+            <div class="">
+              The double markers is similar to the single markers except that two markers are provided which automatically 
+              creates a toggle effect. The sample structure is shown below
+            </div> <br>
+
+            <!-- checkbox -->
+            <div class="code">
+                <div class="flex">
+                    <div class="">
+                        CheckBox (Double markers)
+                    </div>
+                    <div class="">
+                        <span class="copy-btn">Copy</span>
+                    </div>
+                </div>
+<pre>
+<span class="tag">&lt;div <span>checkbox</span>&gt;</span>
+  <span class="tag">&lt;div <span>marker=""</span>&gt;&lt;/div&gt;</span> <span class="comment">&lt;!-- @unchecked --&gt;</span>
+  <span class="tag">&lt;div <span>marker=""</span>&gt;&lt;/div&gt;</span> <span class="comment">&lt;!-- @checked --&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;input <span>type="<span>checkbox</span>"</span>&gt;</span>
+</pre>
+            </div> <br>
+            
+            <div class="">
+              From the structure above, the plugin automatically detects that we have double markers and creates a toggle effect for each marker. 
+              The first marker will be displayed when the checkbox is unchecked while the second marker will be displayed when the checkbox is checked. 
+              Using css, we can also set the sizes for each marker or redesign the custom checkbox itself.
+            </div> <br>
+            
+            <div class="code">
+                <div class="flex">
+                    <div class="">
+                        Custom css
+                    </div>
+                    <div class="">
+                        <span class="copy-btn">Copy</span>
+                    </div>
+                </div>
+<pre class="">
+<span class="key">[checkbox]</span> <span class="braces">{</span>
+    <span class="var">width</span>: fit-content;
+    <span class="var">border-radius</span>: 5px;
+    <span class="var">border</span>: solid;
+    <span class="var">padding</span>: 4px;
+<span class="braces">}</span>
+
+<span class="key">[checkbox] > [marker]</span> <span class="braces">{</span>
+    <span class="var">width</span>: 20px;
+    <span class="var">height</span>: 20px;
+<span class="braces">}</span>
+
+<span class="key">[checkbox] > [marker]:nth-child(1) </span> <span class="braces">{</span>
+    <span class="var">background-color</span>: white;
+<span class="braces">}</span>
+
+<span class="key">[checkbox] > [marker]:nth-child(2) </span><span class="braces">{</span>
+    <span class="var">background-color</span>: lime;
+<span class="braces">}</span>
+</pre>
+            </div> <br>  
+
+            <div class="code">
+                <div class="flex">
+                    <div class="">
+                        HTML View (Toggle on checkbox)
+                    </div>
+                </div>
+                <div class="" style="padding:10px">
+<div checkbox>
+  <div marker=""></div>
+  <div marker=""></div>
+</div>
+<input type="checkbox" value="foo">                    
+                </div>
+            </div> <br>
+
+            
+            <div class="" style="padding:10px 5px">
+              <a href="single-marker.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:left; text-decoration: none">
+                <i class="bi-arrow-left-circle"></i> 
+              </a> 
+              
+              <a href="sizing-markers.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:right; text-decoration: none">
+                <i class="bi-arrow-right-circle"></i> Sizing Markers
+              </a> 
+            </div><br><br><br>
+            
+
+        </section>
+
+        <script src="src/js/docs.js"></script>
+    </body>
+</html>

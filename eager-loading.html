@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>checkbox</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+        <link rel="stylesheet" type="text/css" href="src/css/all.css">
+        <script src="checkBox.js"></script>        
+    </head>
+    
+    <body>
+        <section class="bc-deeper-blue">
+
+            <div class="" style="font-size: 1.2em;"> <br>
+                <h1 style="color:#51ceff">CheckBox.js</h1> <br>
+                <h4 style="color:#51ceff">Eager Loading</h4> <br>
+            </div>
+            
+            <div class="">
+              Eager loading is necessary in situations where we need to preload a toggle 
+              event. We have already seen how to initialize an event using the 
+              <code class="c-note">init</code> option or the <code class="c-note">data-init</code> 
+              attribute. Also, we have learnt about the <code class="c-note">toggle</code> option or 
+              <code class="c-note">data-func</code> attribute. We can easily combine these features to create a 
+              smart eager loading for the checkbox toggling. Assuming we have an html script below:
+            </div> <br>
+            
+            <!-- checkbox -->
+            <div class="code">
+                <div class="flex">
+                    <div class="">
+                        Custom CheckBox
+                    </div>
+                    <div class="">
+                        <span class="copy-btn">Copy</span>
+                    </div>
+                </div>
+<pre>
+<span class="tag">&lt;div <span>checkbox=""</span>&gt;</span>
+  <span class="tag">&lt;div <span>marker=""</span>&gt;&lt;/div&gt;</span> 
+  <span class="tag">&lt;div <span>marker=""</span>&gt;&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;input <span>type="<span>checkbox</span>"</span>&gt; &lt;br&gt;</span> 
+<span class="tag">&lt;div <span>class="<span>response</span>"</span>&gt;&lt;/div&gt;</span>
+</pre>
+            </div> <br>           
+            
+            <div class="">
+              We can setup an eager-loading toggle function as shown below :
+            </div> <br>           
+            
+            <div class="">
+                  <div class="code">
+                      <div class="flex">
+                          <div class="">
+                             sample: toggle
+                          </div>
+                          <div class="">
+                              <span class="copy-btn">Copy</span>
+                          </div>
+                      </div>
+<pre>
+<span class="tag">&lt;script&gt;</span>
+new <span class="func">CheckBox(</span>{
+    <span class="key">init</span>: <span class="func">function(</span><span class="arg">checkbox</span><span class="func">)</span> {
+        
+        let <span class="var">value</span> = <span class="arg">checkbox</span>.value;
+
+        if( <span class="arg">checkbox</span>.checked ) {
+            console.<span class="func">log(`</span><span class="string">checkbox <span class="braces">${</span><span class="var">value</span><span class="braces">}</span> is: checked</span><span class="func">`)</span>
+        } else {
+            console.<span class="func">log(`</span><span class="string">checkbox <span class="braces">${</span><span class="var">value</span><span class="braces">}</span> is: unchecked</span><span class="func">`)</span>
+        }
+
+    },
+    <span class="key">toggle</span>: <span class="func">function(</span><span class="arg">checkbox</span><span class="func">)</span> {
+        
+        <span class="arg">checkbox</span>.<span class="func">init(<span class="arg">checkbox</span>)</span>;
+
+    }
+}<span class="func">)</span>;
+<span class="tag">&lt;/script&gt;</span>    
+</pre>
+                </div>
+            </div> <br>         
+            
+            <div class="">
+              From the above, we can set that the argument supplied into the <code class="c-note">toggle()</code> callback option has access to the <code class="c-note">init()</code> 
+              callback option. This makes it easier to run the <code class="c-note">init()</code> within the <code class="c-note">toggle()</code> function rather than redefining it. This 
+              means that <code class="c-note">init()</code> function will first run when the page loads and it will continue to run when the checkbox is toggled.
+            </div> <br>
+            
+            <div class="code">
+                <div class="flex">
+                    <div class="">
+                        HTML View (Toggle on checkbox)
+                    </div>
+                </div>
+                <div class="" style="padding:10px; display: inline-flex">
+                  <div>
+                    <div checkers data-size="20px"> 
+                      <div marker="" style="background-color:white"></div>
+                      <div marker="" style="background-color:lime"></div>
+                      <div marker="" style="background-color:lime"></div>
+                    </div>
+                    <input type="checkbox" value="foo"> 
+                  </div>
+                  <div class="">
+                    &nbsp; <span class="response"></span>
+                  </div>
+                </div>
+            </div> <br>
+            
+            <div class="" style="padding:10px 5px">
+              <a href="toggle-event.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:left; text-decoration: none">
+                <i class="bi-arrow-left-circle"></i> 
+              </a> 
+              
+              <a href="fitting-images.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:right; text-decoration: none">
+                <i class="bi-arrow-right-circle"></i> fitting images
+              </a> 
+            </div><br><br>
+
+        </section>
+        
+        <script src="src/js/docs.js"></script>
+        
+        <script>
+          let checkers = new CheckBox(true);
+
+          checkers.check({
+             
+            target: '[checkers]',
+            flip: true,
+            init: (checkbox) => {
+               let responseField = document.querySelector('.response');
+  
+               responseField.innerHTML = 'checked: '+checkbox.checked;              
+            },
+            toggle: function(checkbox){
+              
+              checkbox.init(checkbox);
+             
+            }
+            
+          });
+
+        </script>
+    </body>
+</html>

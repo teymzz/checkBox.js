@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>checkbox</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+        <link rel="stylesheet" type="text/css" href="src/css/all.css">
+        <script src="checkBox.js"></script>       
+        <style>
+          [checkers] {
+              width: 20px;
+              height: 20px;
+              transition: width .5s ease-in-out;
+          }
+          
+          [checkers] > [marker] {
+              width: 100%;
+              height: 100%;
+          }
+          
+          [checkers] {
+              background-color: red;
+          }
+          
+          [checkers][checked='checked'] {
+              background-color: green;
+          }
+          
+          .anime[checkers] {
+              width: 50px;
+          }
+        </style>
+    </head>
+    
+    <body>
+        <section class="bc-deeper-blue">
+            <div class="" style="font-size: 1.2em;"> <br>
+                <h1 style="color:#51ceff">CheckBox.js</h1> <br>
+                <h4 style="color:#51ceff">Toggling Attributes</h4> <br>
+            </div>
+            
+            <div class="">
+              The toggling of an attribute's value on the custom checkbox element 
+              is an integrated feature that is mostly useful for handling animations. 
+              This feature defines the value assumed by a specified attribute when the 
+              custom checkbox is checked or when it is unchecked. In order to do this, we need 
+              to specify a primary <code class="c-note">source</code> attribute and a secondary  
+              <code class="c-note">destination</code> attribute. The primary attribute is expected 
+              to anchor the value that is expected to be toggled while the secondary attribute refers 
+              to the attribute whose value is toggled. For example, consider the html structure below
+            </div> <br>
+            
+            <!-- checkbox A -->
+            <div class="code">
+                <div class="flex">
+                    <div class="">
+                        Sample Html Structure
+                    </div>
+                    <div class="">
+                        <span class="copy-btn">Copy</span>
+                    </div>
+                </div>
+<pre>
+<span class="tag">&lt;div <span>checkbox source="<span>foo bar</span>" destination="<span></span>"</span>&gt;</span>
+  <span class="tag">&lt;div <span>marker style="<span>background-color: #594fc8;</span>"</span>&gt;&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;input <span>type="<span>checkbox</span>"</span>&gt;</span>
+</pre>
+            </div> <br>     
+            
+            <div class="">
+              From the sample html structure, we have a source and a destination attribute. Assuming that we need to toggle the 
+              value of the source into the destination, we can do this globally using the “assign” configuration option. A sample format 
+              of this is shown below :
+            </div>
+            
+            <div class="mvt-10">
+                  <div class="code">
+                      <div class="flex">
+                          <div class="">
+                             Global Assign Sample Format
+                          </div>
+                          <div class="">
+                              <span class="copy-btn">Copy</span>
+                          </div>
+                      </div>
+<pre>
+<span class="key">assign</span>: {
+    <span class="key">attr</span>: [<span class="string">'source'</span>, <span class="string">'destination'</span>, <span class="string">'unchecked|checked|both|:marker1|:marker2|:markers'</span>],
+}
+</pre>
+                </div>
+            </div> <br>            
+            
+            <div class="">
+              From the sample above, the <code class="bc c-bool">attr</code> key is a subkey of <code class="bc c-bool">assign</code> configuration key. This first two array values of this subkey 
+              respectively points to the name of the source and the destination attributes which have a close relationship. By specifying these attributes, we help the checkbox to know which attributes 
+              are closely related. The third array value however is an optional value that specifies the state of the checkbox in which the specified source value is either toggled in or toggled out of 
+              the destination attribute. These options are discussed below:
+            </div> <br>
+            
+            <ul>
+              <li>
+                <code class="bc c-note">checked</code> 
+                This option toggles the source value into the destination attribute on the custom checkbox when the checkbox is checked and toggles it out when unchecked. This option is also set as the default option if not specified.
+              </li> <br>
+              <li>
+                <code class="bc c-note">unchecked</code> 
+                This option toggles the source value into the destination attribute on the custom checkbox when the checkbox is unchecked and toggles it out when checked.
+              </li> <br>
+              <li>
+                <code class="bc c-note">both</code>
+                This defines that the source value should be removed and re-toggled into the destination attribute on the custom checkbox in both cases when the checkbox is checked or unchecked.
+              </li> <br>
+              <li>
+                <code class="bc c-note">:marker1</code>
+                This option toggles the source value into the destination attribute on the first custom checkbox marker when the checkbox is checked and toggles it out when unchecked.
+              </li> <br>
+              <li>
+                <code class="bc c-note">:marker2</code>
+                This option toggles the source value into the destination attribute on the second custom checkbox marker when the checkbox is unchecked and toggles it out when checked.
+              </li> <br>
+              <li>
+                <code class="bc c-note">:markers</code>
+                This defines that the source value should be removed and re-toggled into the destination attribute on the custom checkbox markers in both cases when the checkbox is checked or unchecked.
+              </li>
+            </ul>
+            
+            <div class="">
+              Similarly to the global configuration, we can also assign values using the data-assign attribute. The sample html format is shown below:
+            </div> <br>
+            
+            <!-- checkbox code -->
+            <div class="code">
+                <div class="flex">
+                    <div class="">
+                       Local Assign Sample Format
+                    </div>
+                </div>
+<pre>
+<span class="tag">&lt;div <span>checkbox data-assign="<span>checked|source|destination</span>" source="<span>foo</span>" destination="<span></span>"</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;input <span>type="<span>checkbox</span>"</span>&gt;</span>
+</pre>
+            </div> <br>
+            
+            <div class="">
+              In the sample above, the <code class="bc c-note">data-assign</code> attribute's options are separated by pipe. The first option defines the state of the checkbox upon which the toggle effect is applied 
+              while the middle option defines the name of the source attribute where the value is picked from. The last value however, specifies the destination attribute where the value toggle effect is applied. To better understand 
+              this, let's assume we have an html structure below :
+            </div> <br>
+            
+            <!-- checkbox code -->
+            <div class="code">
+                <div class="flex">
+                    <div class="">
+                       Sample Html
+                    </div>
+                </div>
+<pre>
+<span class="tag">&lt;div <span>checkbox class="<span>box</span>" data-class="<span>anime</span>" data-assign="<span>checked|data-class|class</span>"</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span> 
+  <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;input <span>type="<span>checkbox</span>"</span>&gt; &lt;br&gt;</span> 
+</pre>
+            </div> <br>
+            
+            <div class="">
+              From the sample structure above, the <code class="c-note">anime</code> value will be toggled into the <code class="c-note">class</code> 
+              attribute without affecting the initial value of the <code class="c-note">class</code> attribute. Let's add some css styling effect to the 
+              custom checkbox so as to be able to know when the value is toggled.
+            </div>
+            
+            <div class="code mvt-10">
+                <div class="flex">
+                    <div class="">
+                        Custom css
+                    </div>
+                    <div class="">
+                        <span class="copy-btn">Copy</span>
+                    </div>
+                </div>
+<pre class="">
+<span class="key">[checkbox] [marker]</span> <span class="braces">{</span>
+    <span class="var">width</span>: 20px;
+    <span class="var">height</span>: 20px;
+    <span class="var">transition</span>: width .5s ease-in-out;
+<span class="braces">}</span>
+
+<span class="key">.animate[checkbox] > div:nth-child(1)</span> <span class="braces">{</span>
+    <span class="var">width</span>: 50px;
+    <span class="var">background-color</span>: red;
+<span class="braces">}</span>
+
+<span class="key">.animate[checkbox] > div:nth-child(2)</span> <span class="braces">{</span>
+    <span class="var">background-color</span>: green;
+<span class="braces">}</span>
+</pre>
+            </div> <br>         
+            
+            <div class="code">
+                <div class="flex">
+                    <div class="">
+                        HTML View (Toggle on checkbox)
+                    </div>
+                </div>
+                <div class="" style="">
+                  <div>
+                    <div checkers="" class="faz" data-class="anime"> 
+                   
+                    </div>
+                    <input type="checkbox" value="foo"> 
+                  </div>
+                </div>
+            </div> <br>      
+            
+            <script>  
+              new CheckBox({
+                target: '[checkers]',
+                assign: {
+                  attr: ['data-class', 'class']
+                },
+              });
+            </script>
+            
+        </section>
+    </body>
+
+
+
+ 
+
+ 
+
+
+<script src="src/js/docs.js"></script>
