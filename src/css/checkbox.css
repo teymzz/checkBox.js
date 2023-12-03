@@ -11,9 +11,7 @@
 
 [checked] [marker] {
     width: 20px;
-    height: 2'0px;
-    height: 2'0px;
-    height: 2'0px;
+    height: 20px;
 }
 
 [data-role="checkbox-list"]{
@@ -24,6 +22,17 @@
 [data-role="checkbox"]{
     align-items: center; 
     gap: .2em;
+}
+
+.code-box {
+    padding: 10px; 
+    background-color: rgb(72, 58, 79);
+}
+
+.checkbox-field {
+    padding:10px; 
+    display: inline-flex;
+    align-items: center;
 }
 
 .basic[checkbox] {
@@ -150,6 +159,27 @@ input[type="password"], input[type="text"]{
 :is(input[type="text"], input[type="password"], input:not([type])) {
     outline: solid 2px #3b3758;
     outline-offset: 2px;
+}
+
+/* set navigation buttons */
+a[class*=nav-btn]{
+    background-color: #3e3a51 ; 
+    color: white; 
+    border:none; 
+    border-radius: 5px; 
+    padding:14px 20px;
+    text-decoration: none;
+}
+
+.nav-pane {
+    padding: 10px 0px;
+}
+a.nav-btn-lt {
+    float: left;
+    margin-right: 4px;
+}
+a.nav-btn-rt {
+    float: right;
 }
 
 /* --applied colors-- */

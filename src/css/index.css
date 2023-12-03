@@ -37,6 +37,10 @@ h1{
     color: #82e3ac;
 }
 
+.c-var{
+    color: rgb(98, 204, 215);
+}
+
 /* --code field designs-- */
 .code{
     background-color: rgb(40, 37, 59);

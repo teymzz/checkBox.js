@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>checkbox</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+        <link rel="stylesheet" type="text/css" href="../src/css/all.css">
+        <script src="../checkBox.js"></script>  
+        <style>
+            .checkbox-wrapper {
+                display: inline-flex;
+                width: fit-content;
+                align-items: center;
+                gap: .2em;
+            }
+
+            [checkers] {
+                width: fit-content;
+                border-radius: 100vh;
+                border: solid 2px #514e68; 
+                display: inline-flex; 
+                padding: 4px;    
+            }
+
+            [checkers] > [marker]{
+                border-radius: 100vh;  
+            }
+        </style>     
+    </head>
+    
+    <body>
+        <section class="bc-deeper-blue">
+
+            <div class="" style="font-size: 1.2em;"> <br>
+                <h1 style="color:#51ceff">CheckBox.js</h1> <br>
+                <h4 style="color:#51ceff">Adding Labels</h4> <br>
+            </div>
+            
+            <div class="">
+                Labels are texts that immediately follows the input checkbox fields which are identified by the <code class="bc c-attr">data-access="label"</code> 
+                attribute. In order to add labels, the custom checkbox is assigned with an 
+                attribute of <code class="c-note bc">data-label</code> which contains the text label itself that is either single or separated with pipe. When the text is separated by pipe, 
+                the left side of the text will be for when the checkbox is unchecked while the right side of the text will stand for the displayed text when it is checked. 
+                A sample format and sample view are displayed below.
+            </div> <br>
+
+            
+            <!-- checkbox G -->
+            <div class="code">
+                <div class="flex">
+                    <div class="">
+                        Sample Label Structure
+                    </div>
+                    <div class="">
+                        <span class="copy-btn">Copy</span>
+                    </div>
+                </div>
+<pre>
+ <span class="tag">&lt;div <span>class="<span>checkbox-wrapper</span>"</span>&gt;</span>
+    <span class="tag">&lt;div <span>checker data-label="<span>Show|Hide</span>" data-flip="<span>true</span>"</span>&gt;</span>
+        <span class="tag">&lt;div <span>marker style="<span>background-color: transparent;</span>"</span>&gt;&lt;/div&gt;</span>
+        <span class="tag">&lt;div <span>marker style="<span>background-color: lime;</span>"</span>&gt;&lt;/div&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;input <span>type="<span>checkbox</span>" value="<span>foo</span>"</span>&gt;</span>
+    <span class="tag">&lt;label <span>data-access="<span>label</span>"</span>&gt;</span>Show<span class="tag">&lt;/label&gt;</span>
+ <span class="tag">&lt;/div&gt;</span>  
+</pre>
+            </div> <br>
+
+            <div class="">
+                From the sample structure above, we can see that the checkbox element has an attribute of <code class="c-note">data-label</code> 
+                which contains two values "<code class="c-var">Show</code>" and "<code class="c-var">Hide</code>". Also, the label text field 
+                where the text will be added is identified with the attribute of <code class="c-bool">data-access</code> and it immediately follows the 
+                native input checkbox element. Whenever the checkbox is unchecked,  the "<code class="c-var">Show</code>" text will be added to the specified 
+                label field and the first marker will be displayed. However, if the checkbox is checked, the second marker will be displayed while the returned 
+                text will be "<code class="c-var">Hide</code>". In order to see the effect of this, let's add some css styling to the checkbox wrapper element
+            </div> <br>
+
+            
+            <div class="code">
+                <div class="flex">
+                    <div class="">
+                        Custom css
+                    </div>
+                    <div class="">
+                        <span class="copy-btn">Copy</span>
+                    </div>
+                </div>
+<pre class=""><span class="key">[checkers]</span> <span class="braces">{</span>
+    <span class="var">width</span>: fit-content;
+    <span class="var">border</span>: solid 2px #514e68; 
+    <span class="var">border-radius</span>: 100vh;
+    <span class="var">display</span>: inline-flex; 
+    <span class="var">padding</span>: 4px;    
+<span class="braces">}</span>
+    
+<span class="key">[checkers] > [marker]</span> <span class="braces">{</span>
+    <span class="var">border-radius</span>: 100vh;
+<span class="braces">}</span>
+</pre>
+            </div> <br> 
+
+            <div class="">
+                The sample html response will be similar to the response below:
+            </div> <br>
+            
+            <div class="code">
+                <div class="flex">
+                    <div class="">
+                        HTML View (Toggle on checkbox)
+                    </div>
+                </div>
+                <div class="checkbox-field" >
+                  <div>
+                    <div checkers data-size="20px" data-label="Show|Hide" data-flip="true"> 
+                      <div marker="" style="background-color:transparent"></div>
+                      <div marker="" style="background-color:lime"></div>
+                    </div>
+                    <input type="checkbox" value="foo">
+                    <label data-access="label">Show</label> 
+                  </div>
+                </div>
+            </div> <br> 
+            
+            <div class="">
+                Alternatively, if we can also apply the label outside the direct parent of the custom checkbox element. 
+                However, in this situation, the direct parent must have an attribute <code class="c-note">data-role</code> 
+                with the value of "<code class="c-var">checkbox</code>". A sample of this is shown below:
+            </div> <br>
+
+            <!-- checkbox N -->
+            <div class="code">
+                <div class="flex">
+                    <div class="">
+                        Alternative Labelling
+                    </div>
+                    <div class="">
+                        <span class="copy-btn">Copy</span>
+                    </div>
+                </div>
+<pre>
+<span class="tag">&lt;div <span>class="<span>checkers box</span>"</span>&gt;</span>
+  <span class="tag">&lt;div&gt;</span>
+    <span class="tag">&lt;div <span>class="<span>checkbox-wrapper</span>" data-role="<span>checkbox</span>"</span>&gt;</span>
+      <span class="tag">&lt;div <span>data-label="<span>Show|Hide</span>" class="<span>in-flex</span>"</span>&gt;</span>
+        <span class="tag">&lt;div <span>marker style="<span>background-color: red;</span>"</span>&gt;&lt;/div&gt;</span>
+        <span class="tag">&lt;div <span>marker style="<span>background-color: lime;</span>"</span>&gt;&lt;/div&gt;</span>
+      <span class="tag">&lt;/div&gt;</span>
+      <span class="tag">&lt;input <span>type="<span>checkbox</span>" value="<span>N</span>"</span>&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div <span>data-access="<span>label</span>"</span>&gt;</span>Show<span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+</pre>
+            </div> <br>
+
+            <div class="">
+                From the sample structure above, the specified label text field will still be accessible by the custom checkbox because the direct parent of the 
+                custom checkbox is specified with the <code class="c-note">data-role="<span class="c-var">checkbox</span>"</code> identifier while the 
+                label text field comes immediately after it.
+            </div> <br>
+                  
+            
+            <div class="nav-pane">
+              <a href="../docs/toggling-attribute-advanced.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:left; text-decoration: none">
+                <i class="bi-arrow-left-circle"></i> 
+              </a> 
+              
+              <a href="../docs/adding-colors.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:right; text-decoration: none">
+                <i class="bi-arrow-right-circle"></i> adding colors 
+              </a> 
+            </div><br><br>
+
+        </section>
+        
+        <script src="../src/js/docs.js"></script>
+        
+        <script>
+          let checkers = new CheckBox(true);
+
+          checkers.check({
+             
+            target: '[checkers]',
+            flip: true,
+            
+          });
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -136,7 +136,7 @@ class CheckBox {
                     return attr; //value of attribute
                 }
                 if(returnType !== 'array') return attr;
-                return attr = attr.split(separator);
+                return attr = attr.split(separator).filter((str) => str !== "");
             },
             checked: () => {
                 return (isCheckbox(element) && element.checked);
@@ -170,31 +170,38 @@ class CheckBox {
              */        
             animeAttr = (box, checked, assignAnime, markers) => {
 
+                // set default assign configuration
                 let iniAssign  = assign.attr;
                 let dataAssign = iniAssign;
 
                 if(assignAnime){
 
+                    // format local data-assign attribute
+
                     dataAssign = [];
 
                     //split handle string value
                     let attrSplit = assignAnime.split('|');
-
                     if((attrSplit.length === 1) && (iniAssign.length > 1)){
-                        assignAnime = attrSplit[0];
-                        dataAssign[0] = iniAssign[0];
-                        dataAssign[1] = iniAssign[1];
-                        dataAssign[2] = assignAnime;
+                        // assign [source, destination, <data-assign>]
+                        // data-assign: status
+                        assignAnime = attrSplit[0];    
+                        dataAssign[0] = iniAssign[0];  
+                        dataAssign[1] = iniAssign[1];   
+                        dataAssign[2] = assignAnime;  
                     }else if(attrSplit.length > 2){
-                        assignAnime = attrSplit[0];
-                        dataAssign[0] = attrSplit[0];
-                        dataAssign[1] = attrSplit[1];
+                        // assign [<data-assign[0]>,<data-assign[1]>]
+                        // data-assign [status, source, destination]
+                        assignAnime = attrSplit[0];    
+                        dataAssign[0] = attrSplit[1];  
+                        dataAssign[1] = attrSplit[2];
                         dataAssign[2] = assignAnime;
                     }
 
                 }
 
                 let attrs = dataAssign;
+
                 if(attrs.length > 1){
                     //when three argument supplied source, dest, type
                     let sourceAttr = attrs[0]; //source attribute
@@ -204,7 +211,6 @@ class CheckBox {
                     let animator = assignAnime || attrs[2];
                     let animateMarker = false;
                     markers = markers || []
-
                     if(attrs.length > 2){
                         let animations = ['checked','unchecked','both','false',':markers',':marker1',':marker2'];
                         if(animations.includes(animator)){
@@ -217,9 +223,9 @@ class CheckBox {
                     if(animated !== 'false'){
                         if(animated === 'both'){
                             animate = true;
-                        }else if(checked && animated === 'checked'){
+                        }else if(checked && (animated === 'checked')){
                             animate = true;
-                        }else if(!checked && animated === 'unchecked'){
+                        }else if(!checked && (animated === 'unchecked')){
                             animate = true;
                         }else if(animated === ':markers'){
                             animate = true;
@@ -277,38 +283,58 @@ class CheckBox {
                         //set default destination values
                         CDestValue = at(box, destAttr).attrvals(' ');
 
-                        if(checked){
-                            if(sourceValue2){
+                        if(animated === 'both'){
+
+                            //resolve for "both" modifer
+                            if(sourceValue) {
                                 //remove source value 1 from CDestValue
                                 CNewDestVal = CDestValue.filter(value => !sourceValue.includes(value));
-
-                                // add source value 2 to destination attribute
-                                CNewDestVal = CNewDestVal.concat(sourceValue2);
-                                appliedSource = sourceValue2;
-                            } else {
-
                                 // add source value 1 to destination attribute
-                                CNewDestVal = CDestValue.concat(sourceValue);
-                                appliedSource = sourceValue;
-
-                            }
-                        }else{
-
-                            if(sourceValue2){
-                            
-                                // remove source value 2 from destination attribute
-                                CNewDestVal = CDestValue.filter(value => !sourceValue2.includes(value));
-                                
-                                //add source value 1 to checkerDestValue (CNewDestVal)
                                 CNewDestVal = CNewDestVal.concat(sourceValue);
-                                appliedSource = sourceValue;
-
-                            }else{
-                                // remove source value 1 from destination attribute
-                                CNewDestVal = CDestValue.filter(value => !sourceValue.includes(value));
+                                appliedSource = CNewDestVal;
                             }
 
+                        } else {
+
+                            let modchecked = checked;
+                            modchecked = (animated === 'unchecked')? !checked : checked;
+
+                            //resolve "checked" and "unchecked" modifers
+                            if(modchecked){
+                                if(sourceValue2){
+                                    //remove source value 1 from CDestValue
+                                    CNewDestVal = CDestValue.filter(value => !sourceValue.includes(value));
+
+                                    // add source value 2 to destination attribute
+                                    CNewDestVal = CNewDestVal.concat(sourceValue2);
+                                    appliedSource = sourceValue2;
+                                } else {
+
+                                    // add source value 1 to destination attribute
+                                    CNewDestVal = CDestValue.concat(sourceValue);
+                                    appliedSource = sourceValue;
+
+                                }
+                            }else{
+
+                                if(sourceValue2){
+                                
+                                    // remove source value 2 from destination attribute
+                                    CNewDestVal = CDestValue.filter(value => !sourceValue2.includes(value));
+                                    
+                                    //add source value 1 to checkerDestValue (CNewDestVal)
+                                    CNewDestVal = CNewDestVal.concat(sourceValue);
+                                    appliedSource = sourceValue;
+
+                                }else{
+                                    // remove source value 1 from destination attribute
+                                    CNewDestVal = CDestValue.filter(value => !sourceValue.includes(value));
+                                }
+
+                            }
                         }
+
+
 
                         //animation for custom box
 
@@ -337,24 +363,33 @@ class CheckBox {
                             //set source values
                             M1SourceValue = sourceValue; //marker1 source value
                             M2SourceValue = sourceValue2 || sourceValue; //marker 2 source value
-
+                            
                             //set default destination values
                             marker1Val = at(markers[0], destAttr).attrvals(' ');
+
                           
                             if(markers.length > 1) {
                                 marker2Val = at(markers[1], destAttr).attrvals(' ');
                             }
-                     
+
                             if(checked){
 
                                 if(animateMarker === 1){
-                                    //add source to marker 1
+                                    // marker 1 is hidden, remove value from marker 1
+                                    
+                                    // //add source to only marker 1
                                     M1NewDestVals = M1SourceValue.filter(val => !marker1Val.includes(val));    
                                     M1NewDestVals = marker1Val.concat(M1NewDestVals);
+                                     
+                                    //remove source from marker 2 (main action)
+                                    M2NewDestVals = marker2Val.filter(val => !M2SourceValue.includes(val));                                    
                                 }else if(animateMarker === 2){
-                                    //add source to marker 2
-                                    M2NewDestVals = M2SourceValue.filter(val => !marker2Val.includes(val));    
+                                    //add source to only marker 2 
+                                    M2NewDestVals = M2SourceValue.filter(val => !marker2Val.includes(val) && (val !== ''));    
                                     M2NewDestVals = marker2Val.concat(M2NewDestVals);
+
+                                    //remove source from marker 1
+                                    M1NewDestVals = marker1Val.filter(val => !M1SourceValue.includes(val));
                                 }else if(animateMarker === true){
                                     //add source to marker 2
                                     M2NewDestVals = M2SourceValue.filter(val => !marker2Val.includes(val));    
@@ -366,23 +401,29 @@ class CheckBox {
 
                             }else{
 
+                                // Resolve this when checkbox is unchecked
+
                                 if(animateMarker === 1){
+                                    
+                                    //marker 1 is visible, add attribute to marker 1
 
-                                    //add source to marker 1
-                                    M1NewDestVals = M1SourceValue.filter(val => !marker1Val.includes(val));    
-                                    M1NewDestVals = marker1Val.concat(M1NewDestVals);
+                                    // add source to marker 2
+                                    // M2NewDestVals = M2SourceValue.filter(val => !marker2Val.includes(val));    
+                                    // M2NewDestVals = marker2Val.concat(M2NewDestVals);
 
-                                    //remove source from marker 2
-                                    M2NewDestVals = marker2Val.filter(val => !M2SourceValue.includes(val));   
+                                    //remove source from marker 1
+                                    M1NewDestVals = marker1Val.filter(val => !M1SourceValue.includes(val));   
 
                                 }else if(animateMarker === 2){
 
-                                    //add source to marker 2
-                                    M2NewDestVals = M2SourceValue.filter(val => !marker2Val.includes(val));    
-                                    M2NewDestVals = marker2Val.concat(M2NewDestVals);
+                                    //marker 2 is hidden, remove source value from marker 2
 
-                                    //remove source from marker 1
-                                    M1NewDestVals = marker1Val.filter(val => !M1SourceValue.includes(val));                                    
+                                    // add source value to marker 1
+                                    // M1NewDestVals = M1SourceValue.filter(val => !marker1Val.includes(val));    
+                                    // M1NewDestVals = marker1Val.concat(M1NewDestVals);
+
+                                    //remove source value from marker 2
+                                    M2NewDestVals = marker2Val.filter(val => !M2SourceValue.includes(val));                                    
 
                                 }else if(animateMarker === true){
                                     //add source to marker 1
@@ -390,19 +431,20 @@ class CheckBox {
                                     M1NewDestVals = marker1Val.concat(M1NewDestVals);
 
                                     //remove source from marker 2
-                                    M2NewDestVals = marker2Val.filter(val => !M2SourceValue.includes(val));
+                                    if(marker2Val) M2NewDestVals = marker2Val.filter(val => !M2SourceValue.includes(val));
                                     
                                 }else{
                                     console.error(`Markers must be 2 when set as ':markers'`)
                                 }   
 
                             }
-                            
+
                             //set marker 1 and marker 2 new values ... 
                             if(M1NewDestVals) {
                                 markers[0].setAttribute(destAttr, M1NewDestVals.join(' '));
                             }
-                            if(M2NewDestVals) {
+                            if(M2NewDestVals) {                            
+                                //console.log(M2NewDestVals.join(' '));
                                 markers[1].setAttribute(destAttr, M2NewDestVals.join(' '));
                             }
         

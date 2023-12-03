@@ -1,6 +1,6 @@
 /* This script file is used for documentation purpose only */
 
-  function pass(checker){
+function pass(checker){
     input = document.getElementById('pass')
     if(checker.checked){
         input.setAttribute('type','text')
