@@ -48,17 +48,110 @@
 
             <div class="" style="font-size: 1.2em;"> <br>
                 <h1 style="color:#51ceff">CheckBox.js</h1> <br>
-                <h4 style="color:#51ceff">Adding Labels</h4> <br>
+                <h4 style="color:#51ceff">Adding Colors</h4> <br>
             </div>
             
             <div class="">
-                Labels are texts that immediately follows the input checkbox fields which are identified by the <code class="bc c-attr">data-access="label"</code> 
-                attribute. In order to add labels, the custom checkbox is assigned with an 
-                attribute of <code class="c-note bc">data-label</code> which contains the text label itself that is either single or separated with pipe. When the text is separated by pipe, 
-                the left side of the text will be for when the checkbox is unchecked while the right side of the text will stand for the displayed text when it is checked. 
-                A sample format and sample view are displayed below.
+                Colors are primarily applied to labels, however, we can 
+                also apply them to markers provided that the markers are elements 
+                that can be colored (e.g font icons, texts). Colors are defined through 
+                the <code class="c-note bc">data-color</code> attribute. A sample structure of 
+                this is shown below
             </div> <br>
+            
+            <div class="code mvt-10">
+                <div class="flex">
+                    <div class="">
+                      <i class="bi-hash"></i>  sample: single color 
+                    </div>
+                    <div class="">
+                        <span class="copy-btn">Copy</span>
+                    </div>
+                </div>
+<pre>
+<span class="tag">&lt;div <span class="func">checkbox data-color="<span class="var">red</span>" data-label="<span>toggle</span>" data-size="<span>20px</span>"</span>&gt;</span>
+  <span class="tag">&lt;div <span class="func">marker=""</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;input <span class="func">type="<span>checkbox</span>"</span>&gt;</span>
+<span class="tag">&lt;div <span class="func">data-access="<span>label</span>"</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
+</pre>
+            </div>  <br>   
+            
+            <div class="">
+              In the sample structure above, the label field will be assigned a color of “<code class="c-var">red</code>” which is specified through the 
+              <code class="c-note">data-color</code> attribute. This means that the text “<code class="c-var">toggle</code>” will be in red color. To view this sample, let's 
+              style the checkbox as shown below
+            </div> <br>
+            
+            
+            
+            <div class="">
+              The response of this is shown below:
+            </div>
+            
+            <div class="">
+              We can also define two colors that can be alternated or switched depending on the status of the checkbox. This is shown below
+            </div>
+            
+            <div checkbox data-color="red" data-label="toggle" data-size="20px">
+              <div marker="" style="background-color:red"></div>
+            </div>
+            <input type="checkbox">
+            <div data-access="label"></div>
 
+            
+            <div class="code">
+                <div class="flex">
+                    <div class="">
+                      <i class="bi-hash"></i>  sample: double colors
+                    </div>
+                    <div class="">
+                        <span class="copy-btn">Copy</span>
+                    </div>
+                </div>
+<pre>
+<span class="tag">&lt;div <span class="func">checkbox data-color="<span class="var">red|lime</span>" data-label="<span>toggle</span>"</span>&gt;</span>
+  <span class="tag">&lt;div <span class="func">marker=""</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;input <span class="func">type="<span>checkbox</span>"</span>&gt;</span>
+<span class="tag">&lt;div <span class="func">data-access="<span>label</span>"</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
+</pre>
+            </div>  <br> 
+            
+            <div class="">
+              In the sample structure above, two colors were defined. The first color will be assigned to the label field when the checkbox 
+              is unchecked while the second color will be applied when the checkbox is checked. In this way, it becomes easier to set colors for labels. 
+              By default, colors are applied only to labels however, there is a way in which we can extend colors to markers such that both labels and markers can be 
+              of the same color type. In this case, the marker used should support the use of colors. In order to extend colors to markers, we need to prefix the colors 
+              defined with an "<span class="c-var">@</span>" character symbol. A sample of this is shown below:
+            </div> <br>
+            
+             <div class="code">
+                <div class="flex">
+                    <div class="">
+                      <i class="bi-hash"></i>  sample: extended colors
+                    </div>
+                    <div class="">
+                        <span class="copy-btn">Copy</span>
+                    </div>
+                </div>
+<pre>
+<span class="tag">&lt;div <span class="func">checkbox data-color="<span class="var">@red|lime</span>" data-label="<span>Smile|Frown</span>"</span>&gt;</span>
+
+  <span class="tag">&lt;div <span class="func">marker=""</span>&gt;</span>
+    <span class="tag">&lt;i <span class="func">class="bi bi-emoji-frown"</span>&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div <span class="func">marker=""</span>&gt;</span>
+    <span class="tag">&lt;i <span class="func">class="bi bi-emoji-smile-fill"</span>&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+  
+<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;input <span class="func">type="<span>checkbox</span>"</span>&gt;</span>
+<span class="tag">&lt;div <span class="func">data-access="<span>label</span>"</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
+</pre>
+            </div>  <br>  
+            
+            
             
             <!-- checkbox G -->
             <div class="code">
