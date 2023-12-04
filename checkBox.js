@@ -913,7 +913,6 @@ class CheckBox {
 
                     let style, styleCss = ''; let id = btoa(`${checkbox.target} ${checkbox.marker}`);
 
-                    // ${checkbox.target} ${checkbox.marker} {
                     let styleExists = document.querySelector(`style[checkbox="${id}"]`);
 
                     if(!styleExists){
@@ -930,7 +929,7 @@ class CheckBox {
     
                         if(fsize){
                             styleCss += `
-                                font-size: ${customFSize};\
+                                font-size: ${customFSize};
                             `
                         }
     
@@ -967,6 +966,11 @@ class CheckBox {
                 if((marker.length > 0)){
                     marker1 = marker[0];
                     marker2 = marker[1];
+                } else {
+                    if(customSize) {
+                        if(customSize.x !== '') customBox.style.width = customSize.x;
+                        if(customSize.y !== '') customBox.style.height = customSize.y;
+                    }
                 }
 
                 if(marker1){

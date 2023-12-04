@@ -48,15 +48,22 @@
 
             <div class="" style="font-size: 1.2em;"> <br>
                 <h1 style="color:#51ceff">CheckBox.js</h1> <br>
-                <h4 style="color:#51ceff">Adding Colors</h4>
-            </div>
-            
-            <div class="">
-                Colors are defined through the <code class="c-note bc">data-color</code> attribute and 
-                they are primarily applied to labels. However, we can also apply them to markers provided that the 
-                markers are elements that can be colored (e.g font icons, texts). A sample structure of 
-                this is shown below
+                <h1 style="font-size: .9em; color:#51ceff">Advanced Effects</h1>
             </div> <br>
+
+            <div class="">
+              The checkbox plugin support extended relationships between custom checkboxes. This feature can be achieved by using a slighty different html structure. 
+              Since this activity involves more than one native checkbox, the custom checkboxes will also be more than one. In order to achieve the radio feature, we need to keep the entire 
+              checkboxes within a specified parent element. The parent element is usually defined with an attribute of <code class="c-note bc">data-role</code> and the value is usually set as <code class="c-func bc">"checkbox-list"</code>. 
+              Once we place the custom checkbox inside this parent element, we can then proceed to define the type of toggle effect we need to achieve. There are basically two types of toggle effect 
+              available which are the <span class="c-func">"radio"</span> and the <span class="c-func">"base"</span> effects. 
+            </div> <br>
+            
+            <h2 class="c-note">Radio Effect</h2>
+            <div class="">
+              The radio effect is similar to the radio buttons and it is specified by adding an extra attribute of <code class="c-note bc">data-bind</code> with a value of <code class="c-func">'radio'</code> into 
+              the parent element of the custom boxes. An example is shown below. 
+            </div> <br> 
             
             <div class="code">
                 <div class="flex">
