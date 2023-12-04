@@ -1,0 +1,208 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>checkbox</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+        <link rel="stylesheet" type="text/css" href="../src/css/all.css">
+        <script src="../checkBox.js"></script>       
+        <style>
+        [checkers] {
+            width: fit-content;
+            border-radius: 5px;
+            border: solid; 
+            padding: 4px;
+        }
+
+        [checkers] > [marker] {
+            width: 20px;
+            height: 20px;
+            transition: width .5s ease-in, 
+                background-color .5s ease-in-out;
+            background-color: transparent;
+        }
+
+        [checkers] > [marker] {
+            width: 50px;
+            background-color: green;
+        }
+
+        .bar[checkers] > [marker] {
+            width: 30px;
+            background-color: red;
+        }
+        </style>
+    </head>
+
+<body>
+    <section class="bc-deeper-blue">
+        <div class="" style="font-size: 1.2em;"> <br>
+            <h1 style="color:#51ceff">CheckBox.js</h1> <br>
+            <h4 style="color:#51ceff">Toggle Attributes : checked</h4> <br>
+        </div>
+        
+        <div class="">
+          We can specify that a custom checkbox should assign the value from an attribute into another attribute when the custom checkbox is checked and should 
+          remove it when it is unchecked. In order to do this, let's create a sample html structure below.
+        </div> <br>
+        
+        
+        <div class="code">
+            <div class="flex">
+                <div class="">
+                    Sample Html Structure
+                </div>
+                <div class="">
+                    <span class="copy-btn">Copy</span>
+                </div>
+            </div>
+<pre><span class="tag">&lt;div <span class="func">checkers class="<span class="var">foo</span>" data-switch="<span class="var">bar</span>"</span>&gt;</span>
+<span class="tag">&lt;div <span class="func">marker style="<span class="var">background-color: #594fc8;</span>"</span>&gt;&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;input <span class="func">type="<span class="var">checkbox</span>"</span>&gt;</span>
+</pre>
+        </div> <br>     
+        
+        <div class="">
+          From the sample html structure, assuming we need to add the <code class="c-var">bar</code> value into the <code class="c-note">class</code> attribute when a checkbox is
+          checked, we can easily achieve this using the sample script below :
+        </div> <br>
+        
+        <div class="">
+            <div class="code">
+                <div class="flex">
+                    <div class="">
+                       <i class="bi-hash"></i> Global: assign value on checked
+                    </div>
+                    <div class="">
+                        <span class="copy-btn">Copy</span>
+                    </div>
+                </div>
+<pre><span class="tag">&lt;script&gt;</span>
+new <span class="func">CheckBox(</span>{
+<span class="key">assign</span>: {
+    <span class="key">target</span>: <span class="string">'[checkers]'</span>,
+    <span class="key">attr</span>: [<span class="string">'data-switch'</span>, <span class="string">'class'</span>, <span class="string">'checked'</span>]
+}    
+}<span class="func">)</span>;
+<span class="tag">&lt;/script&gt;</span>    
+</pre>
+            </div>
+        </div> <br> 
+
+        <div class="">
+            Alternatively, we can do this locally using the <code class="c-note">data-assign</code> attribute
+        </div> <br>
+        
+        <!-- checkbox code -->
+        <div class="code">
+            <div class="flex">
+                <div class="">
+                  <i class="bi-hash"></i> Local Assign Sample Format
+                </div>
+            </div>
+<pre><span class="tag">&lt;div <span class="func">checkers class="<span class="var">foo</span>" data-switch="<span class="var">bar</span>" data-assign="<span class="var">checked|data-switch|class</span>"</span>&gt;</span>
+<span class="tag">&lt;div <span class="func">marker style="<span class="var">background-color: #594fc8;</span>"</span>&gt;&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;input <span class="func">type="<span class="var">checkbox</span>"</span>&gt;</span>
+</pre>
+        </div> <br>
+        
+        
+        
+        <div class="">
+          From the sample above, the <code class="bc c-var">bar</code> value will be assigned into the <code class="c-note">class</code> attribute when the checkbox is checked and it will be 
+          removed when the checkbox is unchecked. To see the effect of this, let's add a custom css below 
+        </div> <br>
+
+        
+        <div class="code">
+            <div class="flex">
+                <div class="">
+                    Custom css
+                </div>
+                <div class="">
+                    <span class="copy-btn">Copy</span>
+                </div>
+            </div>
+<pre class=""><span class="key">[checkers]</span> <span class="braces">{</span>
+  <span class="var">width</span>: fit-content;
+  <span class="var">border-radius</span>: 5px;    
+  <span class="var">border</span>: solid; 
+  <span class="var">padding</span>: 4px;    
+<span class="braces">}</span>
+
+<span class="key">[checkers] &gt; [marker]</span> <span class="braces">{</span>
+<span class="var">width</span>: 20px;
+<span class="var">height</span>: 20px;    
+<span class="var">background-color</span>: transparent;
+<span class="var">transition</span>: width .5s ease-in-out, 
+            background-color .5s ease-in-out;
+<span class="braces">}</span>
+
+<span class="key">[checkers] &gt; [marker]</span> <span class="braces">{</span>
+<span class="var">width</span>: 50px;
+<span class="var">background-color</span>: green;
+<span class="braces">}</span>
+
+<span class="key">.bar[checkers] &gt; [marker]</span> <span class="braces">{</span>
+<span class="var">width</span>: 30px;
+<span class="var">background-color</span>: red;
+<span class="braces">}</span>
+</pre>
+        </div> <br> 
+        
+        <div class="">
+            The sample css above was added to give a little width and background color animation effect when the value is toggled in and out of the 
+            custom checkbox. The html response is shown below:
+        </div> <br>
+        
+        <div class="code">
+            <div class="flex">
+                <div class="">
+                    HTML View (Toggle on checkbox)
+                </div>
+            </div>
+            <div class="" style="padding: 10px">
+              <div>
+                <div checkers="" class="foo bar" data-switch="bar" data-assign="unchecked" checked="unchecked"> 
+                  <div marker=""></div>
+                </div>
+                <input type="checkbox" value="foo"> 
+              </div>
+            </div>
+        </div> <br>    
+        
+        <div class="" style="padding:10px 0">
+            <a href="../docs/toggling-attribute.html" class="nav-btn-lt" style=" float:left; ">
+              <i class="bi-house"></i> 
+            </a> 
+            <a href="../docs/toggle-attribute-checked.html" class="nav-btn-lt" style="float:left; margin-left: 4px;">
+              <i class="bi-arrow-left-circle"></i> 
+            </a> 
+            
+            <a href="../docs/toggle-attribute-both.html" class="nav-btn-rt" style="float:right;">
+              <i class="bi-arrow-right"></i> <span>Toggle:both</span>
+            </a> 
+        </div><br><br><br>
+
+        <script>  
+          new CheckBox({
+            target: '[checkers]',
+            assign: {
+              attr: ['data-switch', 'class', 'unchecked'],
+            }
+          });
+        </script>
+    </section>
+
+
+
+
+
+
+
+
+
+<script src="../src/js/docs.js"></script></body></html>

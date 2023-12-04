@@ -19,13 +19,26 @@
             [checkers] {
                 width: fit-content;
                 border-radius: 100vh;
-                border: solid 2px #514e68; 
+                border: dotted 2px #514e68; 
                 display: inline-flex; 
                 padding: 4px;    
+            }
+            
+            [checkers][checked="checked"] {
+                animation: rotate 2s;
             }
 
             [checkers] > [marker]{
                 border-radius: 100vh;  
+            }
+            
+            @keyframes rotate{
+              0{
+                transform: rotate(0deg);
+              }
+              100%{
+                transform : rotate(360deg);
+              }
             }
         </style>     
     </head>
@@ -113,19 +126,19 @@
                     </div>
                 </div>
                 <div class="checkbox-field" >
-                  <div>
+                  <div style="display: flex; gap: .5em; align-items: center; width: 100%;">
                     <div checkers data-size="20px" data-label="Show|Hide" data-flip="true"> 
                       <div marker="" style="background-color:transparent"></div>
                       <div marker="" style="background-color:lime"></div>
                     </div>
                     <input type="checkbox" value="foo">
-                    <label data-access="label">Show</label> 
+                    <label data-access="label"></label> 
                   </div>
                 </div>
             </div> <br> 
             
             <div class="">
-                Alternatively, if we can also apply the label outside the direct parent of the custom checkbox element. 
+                Alternatively, we can also apply the label outside the direct parent of the custom checkbox element. 
                 However, in this situation, the direct parent must have an attribute <code class="c-note">data-role</code> 
                 with the value of "<code class="c-var">checkbox</code>". A sample of this is shown below:
             </div> <br>
@@ -158,17 +171,17 @@
 
             <div class="">
                 From the sample structure above, the specified label text field will still be accessible by the custom checkbox because the direct parent of the 
-                custom checkbox is specified with the <code class="c-note">data-role="<span class="c-var">checkbox</span>"</code> identifier while the 
-                label text field comes immediately after it.
+                custom checkbox has its <code class="bc c-note">data-role</code> attribute set as "<span class="c-var">checkbox</span>" while the 
+                <code class="c-note">data-access</code> label text field comes immediately after it.
             </div> <br>
                   
             
             <div class="nav-pane">
-              <a href="../docs/toggling-attribute-advanced.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:left; text-decoration: none">
+              <a href="../docs/toggling-attribute-advanced.html" class="nav-btn-lt">
                 <i class="bi-arrow-left-circle"></i> 
               </a> 
               
-              <a href="../docs/adding-colors.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:right; text-decoration: none">
+              <a href="../docs/adding-colors.html" class="nav-btn-rt">
                 <i class="bi-arrow-right-circle"></i> adding colors 
               </a> 
             </div><br><br>

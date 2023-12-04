@@ -7,7 +7,33 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" type="text/css" href="../src/css/all.css">
-    <script src="../checkBox.js"></script>       
+    <script src="../checkBox.js"></script>     
+    <style>
+        .link-pane {
+          width: 100%;
+          display: inline-flex;
+          justify-content: right;
+          margin-top: 6px;
+        }
+        ul {
+          padding: 10px;
+          background-color: #515e73;
+        }
+        
+        ul li{
+          border-radius: 5px;
+          list-style: none;
+          background-color: #3e5167;
+          padding: 10px;
+        }
+        
+        ul li a {
+          padding: 10px;
+          text-decoration :  none;
+          border-radius : 10px;
+          border: dotted 2px;
+        }
+    </style>
   </head>
   <body>
     <section class="bc-deeper-blue">
@@ -81,35 +107,35 @@
             <div class="link-pane">
               <a href="../docs/toggle-attribute-checked.html"><span>view sample</span></a>
             </div>
-          </li> 
+          </li> <br>
           <li>
             <code class="bc c-note">unchecked</code> 
             This option toggles the source value into the destination attribute on the custom checkbox when the checkbox is unchecked and toggles it out when checked.
             <div class="link-pane">
               <a href="../docs/toggle-attribute-unchecked.html"><span>view sample</span></a>
             </div>
-          </li> 
+          </li> <br>
           <li>
             <code class="bc c-note">both</code>
             This defines that the source value should be removed and re-toggled into the destination attribute on the custom checkbox in both cases when the checkbox is checked or unchecked.
             <div class="link-pane">
               <a href="../docs/toggle-attribute-both.html"><span>view sample</span></a>
             </div>
-          </li> 
+          </li> <br>
           <li>
             <code class="bc c-note">:marker1</code>
             This option toggles the source value into the destination attribute on the first custom checkbox marker when the checkbox is checked and toggles it out when unchecked.
             <div class="link-pane">
               <a href="../docs/toggle-attribute-marker1.html"><span>view sample</span></a>
             </div>
-          </li> 
+          </li> <br>
           <li>
             <code class="bc c-note">:marker2</code>
             This option toggles the source value into the destination attribute on the second custom checkbox marker when the checkbox is unchecked and toggles it out when checked.
             <div class="link-pane">
               <a href="../docs/toggle-attribute-marker2.html"><span>view sample</span></a>
             </div>
-          </li> 
+          </li> <br>
           <li>
             <code class="bc c-note">:markers</code>
             This defines that the source value should be removed and re-toggled into the destination attribute on the custom checkbox markers in both cases when the checkbox is checked or unchecked.
