@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>checkbox</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+        <link rel="stylesheet" type="text/css" href="../src/css/all.css">
+        <script src="../checkBox.js"></script>  
+        <style>
+            .checkbox-wrapper {
+                display: inline-flex;
+                width: fit-content;
+                align-items: center;
+                gap: .2em;
+            }
+            
+            .rotate[checkbox][checked="checked"] {
+                animation: rotate 5s infinite linear;
+            }
+            
+            @keyframes rotate{
+              0%{
+                transform: rotate(0deg);
+              }
+              100%{
+                transform : rotate(360deg);
+              }
+            }
+            
+            [data-role="checkbox-list"] {
+              display: inline-flex;
+              gap: .5em;  
+              padding: .5em;
+            }
+              
+            [data-role="checkbox-list"] [marker] {
+              width: 20px;
+              height: 20px;  
+            }
+            
+            [checkbox] {
+              display: inline-flex;
+              border: dotted 2px #7975a4dc;  
+              border-radius: 100vh;  
+              padding: 4px;  
+            }
+            [checkbox] [marker] {
+              width: 20px;
+              height: 20px; 
+              border-radius: inherit;    
+              background-color: currentColor;
+            }
+        </style>     
+    </head>
+    
+    <body>
+        <section class="bc-deeper-blue">
+
+            <div class="" style="font-size: 1.2em;"> <br>
+                <h1 style="color:#51ceff">CheckBox.js</h1> <br>
+                <h4 style="color:#51ceff">Base Effects</h4> <br>
+            </div>
+            
+            <div class="">
+              The polar toggle effect is a bit similar to radio button effect except that this relatioship is only between the two markers of a 
+              single custom checkbox. In this situation, when a marker is active, it cannot toggle itself off because it will require the action 
+              of the second marker to switch. In order to achieve this effect, both markers will be visible. Hence, <code class="c-note bc">data-flip</code> 
+              needs to be set as false and also, the <code class="c-note bc">data-control</code> attribute will be set as <code class="c-func">":markers"</code> while the markers 
+              will be manually designed using css. 
+            </div> <br>
+            
+              <!-- checkbox T -->
+            <div class="code mvt-1">
+                <div class="flex">
+                    <div class="">
+                        checkbox (Base Effect Sample)
+                    </div>
+                    <div class="">
+                        <span class="copy-btn">Copy</span>
+                    </div>
+                </div>
+<pre>
+<span class="tag">&lt;div <span>data-role="<span>checkbox-list</span>" data-bind="<span>base</span>"</span>&gt;</span>
+
+  <span class="comment">&lt;!--first checkbox section--&gt;</span>
+  <span class="tag">&lt;div <span>data-role="<span>checkbox</span>"</span>&gt;</span>
+    <span class="tag">&lt;div <span>checker data-color="<span>@red|lime</span>"</span>&gt;</span>
+    
+      <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
+     
+      <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
+      
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;input <span>type="<span>checkbox</span>" value="<span>N1</span>"</span>&gt;</span>
+  <span class="tag">&lt;/div&gt;</span> 
+  
+  <span class="comment">&lt;!--second checkbox section--&gt;</span>
+  <span class="tag">&lt;div <span>data-role="<span>checkbox</span>"</span>&gt;</span>
+    <span class="tag">&lt;div <span>checker data-color="<span>@red|lime</span>"</span>&gt;</span>
+    
+      <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
+      
+      <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
+      
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;input <span>type="<span>checkbox</span>" value="<span>N2</span>"</span>&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+  
+  <span class="comment">&lt;!--third checkbox section--&gt;</span>
+  <span class="tag">&lt;div <span>data-role="<span>checkbox</span>"</span>&gt;</span>
+    <span class="tag">&lt;div <span>checker data-color="<span>@red|lime</span>"</span>&gt;</span>
+    
+      <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
+      
+      <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
+      
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;input <span>type="<span>checkbox</span>" value="<span>N3</span>"</span>&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+  
+<span class="tag">&lt;/div&gt;</span>
+</pre>
+            </div>          
+
+            <div class="checkers box" style="width: 100%;">
+                <div>checkbox (Base Effect)</div>    
+                
+                <!--parent checkbox (grand)-->
+                <div data-role="checkbox-list" data-bind="base">
+                
+                  <!--first checkbox section-->
+                  <div data-role="checkbox" class="in-flex wrap">
+                    <div checker data-color="@red|lime" class="in-flex">
+                    
+                      <div marker class="b-currentColor"></div>
+                     
+                      <div marker class="b-currentColor"></div>
+                      
+                    </div>
+                    <input type="checkbox" value="N1">
+                  </div>
+                  
+                  <!--second checkbox section-->
+                  <div data-role="checkbox" class="in-flex wrap">
+                    <div checker data-color="@red|lime" class="in-flex">
+                    
+                      <div marker class="b-currentColor"></div>
+                      
+                      <div marker class="b-currentColor"></div>
+                      
+                    </div>
+                    <input type="checkbox" value="N2">
+                  </div> 
+                  
+                  <!--third checkbox section-->
+                  <div data-role="checkbox" class="in-flex wrap">
+                    <div checker data-color="@red|lime" class="in-flex">
+                    
+                      <div marker class="b-currentColor"></div>
+                      
+                      <div marker class="b-currentColor"></div>
+                      
+                    </div>
+                    <input type="checkbox" value="N3">
+                  </div> 
+                  
+                  <!--fourth checkbox section-->
+                  <div data-role="checkbox" class="in-flex wrap">
+                    <div checker data-color="@red|lime" class="in-flex">
+                    
+                      <div marker class="b-currentColor"></div>
+                      
+                      <div marker class="b-currentColor"></div>
+                      
+                    </div>
+                    <input type="checkbox" value="N3" data-bind="reverse">
+                  </div> 
+                  
+                </div>
+            </div>  
+            
+            <div class="">
+                In the sample above, the first checkbox is the parent checkbox while the second and third checkboxes are children of the parent checkbox, hence, they must both be active before the parent checkbox is active.
+                Whenever the parent checkbox is toggled on or off, the other two children checkboxes will respond similarly. If both of the children checkboxes 
+                are not toggled on, then the parent checkbox is never toggled on. However, the last checkbox is the inverse of the parent checkbox and the second and third checkboxes. This means that when the status of the parent checkbox and the two children checkboxes are the same, the 
+                last checkbox will be the inverse of that.
+            </div>
+                        
+            <div class="nav-pane">
+              <a href="../docs/base-effect.html" class="nav-btn-lt">
+                <i class="bi-arrow-left-circle"></i> 
+              </a> 
+              
+              <a href="../docs/disable-checkbox.html" class="nav-btn-rt">
+                <i class="bi-arrow-right-circle"></i> disable checkbox
+              </a> 
+            </div><br><br><br>
+
+        </section>
+        
+        <script src="../src/js/docs.js"></script>
+        
+        <script>
+          let checkers = new CheckBox(true);
+
+          checkers.check({
+             
+            target: '[checkers]',
+            flip: true,
+            
+          });
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

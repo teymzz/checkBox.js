@@ -15,21 +15,9 @@
                 align-items: center;
                 gap: .2em;
             }
-
-            [checkers] {
-                width: fit-content;
-                border: dotted 2px #514e68; 
-                border-radius: 100vh;
-                display: inline-flex; 
-                padding: 4px;    
-            }
             
-            .rotate[checkers][checked="checked"] {
+            .rotate[checkbox][checked="checked"] {
                 animation: rotate 5s infinite linear;
-            }
-
-            [checkers] > [marker] {
-                border-radius: 100vh;  
             }
             
             @keyframes rotate{
@@ -40,6 +28,30 @@
                 transform : rotate(360deg);
               }
             }
+            
+            [data-role="checkbox-list"] {
+              display: inline-flex;
+              gap: .5em;  
+              padding: .5em;
+            }
+              
+            [data-role="checkbox-list"] [marker] {
+              width: 20px;
+              height: 20px;  
+            }
+            
+            [checkbox] {
+              display: inline-flex;
+              border: dotted 2px #7975a4dc;  
+              border-radius: 100vh;  
+              padding: 4px;  
+            }
+            [checkbox] [marker] {
+              width: 20px;
+              height: 20px; 
+              border-radius: inherit;    
+              background-color: currentColor;
+            }
         </style>     
     </head>
     
@@ -48,17 +60,15 @@
 
             <div class="" style="font-size: 1.2em;"> <br>
                 <h1 style="color:#51ceff">CheckBox.js</h1> <br>
-                <h4 style="color:#51ceff">Radio Effect</h4>
+                <h4 style="color:#51ceff">Radio Effect</h4> <br>
             </div>
             
             <div class="">
-              The radio effect is the checkbox effect that is similar to the radio buttons and 
+              The radio effect is a custom checkbox effect that is similar to the input radio buttons and 
               it is specified by adding an extra attribute of <code class="c-note bc">data-bind</code> 
               with a value of <code class="c-func">'radio'</code> into 
               the parent element of the custom boxes. An example is shown below.
             </div> <br>
-            
- 
             
             <!-- checkbox M -->
             <div class="code mvt-1">
@@ -71,49 +81,45 @@
                     </div>
                 </div>
 <pre>
-<span class="tag">&lt;div <span>class="<span>checkers box</span>"</span>&gt;</span>
-  <span class="tag">&lt;div&gt;</span>checkbox M (Radio Buttons: a)<span class="tag">&lt;/div&gt;</span>    
-  
-  <span class="comment">&lt;!--parent checkbox (grand)--&gt;</span>
-  <span class="tag">&lt;div <span>data-role="<span>checkbox-list</span>" data-bind="<span>radio</span>"</span>&gt;</span>
-  
-    <span class="comment">&lt;!--first checkbox section--&gt;</span>
-    <span class="tag">&lt;div <span>data-role="<span>checkbox</span>" class="<span>in-flex wrap rad-r</span>"</span>&gt;</span>
-      <span class="tag">&lt;div <span>checker data-anime="<span>fadeIn</span>" data-assign="<span>:marker2</span>" data-color="<span>@red|lime</span>" class="<span>in-flex rad-r</span>"</span>&gt;</span>
-      
-        <span class="tag">&lt;div <span>marker class="<span>b-red</span>"</span>&gt;&lt;/div&gt;</span>
-        <span class="tag">&lt;div <span>marker class="<span>b-lime</span>"</span>&gt;&lt;/div&gt;</span>
-        
-      <span class="tag">&lt;/div&gt;</span>
-      <span class="tag">&lt;input <span>type="<span>checkbox</span>" checked="<span>false</span>" value="<span>M1</span>"</span>&gt;</span>
-    <span class="tag">&lt;/div&gt;</span> 
+<span class="comment">&lt;!--parent checkbox (group)--&gt;</span>
+<span class="tag">&lt;div <span>data-role="<span>checkbox-list</span>" data-bind="<span>radio</span>"</span>&gt;</span>
+
+  <span class="comment">&lt;!--first checkbox section--&gt;</span>
+  <span class="tag">&lt;div <span>data-role="<span>checkbox</span>"</span>&gt;</span>
+    <span class="tag">&lt;div <span>checkbox data-anime="<span>fadeIn</span>" data-assign="<span>:marker2</span>" data-color="<span>@#615c988d|lime</span>"</span>&gt;</span>
     
-    <span class="comment">&lt;!--second checkbox section--&gt;</span>
-    <span class="tag">&lt;div <span>data-role="<span>checkbox</span>" class="<span>in-flex wrap rad-r</span>"</span>&gt;</span>
-      <span class="tag">&lt;div <span>checker data-anime="<span>fadeIn</span>" data-assign="<span>:marker2</span>" data-color="<span>@red|lime</span>" class="<span>in-flex rad-r</span>"</span>&gt;</span>
+      <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
+      <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
       
-        <span class="tag">&lt;div <span>marker class="<span>b-red</span>"</span>&gt;&lt;/div&gt;</span>
-        <span class="tag">&lt;div <span>marker class="<span>b-lime</span>"</span>&gt;&lt;/div&gt;</span>
-        
-      <span class="tag">&lt;/div&gt;</span>
-      <span class="tag">&lt;input <span>type="<span>checkbox</span>" checked="<span>false</span>" value="<span>M2</span>"</span>&gt;</span>
     <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;input <span>type="<span>checkbox</span>" value="<span>C1</span>"</span>&gt;</span>
+  <span class="tag">&lt;/div&gt;</span> 
+  
+  <span class="comment">&lt;!--second checkbox section--&gt;</span>
+  <span class="tag">&lt;div <span>class="rotate" data-role="<span>checkbox</span>"</span>&gt;</span>
+    <span class="tag">&lt;div <span>checkbox data-anime="<span>rubberBand infinite</span>" data-assign="<span>:marker2</span>" data-color="<span>@#615c988d|gold</span>"</span>&gt;</span>
     
-    <span class="comment">&lt;!--third checkbox section--&gt;</span>
-    <span class="tag">&lt;div <span>data-role="<span>checkbox</span>" class="<span>in-flex wrap rad-r</span>"</span>&gt;</span>
-      <span class="tag">&lt;div <span>checker data-anime="<span>fadeIn</span>" data-assign="<span>:marker2</span>" data-color="<span>@red|lime</span>" class="<span>in-flex rad-r</span>"</span>&gt;</span>
+      <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
+      <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
       
-        <span class="tag">&lt;div <span>marker class="<span>b-red</span>"</span>&gt;&lt;/div&gt;</span>
-        <span class="tag">&lt;div <span>marker class="<span>b-lime</span>"</span>&gt;&lt;/div&gt;</span>
-        
-      <span class="tag">&lt;/div&gt;</span>
-      <span class="tag">&lt;input <span>type="<span>checkbox</span>" checked="<span>false</span>" value="<span>M3</span>"</span>&gt;</span>
     <span class="tag">&lt;/div&gt;</span>
-    
+    <span class="tag">&lt;input <span>type="<span>checkbox</span>" value="<span>C2</span>"</span>&gt;</span>
   <span class="tag">&lt;/div&gt;</span>
+  
+  <span class="comment">&lt;!--third checkbox section--&gt;</span>
+  <span class="tag">&lt;div <span>data-role="<span>checkbox</span>"</span>&gt;</span>
+    <span class="tag">&lt;div <span>checkbox data-anime="<span>bounceIn|flash infinite</span>" data-assign="<span>:markers</span>" data-color="<span>@#615c988d|lime</span>"</span>&gt;</span>
+    
+      <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
+      <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
+      
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;input <span>type="<span>checkbox</span>" value="<span>C3</span>"</span>&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+  
 <span class="tag">&lt;/div&gt;</span>
 </pre>
-            </div>
+            </div> <br>
 
             <div class="">
               Let's add some simple css to the html structure above :
@@ -128,9 +134,44 @@
                       <span class="copy-btn">Copy</span>
                   </div>
               </div>
-<pre class=""><span class="key">.checkbox-wrapper</span> <span class="braces">{</span>
+<pre class=""><span class="key">[data-role="checkbox-list"]</span> <span class="braces">{</span>
   <span class="var">display</span>: inline-flex;
-  <span class="var">gap</span>: .5em   
+  <span class="var">gap</span>: .5em;  
+<span class="braces">}</span>
+  
+<span class="key">[data-role="checkbox-list"] [marker]</span> <span class="braces">{</span>
+  <span class="var">width</span>: 20px;
+  <span class="var">height</span>: 20px;  
+<span class="braces">}</span>
+  
+<span class="key">[checkbox]</span> <span class="braces">{</span>
+  <span class="var">display</span>: inline-flex;
+  <span class="var">border</span>: dotted 2px;  
+  <span class="var">border-radius</span>: 100vh;  
+  <span class="var">padding</span>: 4px;  
+<span class="braces">}</span>
+  
+<span class="key">[checkbox] [marker]</span> <span class="braces">{</span>
+  <span class="var">width</span>: 20px;
+  <span class="var">height</span>: 20px; 
+  <span class="var">border-radius</span>: inherit;    
+  <span class="var">background-color</span>: currentColor;    
+<span class="braces">}</span>
+
+<span class="key">.rotate[checkbox][checked="checked"]</span> <span class="braces">{</span>
+    <span class="var">animation</span>: rotate 5s infinite linear;;
+<span class="braces">}</span>
+
+<span class="key">@keyframes rotate</span> <span class="braces">{</span>
+
+    <span class="key">0% {</span>
+      <span class="var">transform</span>: rotate(0deg);
+    <span class="key">}</span>
+    
+    <span class="key">100% {</span>
+      <span class="var">transform</span>: rotate(360deg);
+    <span class="key">}</span>
+    
 <span class="braces">}</span>
 </pre>
           </div> <br> 
@@ -142,93 +183,59 @@
                     HTML View (Toggle on checkbox)
                 </div>
             </div>
-            <div class="checkbox-field" >
-              <div style="display: flex; gap: .5em; align-items: center; width: 100%;">
-                <div checkers data-size="20px" data-color="red|lime" data-label="Unchecked|Checked" class="rotate"> 
-                  <div marker="" style="background-color: red;"></div>
+               <!--parent checkbox (group)-->
+            <div data-role="checkbox-list" data-bind="radio">
+            
+              <!--first checkbox section-->
+              <div data-role="checkbox">
+                <div checkbox data-anime="bounceIn" data-assign=":marker2" data-color="@#615c988d|lime" data-flip="true">
+                
+                  <div marker class=""></div>
+                  <div marker class=""></div>
+                  
                 </div>
-                <input type="checkbox">
-                <label data-access="label"></label> 
+                <input type="checkbox" value="C1">
+              </div> 
+              
+              <!--second checkbox section-->
+              <div data-role="checkbox">
+                <div class="rotate" checkbox data-anime="rubberBand infinite" data-assign=":marker2" data-color="@#615c988d|gold">
+                
+                  <div marker class=""></div>
+                  <div marker class=""></div>
+                  
+                </div>
+                <input type="checkbox" value="C2">
               </div>
+              
+              <!--third checkbox section-->
+              <div data-role="checkbox">
+                <div checkbox data-anime="bounceIn|flash infinite" data-assign=":markers" data-color="@#615c988d|lime">
+                
+                  <div marker class=""></div>
+                  <div marker class=""></div>
+                  
+                </div>
+                <input type="checkbox" value="C3">
+              </div>
+              
             </div>
+
           </div> <br>         
             
             <div class="">
-              In the sample structure above, two colors were defined. We can see that only the label color is 
-              toggled and this does not affect the marker's background color. The first color is only assigned to 
-              the label field when the checkbox is unchecked while the second color is applied when the checkbox is 
-              checked. In this way, it becomes easier to set colors for labels. The plugin makes it possible to also extend 
-              colors to markers such that both labels and markers can be of the same color type. This color extension is only 
-              available for elements that support the use of colors. In order to extend colors to markers, we need to prefix the colors 
-              defined with the "<span class="c-var">@</span>" character symbol. A sample of this is shown below:
-            </div> <br>
-            
-             <div class="code">
-                <div class="flex">
-                    <div class="">
-                      <i class="bi-hash"></i>  sample: extended colors
-                    </div>
-                    <div class="">
-                        <span class="copy-btn">Copy</span>
-                    </div>
-                </div>
-<pre>
-<span class="tag">&lt;div <span class="func"> class="<span class="var">checkbox-wrapper</span>" data-label="<span>Smile|Frown</span>"</span>&gt;</span>
-  <span class="tag">&lt;div <span class="func">checkbox data-color="<span class="var">@red|gold</span>" data-label="<span>Smile|Frown</span>"</span>&gt;</span>
-
-    <span class="tag">&lt;div <span class="func">marker=""</span>&gt;</span>
-      <span class="tag">&lt;i <span class="func">class="bi bi-emoji-frown"</span>&gt;</span><span class="tag">&lt;/i&gt;</span>
-    <span class="tag">&lt;/div&gt;</span>
-    <span class="tag">&lt;div <span class="func">marker=""</span>&gt;</span>
-      <span class="tag">&lt;i <span class="func">class="bi bi-emoji-smile-fill"</span>&gt;</span><span class="tag">&lt;/i&gt;</span>
-    <span class="tag">&lt;/div&gt;</span>
-    
-  <span class="tag">&lt;/div&gt;</span>
-  <span class="tag">&lt;input <span class="func">type="<span>checkbox</span>"</span>&gt;</span>
-  <span class="tag">&lt;div <span class="func">data-access="<span>label</span>"</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
-<span class="tag">&lt;/div&gt;</span>
-</pre>
-            </div> <br>  
-
-            <div class="">
-              The response of the html structure above is shown below:
-            </div> <br>
-      
-            <div class="code">
-              <div class="flex">
-                  <div class="">
-                      HTML View (Toggle on checkbox)
-                  </div>
-              </div>
-              <div class="checkbox-field" >
-                <div style="display: flex; gap: .5em; align-items: center; width: 100%;">
-                  <div checkers data-size="auto" data-color="@red|gold" data-label="Unchecked|Checked" data-flip="true" style="display: flex; align-items: center; border:none"> 
-                    <div marker="">
-                      <i class="bi bi-emoji-frown" style="display:flex; align-items:center"></i>
-                    </div>
-                    <div marker="">
-                      <i class="bi bi-emoji-smile-fill" style="display:flex; align-items:center"></i>
-                    </div>
-                  </div>
-                  <input type="checkbox">
-                  <label data-access="label"></label> 
-                </div>
-              </div>
-            </div> <br> 
-
-            <div class="">
-              As we can see from the sample above, the icons inherited the colors of the markers which is being handled by the <code class="c-note">data-color</code> attribute. This 
-              was possible because of the "<code class="c-var">@</code>" prefix character.
+              From the sample above, we can see how easy it is to customize and animate 
+              checkboxes using the checkbox plugin.
             </div> <br>
                   
             
             <div class="nav-pane">
-              <a href="../docs/adding-labels.html" class="nav-btn-lt">
+              <a href="../docs/advanced-effects.html" class="nav-btn-lt">
                 <i class="bi-arrow-left-circle"></i> 
               </a> 
               
-              <a href="../docs/radio-effect.html" class="nav-btn-rt">
-                <i class="bi-arrow-right-circle"></i> radio effect 
+              <a href="../docs/base-effects.html" class="nav-btn-rt">
+                <i class="bi-arrow-right-circle"></i> base effects 
               </a> 
             </div><br><br><br>
 

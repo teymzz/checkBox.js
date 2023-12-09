@@ -60,9 +60,9 @@ class CheckBox {
 
             return item;
         }
-
+        
         /**
-         * 
+         * Resolves the width and height of custom box
          * @param {string|object} size 
          * @returns object
          */
@@ -557,11 +557,13 @@ class CheckBox {
                     if(label2){
                         label.textContent = label2;
                     }
-                    if(label && color2) label.style.color = color2;  
-                    if(mColor && marker2) {
+                    if(label && color2) label.style.color = color2; 
+                    if(mColor) {
+                      if(marker2) {
                         marker2.style.color = color2;
-                    }else if(mColor && marker1 && (color2 !== marker1.style.color)){
+                      }else if(marker1 &&  (color2 !== marker1.style.color)){
                         marker1.style.color = color2;
+                      }
                     }
                 }else{
                     //run for uncheck 
@@ -577,7 +579,7 @@ class CheckBox {
                         label.textContent = label1;
                     }
                     if(label && color1) label.style.color = color1;
-                    if(mColor && marker1) marker1.style.color = color1;
+                    if((mColor=== true) && marker1) marker1.style.color = color1;
                 }
 
                 if(typeof animeAttr === 'function'){
@@ -1008,14 +1010,14 @@ class CheckBox {
                     if(color2 && label1) label.style.color = color2;  
                     
                     //apply color to markers if first or second color is defined
-                    if(color1 && marker1) {
+                    if(color1 && marker1 && mColor) { alert(mColor)
                         if(!color2){
                             marker1.style.color = color1;
                         }else{
                             marker1.style.color = color2;
                         }
                     }
-                    if(color2 && marker2) marker2.style.color = color2;
+                    if(color2 && marker2 && mColor) marker2.style.color = color2;
 
                 }else{
                     customBox.setAttribute('checked', 'unchecked');
@@ -1030,8 +1032,8 @@ class CheckBox {
                     }
 
                     if(color1 && label) label.style.color = color1;     
-                    if(color1 && marker1) marker1.style.color = color1;
-                    if(color2 && marker2) marker2.style.color = color2;
+                    if(color1 && marker1 && mColor) marker1.style.color = color1;
+                    if(color2 && marker2 && mColor) marker2.style.color = color2;
                 }
 
                 if(typeof init === 'function'){

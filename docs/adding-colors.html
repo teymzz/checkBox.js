@@ -94,8 +94,9 @@
                 </div>
 <pre>
 <span class="tag">&lt;div <span class="func">class="<span>checkbox-wrapper</span>"</span>&gt;</span>
-  <span class="tag">&lt;div <span class="func">checkbox data-size="<span>20px</span>" data-color="<span class="var">red|lime</span>" data-label="<span>toggle</span>"</span>&gt;</span>
-    <span class="tag">&lt;div <span class="func">marker=""</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;div <span class="func">checkbox data-size="<span>20px</span>" data-color="<span class="var">red|lime</span>" data-label="<span>Unchecked|Checked</span>"</span>&gt;</span>
+    <span class="tag">&lt;div <span class="func">marker="" style="<span>background-color:currentColor</span>"</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div <span class="func">marker="" style="<span>background-color:currentColor</span>"</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
   <span class="tag">&lt;/div&gt;</span>
   <span class="tag">&lt;input <span class="func">type="<span>checkbox</span>"</span>&gt;</span>
   <span class="tag">&lt;div <span class="func">data-access="<span>label</span>"</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
@@ -127,13 +128,14 @@
           <div class="code">
             <div class="flex">
                 <div class="">
-                    HTML View (Toggle on checkbox)
+                    HTML Response
                 </div>
             </div>
             <div class="checkbox-field" >
               <div style="display: flex; gap: .5em; align-items: center; width: 100%;">
                 <div checkers data-size="20px" data-color="red|lime" data-label="Unchecked|Checked" class="rotate"> 
-                  <div marker="" style="background-color: red;"></div>
+                  <div marker="" style="background-color: currentColor;"></div>
+                  <div marker="" style="background-color: currentColor;"></div>
                 </div>
                 <input type="checkbox">
                 <label data-access="label"></label> 
@@ -141,17 +143,71 @@
             </div>
           </div> <br>         
             
+          <div class="">
+            In the double colors sample structure above, two colors were defined through the <code class="bc c-note">data-color</code> 
+            attribute. From the html response, we can see that only the label text color is 
+            toggled from red to lime and this does not affect the marker's white background color. The red color is only assigned to 
+            the label field when the checkbox is unchecked while the lime color is applied when the checkbox is 
+            checked. In this way, it becomes easier to set colors for labels. In a situation where we need to extend these colors to the markers, this can be done by 
+            adding a character prefix of "<span class="c-var">@</span>" to the colors defined. A sample of this is shown below:
+          </div> <br>
+            
+            <div class="code">
+                <div class="flex">
+                    <div class="">
+                      <i class="bi-hash"></i>  sample: extended colors
+                    </div>
+                    <div class="">
+                        <span class="copy-btn">Copy</span>
+                    </div>
+                </div>
+<pre>
+<span class="tag">&lt;div <span class="func"> class="<span class="var">checkbox-wrapper</span>"</span>&gt;</span>
+  <span class="tag">&lt;div <span class="func">checkbox data-color="<span class="var">@red|lime</span>" data-label="<span>Unchecked|Checked</span>"</span>&gt;</span>
+
+    <span class="tag">&lt;div <span class="func">marker=""</span>&gt;</span>
+      <span class="tag">&lt;i <span class="func">style="<span>background-color: currentColor;</span>"</span>&gt;</span><span class="tag">&lt;/i&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div <span class="func">marker=""</span>&gt;</span>
+      <span class="tag">&lt;i <span class="func">style="<span>background-color: currentColor;</span>"</span>&gt;</span><span class="tag">&lt;/i&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+    
+  <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;input <span class="func">type="<span>checkbox</span>"</span>&gt;</span>
+  <span class="tag">&lt;div <span class="func">data-access="<span>label</span>"</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+</pre>
+            </div> <br>  
+
             <div class="">
-              In the sample structure above, two colors were defined. We can see that only the label color is 
-              toggled and this does not affect the marker's background color. The first color is only assigned to 
-              the label field when the checkbox is unchecked while the second color is applied when the checkbox is 
-              checked. In this way, it becomes easier to set colors for labels. The plugin makes it possible to also extend 
-              colors to markers such that both labels and markers can be of the same color type. This color extension is only 
-              available for elements that support the use of colors. In order to extend colors to markers, we need to prefix the colors 
-              defined with the "<span class="c-var">@</span>" character symbol. A sample of this is shown below:
+             The response of the html structure above is shown below:
             </div> <br>
             
-             <div class="code">
+          <div class="code">
+            <div class="flex">
+                <div class="">
+                    HTML Response
+                </div>
+            </div>
+            <div class="checkbox-field" >
+              <div style="display: flex; gap: .5em; align-items: center; width: 100%;">
+                <div checkers data-size="20px" data-color="@red|lime" data-label="Unchecked|Checked" class="rotate"> 
+                  <div marker="" style="background-color: currentColor;"></div>
+                  <div marker="" style="background-color: currentColor;"></div>
+                </div>
+                <input type="checkbox">
+                <label data-access="label"></label> 
+              </div>
+            </div>
+          </div> <br>      
+          
+          <div class="">
+            The sample above best reveals how to set the background color of markers by inheriting from the current 
+            color assigned to the markers. Similarly, we can inherit color for texts and supported icons. For example, in the 
+            structure below, the bootstrap icons will inherit the color from their respective markers.
+          </div> <br>
+      
+            <div class="code">
                 <div class="flex">
                     <div class="">
                       <i class="bi-hash"></i>  sample: extended colors
@@ -205,7 +261,7 @@
             </div> <br> 
 
             <div class="">
-              As we can see from the sample above, the icons inherited the colors of the markers which is being handled by the <code class="c-note">data-color</code> attribute. This 
+              As we can see from the sample above, the icons inherited the colors of their respective parent markers which is being handled by the <code class="c-note">data-color</code> attribute. This 
               was possible because of the "<code class="c-var">@</code>" prefix character.
             </div> <br>
                   

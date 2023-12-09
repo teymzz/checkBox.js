@@ -17,6 +17,60 @@ a, a:visited{
     color: #c066b2;
 }
 
+.nav-pane {
+  position: relative;
+}
+
+.nav-pane ul {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  transition: width .5s, height .5s ease-in-out;
+  position: absolute;
+  bottom: 20px;
+  background-color : #3e3a51; 
+  border-radius : 5px;
+}
+
+.nav-pane ul.open{
+  width: fit-content;
+  padding: 10px;
+  height: 300px;
+}
+
+.nav-pane ul li {
+  margin: 4px 0;
+  list-style: none;
+}
+
+.nav-pane ul li a{
+  text-decoration: none;
+  padding: 4px;
+}
+
+/* set navigation buttons */
+a[class*=nav-btn]{
+    background-color: #3e3a51 ; 
+    color: white; 
+    border:none; 
+    border-radius: 5px; 
+    padding:14px 20px;
+    text-decoration: none;
+}
+
+.nav-pane {
+    padding: 10px 0px;
+}
+a.nav-btn-lt {
+    float: left;
+    margin-right: 4px;
+}
+a.nav-btn-rt {
+    float: right;
+}
+
+
+
 h1{
     color: rgb(244, 118, 238)
 }
