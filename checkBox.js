@@ -140,6 +140,11 @@ class CheckBox {
             },
             checked: () => {
                 return (isCheckbox(element) && element.checked);
+            },
+            click: () => {
+                 if(isCheckbox(element)){
+                    element.click();
+                 }
             }
            };
         }
@@ -460,7 +465,7 @@ class CheckBox {
 
         }
         
-        checkEvent = function(input){
+        checkEvent = function(input, cIndex){
             let customBox, checker = {};
                     
             //get custom box element 
@@ -474,6 +479,8 @@ class CheckBox {
                 checker.value = input.value;
                 checker.label = customBox.getAttribute('data-label');
                 checker.color = customBox.getAttribute('data-color');
+                checker.index = 0;
+
 
                 let callback = customBox.getAttribute('data-func');
                 
@@ -483,8 +490,17 @@ class CheckBox {
                 let mColor = false;
 
                 let customParent = customBox.parentNode.closest('[data-role="checkbox"]');
-                let customLabel  = (customParent)? customParent.nextElementSibling : undefined;
-                
+                let customLabel  = (customParent)? customParent.nextElementSibling : undefined; 
+
+                if(customParent){
+                    checker.parent = customParent;
+                    let grandParent = customParent.parentNode.closest('[data-role="checkbox-list"]');
+                    if(grandParent){
+                        checker.parentSuper = grandParent;
+                        checker.listId = Array.from(grandParent.children).indexOf(customParent); 
+                    }
+                }
+
                 if(customLabel && (customLabel.getAttribute('data-access') !== 'label')){
                     customLabel = undefined;
                 }
@@ -817,6 +833,54 @@ class CheckBox {
                         })
                         
                     })
+                }else if(checkListBind.is('rating')){
+
+                    customLists.forEach((customList, index) => {
+
+                        customList.addEventListener('click', function(){
+
+                            let exToggles = {...customLists};
+
+                            if(index === 0) {
+                                let isChecked = false;
+                                //get other checked items 
+                                for(let i = 1; i  < Object.keys(exToggles).length; i++){
+                                    if(exToggles[i].nextElementSibling.checked){
+                                        isChecked = true;
+                                        break;
+                                    }
+                                }
+                                if(!isChecked){
+                                    return false;
+                                }
+                            }
+
+                            let first = at(exToggles[index].nextElementSibling);
+                            if(first.checked()){
+                                first.click();
+                            }
+
+                            for(let i=index - 1; i>=0; i--){
+                                //lowerIndices.push(i);
+                                let checkItems = at(exToggles[i].nextElementSibling)
+                                if(!checkItems.checked()){
+                                    exToggles[i].nextElementSibling.click();
+                                }
+                            }
+
+                       
+                            for(let i= index + 1; i < Object.keys(exToggles).length; i++){
+                                //lowerIndices.push(i);
+                                let checkItems = at(exToggles[i].nextElementSibling)
+                                if(checkItems.checked()){
+                                    exToggles[i].nextElementSibling.click();
+                                }
+                            }
+
+                        })
+
+                    })
+
                 }
                 
             }
@@ -1010,7 +1074,7 @@ class CheckBox {
                     if(color2 && label1) label.style.color = color2;  
                     
                     //apply color to markers if first or second color is defined
-                    if(color1 && marker1 && mColor) { alert(mColor)
+                    if(color1 && marker1 && mColor) {
                         if(!color2){
                             marker1.style.color = color1;
                         }else{
@@ -1064,7 +1128,8 @@ class CheckBox {
                         disabled: (input.disabled), 
                         fit: checkbox.fit, 
                         flip: flip, 
-                        value: (input.value)
+                        value: (input.value),
+                        parent: customParent
                     })
                 }
 

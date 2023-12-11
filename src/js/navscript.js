@@ -1,54 +1,64 @@
-let pressTimer;
-let link = document.querySelectorAll('.nav-btn-lt');
+let pressTimer, link, options;
 
-// Common function for handling long press logic
-function handleLongPress(e) {
-    
-    let ul = document.querySelector('.nav-pane ul');
-    ul.classList.add('open');
-    
-    document.addEventListener('touchend', function() {
+link = document.querySelectorAll('.nav-btn-lt');
+
+options = () => {
+
+  return {
+    open:() =>{
+      let ul = document.querySelector('.nav-pane ul');
+      ul.classList.add('open');
+    },
+    close: ()=>{
       let ul = document.querySelector('.nav-pane ul');
       setTimeout(() => { ul.classList.remove('open');  }, 5000);
-    });
+    }
+  }
 
+}
+
+function handleLongPress(e) {
+    options().open()
+}
+
+function pressDown(e){
+  e.preventDefault()
+    counter = 0;
+    interval = setInterval(() => {
+      counter++
+      if(counter > 20){
+        clearInterval(interval);
+        pressTimer = setTimeout(handleLongPress);
+      }
+    } );  
+}
+
+function pressRelease(e){
+    if(counter < 20) {
+      clearInterval(interval)
+      window.location.href = e.target.getAttribute('href');
+
+      counter = 0;
+    }else{
+      options().close();
+    }
+    clearTimeout(pressTimer);  
 }
 
 link.forEach(element => {
    
-   let counter = 0, interval;
-  
-    // For touchscreen and mouse left button long press
-    element.addEventListener('mousedown', function() {
-        pressTimer = setTimeout(handleLongPress); // Adjust the duration as needed
-    });
-    
-    element.addEventListener('touchstart', function(e) {
-        counter = 0;
-        e.preventDefault();
-        interval = setInterval(() => {
-          counter++
-          if(counter > 100){
-            clearInterval(interval);
-            pressTimer = setTimeout(handleLongPress);
-          }
-        } );
-    });
-    
-    // Clear the timer on mouse/touch release
-    element.addEventListener('mouseup', function(e) {
-        clearTimeout(pressTimer);
-    });
-    
-    element.addEventListener('touchend', function(e) {
-        if(counter < 100) {
+    let counter = 0, interval;
 
-          clearInterval(interval)
-          window.location.href = element.getAttribute('href')
+    //handler mouse events
+    element.addEventListener('click', (e) => e.preventDefault())
 
-          counter = 0;
-        }
-        clearTimeout(pressTimer);
-    });
+    element.addEventListener('mousedown', (e) => pressDown(e));
+
+    element.addEventListener('mouseup', (e) => pressRelease(e));
+    
+    //handle touch events
+    element.addEventListener('touchstart', (e) => pressDown(e));
+    
+    element.addEventListener('touchend', (e) => pressRelease(e));
   
 })

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>checkbox</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+        <link rel="stylesheet" type="text/css" href="../src/css/all.css">
+        <script src="../checkBox.js"></script>  
+        <style>
+            .checkbox-wrapper {
+                display: inline-flex;
+                width: fit-content;
+                align-items: center;
+                gap: .2em;
+            }
+
+            .btn-lite {
+                background-color: transparent; 
+                color:inherit; 
+                border:none; 
+                width:100px;
+                text-align: left; 
+                font-size:.7em;
+            }
+
+            .gold {
+                border-color:#c68811;
+            }
+
+            .wrap > *{
+                border: solid 4px #0000006b;
+            }
+        </style>     
+    </head>
+    
+    <body>
+        <section class="bc-deeper-blue">
+
+            <div class="" style="font-size: 1.2em;"> <br>
+                <h1 style="color:#51ceff">CheckBox.js</h1> <br>
+                <h4 style="color:#51ceff">Cool Samples</h4> <br>
+            </div>
+            
+            <div class="">
+              This page contains different sample of checkboxes that can be applied on web pages.
+            </div> <br>
+            
+           <div class="checkers box wid-full">
+                <div class="">
+                    <div class="" style="padding: 6px 6px; font-size:.85em;">
+                        Turn bulb on
+                    </div>
+                    <div class="in-flex mid" style="padding: 10px; gap:.5em">
+                        <div data-role="checkbox" class="in-flex wrap rad-r" style="background-color: #3a3446;">
+                            <div checkee data-flip="true" data-label="Turn on|Turn off" data-fit="true" data-anime="fadeIn|fadeIn" data-size="30px" data-color="@white|gold" data-assign=":markers" class="in-flex">
+                                <div marker style="background-image: url(../src/images/check-bulb-white.png)"></div>         
+                                <div marker style="background-image: url(../src/images/check-bulb-glow-gold.png)"></div>         
+                            </div>
+                            <input type="checkbox">
+                        </div>
+                        <button class="" data-access="label" style="background-color: #3a3446; color:inherit; border:none; width:100px; padding:12px;">
+                            Turn on
+                        </button>
+                    </div>                                                       
+                </div>
+            </div>
+            
+           <div class="checkers box wid-full">
+                <div class="">
+                    <div class="" style="padding: 6px 6px; font-size:.85em;">
+                        Fade Marker
+                    </div>
+                    <div class="in-flex mid" style="padding: 10px; gap:.5em">
+                        <div data-role="checkbox" class="in-flex wrap rad-r">
+                            <div checkee data-flip="true" data-label="Check|Uncheck" data-fit="true" data-anime="fadeIn|fadeIn" data-size="20px" data-color="@white|#5271fe" data-assign=":markers" class="in-flex">
+                                <div marker style="background-image: url(../src/images/check-1-blue.png)"></div>         
+                                <div marker style="background-image: url(../src/images/check-1-blue-fill.png)"></div>         
+                            </div>
+                            <input type="checkbox">
+                        </div>
+                        <button class="btn-lite" data-access="label">
+                            Turn on
+                        </button>
+                    </div>                                                       
+                </div>
+            </div>
+            
+           <div class="checkers box wid-full">
+                <div class="">
+                    <div class="" style="padding: 6px 6px; font-size:.85em;">
+                        Flash Marker
+                    </div>
+                    <div class="in-flex mid" style="padding: 10px; gap:.5em">
+                        <div data-role="checkbox" class="in-flex wrap rad-r">
+                            <div checkee data-flip="true" data-label="Check|Uncheck" data-fit="true" data-anime="fadeIn|flash infinite slow" data-size="20px" data-color="@white|#5271fe" data-assign=":markers" class="in-flex">
+                                <div marker style="background-image: url(../src/images/check-1-blue.png)"></div>         
+                                <div marker style="background-image: url(../src/images/check-1-blue-fill.png)"></div>         
+                            </div>
+                            <input type="checkbox">
+                        </div>
+                        <button class="btn-lite" data-access="label">
+                            Turn on
+                        </button>
+                    </div>                                                       
+                </div>
+            </div>
+            
+            <div class="checkers box wid-full">
+                <div class="">
+                    <div class="" style="padding: 6px 6px; font-size:.85em;">
+                        Faded Radio Buttons
+                    </div>
+                    <div class="in-flex mid" style="padding: 10px; gap:.5em">
+                        <div data-role="checkbox-list" data-bind="radio">
+                            <div data-role="checkbox" class="in-flex wrap rad-r">
+                                <div checkee data-flip="true" data-label="Check|Uncheck" data-fit="true" data-anime="|fadeIn" data-size="20px" data-color="@#3a3446|#5271fe" data-assign=":markers" class="in-flex">
+                                    <div marker style="background-color:currentColor"></div>         
+                                    <div marker style="background-color:currentColor"></div>         
+                                </div>
+                                <input type="checkbox">
+                            </div>
+                            <div data-role="checkbox" class="in-flex wrap rad-r">
+                                <div checkee data-flip="true" data-label="Check|Uncheck" data-fit="true" data-anime="|fadeIn" data-size="20px" data-color="@#3a3446|#5271fe" data-assign=":markers" class="in-flex">
+                                    <div marker style="background-color: currentColor"></div>         
+                                    <div marker style="background-color: currentColor"></div>         
+                                </div>
+                                <input type="checkbox">
+                            </div>
+                            <div data-role="checkbox" class="in-flex wrap rad-r">
+                                <div checkee data-flip="true" data-label="Check|Uncheck" data-fit="true" data-anime="|fadeIn" data-size="20px" data-color="@#3a3446|#5271fe" data-assign=":markers" class="in-flex">
+                                    <div marker style="background-color: currentColor"></div>         
+                                    <div marker style="background-color: currentColor"></div>         
+                                </div>
+                                <input type="checkbox">
+                            </div>
+                        </div>
+                    </div>                                                       
+                </div>
+            </div>
+            
+            <div class="checkers box wid-full">
+                <div class="">
+                    <div class="" style="padding: 6px 6px; font-size:.85em;">
+                        Faded Radio Markers
+                    </div>
+                    <div class="in-flex mid" style="padding: 10px; gap:.5em">
+                        <div data-role="checkbox-list" data-bind="radio">
+                            <div data-role="checkbox" class="in-flex wrap rad-r">
+                                <div checkee data-flip="true" data-label="Check|Uncheck" data-fit="true" data-anime="|fadeIn" data-size="20px" data-color="@white|#5271fe" data-assign=":markers" class="in-flex">
+                                    <div marker style="background-image: url(../src/images/check-1-blue.png)"></div>         
+                                    <div marker style="background-image: url(../src/images/check-1-blue-fill.png)"></div>         
+                                </div>
+                                <input type="checkbox">
+                            </div>
+                            <div data-role="checkbox" class="in-flex wrap rad-r">
+                                <div checkee data-flip="true" data-label="Check|Uncheck" data-fit="true" data-anime="|fadeIn" data-size="20px" data-color="@white|#5271fe" data-assign=":markers" class="in-flex">
+                                    <div marker style="background-image: url(../src/images/check-1-blue.png)"></div>         
+                                    <div marker style="background-image: url(../src/images/check-1-blue-fill.png)"></div>         
+                                </div>
+                                <input type="checkbox">
+                            </div>
+                            <div data-role="checkbox" class="in-flex wrap rad-r">
+                                <div checkee data-flip="true" data-label="Check|Uncheck" data-fit="true" data-anime="|fadeIn" data-size="20px" data-color="@white|#5271fe" data-assign=":markers" class="in-flex">
+                                    <div marker style="background-image: url(../src/images/check-1-blue.png)"></div>         
+                                    <div marker style="background-image: url(../src/images/check-1-blue-fill.png)"></div>         
+                                </div>
+                                <input type="checkbox">
+                            </div>
+                        </div>
+                    </div>                                                       
+                </div>
+            </div>
+
+                        
+            <div class="checkers box wid-full">
+                <div class="">
+                    <div class="" style="padding: 6px 6px; font-size:.85em;">
+                       #1 Ratings Checkbox
+                    </div>
+                    <div class="in-flex mid" style="padding: 10px; gap:.5em">
+                        <div data-role="checkbox-list" data-bind="rating">
+                            <div data-role="checkbox" class="in-flex wrap rad-r">
+                                <div checkee data-flip="true" data-init="true" data-func="toast" data-label="Check|Uncheck" data-fit="true" data-anime="|bounceIn" data-size="20px" data-color="@#3a3446|#c68811" data-assign=":markers" class="in-flex">
+                                    <div marker style="background-image:url(../src/images/check-1-white.png)"></div>         
+                                    <div marker style="background-image:url(../src/images/check-1-gold.png)"></div>         
+                                </div>
+                                <input type="checkbox">
+                            </div>
+                            <div data-role="checkbox" class="in-flex wrap rad-r">
+                                <div checkee data-flip="true" data-init="true" data-func="toast" data-label="Check|Uncheck" data-fit="true" data-anime="|bounceIn" data-size="20px" data-color="@#3a3446|#c68811" data-assign=":markers" class="in-flex">
+                                    <div marker style="background-image:url(../src/images/check-1-white.png)"></div>         
+                                    <div marker style="background-image:url(../src/images/check-1-gold.png)"></div>         
+                                </div>
+                                <input type="checkbox">
+                            </div>
+                            <div data-role="checkbox" class="in-flex wrap rad-r">
+                                <div checkee data-flip="true" data-init="true" data-func="toast" data-label="Check|Uncheck" data-fit="true" data-anime="|bounceIn" data-size="20px" data-color="@#3a3446|#c68811" data-assign=":markers" class="in-flex">
+                                    <div marker style="background-image:url(../src/images/check-1-white.png)"></div>         
+                                    <div marker style="background-image:url(../src/images/check-1-gold.png)"></div>         
+                                </div>
+                                <input type="checkbox">
+                            </div>
+                        </div>
+                    </div>                                                       
+                </div>
+            </div>
+
+                        
+            <div class="checkers box wid-full">
+                <div class="">
+                    <div class="" style="padding: 6px 6px; font-size:.85em;">
+                       #2 Ratings Checkbox
+                    </div>
+                    <div class="in-flex mid" style="padding: 10px; gap:.5em">
+                        <div data-role="checkbox-list" data-bind="rating" class="auto-switch">
+                            <div data-role="checkbox" class="in-flex wrap rad-r">
+                                <div checkee data-flip="true" data-init="true" data-func="toast" data-label="Check|Uncheck" data-fit="true" data-anime="|bounceIn" data-size="20px" data-color="@#3a3446|#c68811" data-assign=":markers" class="in-flex">
+                                    <div marker style="background-image:url(../src/images/check-12-gold.png)"></div>         
+                                    <div marker style="background-image:url(../src/images/check-12-gold-fill.png)"></div>         
+                                </div>
+                                <input type="checkbox">
+                            </div>
+                            <div data-role="checkbox" class="in-flex wrap rad-r">
+                                <div checkee data-flip="true" data-init="true" data-func="toast" data-label="Check|Uncheck" data-fit="true" data-anime="|bounceIn" data-size="20px" data-color="@#3a3446|#c68811" data-assign=":markers" class="in-flex">
+                                    <div marker style="background-image:url(../src/images/check-12-gold.png)"></div>         
+                                    <div marker style="background-image:url(../src/images/check-12-gold-fill.png)"></div>         
+                                </div>
+                                <input type="checkbox">
+                            </div>
+                            <div data-role="checkbox" class="in-flex wrap rad-r">
+                                <div checkee data-flip="true" data-init="true" data-func="toast" data-label="Check|Uncheck" data-fit="true" data-anime="|bounceIn" data-size="20px" data-color="@#3a3446|#c68811" data-assign=":markers" class="in-flex">
+                                    <div marker style="background-image:url(../src/images/check-12-gold.png)"></div>         
+                                    <div marker style="background-image:url(../src/images/check-12-gold-fill.png)"></div>         
+                                </div>
+                                <input type="checkbox">
+                            </div>
+                            <div data-role="checkbox" class="in-flex wrap rad-r">
+                                <div checkee data-flip="true" data-init="true" data-func="toast" data-label="Check|Uncheck" data-fit="true" data-anime="|bounceIn" data-size="20px" data-color="@#3a3446|#c68811" data-assign=":markers" class="in-flex">
+                                    <div marker style="background-image:url(../src/images/check-12-gold.png)"></div>         
+                                    <div marker style="background-image:url(../src/images/check-12-gold-fill.png)"></div>         
+                                </div>
+                                <input type="checkbox">
+                            </div>
+                            <div data-role="checkbox" class="in-flex wrap rad-r">
+                                <div checkee data-flip="true" data-init="true" data-func="toast" data-label="Check|Uncheck" data-fit="true" data-anime="|bounceIn" data-size="20px" data-color="@#3a3446|#c68811" data-assign=":markers" class="in-flex">
+                                    <div marker style="background-image:url(../src/images/check-12-gold.png)"></div>         
+                                    <div marker style="background-image:url(../src/images/check-12-gold-fill.png)"></div>         
+                                </div>
+                                <input type="checkbox">
+                            </div>
+                        </div>
+                    </div>                                                       
+                </div>
+            </div>
+                        
+            <div class="nav-pane">
+              <ul>
+                <li>
+                  <a class="link" href="">basic</a>
+                </li>
+                <li>
+                  <a class="link" href="../docs/markers.html">markers</a>
+                </li>
+                <li>
+                  <a class="link" href="">init event</a>
+                </li>
+                <li>
+                  <a class="link" href="">custom selector</a>
+                </li>
+                <li>
+                  <a class="link" href="">custom markers</a>
+                </li>
+                <li>
+                  <a class="link" href="">binding markers</a>
+                </li>
+                <li>
+                  <a class="link" href=""></a>
+                </li>
+              </ul>
+              <a href="../docs/binding-parents.html" class="nav-btn-lt">
+                <i class="bi-arrow-left-circle"></i> 
+              </a> 
+              
+              <a href="../docs/cool-samples.html" class="nav-btn-rt">
+                <i class="bi-arrow-right-circle"></i> cool samples
+              </a> 
+            </div><br><br><br>
+
+        </section>
+        
+        <script>
+            new CheckBox({
+                target:'[checkee]',      
+                assign: {
+                    attr: ['data-anime', 'class'],
+                    alter: function(dataAnime){
+                        dataAnime.unshift('animated')
+                        return dataAnime.map(el => 'animate__' + el);
+                    }
+                },
+            })
+
+            function toast(e){
+
+                let aChecked = (e.listId === 0 && e.checked);
+                let bChecked = (e.listId === 1 && e.checked);
+                let cChecked = (e.listId === 2 && e.checked);
+
+                if(e.checked) {
+                    e.parent.classList.add('gold')
+                }else{
+                    e.parent.classList.remove('gold')
+                }
+
+            }
+
+            let autoSwitch = document.querySelector('.auto-switch');
+            let autoChecker = autoSwitch.querySelectorAll('[checkee]');
+            
+            setInterval(() => {
+                let autoChecked = autoSwitch.querySelector('[data-role="checkbox"][checked="checked"]') || autoSwitch.querySelector('[data-role="checkbox"]');
+                
+                // console.log(autoIndex)
+                let autoIndex = Array.from(autoSwitch.children).indexOf(autoChecked);
+
+                if((autoIndex + 1) === autoChecker.length){
+                    autoIndex = 0;
+                }
+                
+                autoChecker[autoIndex].click();
+            },2500)
+
+        </script>
+        
+        
+        <script src="../src/js/docs.js"></script>
+        <script src="../src/js/navscript.js"></script>
+
+    </body>
+</html>
+
