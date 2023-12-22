@@ -19,7 +19,7 @@
             </div>
             
             <div class="">
-              By default, the custom checkbox marker is selected through the “<code class="c-note">[marker]</code>” attribute selector. 
+              By default, the custom checkbox marker is selected through the “<code class="bc c-note">[marker]</code>” attribute selector. 
               We can easily overide this selector by declaring a new custom selector. Assuming we have an
               html structure like below:
             </div> <br>
@@ -27,14 +27,17 @@
             <!-- checkbox -->
             <div class="code">
                 <div class="flex">
-                    <div class="">
-                        Custom Marker
+                    <div class="code-x">
+                        <span>HTML</span>
+                        <b>
+                          Custom Markers
+                        </b>
                     </div>
                     <div class="">
                         <span class="copy-btn">Copy</span>
                     </div>
                 </div>
-<pre>
+<pre class="active">
 <span class="tag">&lt;div <span>checkbox=""</span>&gt;</span>
   <span class="tag">&lt;div <span>btn=""</span>&gt;&lt;/div&gt;</span> 
   <span class="tag">&lt;div <span>btn=""</span>&gt;&lt;/div&gt;</span>
@@ -50,14 +53,17 @@
             
             <div class="code">
                 <div class="flex">
-                    <div class="">
-                        Script
+                    <div class="code-x">
+                        <span>JS</span>
+                        <b>
+                          Custom Marker Selection
+                        </b>
                     </div>
                     <div class="">
                         <span class="copy-btn">Copy</span>
                     </div>
                 </div>
-<pre>
+<pre class="active">
 <span class="var">let</span> checkbox = <span class="var">new</span> <span class="func">CheckBox(<span class="bool">true</span>)</span>;
 
 checkbox.<span class="func">check({

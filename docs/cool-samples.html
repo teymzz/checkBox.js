@@ -28,6 +28,33 @@
             .gold {
                 border-color:#c68811;
             }
+            
+            .gold.rotate {
+                border: dotted 2px #c68811;
+                animation: rotate 5s infinite linear;
+            }
+            
+            @keyframes rotate{
+              0%{
+                transform: rotate(0deg);
+              }
+              100%{
+                transform : rotate(360deg);
+              }
+            }
+            
+            .gold.rotate .stick {
+              animation: irotate 5s infinite linear;
+            }
+            
+            @keyframes irotate{
+              0%{
+                transform: rotate(0deg);
+              }
+              100%{
+                transform : rotate(-360deg);
+              }
+            }
 
             .wrap > *{
                 border: solid 4px #0000006b;
@@ -172,31 +199,30 @@
                     </div>                                                       
                 </div>
             </div>
-
                         
             <div class="checkers box wid-full">
                 <div class="">
                     <div class="" style="padding: 6px 6px; font-size:.85em;">
-                       #1 Ratings Checkbox
+                       Slide Checkbox
                     </div>
                     <div class="in-flex mid" style="padding: 10px; gap:.5em">
-                        <div data-role="checkbox-list" data-bind="rating">
+                        <div data-role="checkbox-list" data-bind="slide" class="gear">
                             <div data-role="checkbox" class="in-flex wrap rad-r">
-                                <div checkee data-flip="true" data-init="true" data-func="toast" data-label="Check|Uncheck" data-fit="true" data-anime="|bounceIn" data-size="20px" data-color="@#3a3446|#c68811" data-assign=":markers" class="in-flex">
+                                <div checkee data-flip="true" data-init="true" data-func="gold" data-label="Check|Uncheck" data-fit="true" data-anime="|bounceIn" data-size="20px" data-color="@#3a3446|#c68811" data-assign=":markers" class="in-flex">
                                     <div marker style="background-image:url(../src/images/check-1-white.png)"></div>         
                                     <div marker style="background-image:url(../src/images/check-1-gold.png)"></div>         
                                 </div>
                                 <input type="checkbox">
                             </div>
                             <div data-role="checkbox" class="in-flex wrap rad-r">
-                                <div checkee data-flip="true" data-init="true" data-func="toast" data-label="Check|Uncheck" data-fit="true" data-anime="|bounceIn" data-size="20px" data-color="@#3a3446|#c68811" data-assign=":markers" class="in-flex">
+                                <div checkee data-flip="false" data-init="true" data-func="gold" data-label="Check|Uncheck" data-fit="true" data-anime="|bounceIn" data-size="20px" data-color="@#3a3446|#c68811" data-assign=":markers" class="in-flex">
                                     <div marker style="background-image:url(../src/images/check-1-white.png)"></div>         
                                     <div marker style="background-image:url(../src/images/check-1-gold.png)"></div>         
                                 </div>
                                 <input type="checkbox">
                             </div>
-                            <div data-role="checkbox" class="in-flex wrap rad-r">
-                                <div checkee data-flip="true" data-init="true" data-func="toast" data-label="Check|Uncheck" data-fit="true" data-anime="|bounceIn" data-size="20px" data-color="@#3a3446|#c68811" data-assign=":markers" class="in-flex">
+                            <div data-role="checkbox" class="in-flex wrap rad-r rotate">
+                                <div checkee data-flip="true" data-init="true" data-func="gold" data-label="Check|Uncheck" data-fit="true" data-anime="|bounceIn" data-size="20px" data-color="@#3a3446|#c68811" data-assign=":markers" class="in-flex stick">
                                     <div marker style="background-image:url(../src/images/check-1-white.png)"></div>         
                                     <div marker style="background-image:url(../src/images/check-1-gold.png)"></div>         
                                 </div>
@@ -211,10 +237,10 @@
             <div class="checkers box wid-full">
                 <div class="">
                     <div class="" style="padding: 6px 6px; font-size:.85em;">
-                       #2 Ratings Checkbox
+                       Ratings Checkbox
                     </div>
                     <div class="in-flex mid" style="padding: 10px; gap:.5em">
-                        <div data-role="checkbox-list" data-bind="rating" class="auto-switch">
+                        <div data-role="checkbox-list" data-bind="rating">
                             <div data-role="checkbox" class="in-flex wrap rad-r">
                                 <div checkee data-flip="true" data-init="true" data-func="toast" data-label="Check|Uncheck" data-fit="true" data-anime="|bounceIn" data-size="20px" data-color="@#3a3446|#c68811" data-assign=":markers" class="in-flex">
                                     <div marker style="background-image:url(../src/images/check-12-gold.png)"></div>         
@@ -250,6 +276,7 @@
                                 </div>
                                 <input type="checkbox">
                             </div>
+                            <div class="rootbox"></div>
                         </div>
                     </div>                                                       
                 </div>
@@ -258,7 +285,10 @@
             <div class="nav-pane">
               <ul>
                 <li>
-                  <a class="link" href="">basic</a>
+                  <a class="link" href="../index.html">intro</a>
+                </li>
+                <li>
+                  <a class="link" href="../docs/basic.html">basic</a>
                 </li>
                 <li>
                   <a class="link" href="../docs/markers.html">markers</a>
@@ -302,7 +332,7 @@
                 },
             })
 
-            function toast(e){
+            function gold(e){
 
                 let aChecked = (e.listId === 0 && e.checked);
                 let bChecked = (e.listId === 1 && e.checked);
@@ -313,24 +343,164 @@
                 }else{
                     e.parent.classList.remove('gold')
                 }
+                
+            }
+            
+            function toast(e){
+                gold(e)
+               
+                let rootBox =  document.querySelector('.rootbox');
+                
+                rootBox.innerHTML = (e.checkedBoxes) + ' stars';
+            }
+            
+           /* const ratebox = document.querySelector('[data-bind="rating"]');
+            
+            const checkboxes = ratebox.querySelectorAll('[data-role="checkbox"]');
+            
+            let startCheckbox;
 
+            checkboxes.forEach((checkbox) => {
+              checkbox.addEventListener('touchstart', handleTouchStart);
+              checkbox.addEventListener('touchmove', handleTouchMove);
+            });
+
+            function handleTouchStart(event) {
+              startCheckbox = event.currentTarget;
+              const checkee = startCheckbox.querySelector('[checkee]');
+
+              if((getIndex(startCheckbox) === 0) && !isCheckeeChecked(checkee)){ 
+                checkee.click();
+              }
             }
 
-            let autoSwitch = document.querySelector('.auto-switch');
-            let autoChecker = autoSwitch.querySelectorAll('[checkee]');
-            
-            setInterval(() => {
-                let autoChecked = autoSwitch.querySelector('[data-role="checkbox"][checked="checked"]') || autoSwitch.querySelector('[data-role="checkbox"]');
+            function handleTouchMove(event) {
+              event.stopPropagation();
+              
+              let rootBox = document.querySelector('.rootbox')
+              let rootval = parseInt(rootBox.innerText) || 0;
+              const currentCheckbox = document.elementFromPoint(event.touches[0].clientX, event.touches[0].clientY);
+              const customBox = currentCheckbox.querySelector('[checkee]');
+              if (customBox && (currentCheckbox !== startCheckbox)) {
                 
-                // console.log(autoIndex)
-                let autoIndex = Array.from(autoSwitch.children).indexOf(autoChecked);
-
-                if((autoIndex + 1) === autoChecker.length){
-                    autoIndex = 0;
+                const checkex = customBox.nextElementSibling;
+                let front = isForwardSlide(startCheckbox, currentCheckbox);
+                let backs = isBackwardSlide(startCheckbox, currentCheckbox);
+                let neutral = (front === false) && (backs === false);
+                
+                if(front) {
+                  rootval = rootval+1;
+                } else if(backs) {
+                  rootval = rootval-1;
                 }
+                //startCheckbox = currentCheckbox;
+                let checkNum = getIndex(currentCheckbox);
+                // permit activity: if item is checkbox
+                let isCheckBox = currentCheckbox.getAttribute('data-role') === 'checkbox';
                 
-                autoChecker[autoIndex].click();
-            },2500)
+                if(isCheckBox) {
+                  startCheckbox = currentCheckbox;
+
+                    if(front && !isCheckeeChecked(customBox)){
+                      for(let i = 0; i < checkNum; i++){
+                        let ltCheck = checkboxes[i].querySelector('[checkee]')
+                        if(!ltCheck.nextElementSibling.checked){
+                          ltCheck.click()
+                        }
+                      }
+                      customBox.click();
+                     
+                    } else if (backs && !neutral){
+                      for(let i = checkboxes.length - 1; i > checkNum; i--){
+                        let ltCheck = checkboxes[i].querySelector('[checkee]')
+                        if(ltCheck.nextElementSibling.checked){
+                          ltCheck.click()
+                        }
+                      }
+                    }
+                  
+                }
+
+              }
+              
+            }
+
+            function isForwardSlide(startCheckbox, currentCheckbox) {
+              // Logic to determine if the slide is forward
+              return currentCheckbox.offsetLeft > startCheckbox.offsetLeft;
+              //return startCheckbox.offsetLeft < currentCheckbox.offsetLeft;
+              // Get the index of the current and start checkboxes
+              const currentIndex = getIndex(currentCheckbox);
+              const startIndex = getIndex(startCheckbox);
+            
+              // Logic to determine if the slide is forward
+              return currentIndex > startIndex;
+            }
+            
+            function isBackwardSlide(startCheckbox, currentCheckbox) {
+              // Logic to determine if the slide is backward
+              //return startCheckbox.offsetLeft > currentCheckbox.offsetLeft;
+              // Get the index of the current and start checkboxes
+              const currentIndex = getIndex(currentCheckbox);
+              const startIndex = getIndex(startCheckbox);
+            
+              // Logic to determine if the slide is forward
+              return currentIndex < startIndex;
+            }
+            
+            function isCheckeeChecked(checkee) {
+              // Logic to determine if the checkee element has the checked attribute
+              return checkee.getAttribute('checked') === "checked";
+            }
+         
+            // Helper function to get the index of the checkbox in its parent
+            function getIndex(checkbox) {
+              return Array.from(checkbox.parentNode.children).indexOf(checkbox);
+            }*/
+            
+            // Threshold for considering the device as shaking
+            const shakeThreshold = 15;
+            
+            // Initialize the last acceleration values
+            let lastX = null;
+            let lastY = null;
+            let lastZ = null;
+            
+            // Function to handle the device motion event
+            function handleMotionEvent(event) {
+              const acceleration = event.accelerationIncludingGravity;
+            
+              if (lastX !== null) {
+                const deltaX = Math.abs(acceleration.x - lastX);
+                const deltaY = Math.abs(acceleration.y - lastY);
+                const deltaZ = Math.abs(acceleration.z - lastZ);
+            
+                if (deltaX > shakeThreshold || deltaY > shakeThreshold || deltaZ > shakeThreshold) {
+                  // Device is shaking 
+                  
+                  let checkList = document.querySelector('.gear') 
+                  let customLists = checkList.querySelectorAll('[data-role="checkbox"]') 
+                  let checkedBox = checkList.querySelector('[data-role="checkbox"][checked="checked"]') 
+                  let checkedIndex = Array.from(checkList.children).indexOf(checkedBox); 
+                  if(customLists.length > 0) {
+                    if((checkedIndex + 1) === customLists.length){
+                        checkedIndex = 0;
+                    } else {
+                      checkedIndex = checkedIndex + 1;
+                    }
+                    customLists[checkedIndex].querySelector('[checkee]').click();
+                  }
+                }
+              }
+            
+              // Update the last acceleration values
+              lastX = acceleration.x;
+              lastY = acceleration.y;
+              lastZ = acceleration.z;
+            }
+            
+            // Add an event listener for the devicemotion event
+            window.addEventListener("devicemotion", handleMotionEvent);
 
         </script>
         

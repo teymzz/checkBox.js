@@ -12,6 +12,31 @@ body {
     padding: 0 2%;
 }
 
+.code-x {
+  display : flex;
+  align-items: center;
+  gap: .5em;
+}
+
+.code-x > span {
+  padding: 2px 6px;
+  background-color: #4c5768;
+}
+
+.code pre {
+  display : none;
+}
+.code pre.active {
+  display : block;
+}
+.code pre.view {
+  white-space : normal;
+}
+
+.checkbox-field{
+  padding : 10px;
+}
+
 /* -- special notice colors -- */
 a, a:visited{
     color: #c066b2;

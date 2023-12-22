@@ -19,8 +19,8 @@
             </div>
             
             <div class="">
-              By default, the custom checkbox is identified through the “checkbox” attribute. 
-              We can easily change the selector by declaring a custom attribute. Assuming we have an
+              By default, the custom checkbox is identified through the <code class="c-note">“checkbox”</code> attribute. 
+              We can easily change this selector by declaring a custom one. Assuming we have an
               html structure like below:
             </div> <br>
             
@@ -34,7 +34,7 @@
                         <span class="copy-btn">Copy</span>
                     </div>
                 </div>
-<pre>
+<pre class="active">
 <span class="tag">&lt;div <span>checkers=""</span>&gt;</span>
   <span class="tag">&lt;div <span>marker=""</span>&gt;&lt;/div&gt;</span> 
   <span class="tag">&lt;div <span>marker=""</span>&gt;&lt;/div&gt;</span>
@@ -44,8 +44,8 @@
             </div> <br>           
             
             <div class="">
-              We can easily overide the default <code class="c-note">checkbox</code> custom box selector for a new <code class="c-note">checkers</code> attribute selector 
-              using the format below.
+              We can easily overide the default <code class="c-note">checkbox</code> custom box selector for the new <code class="c-note">checkers</code> attribute selector 
+              defined above using the format below.
             </div> <br>           
             
             <div class="code">
@@ -57,7 +57,7 @@
                         <span class="copy-btn">Copy</span>
                     </div>
                 </div>
-<pre>
+<pre class="active">
 <span class="var">let</span> checkbox = <span class="var">new</span> <span class="func">CheckBox(<span class="bool">true</span>)</span>;
 
 checkbox.<span class="func">check({

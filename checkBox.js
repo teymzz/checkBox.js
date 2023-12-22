@@ -142,9 +142,9 @@ class CheckBox {
                 return (isCheckbox(element) && element.checked);
             },
             click: () => {
-                 if(isCheckbox(element)){
+                 //if(isCheckbox(element)){
                     element.click();
-                 }
+                 //}
             }
            };
         }
@@ -479,7 +479,8 @@ class CheckBox {
                 checker.value = input.value;
                 checker.label = customBox.getAttribute('data-label');
                 checker.color = customBox.getAttribute('data-color');
-                checker.index = 0;
+                checker.listId = 0;
+                checker.checkedBoxes = 0;
 
 
                 let callback = customBox.getAttribute('data-func');
@@ -498,6 +499,7 @@ class CheckBox {
                     if(grandParent){
                         checker.parentSuper = grandParent;
                         checker.listId = Array.from(grandParent.children).indexOf(customParent); 
+                        checker.checkedBoxes = grandParent.querySelectorAll('input:checked').length
                     }
                 }
 
@@ -605,7 +607,7 @@ class CheckBox {
                 checker.init = init;
 
                 if(typeof toggle === 'function') toggle(checker);
-
+                
                 if(callback) {
                     window[callback](checker);
                 }
@@ -622,15 +624,25 @@ class CheckBox {
 
         checkLists.forEach(checkList => {
 
-            //get all checkboxes in the box...
+            //get all custom checkboxes in the checkbox list...
             let customLists = checkList.querySelectorAll(checkbox.target);
 
             if(customLists.length > 0){
                 
                 checkList.setAttribute('initialized', true);
                 let checkListBind = at(checkList, 'data-bind');
+                let dataBindValue = checkListBind.value().split("-");
+                let isSlide = false, slideTime = 2500;
                 
-                if(checkListBind.is('radio')){
+                if(dataBindValue.length === 2){
+                  isSlide = dataBindValue['0'] === 'slide';
+                  slideTime = parseInt(dataBindValue['1']);
+                  if(slideTime < 20) slideTime = 2500;
+                }else if (checkListBind.is('slide')) {
+                  isSlide = true;
+                }
+                
+                if(checkListBind.is('radio') || isSlide){
 
                     customLists.forEach((customList, index) => {
                         
@@ -668,11 +680,39 @@ class CheckBox {
                                     mainChecker.click();
                                 }
                             }
-    
-    
                         })
-    
+                        
                     })
+                    
+                    if(isSlide) {
+                        //let autoSwitch = checkList; //checkbox-list
+                        //let autoCheckers = checkList.querySelectorAll('[data-role="checkbox"');
+                        let timeout;
+                        
+                        function autoSwitch() {
+                            
+                            let checkedBox = checkList.querySelector('[data-role="checkbox"][checked="checked"]') 
+                            let checkedIndex = Array.from(checkList.children).indexOf(checkedBox);
+                            if(customLists.length > 0) {
+                              if((checkedIndex + 1) === customLists.length){
+                                  checkedIndex = 0;
+                              } else {
+                                checkedIndex = checkedIndex + 1;
+                              }
+                              customLists[checkedIndex].addEventListener('click', function(){
+                                if(timeout) clearTimeout(timeout);
+                                timeout = setTimeout(() => {
+                                    autoSwitch()
+                                }, slideTime)
+                              });
+                              customLists[checkedIndex].click();
+                            }
+                        }
+                        
+                        timeout = setTimeout(() => { autoSwitch(); }, 1000);
+                      
+                    }
+                    
                 }else if(checkListBind.is('base')){
                     
                     customLists.forEach((customList, index) => {
@@ -737,7 +777,7 @@ class CheckBox {
                               } else {
                                   
                                   //handle other boxes
-  
+
                                   if(at(mainChecker,'data-bind').not(['free'])){
                                       
                                       let isReverse = at(mainChecker,'data-bind').is('reverse');
@@ -834,50 +874,39 @@ class CheckBox {
                         
                     })
                 }else if(checkListBind.is('rating')){
+                  
+                    //add touch sliding effects here 
 
                     customLists.forEach((customList, index) => {
 
                         customList.addEventListener('click', function(){
-
+                            
                             let exToggles = {...customLists};
-
-                            if(index === 0) {
-                                let isChecked = false;
-                                //get other checked items 
-                                for(let i = 1; i  < Object.keys(exToggles).length; i++){
-                                    if(exToggles[i].nextElementSibling.checked){
-                                        isChecked = true;
-                                        break;
-                                    }
-                                }
-                                if(!isChecked){
-                                    return false;
-                                }
+                            
+                            let boxes = Object.keys(exToggles).length;
+                            let ltBoxes = [], rtBoxes = [];
+                               
+                           
+                           for(let i = boxes - 1; i > index; i--){
+                              let checkboxItem = exToggles[i].nextElementSibling;
+                              if(checkboxItem.checked){
+                                customLists[index].setAttribute('check-pause', 'true')
+                                //get next element item
+                                customLists[i].click();
+                              }
                             }
-
-                            let first = at(exToggles[index].nextElementSibling);
-                            if(first.checked()){
-                                first.click();
+                            
+                           for(let i = 0; i <= index; i++){
+                              let checkboxItem = exToggles[i].nextElementSibling;
+                              if(!checkboxItem.checked){
+                                customLists[i].click();
+                              }
                             }
-
-                            for(let i=index - 1; i>=0; i--){
-                                //lowerIndices.push(i);
-                                let checkItems = at(exToggles[i].nextElementSibling)
-                                if(!checkItems.checked()){
-                                    exToggles[i].nextElementSibling.click();
-                                }
-                            }
-
-                       
-                            for(let i= index + 1; i < Object.keys(exToggles).length; i++){
-                                //lowerIndices.push(i);
-                                let checkItems = at(exToggles[i].nextElementSibling)
-                                if(checkItems.checked()){
-                                    exToggles[i].nextElementSibling.click();
-                                }
-                            }
+                           
 
                         })
+                        
+                        touchSlide(checkList, checkbox.target)
 
                     })
 
@@ -1120,6 +1149,15 @@ class CheckBox {
                 }
 
                 if(eager && callback !== ''){
+                  
+                    //get selections 
+                    let grandParent, checkedBoxes;
+                    
+                    grandParent = customParent.closest('[data-role="checkbox-list"]');
+                    if(grandParent) {
+                      checkedBoxes = grandParent.querySelectorAll('input:checked').length
+                    }
+                    
                     window[callback]({
                         native:input, 
                         custom: customBox, 
@@ -1129,7 +1167,9 @@ class CheckBox {
                         fit: checkbox.fit, 
                         flip: flip, 
                         value: (input.value),
-                        parent: customParent
+                        parent: customParent,
+                        checkList: grandParent,
+                        checkedBoxes: checkedBoxes
                     })
                 }
 
@@ -1150,10 +1190,14 @@ class CheckBox {
 
                 customBox.addEventListener('click', function(){
                     //if not e-prev defined
-                    if(input.getAttribute('e-prev') === null){
-                        if(!at(customBox).hasAttr('controllers')) input.click();
-                        input.setAttribute('selection', 'true');
-                        setTimeout(() => input.removeAttribute('selection'), 50);
+                    if(!at(customBox, 'check-pause').is('true')){
+                      if(input.getAttribute('e-prev') === null){
+                          if(!at(customBox).hasAttr('controllers')) input.click();
+                          input.setAttribute('selection', 'true');
+                          setTimeout(() => input.removeAttribute('selection'), 50);
+                      }
+                    }else{
+                      customBox.removeAttribute('check-pause');
                     }
                 })
 
@@ -1221,6 +1265,106 @@ class CheckBox {
             }
 
         })
+        
+        // handle touch sliding animation ..... 
+        function touchSlide(ratebind, target){
+          
+            const rateboxes = ratebind.querySelectorAll('[data-role="checkbox"]');
+            let startCheckbox;
+
+            rateboxes.forEach((ratebox) => {
+              ratebox.addEventListener('touchstart', handleTouchStart);
+              ratebox.addEventListener('touchmove', handleTouchMove);
+            });
+
+            function handleTouchStart(event) {
+              startCheckbox = event.currentTarget;
+              let customBox = startCheckbox.querySelector(target);
+
+              if((getIndex(startCheckbox) === 0) && !isChecked(customBox)){ 
+                customBox.click();
+              }
+            }
+
+            function handleTouchMove(event) {
+              event.stopPropagation();
+              
+              const currentCheckbox = document.elementFromPoint(event.touches[0].clientX, event.touches[0].clientY);
+              const customBox = currentCheckbox.querySelector(target);
+              
+              if (customBox && (currentCheckbox !== startCheckbox)) {
+                
+                const checkex = customBox.nextElementSibling;
+                let front = isForwardSlide(startCheckbox, currentCheckbox);
+                let backs = isBackwardSlide(startCheckbox, currentCheckbox);
+                let neutral = (front === false) && (backs === false);
+                
+                //startCheckbox = currentCheckbox;
+                let checkNum = getIndex(currentCheckbox);
+                // permit activity: if item is checkbox
+                let isCheckBox = currentCheckbox.getAttribute('data-role') === 'checkbox';
+                
+                if(isCheckBox) {
+                  startCheckbox = currentCheckbox;
+
+                    if(front && !isChecked(customBox)){
+                      for(let i = 0; i < checkNum; i++){
+                        let ltCheck = rateboxes[i].querySelector(target)
+                        if(!ltCheck.nextElementSibling.checked){
+                          ltCheck.click()
+                        }
+                      }
+                      customBox.click();
+                     
+                    } else if (backs && !neutral){
+                      for(let i = rateboxes.length - 1; i > checkNum; i--){
+                        let ltCheck = rateboxes[i].querySelector(target)
+                        if(ltCheck.nextElementSibling.checked){
+                          ltCheck.click()
+                        }
+                      }
+                    }
+                  
+                }
+
+              }
+              
+            }
+
+            function isForwardSlide(startCheckbox, currentCheckbox) {
+              // Logic to determine if the slide is forward
+              return currentCheckbox.offsetLeft > startCheckbox.offsetLeft;
+              //return startCheckbox.offsetLeft < currentCheckbox.offsetLeft;
+              // Get the index of the current and start checkboxes
+              const currentIndex = getIndex(currentCheckbox);
+              const startIndex = getIndex(startCheckbox);
+            
+              // Logic to determine if the slide is forward
+              return currentIndex > startIndex;
+            }
+            
+            function isBackwardSlide(startCheckbox, currentCheckbox) {
+              // Logic to determine if the slide is backward
+              //return startCheckbox.offsetLeft > currentCheckbox.offsetLeft;
+              // Get the index of the current and start checkboxes
+              const currentIndex = getIndex(currentCheckbox);
+              const startIndex = getIndex(startCheckbox);
+            
+              // Logic to determine if the slide is forward
+              return currentIndex < startIndex;
+            }
+            
+            function isChecked(customBox) {
+              // Logic to determine if the custom box has the checked attribute
+              return customBox.getAttribute('checked') === "checked";
+            }
+         
+            // Helper function to get the index of the checkbox in its parent
+            function getIndex(checkbox) {
+              return Array.from(checkbox.parentNode.children).indexOf(checkbox);
+            }
+          
+        }
         
     }
 

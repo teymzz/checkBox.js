@@ -19,35 +19,27 @@
             </div>
             
             <div class="">
-              The code sample below is the easiest way to create a custom checkbox.
+              The code sample below is the easiest way to create a custom checkbox 
+              without any custom configuration.
             </div> <br>
 
             <div class="code">
                 <div class="flex">
-                    <div class="">
-                        HTML sample
+                    <div class="code-x">
+                        <span class="code-btn" rel="html">HTML</span>
+                        <span class="code-btn" rel="css">CSS</span>
+                        <span class="code-btn" rel="js" hidden>JS</span>
                     </div>
                     <div class="">
                         <span class="copy-btn">Copy</span>
                     </div>
                 </div>
-<pre>
+<pre class="active html">
 <span class="tag">&lt;div <span class="func">checkbox=""</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
 
 <span class="tag">&lt;input <span class="func">type="<span class="var">checkbox</span>"</span>&gt;</span>
 </pre>
-            </div> <br>
-
-            <div class="code">
-                <div class="flex">
-                    <div class="">
-                        Custom css
-                    </div>
-                    <div class="">
-                        <span class="copy-btn">Copy</span>
-                    </div>
-                </div>
-<pre class="">
+<pre class="css">
 <span class="key">[checkbox]</span> <span class="braces">{</span>
     <span class="var">width</span>: 20px;
     <span class="var">height</span>: 20px;
@@ -61,25 +53,39 @@
     <span class="var">background-color</span>: lime;
 <span class="braces">}</span>
 </pre>
-            </div> <br>  
+            </div> <br>
+
+            <div class="">
+              Now, we can initialize the checkbox plugin as shown below
+            </div>  <br>
 
             <div class="code">
                 <div class="flex">
-                    <div class="">
-                        Script
+                    <div class="code-x">
+                        <span class="code-btn" rel="js">JS</span>
+                        <span class="code-btn" rel="view"><i class="bi-eye"></i></span>
                     </div>
                     <div class="">
                         <span class="copy-btn">Copy</span>
                     </div>
                 </div>
-<pre>
+<pre class="js active">
 <span class="tag">&lt;script&gt;</span>
+
 new <span class="func">CheckBox()</span>; <span class="comment">//initialize and execute</span>
+
 <span class="tag">&lt;/script&gt;</span>    
 </pre>
-            </div> <br>
+<pre class="view">
+<div class="" style="padding:10px; display: flex; gap: 1em; align-items:center">
+<div checkbox class="basic"></div> 
+<input type="checkbox" value="foo"> 
+<span class="comment">//toggle on checkbox</span>
+</div>
+</pre>
+            </div>
 
-            <div class="code">
+            <div class="code" hidden >
                 <div class="flex">
                     <div class="">
                         HTML View (Toggle on checkbox)
@@ -93,16 +99,22 @@ new <span class="func">CheckBox()</span>; <span class="comment">//initialize and
             </div> <br>
 
             <div class="">
-                The sample above is the most basic way to handle a custom checkbox without any complex configuration. 
-                When we initialize the plugin, all native checkboxes becomes hidden, leaving only their relative custom checkbox. 
+                When we initialize the plugin as shown above, all native checkboxes becomes hidden, leaving only their relative custom checkbox. 
             </div>  <br>
             
-            <div class="" style="padding:10px 5px">
-              <a href="index.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:left; text-decoration: none">
+            <div class="nav-pane" style="padding:10px 5px">
+              <ul>
+                <li>
+                  <a href="">home</a>
+                </li>
+                <li></li>
+                <li></li>
+              </ul>
+              <a href="../index.html" class="nav-btn-lt">
                 <i class="bi-arrow-left-circle"></i> 
               </a> 
               
-              <a href="markers.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:right; text-decoration: none">
+              <a href="../docs/markers.html" class="nav-btn-rt">
                 <i class="bi-arrow-right-circle"></i> Adding Markers
               </a> 
             </div><br><br><br>
@@ -111,5 +123,7 @@ new <span class="func">CheckBox()</span>; <span class="comment">//initialize and
         </section>
 
         <script src="../src/js/docs.js"></script>
+        <script src="../src/js/navscript.js"></script>
+
     </body>
 </html>

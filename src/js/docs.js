@@ -60,7 +60,7 @@ function pass(checker){
   
   function onCopy(btn) {  
   
-    field = btn.parentNode.closest('.code').querySelector('pre');
+    field = btn.parentNode.closest('.code').querySelector('pre.active');
   
     function copied(response){
         if(response){
@@ -120,3 +120,19 @@ function pass(checker){
     }
   
   });
+  
+  // ........code split
+  let codeBtns = document.querySelectorAll('.code-btn');
+          
+  codeBtns.forEach(codeBtn => {
+    codeBtn.addEventListener('click', function(){
+      let rel = this.getAttribute('rel');
+      let parent = this.closest(".code");
+      let pres = parent.querySelectorAll('pre,.pre');
+      let pre = parent.querySelector('pre.'+rel);
+      pres.forEach(preItem => {
+        preItem.classList.remove('active')
+      })
+        pre.classList.add('active');
+    })
+  })

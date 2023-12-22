@@ -53,40 +53,64 @@
             
             <div class="">
                 Colors are defined through the <code class="c-note bc">data-color</code> attribute and 
-                they are primarily applied to labels. However, we can also apply them to markers provided that the 
-                markers are elements that can be colored (e.g font icons, texts). A sample structure of 
-                this is shown below
+                they are primarily applied to labels. 
+                <!--However, we can also apply them to markers provided that the 
+                markers are elements that can be colored (e.g font icons, texts). -->
+                A sample structure of this is shown below
             </div> <br>
             
             <div class="code">
                 <div class="flex">
-                    <div class="">
-                      <i class="bi-hash"></i>  sample: single color 
+                    <div class="code-x">
+                      <b><i class="bi-hash"></i>single color</b>
+                      <span class="code-btn" rel="html">HTML</span>
+                      <span class="code-btn" rel="css">CSS</span>
+                      <span class="code-btn" rel="view"><i class="bi-window"></i></span>
                     </div>
                     <div class="">
                         <span class="copy-btn">Copy</span>
                     </div>
                 </div>
-<pre>
-<span class="tag">&lt;div <span class="func">checkbox data-color="<span class="var">red</span>" data-label="<span>toggle</span>" data-size="<span>20px</span>"</span>&gt;</span>
+<pre class="html active">
+<span class="tag">&lt;div <span class="func">checkbox data-color="<span class="var">red</span>" data-label="<span>Checked|Unchecked</span>" data-size="<span>20px</span>"</span>&gt;</span>
   <span class="tag">&lt;div <span class="func">marker=""</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
 <span class="tag">&lt;/div&gt;</span>
 <span class="tag">&lt;input <span class="func">type="<span>checkbox</span>"</span>&gt;</span>
 <span class="tag">&lt;div <span class="func">data-access="<span>label</span>"</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
 </pre>
+<pre class="css"><span class="key">.checkbox-wrapper</span> <span class="braces">{</span>
+  <span class="var">display</span>: inline-flex;
+  <span class="var">gap</span>: .5em   
+<span class="braces">}</span>
+</pre>
+<pre class="view">
+            <div class="checkbox-field" >
+              <div style="display: flex; gap: .5em; align-items: center; width: 100%;">
+                <div checkers data-size="20px" data-color="red" data-label="Unchecked|Checked" class="rotate"> 
+                  <div marker="" style="background-color: currentColor;"></div>
+                  <div marker="" style="background-color: currentColor;"></div>
+                </div>
+                <input checked="checked" type="checkbox">
+                <label data-access="label"></label> 
+              </div>
+            </div>
+</pre>
             </div>  <br>   
             
             <div class="">
-              In the sample structure above, the label field will be assigned a color of “<code class="c-var">red</code>” which is specified through the 
-              <code class="c-note">data-color</code> attribute. This means that when the label text “<code class="c-var">toggle</code>” is added into the label field, 
-              the text will be in red color. The <code class="c-note bc">data-color</code> also supports a maximum of two alternate colors. A sample format of this 
+              In the sample structure above, the label field is assigned a color of “<code class="c-var">red</code>” which is specified through the 
+              <code class="c-note bc">data-color</code> attribute. This means that the label texts will inherit the red color. 
+              The <code class="c-note bc">data-color</code> also supports a maximum of two alternating colors. A sample format of this 
               is shown below:
             </div> <br>
             
             <div class="code">
                 <div class="flex">
-                    <div class="">
-                      <i class="bi-hash"></i>  sample: double colors
+                    <div class="code-x">
+                      <b><i class="bi-hash"></i>double colors</b>
+                      <span class="code-btn" rel="html">HTML</span>
+                      <span class="code-btn" rel="css">CSS</span>
+                      <span class="code-btn" rel="view"><i class="bi-window"></i></span>
                     </div>
                     <div class="">
                         <span class="copy-btn">Copy</span>

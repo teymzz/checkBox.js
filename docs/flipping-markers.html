@@ -44,7 +44,7 @@
             </div>
             
            <div class="">
-              Double markers can be flipped by setting the <code class="c-note">flip</code> global configuration option or the <code class="c-note">data-flip</code> 
+              Double markers can be easily flipped to switched by setting the <code class="c-note">flip</code> global configuration option or the <code class="c-note">data-flip</code> 
               local configuration attribute on the custom checkbox. This feature makes one marker hidden at a time while the other is visible. The value of this option is either <code class="c-bool">true</code> or <code class="c-bool">false</code>. The 
               <code class="c-bool">true</code> value means that only one marker will be displayed at a time. For example, the first marker will be displayed 
               when the checkbox is toggled off while the second marker will be displayed when the checkbox is toggled on. However, the <code class="c-bool">false</code> 
@@ -55,17 +55,20 @@
                   <div class="code">
                       <div class="flex">
                           <div class="">
-                             <i class="bi-hash"></i> Global Configuration Sample
+                             <i class="bi-hash"></i> Global 
+                             Configuration Sample
                           </div>
                           <div class="">
                               <span class="copy-btn">Copy</span>
                           </div>
                       </div>
-<pre>
+<pre class="active">
 <span class="tag">&lt;script&gt;</span>
+
 new <span class="func">CheckBox(</span>{
-    <span class="key">flip</span>: <span class="string">true</span> <span class="comment">// auto flip markers</span>
+    <span class="key">flip</span>: <span class="string">true</span> <span class="comment">// toggle double markers</span>
 }<span class="func">)</span>;
+
 <span class="tag">&lt;/script&gt;</span>    
 </pre>
                 </div>
@@ -85,7 +88,7 @@ new <span class="func">CheckBox(</span>{
                         <span class="copy-btn">Copy</span>
                     </div>
                 </div>
-<pre>
+<pre class="active">
 <span class="tag">&lt;div <span>checkbox="" data-flip="<span>true</span>"</span>&gt;</span>
   <span class="tag">&lt;div <span>marker=""</span>&gt;&lt;/div&gt;</span> 
   <span class="tag">&lt;div <span>marker=""</span>&gt;&lt;/div&gt;</span>
@@ -96,19 +99,28 @@ new <span class="func">CheckBox(</span>{
             </div> <br>           
             
             <div class="">
-              Let's add some css styles to the custom checkbox below:
+              The html response for the local configuration above is shown below
             </div> <br>
             
             <div class="code">
                 <div class="flex">
-                    <div class="">
-                        Custom css
-                    </div>
-                    <div class="">
-                        <span class="copy-btn">Copy</span>
+                    <div class="code-x">
+                        <span class="code-btn" rel="view"><i class="bi-eye"></i></span>
+                        <span class="code-btn" rel="css">CSS</span>
+                        <strong>HTML Response</strong>
                     </div>
                 </div>
-<pre class="">
+                
+                <div class="checkbox-field">
+                  <pre class="view active">
+                    <div checkbox data-flip="true"> 
+                      <div marker=""></div>
+                      <div marker=""></div>                      
+                    </div>
+                    <input type="checkbox" value="foo"> 
+                  </div>
+                </pre>
+<pre class="css">
 <span class="key">[checkbox]</span> <span class="braces">{</span>
     <span class="var">width</span>: fit-content;
     <span class="var">border-radius</span>: 5px;
@@ -128,32 +140,11 @@ new <span class="func">CheckBox(</span>{
 <span class="key">[checkbox][checked="checked"] > [marker]:nth-child(2) </span><span class="braces">{</span>
     <span class="var">background-color</span>: lime;
 <span class="braces">}</span>
-</pre>
-            </div> <br>            
-            
-            <div class="">
-              The html response is shown below
-            </div> <br>
-            
-            <div class="code">
-                <div class="flex">
-                    <div class="">
-                        HTML View (Toggle on checkbox)
-                    </div>
-                </div>
-                <div class="checkbox-field">
-                  <div>
-                    <div checkbox data-flip="true"> 
-                      <div marker=""></div>
-                      <div marker=""></div>                      
-                    </div>
-                    <input type="checkbox" value="foo"> 
-                  </div>
-                </div>
+</pre>                
             </div> <br>
             
             <div class="">
-              This integrated feature makes it easier to create a fast toggle effect without adding any extra css to achieve this.
+              This integrated feature makes it easier to create a fast toggle effect for double markers.
             </div> <br>
             
             <div class="nav-pane">

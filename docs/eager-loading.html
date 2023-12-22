@@ -24,20 +24,22 @@
               <code class="c-note">init</code> option or the <code class="c-note">data-init</code> 
               attribute. Also, we have learnt about the <code class="c-note">toggle</code> option or 
               <code class="c-note">data-func</code> attribute. We can easily combine these features to create a 
-              smart eager loading for the checkbox toggling. Assuming we have an html script below:
+              smart eager loading for the checkbox toggling. The sample below shows how to perform an eager loading
             </div> <br>
             
             <!-- checkbox -->
             <div class="code">
                 <div class="flex">
-                    <div class="">
-                        Custom CheckBox
+                    <div class="code-x">
+                        <span class="code-btn" rel="html">HTML</span>
+                        <span class="code-btn" rel="js">JS</span>
+                        <span class="code-btn" rel="view"><i class="bi-window"></i></span>
                     </div>
                     <div class="">
                         <span class="copy-btn">Copy</span>
                     </div>
                 </div>
-<pre>
+<pre class="html active">
 <span class="tag">&lt;div <span>checkbox=""</span>&gt;</span>
   <span class="tag">&lt;div <span>marker=""</span>&gt;&lt;/div&gt;</span> 
   <span class="tag">&lt;div <span>marker=""</span>&gt;&lt;/div&gt;</span>
@@ -45,33 +47,18 @@
 <span class="tag">&lt;input <span>type="<span>checkbox</span>" value="<span>foo</span>"</span>&gt; &lt;br&gt;</span> 
 <span class="tag">&lt;div <span>class="<span>response</span>"</span>&gt;&lt;/div&gt;</span>
 </pre>
-            </div> <br>           
-            
-            <div class="">
-              We can setup an eager-loading toggle function as shown below :
-            </div> <br>           
-            
-            <div class="">
-                  <div class="code">
-                      <div class="flex">
-                          <div class="">
-                             sample: toggle
-                          </div>
-                          <div class="">
-                              <span class="copy-btn">Copy</span>
-                          </div>
-                      </div>
-<pre>
+<pre class="js">
 <span class="tag">&lt;script&gt;</span>
 new <span class="func">CheckBox(</span>{
     <span class="key">init</span>: <span class="func">function(</span><span class="arg">checkbox</span><span class="func">)</span> {
         
         let <span class="var">value</span> = <span class="arg">checkbox</span>.value;
+        let <span class="var">textField</span> = document.<span class="func">querySelector(<span class="string">".response"</span>)</span>;
 
         if( <span class="arg">checkbox</span>.checked ) {
-            console.<span class="func">log(`</span><span class="string">checkbox <span class="braces">${</span><span class="var">value</span><span class="braces">}</span> is: checked</span><span class="func">`)</span>
+            <span class="var">textField</span>.<span class="func">innerHTML = </span>`<span class="string">checkbox <span class="braces">${</span><span class="var">value</span><span class="braces">}</span> is: checked</span><span class="func"></span>`
         } else {
-            console.<span class="func">log(`</span><span class="string">checkbox <span class="braces">${</span><span class="var">value</span><span class="braces">}</span> is: unchecked</span><span class="func">`)</span>
+            <span class="var">textField</span>.<span class="func">innerHTML = </span>`<span class="string">checkbox <span class="braces">${</span><span class="var">value</span><span class="braces">}</span> is: unchecked</span><span class="func"></span>`
         }
 
     },
@@ -83,22 +70,8 @@ new <span class="func">CheckBox(</span>{
 }<span class="func">)</span>;
 <span class="tag">&lt;/script&gt;</span>    
 </pre>
-                </div>
-            </div> <br>         
-            
-            <div class="">
-              From the above, we can see that the <code class="c-attr">checkbox</code> argument supplied into the <code class="c-bool">toggle()</code> callback option has access to the <code class="c-bool">init()</code> 
-              callback. This makes it easier to run the <code class="c-bool">init()</code> within the <code class="c-bool">toggle()</code> function rather than redefining it. This 
-              means that <code class="c-bool">init()</code> function will first run when the page loads and it will continue to run when the checkbox is toggled. The sample html response is shown below:
-            </div> <br>
-            
-            <div class="code">
-                <div class="flex">
-                    <div class="">
-                        HTML View (Toggle on checkbox)
-                    </div>
-                </div>
-                <div class="checkbox-field">
+<pre class="view">
+                 <div class="checkbox-field flex mid-v">
                   <div>
                     <div checkers data-size="20px"> 
                       <div marker="" style="background-color:white"></div>
@@ -109,7 +82,16 @@ new <span class="func">CheckBox(</span>{
                   <div class="">
                     &nbsp; <span class="response"></span>
                   </div>
-                </div>
+                </div> 
+</pre>
+            </div> <br>           
+                     
+            
+            <div class="">
+              From the javascript above, we can see that the <code class="c-attr">checkbox</code> argument supplied into the <code class="c-bool">toggle()</code> callback option has access to the <code class="c-bool">init()</code> 
+              callback. This makes it easier to run the <code class="c-bool">init()</code> within the <code class="c-bool">toggle()</code> function rather than redefining it. This 
+              means that <code class="c-bool">init()</code> function will first run when the page loads and it will continue to run when the checkbox is toggled. This is also why the message in the display screen is showing earlier 
+              before the checkbox is being toggled.
             </div> <br>
             
             <div class="" style="padding:10px 5px">
@@ -120,7 +102,7 @@ new <span class="func">CheckBox(</span>{
               <a href="../docs/fitting-images.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:right; text-decoration: none">
                 <i class="bi-arrow-right-circle"></i> fitting images
               </a> 
-            </div><br><br>
+            </div><br><br><br>
 
         </section>
         

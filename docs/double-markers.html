@@ -11,6 +11,7 @@
         <style>
           [checkbox] {
               width: fit-content;
+              display: inline-flex;
               border-radius: 5px;
               border: solid;
               padding: 4px;
@@ -20,9 +21,16 @@
               width: 20px;
               height: 20px;
           }
+
+          [checkbox][checked="checked"] > [marker]:nth-child(1) {
+              opacity: .1;
+          }
+          [checkbox]:not([checked="checked"]) > [marker]:nth-child(2) {
+              opacity: .1;
+          }
           
           [checkbox] > [marker]:nth-child(1) {
-              background-color: white;
+              background-color: red;
           }
           
           [checkbox] [marker]:nth-child(2) {
@@ -47,38 +55,22 @@
             <!-- checkbox -->
             <div class="code">
                 <div class="flex">
-                    <div class="">
-                        CheckBox (Double markers)
+                    <div class="code-x">
+                        <span class="code-btn" rel="html">HTML</span>
+                        <span class="code-btn" rel="css">CSS</span>
                     </div>
                     <div class="">
                         <span class="copy-btn">Copy</span>
                     </div>
                 </div>
-<pre>
+<pre class="html active">
 <span class="tag">&lt;div <span>checkbox</span>&gt;</span>
   <span class="tag">&lt;div <span>marker=""</span>&gt;&lt;/div&gt;</span> <span class="comment">&lt;!-- @unchecked --&gt;</span>
   <span class="tag">&lt;div <span>marker=""</span>&gt;&lt;/div&gt;</span> <span class="comment">&lt;!-- @checked --&gt;</span>
 <span class="tag">&lt;/div&gt;</span>
 <span class="tag">&lt;input <span>type="<span>checkbox</span>"</span>&gt;</span>
 </pre>
-            </div> <br>
-            
-            <div class="">
-              From the structure above, the plugin automatically detects that we have double markers and creates a toggle effect for each marker. 
-              The first marker will be displayed when the checkbox is unchecked while the second marker will be displayed when the checkbox is checked. 
-              Using css, we can also set the sizes for each marker or redesign the custom checkbox itself.
-            </div> <br>
-            
-            <div class="code">
-                <div class="flex">
-                    <div class="">
-                        Custom css
-                    </div>
-                    <div class="">
-                        <span class="copy-btn">Copy</span>
-                    </div>
-                </div>
-<pre class="">
+<pre class="css">
 <span class="key">[checkbox]</span> <span class="braces">{</span>
     <span class="var">width</span>: fit-content;
     <span class="var">border-radius</span>: 5px;
@@ -91,6 +83,14 @@
     <span class="var">height</span>: 20px;
 <span class="braces">}</span>
 
+<span class="key">[checkbox][checked="checked"] > [marker]:nth-child(1)</span> <span class="braces">{</span>
+    <span class="var">opacity</span>: .1;
+<span class="braces">}</span>
+
+<span class="key">[checkbox]:not([checked="checked"]) > [marker]:nth-child(2)</span> <span class="braces">{</span>
+    <span class="var">opacity</span>: .1;
+<span class="braces">}</span>
+
 <span class="key">[checkbox] > [marker]:nth-child(1) </span> <span class="braces">{</span>
     <span class="var">background-color</span>: white;
 <span class="braces">}</span>
@@ -99,7 +99,13 @@
     <span class="var">background-color</span>: lime;
 <span class="braces">}</span>
 </pre>
-            </div> <br>  
+            </div> <br>
+            
+            <div class="">
+              From the structure above, the plugin automatically detects that we have double markers and creates a toggle effect for each marker. 
+              The first marker will be displayed when the checkbox is unchecked while the second marker will be displayed when the checkbox is checked. 
+              Using css, we can also set the sizes for each marker or redesign the custom checkbox itself.
+            </div> <br>
 
             <div class="code">
                 <div class="flex">
@@ -108,7 +114,7 @@
                     </div>
                 </div>
                 <div class="" style="padding:10px">
-<div checkbox>
+<div checkbox data-flip="false">
   <div marker=""></div>
   <div marker=""></div>
 </div>

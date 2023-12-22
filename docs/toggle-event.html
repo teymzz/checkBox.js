@@ -20,20 +20,23 @@
             
             <div class="">
               Toggle events are events that are expected to run when the checkbox is toggled. 
-              Assuming we have a checkbox as shown below:
+              This can be achieved either by global configuration or local configuration using attribute.
+              The sample below shows how we can define a toggle event globally :
             </div> <br>
             
             <!-- checkbox -->
             <div class="code">
                 <div class="flex">
-                    <div class="">
-                        Custom CheckBox
+                    <div class="code-x">
+                        <span class="code-btn" rel="html">HTML</span>
+                        <span class="code-btn" rel="js">JS (Global)</span>
+                        <span class="code-btn" rel="view"><i class="bi-window"></i></span>
                     </div>
                     <div class="">
                         <span class="copy-btn">Copy</span>
                     </div>
                 </div>
-<pre>
+<pre class="html">
 <span class="tag">&lt;div <span>checkbox=""</span>&gt;</span>
   <span class="tag">&lt;div <span>marker="" style="<span>background-color:white</span>"</span>&gt;&lt;/div&gt;</span> 
   <span class="tag">&lt;div <span>marker="" style="<span>background-color:lime</span>"</span>&gt;&lt;/div&gt;</span>
@@ -41,22 +44,7 @@
 <span class="tag">&lt;input <span>type="<span>checkbox</span>"</span>&gt; &lt;br&gt;</span> 
 <span class="tag">&lt;div <span>class="<span>response</span>"</span>&gt;&lt;/div&gt;</span>
 </pre>
-            </div> <br>           
-            
-            <div class="">
-              We can setup a global toggle callback function as shown below
-            </div> <br>           
-            
-            <div class="code">
-                <div class="flex">
-                    <div class="">
-                        <i class="bi-hash"></i> Global Toggle Callback Function
-                    </div>
-                    <div class="">
-                        <span class="copy-btn">Copy</span>
-                    </div>
-                </div>
-<pre>
+<pre class="active js">
 <span class="var">let</span> checkbox = <span class="var">new</span> <span class="func">CheckBox(<span class="bool">true</span>)</span>;
 
 checkbox.<span class="func">check({</span>
@@ -71,33 +59,24 @@ checkbox.<span class="func">check({</span>
   
 })</span>;
 </pre>
-            </div> <br>          
+<pre class="view">
+  <div class="checkbox-field" style="display: flex; gap: .2em; align-items: center">
+    <div>
+      <div checkers data-size="20px"> 
+        <div marker="" style="background-color:white"></div>
+        <div marker="" style="background-color:lime"></div>
+      </div>
+      <input type="checkbox" value="foo"> 
+    </div>
+    <div class="">
+     <span class="response"></span>
+    </div>
+  </div>
+</pre>
+            </div> <br>           
             
             <div class="">
-              From the sample above, the <code class="c-note">toggle</code> function will run when the custom checkbox is toggled.
-            </div> <br>
-            
-            <div class="code">
-                <div class="flex">
-                    <div class="">
-                        HTML View (Toggle on checkbox)
-                    </div>
-                </div>
-                <div class="checkbox-field">
-                  <div>
-                    <div checkers data-size="20px"> 
-                      <div marker="" style="background-color:white"></div>
-                      <div marker="" style="background-color:lime"></div>
-                    </div>
-                    <input type="checkbox" value="foo"> 
-                  </div>
-                  <div class="">
-                    &nbsp; <span class="response"></span>
-                  </div>
-                </div>
-            </div> <br>
-            
-            <div class="">
+              From the sample above, the <code class="c-note">toggle</code> function will run when the custom checkbox is toggled. 
               Alternatively, we can set up a local custom callback function using the <code class="c-note">data-func</code> attribute. 
               A sample format is shown below:
             </div> <br>
@@ -105,14 +84,15 @@ checkbox.<span class="func">check({</span>
             <!-- checkbox -->
             <div class="code">
                 <div class="flex">
-                    <div class="">
-                      <i class="bi-hash"></i>  Local Toggle Callback Function
+                    <div class="code-x">
+                      <span class="code-btn" rel="html">HTML (Local)</span>
+                      <span class="code-btn" rel="js">JS (callback)</span>
                     </div>
                     <div class="">
                         <span class="copy-btn">Copy</span>
                     </div>
                 </div>
-<pre>
+<pre class="html active">
 <span class="tag">&lt;div <span>checkbox="" data-func="<span>ontoggle</span>"</span>&gt;</span>
   <span class="tag">&lt;div <span>marker=""  style="<span>background-color:white</span>"</span>&gt;&lt;/div&gt;</span> 
   <span class="tag">&lt;div <span>marker=""  style="<span>background-color:lime</span>"</span>&gt;&lt;/div&gt;</span>
@@ -120,24 +100,7 @@ checkbox.<span class="func">check({</span>
 <span class="tag">&lt;input <span>type="<span>checkbox</span>"</span>&gt; &lt;br&gt;</span> 
 <span class="tag">&lt;div <span>class="<span>response</span>"</span>&gt;&lt;/div&gt;</span>
 </pre>
-            </div> <br>        
-            
-            <div class="">
-              From the sample html structure above, the <code class="c-note">data-func</code> attribute was used to define a 
-              local toggle callback function. Now, we can add the defined callback function in a similar format as shown below:
-            </div> <br>
-
-            
-            <div class="code">
-              <div class="flex">
-                  <div class="">
-                      <i class="bi-hash"></i> Custom Toggle Function
-                  </div>
-                  <div class="">
-                      <span class="copy-btn">Copy</span>
-                  </div>
-              </div>
-<pre>
+<pre class="js">
 <span class="var">function</span> <span class="func">ontoggle(<span class="key">checkbox</span>){</span>
  
    <span class="var">let</span> responseField =  <span class="val">document</span>.<span class="func">querySelector(<span class="string">'.response'</span>)</span>;
@@ -146,7 +109,12 @@ checkbox.<span class="func">check({</span>
  
 <span class="func">}</span>
 </pre>
-          </div> <br>               
+            </div> <br>        
+            
+            <div class="">
+              From the sample html structure above, the <code class="c-note">data-func</code> attribute was used to specify a 
+              local callback function that will be called when the checkbox is toggled.
+            </div> <br>
             
             <div class="nav-pane">
               <a href="../docs/init-event.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:left; text-decoration: none">
@@ -156,7 +124,7 @@ checkbox.<span class="func">check({</span>
               <a href="../docs/eager-loading.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:right; text-decoration: none">
                 <i class="bi-arrow-right-circle"></i> eager loading 
               </a> 
-            </div><br><br>
+            </div><br><br><br>
 
         </section>
         
@@ -173,7 +141,7 @@ checkbox.<span class="func">check({</span>
               
                let responseField = document.querySelector('.response');
   
-               responseField.innerHTML = 'checked: '+checkbox.checked;
+               responseField.innerHTML = 'checked : '+checkbox.checked;
              
             }
             

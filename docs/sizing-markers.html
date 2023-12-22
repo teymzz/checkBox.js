@@ -19,20 +19,23 @@
             </div>
             
             <div class="">
-              We have already seen how we can style markers using css. We can also achieve a similar sizing effect when we initialize the plugin. 
+              We have already seen how we can style markers using css in previous samples. 
+              We can also achieve a similar sizing effect when we initialize the plugin. 
               This is shown below:
             </div> <br>
             
             <div class="code">
                 <div class="flex">
-                    <div class="">
-                        Script
+                    <div class="code-x">
+                        <span class="code-btn" rel="js1">JS#1</span>
+                        <span class="code-btn" rel="js2">JS#2</span>
+                        <span class="code-btn" rel="js3">JS#3</span>
                     </div>
                     <div class="">
                         <span class="copy-btn">Copy</span>
                     </div>
                 </div>
-<pre>
+<pre class="js1 active">
 <span class="var">let</span> checkbox = <span class="var">new</span> <span class="func">CheckBox(<span class="bool">true</span>)</span>;
 
 checkbox.<span class="func">check({
@@ -41,23 +44,7 @@ checkbox.<span class="func">check({
 
 })</span>;
 </pre>
-            </div> <br>          
-            
-            <div class="">
-              The string value above will set the size for both width and height of markers, if they exist. However, we may need to specify 
-              a different width and height, this can be done as shown below:
-            </div> <br>
-            
-            <div class="code">
-                <div class="flex">
-                    <div class="">
-                        Script
-                    </div>
-                    <div class="">
-                        <span class="copy-btn">Copy</span>
-                    </div>
-                </div>
-<pre>
+<pre class="js2">
 <span class="var">let</span> checkbox = <span class="var">new</span> <span class="func">CheckBox(<span class="bool">true</span>)</span>;
 
 checkbox.<span class="func">check({
@@ -69,23 +56,7 @@ checkbox.<span class="func">check({
   
 })</span>;
 </pre>
-            </div> <br>  
-            
-            <div class="">
-              The sample above will set both the width and height of all selected markers on the web page. 
-              We can do this similarly by using an x and y axis to specify the width and height of the markers respectively.
-            </div> <br>   
-
-            <div class="code">
-                <div class="flex">
-                    <div class="">
-                        Script
-                    </div>
-                    <div class="">
-                        <span class="copy-btn">Copy</span>
-                    </div>
-                </div>
-<pre>
+<pre class="js3">
 <span class="var">let</span> checkbox = <span class="var">new</span> <span class="func">CheckBox(<span class="bool">true</span>)</span>;
 
 checkbox.<span class="func">check({
@@ -97,25 +68,25 @@ checkbox.<span class="func">check({
   
 })</span>;
 </pre>
-            </div> <br>  
+            </div> <br>          
             
             <div class="">
-              Any of the structure sample above is accepted by the checkbox plugin. This configuration 
-              will affect only relatively selected markers on the webpage. We can however apply a much better 
-              approach using the html attributes supported for setting sizes just as shown below:
+              The sample scripts above shows various ways through which the width and height of checkbox markers can be defined 
+              by default when initializing the checkboxes. These defaults can be also overridden through the use of the 
+              <code class="bc c-note">data-size</code> html attribute as shown below :
             </div> <br>
             
             <!-- checkbox -->
             <div class="code">
                 <div class="flex">
-                    <div class="">
-                        CheckBox (Sizing)
+                    <div class="code-x">
+                        <span>HTML</span>
                     </div>
                     <div class="">
                         <span class="copy-btn">Copy</span>
                     </div>
                 </div>
-<pre>
+<pre class="active">
 <span class="tag">&lt;div <span>checkbox="" data-size="<span>10px|30px</span>"</span>&gt;</span>
   <span class="tag">&lt;div <span>marker=""</span>&gt;&lt;/div&gt;</span>
   <span class="tag">&lt;div <span>marker=""</span>&gt;&lt;/div&gt;</span> 

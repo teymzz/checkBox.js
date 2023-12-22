@@ -63,14 +63,17 @@
             <!-- checkbox G -->
             <div class="code">
                 <div class="flex">
-                    <div class="">
-                        Sample Label Structure
+                    <div class="code-x">
+                        <b>Sample Label</b>
+                        <span class="code-btn" rel="html">HTML</span>
+                        <span class="code-btn" rel="css">CSS</span>
+                        <span class="code-btn" rel="view"><i class="bi-window"></i></span>
                     </div>
                     <div class="">
                         <span class="copy-btn">Copy</span>
                     </div>
                 </div>
-<pre>
+<pre class="html">
  <span class="tag">&lt;div <span>class="<span>checkbox-wrapper</span>"</span>&gt;</span>
     <span class="tag">&lt;div <span>checker data-label="<span>Show|Hide</span>" data-flip="<span>true</span>"</span>&gt;</span>
         <span class="tag">&lt;div <span>marker style="<span>background-color: transparent;</span>"</span>&gt;&lt;/div&gt;</span>
@@ -80,28 +83,7 @@
     <span class="tag">&lt;label <span>data-access="<span>label</span>"</span>&gt;</span>Show<span class="tag">&lt;/label&gt;</span>
  <span class="tag">&lt;/div&gt;</span>  
 </pre>
-            </div> <br>
-
-            <div class="">
-                From the sample structure above, we can see that the checkbox element has an attribute of <code class="c-note">data-label</code> 
-                which contains two values "<code class="c-var">Show</code>" and "<code class="c-var">Hide</code>". Also, the label text field 
-                where the text will be added is identified with the attribute of <code class="c-bool">data-access</code> and it immediately follows the 
-                native input checkbox element. Whenever the checkbox is unchecked,  the "<code class="c-var">Show</code>" text will be added to the specified 
-                label field and the first marker will be displayed. However, if the checkbox is checked, the second marker will be displayed while the returned 
-                text will be "<code class="c-var">Hide</code>". In order to see the effect of this, let's add some css styling to the checkbox wrapper element
-            </div> <br>
-
-            
-            <div class="code">
-                <div class="flex">
-                    <div class="">
-                        Custom css
-                    </div>
-                    <div class="">
-                        <span class="copy-btn">Copy</span>
-                    </div>
-                </div>
-<pre class=""><span class="key">[checkers]</span> <span class="braces">{</span>
+<pre class="css"><span class="key">[checkers]</span> <span class="braces">{</span>
     <span class="var">width</span>: fit-content;
     <span class="var">border</span>: solid 2px #514e68; 
     <span class="var">border-radius</span>: 100vh;
@@ -129,18 +111,7 @@
     
 <span class="braces">}</span>
 </pre>
-            </div> <br> 
-
-            <div class="">
-                The sample html response will be similar to the response below:
-            </div> <br>
-            
-            <div class="code">
-                <div class="flex">
-                    <div class="">
-                        HTML View (Toggle on checkbox)
-                    </div>
-                </div>
+<pre class="active view">
                 <div class="checkbox-field" >
                   <div style="display: flex; gap: .5em; align-items: center; width: 100%;">
                     <div checkers data-size="20px" data-label="Show|Hide" data-flip="true"> 
@@ -151,10 +122,20 @@
                     <label data-access="label"></label> 
                   </div>
                 </div>
-            </div> <br> 
+</pre>
+            </div> <br>
+
+            <div class="">
+                From the sample structure above, we can see that the checkbox element has an attribute of <code class="c-note">data-label</code> 
+                which contains two values "<code class="c-var">Show</code>" and "<code class="c-var">Hide</code>". Also, the label text field 
+                where the text will be added is identified with the attribute of <code class="c-bool">data-access</code> and it immediately follows the 
+                native input checkbox element. Whenever the checkbox is unchecked,  the "<code class="c-var">Show</code>" text will be added to the specified 
+                label field and the first marker will be displayed. However, if the checkbox is checked, the second marker will be displayed while the returned 
+                text will be "<code class="c-var">Hide</code>".   
+            </div> <br>
             
             <div class="">
-                Alternatively, we can also apply the label outside the direct parent of the custom checkbox element. 
+                Alternatively, we can shift the label outside the direct parent of the custom checkbox element. 
                 However, in this situation, the direct parent must have an attribute <code class="c-note">data-role</code> 
                 with the value of "<code class="c-var">checkbox</code>". A sample of this is shown below:
             </div> <br>
@@ -162,14 +143,17 @@
             <!-- checkbox N -->
             <div class="code">
                 <div class="flex">
-                    <div class="">
-                        Alternative Labelling
+                    <div class="code-x">
+                        <b>
+                          Alternative Labelling
+                        </b>
+                        <span>HTML</span>
                     </div>
                     <div class="">
                         <span class="copy-btn">Copy</span>
                     </div>
                 </div>
-<pre>
+<pre class="active">
 <span class="tag">&lt;div <span>class="<span>checkers box</span>"</span>&gt;</span>
   <span class="tag">&lt;div&gt;</span>
     <span class="tag">&lt;div <span>class="<span>checkbox-wrapper</span>" data-role="<span>checkbox</span>"</span>&gt;</span>
@@ -200,7 +184,7 @@
               <a href="../docs/adding-colors.html" class="nav-btn-rt">
                 <i class="bi-arrow-right-circle"></i> adding colors 
               </a> 
-            </div><br><br>
+            </div><br><br><br>
 
         </section>
         
