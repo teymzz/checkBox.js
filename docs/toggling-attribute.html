@@ -17,14 +17,20 @@
         }
         ul {
           padding: 10px;
-          background-color: #515e73;
+          background-color: #222d3f;
         }
         
         ul li{
           border-radius: 5px;
           list-style: none;
-          background-color: #3e5167;
+          background-color: #434f5d;
           padding: 10px;
+        }
+        
+        ul li > code:first-child{
+          border-radius: 2px;
+          background-color: #343c47;
+          padding: 4px 10px;
         }
         
         ul li a {
@@ -32,7 +38,13 @@
           text-decoration :  none;
           border-radius : 10px;
           border: dotted 2px;
+          color: #fff;
         }
+
+        
+        ul li a:visited {
+          color: #b5b5b5;
+        }        
     </style>
   </head>
   <body>
@@ -102,7 +114,7 @@
         <ul>
           <li>
             <code class="bc c-note">checked</code> 
-            This option toggles the source value into the destination attribute on the custom checkbox when the checkbox is <i class="c-var">checked</i> and toggles it out when <i class="c-bool">unchecked</i>. This option is also set as the default option if not specified.
+            This option is the default option that specifies that the source value should be toggled into the destination attribute on the custom checkbox when the checkbox is <i class="c-var">checked</i> and toggles it out when <i class="c-bool">unchecked</i>. 
             <div class="link-pane">
               <a href="../docs/toggle-attribute-checked.html"><span>view sample</span></a>
             </div>

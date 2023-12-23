@@ -53,7 +53,7 @@ checkbox.<span class="func">check({</span>
    
      <span class="var">let</span> responseField =  <span class="val">document</span>.<span class="func">querySelector(<span class="string">'.response'</span>)</span>;
      
-     <span class="">responseField</span>.<span class="val">innerHTML</span> = <span class="string">'checked: '</span>+<span class="key">checkbox</span>.checked;
+     <span class="">responseField</span>.<span class="val">innerHTML</span> = <span class="string">'checked : '</span>+<span class="key">checkbox</span>.checked;
    
   <span class="func">}</span>
   
@@ -69,7 +69,7 @@ checkbox.<span class="func">check({</span>
       <input type="checkbox" value="foo"> 
     </div>
     <div class="">
-     <span class="response"></span>
+     <span class="response">&nbsp;</span>
     </div>
   </div>
 </pre>
@@ -77,7 +77,7 @@ checkbox.<span class="func">check({</span>
             
             <div class="">
               From the sample above, the <code class="c-note">toggle</code> function will run when the custom checkbox is toggled. 
-              Alternatively, we can set up a local custom callback function using the <code class="c-note">data-func</code> attribute. 
+              Alternatively, we can set up a local custom callback function using the <code class="bc c-note">data-func</code> attribute. 
               A sample format is shown below:
             </div> <br>
 
@@ -105,15 +105,16 @@ checkbox.<span class="func">check({</span>
  
    <span class="var">let</span> responseField =  <span class="val">document</span>.<span class="func">querySelector(<span class="string">'.response'</span>)</span>;
    
-   <span class="">responseField</span>.<span class="val">innerHTML</span> = <span class="string">'checked: '</span>+<span class="key">checkbox</span>.checked;
+   <span class="">responseField</span>.<span class="val">innerHTML</span> = <span class="string">'checked : '</span> + <span class="key">checkbox</span>.checked;
  
 <span class="func">}</span>
 </pre>
             </div> <br>        
             
             <div class="">
-              From the sample html structure above, the <code class="c-note">data-func</code> attribute was used to specify a 
-              local callback function that will be called when the checkbox is toggled.
+              From the sample html structure above, the <code class="bc c-note">data-func</code> attribute was used to specify a 
+              local callback function that will be called when the checkbox is toggled. This will also overide any global toggle 
+              function predefined.
             </div> <br>
             
             <div class="nav-pane">

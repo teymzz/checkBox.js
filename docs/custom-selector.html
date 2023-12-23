@@ -20,44 +20,30 @@
             
             <div class="">
               By default, the custom checkbox is identified through the <code class="c-note">“checkbox”</code> attribute. 
-              We can easily change this selector by declaring a custom one. Assuming we have an
-              html structure like below:
+              We can easily change this selector by declaring a custom one. An example of this is shown below:
             </div> <br>
             
             <!-- checkbox -->
             <div class="code">
                 <div class="flex">
-                    <div class="">
-                        Custom CheckBox
+                    <div class="code-x">
+                      <span class="code-btn" rel="html">HTML</span>
+                      <span class="code-btn" rel="js">JS</span>
+                      <span class="code-btn" rel="css">CSS</span>
+                      <span class="code-btn" rel="view"><i class="bi-window"></i></span>
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                      <span class="copy-btn">Copy</span>                      
                     </div>
                 </div>
-<pre class="active">
+<pre class="html active">
 <span class="tag">&lt;div <span>checkers=""</span>&gt;</span>
   <span class="tag">&lt;div <span>marker=""</span>&gt;&lt;/div&gt;</span> 
   <span class="tag">&lt;div <span>marker=""</span>&gt;&lt;/div&gt;</span>
 <span class="tag">&lt;/div&gt;</span>
 <span class="tag">&lt;input <span>type="<span>checkbox</span>"</span>&gt;</span>
 </pre>
-            </div> <br>           
-            
-            <div class="">
-              We can easily overide the default <code class="c-note">checkbox</code> custom box selector for the new <code class="c-note">checkers</code> attribute selector 
-              defined above using the format below.
-            </div> <br>           
-            
-            <div class="code">
-                <div class="flex">
-                    <div class="">
-                        Script
-                    </div>
-                    <div class="">
-                        <span class="copy-btn">Copy</span>
-                    </div>
-                </div>
-<pre class="active">
+<pre class="js">
 <span class="var">let</span> checkbox = <span class="var">new</span> <span class="func">CheckBox(<span class="bool">true</span>)</span>;
 
 checkbox.<span class="func">check({
@@ -66,12 +52,12 @@ checkbox.<span class="func">check({
 
 })</span>;
 </pre>
-            </div> <br>          
+            </div> <br>           
             
             <div class="">
-              From the sample above, the <code class="c-note">[checkers]</code> attribute will overide the default selector. 
-              This can be good for localizing checkbox selection if necessary.
-            </div> <br>
+              From the javascript code sample above, the <code class="c-note">[checkers]</code> selector was used to select the target html checkbox which will overide the 
+              default <code class="c-note">[checkbox]</code> selector. This can be good for localizing checkbox selection and also avoiding conflicts if necessary.
+            </div> <br>    
             
             <div class="" style="padding:10px 5px">
               <a href="../docs/sizing-markers.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:left; text-decoration: none">

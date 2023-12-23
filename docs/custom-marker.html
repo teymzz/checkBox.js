@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
         <link darel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
         <link rel="stylesheet" type="text/css" href="../src/css/all.css">
-        <script src="../checkBox.js"></script>       
+        <script src="../checkBox.js"></script>
     </head>
     
     <body>
@@ -20,50 +20,31 @@
             
             <div class="">
               By default, the custom checkbox marker is selected through the “<code class="bc c-note">[marker]</code>” attribute selector. 
-              We can easily overide this selector by declaring a new custom selector. Assuming we have an
-              html structure like below:
+              We can easily overide this selector by declaring a new custom selector. An example of this is shown below
             </div> <br>
             
             <!-- checkbox -->
             <div class="code">
                 <div class="flex">
                     <div class="code-x">
-                        <span>HTML</span>
-                        <b>
-                          Custom Markers
-                        </b>
+                        <b>Custom Markers</b>
+                        <span class="code-btn" rel="html">HTML</span>
+                        <span class="code-btn" rel="js">JS</span>
+                        <span class="code-btn" rel="css">CSS</span>
+                        <span class="code-btn" rel="view"><i class="bi-window"></i></span>
                     </div>
                     <div class="">
                         <span class="copy-btn">Copy</span>
                     </div>
                 </div>
-<pre class="active">
+<pre class="html active">
 <span class="tag">&lt;div <span>checkbox=""</span>&gt;</span>
-  <span class="tag">&lt;div <span>btn=""</span>&gt;&lt;/div&gt;</span> 
-  <span class="tag">&lt;div <span>btn=""</span>&gt;&lt;/div&gt;</span>
+  <span class="tag">&lt;div <span>btn="" style="<span>background-color: white;</span>"</span>&gt;&lt;/div&gt;</span> 
+  <span class="tag">&lt;div <span>btn="" style="<span>background-color: lime;</span>"</span>&gt;&lt;/div&gt;</span>
 <span class="tag">&lt;/div&gt;</span>
 <span class="tag">&lt;input <span>type="<span>checkbox</span>"</span>&gt;</span>
 </pre>
-            </div> <br>           
-            
-            <div class="">
-              We can easily overide the default <code class="c-note">[marker]</code> selector for a new <code class="c-note">[btn]</code> attribute selector 
-              using the format below :
-            </div> <br>           
-            
-            <div class="code">
-                <div class="flex">
-                    <div class="code-x">
-                        <span>JS</span>
-                        <b>
-                          Custom Marker Selection
-                        </b>
-                    </div>
-                    <div class="">
-                        <span class="copy-btn">Copy</span>
-                    </div>
-                </div>
-<pre class="active">
+<pre class="js">
 <span class="var">let</span> checkbox = <span class="var">new</span> <span class="func">CheckBox(<span class="bool">true</span>)</span>;
 
 checkbox.<span class="func">check({
@@ -72,12 +53,41 @@ checkbox.<span class="func">check({
 
 })</span>;
 </pre>
-            </div> <br>          
+<pre class="css">
+<span class="key">[checkbox]</span> <span class="braces">{</span>
+  <span class="var">width</span>: 20px;
+  <span class="var">height</span>: 20px;
+<span class="braces">}</span>
+
+<span class="key">[checkbox] > [btn]</span> <span class="braces">{</span>
+  <span class="var">width</span>: 100%;
+  <span class="var">height</span>: 100%;
+<span class="braces">}</span>
+
+<span class="key">[checkbox] > [btn]:nth-child(1)</span> <span class="braces">{</span>
+  <span class="var">background-color</span>: white;
+<span class="braces">}</span>
+
+<span class="key">[checkbox] > [btn]:nth-child(2)</span> <span class="braces">{</span>
+  <span class="var">background-color</span>: lime;
+<span class="braces">}</span>
+</pre>
+<pre class="view">
+  <div class="checkbox-field">
+    <div checkers="" data-size="20px" data-flip="true">
+      <div btn="" style="background-color: white;"></div> 
+      <div btn="" style="background-color: lime;"></div>
+    </div>
+    <input type="checkbox">    
+  </div>
+</pre>
+            </div> <br>           
             
             <div class="">
-              From the sample above, the <code class="c-note">[btn]</code> attribute will overide the default marker selector. 
-            </div> <br>
-            
+              From the sample above, in the javascript section, the markers were specified using the <code class="c-note bc">[btn]</code> 
+              selector. This will overide the default <code class="c-note bc">[marker]</code> selector.
+            </div> <br>     
+
             <div class="nav-pane">
               <a href="../docs/custom-selector.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:left; text-decoration: none">
                 <i class="bi-arrow-left-circle"></i> 
@@ -87,11 +97,15 @@ checkbox.<span class="func">check({
                 <i class="bi-arrow-right-circle"></i> init event
               </a> 
             </div><br><br><br>
-            
 
         </section>
 
         <script src="../src/js/docs.js"></script>
-        
+        <script>
+          new CheckBox({
+            target:'[checkers]',
+            marker: '[btn]'
+          })
+        </script>
     </body>
 </html>

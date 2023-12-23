@@ -122,10 +122,38 @@ function pass(checker){
   });
   
   // ........code split
+  let activeScreens = document.querySelectorAll('.code pre.active');
+
+  activeScreens.forEach(activeScreen => {
+    //get parent 
+    let parent = activeScreen.closest('.code');
+    let isHTML = activeScreen.classList.contains('html')
+    let isCSS = activeScreen.classList.contains('css')
+    let isJS = activeScreen.classList.contains('js')
+    let isView = activeScreen.classList.contains('view')
+
+    if(parent){
+        if(isHTML) {
+            parent.querySelector(`.code-btn[rel="html"]`).classList.add('active')
+        }else if(isCSS){
+            parent.querySelector(`.code-btn[rel="css"]`).classList.add('active')
+        }else if(isJS) {
+            parent.querySelector(`.code-btn[rel="js"]`).classList.add('active')
+        }else if(isView){
+            parent.querySelector(`.code-btn[rel="view"]`).classList.add('active')
+        }
+    }
+
+  });
+
   let codeBtns = document.querySelectorAll('.code-btn');
           
   codeBtns.forEach(codeBtn => {
     codeBtn.addEventListener('click', function(){
+      codeBtns.forEach(btn => {
+        btn.classList.remove('active');
+      })
+      codeBtn.classList.add('active');
       let rel = this.getAttribute('rel');
       let parent = this.closest(".code");
       let pres = parent.querySelectorAll('pre,.pre');

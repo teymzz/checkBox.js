@@ -14,14 +14,27 @@ body {
 
 .code-x {
   display : flex;
-  align-items: center;
+  align-items: stretch;
   gap: .5em;
 }
 
 .code-x > span {
   padding: 2px 6px;
+  border-radius:5px;
+  background-color: #1d1f28;
+  display: flex;
+  align-items: center;
+}
+
+.code-x > span .bi-window{
+  display: flex;
+  align-items: center;
+}
+
+.code-btn.active{
   background-color: #4c5768;
 }
+
 
 .code pre {
   display : none;
@@ -32,7 +45,6 @@ body {
 .code pre.view {
   white-space : normal;
 }
-
 .checkbox-field{
   padding : 10px;
 }

@@ -54,15 +54,26 @@
             <div class="">
                   <div class="code">
                       <div class="flex">
-                          <div class="">
-                             <i class="bi-hash"></i> Global 
-                             Configuration Sample
+                          <div class="code-x">
+                            <strong><i class="bi-hash"></i> Global Configuration</strong>
+                            <span class="code-btn" rel="html">HTML</span>
+                            <span class="code-btn" rel="js">JS(Global)</span>
+                            <span class="code-btn" rel="css">CSS</span>
+                            <span class="code-btn" rel="view"><i class="bi-window"></i></span>
                           </div>
                           <div class="">
                               <span class="copy-btn">Copy</span>
                           </div>
                       </div>
-<pre class="active">
+<pre class="html">
+<span class="tag">&lt;div <span>checkbox=""</span>&gt;</span>
+  <span class="tag">&lt;div <span>marker=""</span>&gt;&lt;/div&gt;</span> 
+  <span class="tag">&lt;div <span>marker=""</span>&gt;&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;input <span>type="<span>checkbox</span>"</span>&gt; &lt;br&gt;</span> 
+<span class="tag">&lt;div <span>class="<span>response</span>"</span>&gt;&lt;/div&gt;</span>
+</pre>                      
+<pre class="js active">
 <span class="tag">&lt;script&gt;</span>
 
 new <span class="func">CheckBox(</span>{
@@ -71,24 +82,52 @@ new <span class="func">CheckBox(</span>{
 
 <span class="tag">&lt;/script&gt;</span>    
 </pre>
+<pre class="css">
+  style="background-color: white;"
+  
+  <span class="key">[checkbox] > [marker]</span> <span class="braces">{</span>
+      <span class="var">width</span>: 20px;
+      <span class="var">height</span>: 20px;
+  <span class="braces">}</span>
+  
+  <span class="key">[checkbox][checked="unchecked"] > [marker]:nth-child(1) </span> <span class="braces">{</span>
+      <span class="var">background-color</span>: white;
+  <span class="braces">}</span>
+  
+  <span class="key">[checkbox][checked="checked"] > [marker]:nth-child(2) </span><span class="braces">{</span>
+      <span class="var">background-color</span>: lime;
+  <span class="braces">}</span>
+  </pre> 
+  <pre class="view">
+    <div checkbox data-flip="true"> 
+      <div marker=""></div>
+      <div marker=""></div>                      
+    </div>
+    <input type="checkbox" value="foo"> 
+  </div>
+  </pre> 
                 </div>
             </div> <br> 
             
             <div class="">
-              We can equally setup a local configuration using the <code class="c-note">data-flip</code> attribute as shown below :
+              We can equally setup a local configuration using the <code class="c-note bc">data-flip</code> attribute as shown below :
             </div> <br>         
             
             <!-- checkbox -->
             <div class="code">
                 <div class="flex">
-                    <div class="">
-                       <i class="bi-hash"></i> Local Configuration
-                    </div>
-                    <div class="">
-                        <span class="copy-btn">Copy</span>
-                    </div>
+                  <div class="code-x">
+                    <strong><i class="bi-hash"></i> Local Configuration</strong>
+                    <span class="code-btn" rel="html">HTML (Local)</span>
+                    <span class="code-btn" rel="js">JS</span>
+                    <span class="code-btn" rel="css">CSS</span>
+                    <span class="code-btn" rel="view"><i class="bi-window"></i></span>
+                  </div>
+                  <div class="">
+                      <span class="copy-btn">Copy</span>
+                  </div>
                 </div>
-<pre class="active">
+<pre class="html active">
 <span class="tag">&lt;div <span>checkbox="" data-flip="<span>true</span>"</span>&gt;</span>
   <span class="tag">&lt;div <span>marker=""</span>&gt;&lt;/div&gt;</span> 
   <span class="tag">&lt;div <span>marker=""</span>&gt;&lt;/div&gt;</span>
@@ -96,30 +135,14 @@ new <span class="func">CheckBox(</span>{
 <span class="tag">&lt;input <span>type="<span>checkbox</span>"</span>&gt; &lt;br&gt;</span> 
 <span class="tag">&lt;div <span>class="<span>response</span>"</span>&gt;&lt;/div&gt;</span>
 </pre>
-            </div> <br>           
-            
-            <div class="">
-              The html response for the local configuration above is shown below
-            </div> <br>
-            
-            <div class="code">
-                <div class="flex">
-                    <div class="code-x">
-                        <span class="code-btn" rel="view"><i class="bi-eye"></i></span>
-                        <span class="code-btn" rel="css">CSS</span>
-                        <strong>HTML Response</strong>
-                    </div>
-                </div>
-                
-                <div class="checkbox-field">
-                  <pre class="view active">
-                    <div checkbox data-flip="true"> 
-                      <div marker=""></div>
-                      <div marker=""></div>                      
-                    </div>
-                    <input type="checkbox" value="foo"> 
-                  </div>
-                </pre>
+<pre class="js">
+  <span class="tag">&lt;script&gt;</span>
+  
+  new <span class="func">CheckBox(</span>{
+  }<span class="func">)</span>;
+  
+  <span class="tag">&lt;/script&gt;</span>    
+</pre>
 <pre class="css">
 <span class="key">[checkbox]</span> <span class="braces">{</span>
     <span class="var">width</span>: fit-content;
@@ -140,11 +163,21 @@ new <span class="func">CheckBox(</span>{
 <span class="key">[checkbox][checked="checked"] > [marker]:nth-child(2) </span><span class="braces">{</span>
     <span class="var">background-color</span>: lime;
 <span class="braces">}</span>
-</pre>                
-            </div> <br>
+</pre>  
+<pre class="view">
+  <div class="checkbox-field">
+    <div checkbox data-flip="true"> 
+      <div marker=""></div>
+      <div marker=""></div>                      
+    </div>
+    <input type="checkbox" value="foo"> 
+  </div>
+</pre>
+            </div> <br>   
             
             <div class="">
-              This integrated feature makes it easier to create a fast toggle effect for double markers.
+              This flipping integrated feature makes it easier to create a fast toggle effect for double markers
+              without having to write extra javascript code.
             </div> <br>
             
             <div class="nav-pane">
