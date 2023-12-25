@@ -4,6 +4,8 @@ class CheckBox {
 
         let checkbox = this;
 
+        checkbox.hardchecks = [];
+
         if(config === true) return checkbox;
         
         let defaults, customBoxes, init, toggle, assign, css, size, fsize, fit, checkEvent;
@@ -22,7 +24,7 @@ class CheckBox {
             toggle: function(){},
             flip: false,
             size: null,
-            fit: true,
+            fit: true
         };
 
         config = {...defaults, ...config};
@@ -465,7 +467,7 @@ class CheckBox {
 
         }
         
-        checkEvent = function(input, cIndex){
+        checkEvent = function(input){
             let customBox, checker = {};
                     
             //get custom box element 
@@ -743,7 +745,7 @@ class CheckBox {
     
                                         subChecker = isCheckbox(exToggles[exToggle].nextElementSibling);
                                         
-                                        if(subChecker && !subChecker.disabled){
+                                        if(subChecker && !subChecker.disabled && !checkbox.hardchecks.includes(subChecker)){
                                           
                                           let subCheckerBind = at(subChecker, 'data-bind');
                                           
@@ -861,7 +863,7 @@ class CheckBox {
                                       }
                                       
                                   }else{
-                                      if(!mainChecker.disabled){
+                                      if(!mainChecker.disabled && !checkbox.hardchecks.includes(mainChecker)){
                                           mainChecker.click();
                                       }
                                   }
@@ -1082,6 +1084,8 @@ class CheckBox {
                 }
 
                 if(input.disabled){
+                    checkbox.hardchecks.push(input);
+                    checkbox.hardchecks.push(customBox);
                     customBox.setAttribute('disabled', 'true');
                     if(customParent) customParent.setAttribute('disabled', 'true');
                 }
@@ -1174,8 +1178,8 @@ class CheckBox {
                 }
 
                 input.addEventListener('click', function(e){
-                    
-                    if(input.getAttribute('disabled')){
+
+                    if(input.getAttribute('disabled')  || checkbox.hardchecks.includes(input)){
                         e.preventDefault();
                     }else{
                         if(!this.getAttribute('selection')) {
@@ -1334,13 +1338,6 @@ class CheckBox {
             function isForwardSlide(startCheckbox, currentCheckbox) {
               // Logic to determine if the slide is forward
               return currentCheckbox.offsetLeft > startCheckbox.offsetLeft;
-              //return startCheckbox.offsetLeft < currentCheckbox.offsetLeft;
-              // Get the index of the current and start checkboxes
-              const currentIndex = getIndex(currentCheckbox);
-              const startIndex = getIndex(startCheckbox);
-            
-              // Logic to determine if the slide is forward
-              return currentIndex > startIndex;
             }
             
             function isBackwardSlide(startCheckbox, currentCheckbox) {

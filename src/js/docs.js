@@ -25,9 +25,9 @@ function pass(checker){
             value     = checkbox.value;
   
             if(checkbox.checked){
-                console.log(`checkbox ${value} is: checked`)
+                //console.log(`checkbox ${value} is: checked`)
             }else{
-                console.log(`checkbox ${value} is: unchecked`)
+                //console.log(`checkbox ${value} is: unchecked`)
             }
         },
         flip: true, 
@@ -150,17 +150,18 @@ function pass(checker){
           
   codeBtns.forEach(codeBtn => {
     codeBtn.addEventListener('click', function(){
+      let parent = this.closest(".code");
+      let codeBtns = parent.querySelectorAll('.code-btn');
       codeBtns.forEach(btn => {
         btn.classList.remove('active');
       })
       codeBtn.classList.add('active');
       let rel = this.getAttribute('rel');
-      let parent = this.closest(".code");
       let pres = parent.querySelectorAll('pre,.pre');
       let pre = parent.querySelector('pre.'+rel);
       pres.forEach(preItem => {
         preItem.classList.remove('active')
       })
-        pre.classList.add('active');
+      if(pre) pre.classList.add('active');
     })
   })

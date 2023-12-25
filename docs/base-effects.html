@@ -78,6 +78,7 @@
                     <div class="code-x">
                       <strong>Base Effect</strong>
                       <span class="code-btn" rel="html">HTML</span>
+                      <span class="code-btn" rel="js">JS</span>
                     </div>
                     <div class="">
                         <span class="copy-btn">Copy</span>
@@ -88,7 +89,7 @@
 
   <span class="comment">&lt;!--first checkbox section--&gt;</span>
   <span class="tag">&lt;div <span>data-role="<span>checkbox</span>" class="<span>in-flex wrap</span>"</span>&gt;</span>
-    <span class="tag">&lt;div <span>checker data-anime="<span>fadeIn</span>" data-assign="<span>:marker2</span>" data-color="<span>@red|lime</span>" class="<span>in-flex</span>"</span>&gt;</span>
+    <span class="tag">&lt;div <span>checkers data-anime="<span>fadeIn</span>" data-assign="<span>:marker2</span>" data-color="<span>@red|lime</span>" class="<span>in-flex</span>"</span>&gt;</span>
     
       <span class="tag">&lt;div <span>marker class="<span>b-red</span>"</span>&gt;&lt;/div&gt;</span>
      
@@ -100,7 +101,7 @@
   
   <span class="comment">&lt;!--second checkbox section--&gt;</span>
   <span class="tag">&lt;div <span>data-role="<span>checkbox</span>" class="<span>in-flex wrap</span>"</span>&gt;</span>
-    <span class="tag">&lt;div <span>checker data-anime="<span>fadeIn</span>" data-assign="<span>:marker2</span>" data-color="<span>@red|lime</span>" class="<span>in-flex</span>"</span>&gt;</span>
+    <span class="tag">&lt;div <span>checkers data-anime="<span>fadeIn</span>" data-assign="<span>:marker2</span>" data-color="<span>@red|lime</span>" class="<span>in-flex</span>"</span>&gt;</span>
     
       <span class="tag">&lt;div <span>marker class="<span>b-red</span>"</span>&gt;&lt;/div&gt;</span>
       
@@ -112,7 +113,7 @@
   
   <span class="comment">&lt;!--third checkbox section--&gt;</span>
   <span class="tag">&lt;div <span>data-role="<spa">checkbox</span>" class="<span>in-flex wrap</span>"</span>&gt;</span>
-    <span class="tag">&lt;div <span>checker data-anime="<span>fadeIn</span>" data-assign="<span>:marker2</span>" data-color="<span>@red|lime</span>" class="<span>in-flex</span>"</span>&gt;</span>
+    <span class="tag">&lt;div <span>checkers data-anime="<span>fadeIn</span>" data-assign="<span>:marker2</span>" data-color="<span>@red|lime</span>" class="<span>in-flex</span>"</span>&gt;</span>
     
       <span class="tag">&lt;div <span>marker class="<span>b-red</span>"</span>&gt;&lt;/div&gt;</span>
       
@@ -124,20 +125,34 @@
   
 <span class="tag">&lt;/div&gt;</span>
 </pre>
-            </div>          
+<pre class="js">
+  <span class="var">let</span> checkbox = <span class="var">new</span> <span class="func">CheckBox(<span class="bool">true</span>)</span>;
+  
+  checkbox.<span class="func">check({
 
-            <div class="checkers box" style="width: 100%;">
-                <div>checkbox (Base Effect)</div>    
-                
+    <span class="var">target:</span> <span class="val">'[checkers]'</span>
+  
+  })</span>;
+</pre>
+            </div>      
+
+            <div class="code">
+              <div class="flex">
+                <div class="code-x">
+                  <strong>Base Effect</strong>
+                  <span class="code-btn" rel="view"><i class="bi-window"></i></span>
+                </div>
+              </div>
+              <pre class="view active">
                 <!--parent checkbox (grand)-->
                 <div data-role="checkbox-list" data-bind="base">
-                
+                                
                   <!--first checkbox section-->
                   <div data-role="checkbox" class="in-flex wrap">
                     <div checker data-anime="fadeIn" data-assign=":marker2" data-color="@red|lime" class="in-flex">
                     
                       <div marker class="b-currentColor"></div>
-                     
+                    
                       <div marker class="b-currentColor"></div>
                       
                     </div>
@@ -169,16 +184,17 @@
                   </div> 
                   
                 </div>
-            </div>  
+              </pre>
+            </div>
             
-            <div class="">
+            <div class="mvt-10">
                 In the sample above, the first checkbox is the parent checkbox that controls the rest of the two checkboxes which are the children boxes. 
                 Whenever the parent checkbox is toggled on or off, the other two children checkboxes will respond similarly. If both of the children checkboxes 
                 are not toggled on, then the parent checkbox is never toggled on. A real usage of this feature is shown in the sample below: <br>
             </div>
             
             <div class="checkers box mid-v" style="width: 100%;">
-                <div>checkbox: sample usage</div>    
+                <div>Base Effect: sample usage</div>    
                 
                 <!--parent checkbox (grand)-->
                 <div data-role="checkbox-list" data-bind="base">
@@ -226,80 +242,151 @@
             
             <div class="">
                 The sample above provide a more real scenario where the checkbox effect can be applied. 
-                Although, the entire custom checkbox is grouped under the "<code class="c-string">base</code>" effect. 
+                Although, the entire custom checkbox is grouped under the "<code class="c-string c-note">base</code>" effect. 
                 We can easily detach any children checkbox from their parent checkbox controller by specifying the 
                 <code class="bc c-note">data-bind</code> attribute of that individual child as <code class="c-var">free</code> 
                 similarly to the sample below:
             </div>
 
-            <div class="checkers box" style="width: 100%;">
-                <div>checkbox: sample detach checkbox from group list</div>    
-                
-                <!--parent checkbox (grand)-->
-                <div data-role="checkbox-list" data-bind="base" style="flex-direction: column;">
-                  <div class="in-flex mid-v">
-                      <!--first checkbox section-->
-                      <div data-role="checkbox" class="in-flex wrap rad-r">
-                          <div checker data-anime="fadeIn" data-assign=":marker2" data-label="Mark all children|Unmark all children" data-color="@white|lime" class="in-flex rad-r">
-                          
-                          <div marker class="b-currentColor"></div>
-                          
-                          <div marker class="b-currentColor"></div>
-                          
-                          </div>
-                          <input type="checkbox" value="radio1">
-                         
-                      </div>
-                      &nbsp;
-                      <div data-access="label">Mark relatives</div> 
-                  </div>
-
-                  
-                  <!--second checkbox section-->
-                  <div data-role="checkbox" class="in-flex wrap">
-                    <div checker data-anime="fadeIn" data-assign=":marker2" data-color="@red|lime" class="in-flex">
-                    
-                      <div marker class="b-currentColor"></div>
-                      
-                      <div marker class="b-currentColor"></div>
-                      
-                    </div>
-                    <input type="checkbox" value="radio2">                  
-                    Relative (Child)
-                  </div>
-                  
-                  <!--third checkbox section-->
-
-                  <div data-role="checkbox" class="in-flex wrap">
-                    <div checker data-anime="fadeIn" data-assign=":marker2" data-color="@red|lime" class="in-flex">
-                    
-                      <div marker class="b-currentColor"></div>
-                      
-                      <div marker class="b-currentColor"></div>
-                      
-                    </div>
-                    <input type="checkbox" value="radio3">                    
-                    Relative (Child)
-                  </div> 
-                  
-                  <!--fourth checkbox section-->
-
-                  <div data-role="checkbox" class="in-flex wrap">
-                    <div checker data-anime="fadeIn" data-assign=":marker2" data-color="@red|lime" class="in-flex">
-                    
-                      <div marker class="b-currentColor"></div>
-                      
-                      <div marker class="b-currentColor"></div>
-                      
-                    </div>
-                    <input type="checkbox" value="radio3" data-bind="free">                    
-                    Detached child (data-bind="free")
-                  </div> 
-                  
+            <div class="code mvt-10">
+              <div class="flex">
+                <div class="code-x">
+                  <strong>Detach Checkbox</strong>
+                  <span class="code-btn" rel="html">HTML</span>
+                  <span class="code-btn" rel="view"><i class="bi-window"></i></span>
                 </div>
-            </div>                
+              </div>
+              <pre class="html">
+<span class="tag">&lt;div <span>data-role="<span>checkbox-list</span>" data-bind="<span>base</span>" style="<span>flex-direction: column;</span>"</span>&gt;</span>
 
-            <div class="">
+<span class="comment">&lt;!--first checkbox section--&gt;</span>
+<span class="tag">&lt;div <span>class="<span>in-flex mid-v</span>"</span>&gt;</span>
+    <span class="tag">&lt;div <span>data-role="<span>checkbox</span>" class="<span>in-flex wrap rad-r</span>"</span>&gt;</span>
+        <span class="tag">&lt;div <span>checker data-anime="<span>fadeIn</span>" data-assign=":marker2" data-label="<span>Mark all children|Unmark all children</span>" data-color="<span>@white|lime" class="in-flex rad-r</span>"</span>&gt;</span>
+        
+        <span class="tag">&lt;div <span>marker class="<span>b-currentColor</span>"</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
+        
+        <span class="tag">&lt;div <span>marker class="<span>b-currentColor</span>"</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
+        
+        <span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;input <span>type="<span>checkbox</span>" value="<span>radio1</span>"</span>&gt;</span>
+        
+    <span class="tag">&lt;/div&gt;</span>
+    &nbsp;
+    <span class="tag">&lt;div <span>data-access="<span>label</span>"</span>&gt;</span>Mark relatives<span class="tag">&lt;/div&gt;</span> 
+<span class="tag">&lt;/div&gt;</span>
+
+
+<span class="comment">&lt;!--second checkbox section--&gt;</span>
+<span class="tag">&lt;div <span>data-role="<span>checkbox</span>" class="<span>in-flex wrap</span>"</span>&gt;</span>
+  <span class="tag">&lt;div <span>checker data-anime="<span>fadeIn</span>" data-assign="<span>:marker2</span>" data-color="<span>@red|lime</span>" class="<span>in-flex</span>"</span>&gt;</span>
+  
+    <span class="tag">&lt;div <span>marker class="<span>b-currentColor</span>"</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
+    
+    <span class="tag">&lt;div <span>marker class="<span>b-currentColor</span>"</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
+    
+  <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;input <span>type="<span>checkbox</span>" value="<span>radio2</span>"</span>&gt;</span>                  
+  Relative (Child)
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="comment">&lt;!--third checkbox section--&gt;</span>
+
+<span class="tag">&lt;div <span>data-role="<span>checkbox</span>" class="<span>in-flex wrap</span>"</span>&gt;</span>
+  <span class="tag">&lt;div <span>checker data-anime="<span>fadeIn</span>" data-assign="<span>:marker2</span>" data-color="<span>@red|lime</span>" class="<span>in-flex</span>"</span>&gt;</span>
+  
+    <span class="tag">&lt;div <span>marker class="<span>b-currentColor</span>"</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
+    
+    <span class="tag">&lt;div <span>marker class="<span>b-currentColor</span>"</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
+    
+  <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;input <span>type="<span>checkbox</span>" value="<span>radio3</span>"</span>&gt;</span>                    
+  Relative (Child)
+<span class="tag">&lt;/div&gt;</span> 
+
+<span class="comment">&lt;!--fourth checkbox section--&gt;</span>
+
+<span class="tag">&lt;div <span>data-role="<span>checkbox</span>" class="<span>in-flex wrap</span>"</span>&gt;</span>
+  <span class="tag">&lt;div <span>checker data-anime="<span>fadeIn</span>" data-assign="<span>:marker2</span>" data-color="<span>@red|lime</span>" class="<span>in-flex</span>"</span>&gt;</span>
+  
+    <span class="tag">&lt;div <span>marker class="<span>b-currentColor</span>"</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
+    
+    <span class="tag">&lt;div <span>marker class="<span>b-currentColor</span>"</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
+    
+  <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;input <span>type="<span>checkbox</span>" value="<span>radio3</span>" data-bind="<span>free</span>"</span>&gt;</span>                    
+  Detached child (data-bind="free")
+<span class="tag">&lt;/div&gt;</span> 
+
+<span class="tag">&lt;/div&gt;</span>              
+              </pre>
+              <pre class="view active" style="font-family: calibri;">
+<!--parent checkbox (grand)-->
+<div data-role="checkbox-list" data-bind="base" style="flex-direction: column;">
+  <div class="in-flex mid-v">
+      <!--first checkbox section-->
+      <div data-role="checkbox" class="in-flex wrap rad-r">
+          <div checker data-anime="fadeIn" data-assign=":marker2" data-label="Mark all children|Unmark all children" data-color="@white|lime" class="in-flex rad-r">
+          
+          <div marker class="b-currentColor"></div>
+          
+          <div marker class="b-currentColor"></div>
+          
+          </div>
+          <input type="checkbox" value="radio1">
+         
+      </div>
+      &nbsp;
+      <div data-access="label">Mark relatives</div> 
+  </div>
+
+  
+  <!--second checkbox section-->
+  <div data-role="checkbox" class="in-flex wrap">
+    <div checker data-anime="fadeIn" data-assign=":marker2" data-color="@red|lime" class="in-flex">
+    
+      <div marker class="b-currentColor"></div>
+      
+      <div marker class="b-currentColor"></div>
+      
+    </div>
+    <input type="checkbox" value="radio2">                  
+    Relative (Child)
+  </div>
+  
+  <!--third checkbox section-->
+
+  <div data-role="checkbox" class="in-flex wrap">
+    <div checker data-anime="fadeIn" data-assign=":marker2" data-color="@red|lime" class="in-flex">
+    
+      <div marker class="b-currentColor"></div>
+      
+      <div marker class="b-currentColor"></div>
+      
+    </div>
+    <input type="checkbox" value="radio3">                    
+    Relative (Child)
+  </div> 
+  
+  <!--fourth checkbox section-->
+
+  <div data-role="checkbox" class="in-flex wrap">
+    <div checker data-anime="fadeIn" data-assign=":marker2" data-color="@red|lime" class="in-flex">
+    
+      <div marker class="b-currentColor"></div>
+      
+      <div marker class="b-currentColor"></div>
+      
+    </div>
+    <input type="checkbox" value="radio3" data-bind="free">                    
+    Detached child (data-bind="free")
+  </div> 
+  
+</div>                
+              </pre>
+            </div>               
+
+            <div class="mvt-10">
               In the sample html structure above, the last custom checkbox is set to a free mode by applying <code class="bc c-note">data-bind="<code class="c-var">free</code>"</code> attribute on the 
               native checkbox that corresponds to the displayed custom box. This means that 
               the relationship between the first (parent) checkbox and the last checkbox is detached. In other words,

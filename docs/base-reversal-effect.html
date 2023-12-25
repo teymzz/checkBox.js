@@ -64,128 +64,216 @@
             </div>
             
             <div class="">
-              The polar toggle effect is a bit similar to radio button effect except that this relatioship is only between the two markers of a 
-              single custom checkbox. In this situation, when a marker is active, it cannot toggle itself off because it will require the action 
-              of the second marker to switch. In order to achieve this effect, both markers will be visible. Hence, <code class="c-note bc">data-flip</code> 
-              needs to be set as false and also, the <code class="c-note bc">data-control</code> attribute will be set as <code class="c-func">":markers"</code> while the markers 
-              will be manually designed using css. 
+              The base "<code class="c-note bc">reverse</code>" effect is one in which a checkbox or list of checkboxes are made to negate their parent checkbox. 
+              This effect is achieved by setting the <code class="c-note">data-bind</code> attribute of the native checkbox as <code class="c-func">"reverse"</code>. 
+              An example is shown below:
             </div> <br>
             
               <!-- checkbox T -->
             <div class="code mvt-1">
-                <div class="flex">
-                    <div class="">
-                        checkbox (Base Effect Sample)
-                    </div>
-                    <div class="">
-                        <span class="copy-btn">Copy</span>
-                    </div>
+              <div class="flex">
+                <div class="code-x">
+                  <strong>Base Reversal Effect</strong>
+                  <span class="code-btn" rel="html">HTML</span>
+                  <span class="code-btn" rel="view"><i class="bi-window"></i></span>
                 </div>
-<pre>
-<span class="tag">&lt;div <span>data-role="<span>checkbox-list</span>" data-bind="<span>base</span>"</span>&gt;</span>
+                
+                <div class="">
+                  <span class="copy-btn">Copy</span>
+                </div>
+              </div>
+<pre class="html active">
+<span class="comment">&lt;--parent checkbox (grand)--&gt;</span>
+<span class="tag">&lt;div <span>data-role="<span>checkbox-list</span>" data-bind="<span>base</span>" style="<span>flex-direction: column;</span>"</span>&gt;</span>
+                  
+  <span class="tag">&lt;div <span>class=""</span>&gt;</span>
+      <span class="comment">&lt;--first checkbox section--&gt;</span>
+      <span class="tag">&lt;div <span>data-role="<span>checkbox</span>" class="<span>in-flex wrap</span>"</span>&gt;</span>
+        <span class="tag">&lt;div <span>checker data-anime="<span>fadeIn</span>" data-assign="<span>:marker2</span>" data-label="<span>Select all|Unselect all</span>" data-color="<span>@orange|lime</span>" class="<span>in-flex</span>"</span>&gt;</span>
+        
+          <span class="tag">&lt;div <span>marker class="<span>b-currentColor</span>"</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
+          
+          <span class="tag">&lt;div <span>marker class="<span>b-currentColor</span>"</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
+          
+        <span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;input <span>type="<span>checkbox</span>" value="<span>radio1</span>"</span>&gt;</span>
+      <span class="tag">&lt;/div&gt;</span>
+      <span class="tag">&lt;div <span>class=""</span>&gt;</span>
+        &nbsp;  (parent)
+      <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
 
-  <span class="comment">&lt;!--first checkbox section--&gt;</span>
-  <span class="tag">&lt;div <span>data-role="<span>checkbox</span>"</span>&gt;</span>
-    <span class="tag">&lt;div <span>checker data-color="<span>@red|lime</span>"</span>&gt;</span>
-    
-      <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
-     
-      <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
-      
-    <span class="tag">&lt;/div&gt;</span>
-    <span class="tag">&lt;input <span>type="<span>checkbox</span>" value="<span>N1</span>"</span>&gt;</span>
-  <span class="tag">&lt;/div&gt;</span> 
-  
-  <span class="comment">&lt;!--second checkbox section--&gt;</span>
-  <span class="tag">&lt;div <span>data-role="<span>checkbox</span>"</span>&gt;</span>
-    <span class="tag">&lt;div <span>checker data-color="<span>@red|lime</span>"</span>&gt;</span>
-    
-      <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
-      
-      <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
-      
-    <span class="tag">&lt;/div&gt;</span>
-    <span class="tag">&lt;input <span>type="<span>checkbox</span>" value="<span>N2</span>"</span>&gt;</span>
+  <span class="tag">&lt;div <span>class=""</span>&gt;</span>
+      <span class="comment">&lt;--second checkbox section--&gt;</span>
+      <span class="tag">&lt;div <span>data-role="<span>checkbox</span>" class="<span>in-flex wrap</span>"</span>&gt;</span>
+        <span class="tag">&lt;div <span>checker data-anime="<span>fadeIn</span>" data-assign="<span>:marker2</span>" data-color="<span>@red|lime</span>" class="<span>in-flex</span>"</span>&gt;</span>
+        
+          <span class="tag">&lt;div <span>marker class="<span>b-currentColor</span>"</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
+          
+          <span class="tag">&lt;div <span>marker class="<span>b-currentColor</span>"</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
+          
+        <span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;input <span>type="<span>checkbox</span>" data-bind="<span>reverse</span>" value="<span>radio2</span>"</span>&gt;</span>
+      <span class="tag">&lt;/div&gt;</span>
+      <span class="tag">&lt;div <span>class=""</span>&gt;</span>
+        &nbsp;  data-bind = 'reverse'
+      <span class="tag">&lt;/div&gt;</span> 
   <span class="tag">&lt;/div&gt;</span>
-  
-  <span class="comment">&lt;!--third checkbox section--&gt;</span>
-  <span class="tag">&lt;div <span>data-role="<span>checkbox</span>"</span>&gt;</span>
-    <span class="tag">&lt;div <span>checker data-color="<span>@red|lime</span>"</span>&gt;</span>
-    
-      <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
-      
-      <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
-      
-    <span class="tag">&lt;/div&gt;</span>
-    <span class="tag">&lt;input <span>type="<span>checkbox</span>" value="<span>N3</span>"</span>&gt;</span>
+
+  <span class="tag">&lt;div class=""</span>&gt;</span>
+      <span class="comment">&lt;--third checkbox section--&gt;</span>
+      <span class="tag">&lt;div <span>data-role="<span>checkbox</span>" class="<span>in-flex wrap</span>"</span>&gt;</span>
+        <span class="tag">&lt;div <span>checker data-anime="<span>fadeIn</span>" data-assign="<span>:marker2</span>" data-color="<span>@red|lime</span>" class="<span>in-flex</span>"</span>&gt;</span>
+        
+          <span class="tag">&lt;div <span>marker class="<span>b-currentColor</span>"</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
+          
+          <span class="tag">&lt;div <span>marker class="<span>b-currentColor</span>"</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
+          
+        <span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;input <span>type="<span>checkbox</span>" data-bind="<span>reverse</span>" value="<span>radio3</span>"</span>&gt;</span>
+      <span class="tag">&lt;/div&gt;</span> 
+      <span class="tag">&lt;div <span>class=""</span>&gt;</span>
+        &nbsp;  data-bind = 'reverse'
+      <span class="tag">&lt;/div&gt;</span>
   <span class="tag">&lt;/div&gt;</span>
-  
+
+  <span class="tag">&lt;div class=""</span>&gt;</span>
+      <span class="comment">&lt;--third checkbox section--&gt;</span>
+      <span class="tag">&lt;div <span>data-role="<span>checkbox</span>" class="<span>in-flex wrap</span>"</span>&gt;</span>
+        <span class="tag">&lt;div <span>checker data-anime="<span>fadeIn</span>" data-assign="<span>:marker2</span>" data-color="<span>@red|lime</span>" class="<span>in-flex</span>"</span>&gt;</span>
+        
+          <span class="tag">&lt;div <span>marker class="<span>b-currentColor</span>"</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
+          
+          <span class="tag">&lt;div <span>marker class="<span>b-currentColor</span>"</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
+          
+        <span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;input <span>type="<span>checkbox</span>" value="<span>radio4</span>"</span>&gt;</span>
+      <span class="tag">&lt;/div&gt;</span> 
+      <span class="tag">&lt;div <span>class=""</span>&gt;</span>
+        &nbsp; (no data-bind)
+      <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+
+  <span class="tag">&lt;div <span>class=""</span>&gt;</span>
+      <span class="comment">&lt;--third checkbox section--&gt;</span>
+      <span class="tag">&lt;div <span>data-role="<span>checkbox</span>" class="<span>in-flex wrap</span>"</span>&gt;</span>
+        <span class="tag">&lt;div <span>checker data-anime="<span>fadeIn</span>" data-assign="<span>:marker2</span>" data-color="<span>@red|lime</span>" class="<span>in-flex</span>"</span>&gt;</span>
+        
+          <span class="tag">&lt;div <span>marker class="<span>b-currentColor</span>"</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
+          
+          <span class="tag">&lt;div <span>marker class="<span>b-currentColor</span>"</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
+          
+        <span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;input <span>type="<span>checkbox</span>" data-bind="<span>free</span>" value="<span>radio5</span>"</span>&gt;</span>
+      <span class="tag">&lt;/div&gt;</span> 
+      <span class="tag">&lt;div <span>class=""</span>&gt;</span>
+        &nbsp;  data-bind = 'free'
+      <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+
 <span class="tag">&lt;/div&gt;</span>
 </pre>
             </div>          
 
             <div class="checkers box" style="width: 100%;">
-                <div>checkbox (Base Effect)</div>    
+                <div style="padding:10px"><strong>Base Reversal Effect</strong></div>    
                 
                 <!--parent checkbox (grand)-->
-                <div data-role="checkbox-list" data-bind="base">
-                
-                  <!--first checkbox section-->
-                  <div data-role="checkbox" class="in-flex wrap">
-                    <div checker data-color="@red|lime" class="in-flex">
-                    
-                      <div marker class="b-currentColor"></div>
-                     
-                      <div marker class="b-currentColor"></div>
-                      
-                    </div>
-                    <input type="checkbox" value="N1">
+                <div data-role="checkbox-list" data-bind="base" style="flex-direction: column;">
+                  
+                  <div class="">
+                      <!--first checkbox section-->
+                      <div data-role="checkbox" class="in-flex wrap">
+                        <div checker data-anime="fadeIn" data-assign=":marker2" data-label="Select all|Unselect all" data-color="@orange|lime" class="in-flex">
+                        
+                          <div marker class="b-currentColor"></div>
+                         
+                          <div marker class="b-currentColor"></div>
+                          
+                        </div>
+                        <input type="checkbox" value="radio1">
+                      </div>
+                      <div class="">
+                        &nbsp;  (parent)
+                      </div>
                   </div>
-                  
-                  <!--second checkbox section-->
-                  <div data-role="checkbox" class="in-flex wrap">
-                    <div checker data-color="@red|lime" class="in-flex">
-                    
-                      <div marker class="b-currentColor"></div>
-                      
-                      <div marker class="b-currentColor"></div>
-                      
-                    </div>
-                    <input type="checkbox" value="N2">
-                  </div> 
-                  
-                  <!--third checkbox section-->
-                  <div data-role="checkbox" class="in-flex wrap">
-                    <div checker data-color="@red|lime" class="in-flex">
-                    
-                      <div marker class="b-currentColor"></div>
-                      
-                      <div marker class="b-currentColor"></div>
-                      
-                    </div>
-                    <input type="checkbox" value="N3">
-                  </div> 
-                  
-                  <!--fourth checkbox section-->
-                  <div data-role="checkbox" class="in-flex wrap">
-                    <div checker data-color="@red|lime" class="in-flex">
-                    
-                      <div marker class="b-currentColor"></div>
-                      
-                      <div marker class="b-currentColor"></div>
-                      
-                    </div>
-                    <input type="checkbox" value="N3" data-bind="reverse">
-                  </div> 
-                  
+
+                  <div class="">
+                      <!--second checkbox section-->
+                      <div data-role="checkbox" class="in-flex wrap">
+                        <div checker data-anime="fadeIn" data-assign=":marker2" data-color="@red|lime" class="in-flex">
+                        
+                          <div marker class="b-currentColor"></div>
+                          
+                          <div marker class="b-currentColor"></div>
+                          
+                        </div>
+                        <input type="checkbox" data-bind="reverse" value="radio2">
+                      </div>
+                      <div class="">
+                        &nbsp;  data-bind = 'reverse'
+                      </div> 
+                  </div>
+
+                  <div class="">
+                      <!--third checkbox section-->
+                      <div data-role="checkbox" class="in-flex wrap">
+                        <div checker data-anime="fadeIn" data-assign=":marker2" data-color="@red|lime" class="in-flex">
+                        
+                          <div marker class="b-currentColor"></div>
+                          
+                          <div marker class="b-currentColor"></div>
+                          
+                        </div>
+                        <input type="checkbox" data-bind="reverse" value="radio3">
+                      </div> 
+                      <div class="">
+                        &nbsp;  data-bind = 'reverse'
+                      </div>
+                  </div>
+
+                  <div class="">
+                      <!--third checkbox section-->
+                      <div data-role="checkbox" class="in-flex wrap">
+                        <div checker data-anime="fadeIn" data-assign=":marker2" data-color="@red|lime" class="in-flex">
+                        
+                          <div marker class="b-currentColor"></div>
+                          
+                          <div marker class="b-currentColor"></div>
+                          
+                        </div>
+                        <input type="checkbox" value="radio4">
+                      </div> 
+                      <div class="">
+                        &nbsp; (no data-bind)
+                      </div>
+                  </div>
+
+                  <div class="">
+                      <!--third checkbox section-->
+                      <div data-role="checkbox" class="in-flex wrap">
+                        <div checker data-anime="fadeIn" data-assign=":marker2" data-color="@red|lime" class="in-flex">
+                        
+                          <div marker class="b-currentColor"></div>
+                          
+                          <div marker class="b-currentColor"></div>
+                          
+                        </div>
+                        <input type="checkbox" data-bind="free" value="radio5">
+                      </div> 
+                      <div class="">
+                        &nbsp;  data-bind = 'free'
+                      </div>
+                  </div>
+                
                 </div>
             </div>  
             
             <div class="">
-                In the sample above, the first checkbox is the parent checkbox while the second and third checkboxes are children of the parent checkbox, hence, they must both be active before the parent checkbox is active.
-                Whenever the parent checkbox is toggled on or off, the other two children checkboxes will respond similarly. If both of the children checkboxes 
-                are not toggled on, then the parent checkbox is never toggled on. However, the last checkbox is the inverse of the parent checkbox and the second and third checkboxes. This means that when the status of the parent checkbox and the two children checkboxes are the same, the 
-                last checkbox will be the inverse of that.
+              In the sample above, the first checkbox is the parent checkbox. The relationship between the second and third checkbox is that they 
+              are always the opposite of the parent checkbox which is not the case for the fourth checkbox which is a direct reflection of the 
+              parent. The fifth checkbox is however completely detached from this relationship. The exhibition of the base reversal effect is seen in both the 
+              second and third checkboxes. A more complex relationship is shown below:
             </div>
                         
             <div class="nav-pane">

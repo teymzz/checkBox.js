@@ -41,15 +41,16 @@
         <section class="bc-deeper-blue">
             <div class="" style="font-size: 1.2em;"> <br>
                 <h1 style="color:#51ceff">CheckBox.js</h1> <br>
-                <h4 style="color:#51ceff">Toggling Attributes (Advanced)</h4> <br>
+                <h4 style="color:#51ceff">Injecting Attributes</h4> <br>
             </div>
         
             <div class="">
-                Previously, we have seen how to toggle a source attribute's value into a destination attribute. However, 
-                in the previous discussion, we only applied a single source attribute. The checkbox plugin provides an easy 
-                way to define a maximum of two values for the source attribute which are separated by pipe. In this situation, 
-                the first value defines a value that is expected to be assigned when the checkbox is checked while the second value 
-                will be applied when the checkbox is unchecked. To understand this better, consider the html structure below:
+                Earlier, we have seen how to toggle attributes globally using the "<code class="c-note">assign</code>" option. 
+                The checkbox plugin however provides an extra feature for injecting extra attributes when toggling attributes. 
+                This feature is mostly useful when assigning attributes that occurs frequently on a webpage. In this case, rather 
+                than repeating the sample attribute, we can easily reduce the html structure smartly with the 
+                <code class="c-bool">alter</code> option which allows us to inject a certain constant value into a list of destination 
+                values before the values are added into the destination attribute. Consider the sample below:
             </div> <br>
       
             
@@ -57,51 +58,75 @@
                 <div class="flex">
                     <div class="code-x">
                         <span class="code-btn" rel="html">HTML</span>
-                        <span class="code-btn" rel="css">CSS</span>
+                        <span class="code-btn" rel="js">JS</span>
                     </div>
                     <div class="">
                         <span class="copy-btn">Copy</span>
                     </div>
                 </div>
-<pre class="active"><span class="tag">&lt;div <span class="func">checkbox source="<span class="var">foo|bar</span>" data-assign="<span class="var">checked|source|class</span>"</span>&gt;</span>
+<pre class="html active"><span class="tag">&lt;div <span class="func">checkbox data-names="<span class="var">foo|bar</span>"</span>&gt;</span>
   <span class="tag">&lt;div <span class="func">marker=""</span>&gt;&lt;/div&gt;</span>
 <span class="tag">&lt;/div&gt;</span>
 <span class="tag">&lt;input <span class="func">type="<span class="var">checkbox</span>"</span>&gt;</span>
 </pre>
-<pre class="css"><span class="key">[checkers]</span> <span class="braces">{</span>
-    <span class="var">width</span>: fit-content;
-    <span class="var">border-radius</span>: 5px;    
-    <span class="var">border</span>: solid; 
-    <span class="var">padding</span>: 4px;    
-<span class="braces">}</span>
+<pre class="js">
+<span class="var">let</span> checkbox = <span class="var">new</span> <span class="func">CheckBox(<span class="bool">true</span>)</span>;
 
-<span class="key">[checkers] &gt; [marker]</span> <span class="braces">{</span>
-    <span class="var">width</span>: 20px;
-    <span class="var">height</span>: 20px;    
-    <span class="var">background-color</span>: transparent;
-    <span class="var">transition</span>: width .5s ease-in-out, 
-                background-color .5s ease-in-out;
-<span class="braces">}</span>
+checkbox.<span class="func">check(<span class="braces">{
 
-<span class="key">[checkers] &gt; [marker]</span> <span class="braces">{</span>
-    <span class="var">width</span>: 50px;
-    <span class="var">background-color</span>: green;
-<span class="braces">}</span>
+    <span class="key">assign</span>: {
+        <span class="key">attr</span>: [<span class="string">'data-names'</span>, <span class="string">'class'</span>, <span class="string">'checked'</span>],
+    },
+    <span class="key">toggle</span>: <span class="func">(<span class="arg">e</span>) => </span>{
+        if <span class="func">(<span class="arg">e.<span class="val">checked</span></span>)</span> {         
+            <span class="arg">e</span>.<span class="val">target</span>.classList.<span class="func">add(<span class="string">"animate"</span>)</span>
+        } else {
+            <span class="arg">e</span>.<span class="val">target</span>.classList.<span class="func">remove(<span class="string">"animate"</span>)</span>
+        }
+    }
 
-<span class="key">.bar[checkers] &gt; [marker]</span> <span class="braces">{</span>
-    <span class="var">width</span>: 30px;
-    <span class="var">background-color</span>: red;
-<span class="braces">}</span>
+}</span>)</span>;
 </pre>
             </div> <br>     
       
             <div class="">
-                From the sample html above, we have a <code class="c-note">source</code> attribute that contains two destination values which are <code class="c-var">foo</code> and 
-                <code class="c-var">bar</code>. When the checkbox is checked, the <code class="c-var">foo</code> value will be assigned into a "<code class="c-note">class</code>" destination attribute but if 
-                the checkbox is unchecked, the <code class="c-var">bar</code> value will be assigned instead. 
-                The <code class="c-note bc">data-assign</code> attribute uses the modifier option "<code class="c-var">checked</code>" to specify that the destination value should be assigned on the custom checkbox itself. 
-                The type of modifier option applied will determine how the toggling effect is resolved. We also applied some simple css for width animation. The response will be similar to that which is shown below
+                From the sample javascript above, when the checkbox checked, the "<code class="c-var">bar</code>" value of the <code class="c-note">data-names</code> attribute 
+                will be toggled into the <code class="c-note">class</code> attribute of the same checkbox. Similarly, when the checkbox is unchecked, the 
+                "<code class="c-var">foo</code>" value will be toggled into the <code class="c-note">class</code> attribute. However, the javascript's <code class="c-bool">toogle()</code> 
+                callback function assigns an extra "<code class="c-var">animate</code>" value to the class attribute when the checkbox is checked. 
             </div> <br>
+
+                        
+            <div class="code">
+                <div class="flex">
+                    <div class="code-x">
+                        <span class="code-btn" rel="html">HTML</span>
+                        <span class="code-btn" rel="js">JS</span>
+                    </div>
+                    <div class="">
+                        <span class="copy-btn">Copy</span>
+                    </div>
+                </div>
+<pre class="html active"><span class="tag">&lt;div <span class="func">checkbox data-names="<span class="var">foo|bar</span>"</span>&gt;</span>
+  <span class="tag">&lt;div <span class="func">marker=""</span>&gt;&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;input <span class="func">type="<span class="var">checkbox</span>"</span>&gt;</span>
+</pre>
+<pre class="js">
+<span class="var">let</span> checkbox = <span class="var">new</span> <span class="func">CheckBox(<span class="bool">true</span>)</span>;
+
+checkbox.<span class="func">check({
+
+    <span class="key">assign</span>: {
+        <span class="key">attr</span>: [<span class="string">'data-names'</span>, <span class="string">'class'</span>, <span class="string">'checked'</span>],
+        <span class="key">alter</span>: <span class="func">(<span class="arg">dataNames</span>) => </span>{
+            return <span class="arg">dataNames</span>.<span class="func">map( <span class="arg">el</span> => <span class="string">'name_'</span> + <span class="arg">el</span> <span class="func">)</span>;</span>
+        }
+    }
+
+})</span>;
+</pre>
+            </div> <br> 
         
             <div class="code">
                 <div class="flex">
@@ -234,8 +259,8 @@
                 <i class="bi-arrow-left-circle"></i> 
             </a> 
             
-            <a href="../docs/injecting-attributes.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:right; text-decoration: none">
-                <i class="bi-arrow-right-circle"></i> injecting attributes
+            <a href="../docs/smart-attributes.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:right; text-decoration: none">
+                <i class="bi-arrow-right-circle"></i> smart attributes
             </a> 
             </div><br><br><br>
         </section>
