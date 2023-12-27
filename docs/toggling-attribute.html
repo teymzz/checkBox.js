@@ -17,20 +17,14 @@
         }
         ul {
           padding: 10px;
-          background-color: #222d3f;
+          background-color: #515e73;
         }
         
         ul li{
           border-radius: 5px;
           list-style: none;
-          background-color: #434f5d;
+          background-color: #3e5167;
           padding: 10px;
-        }
-        
-        ul li > code:first-child{
-          border-radius: 2px;
-          background-color: #343c47;
-          padding: 4px 10px;
         }
         
         ul li a {
@@ -38,13 +32,7 @@
           text-decoration :  none;
           border-radius : 10px;
           border: dotted 2px;
-          color: #fff;
         }
-
-        
-        ul li a:visited {
-          color: #b5b5b5;
-        }        
     </style>
   </head>
   <body>
@@ -71,11 +59,11 @@
                     Sample Html Structure
                 </div>
                 <div class="">
-                    <span class="copy-btn">Copy</span>
+                    <span class="copy-btn"><i class="bi-clipboard"></i></span>
                 </div>
             </div>
 <pre class="active"><span class="tag">&lt;div <span class="func">checkbox source="<span class="var">foo bar</span>" destination="<span class="var"></span>"</span>&gt;</span>
-<span class="tag">&lt;div <span class="func">marker style="<span class="var">background-color: #594fc8;</span>"</span>&gt;&lt;/div&gt;</span>
+  <span class="tag">&lt;div <span class="func">marker style="<span class="var">background-color: #594fc8;</span>"</span>&gt;&lt;/div&gt;</span>
 <span class="tag">&lt;/div&gt;</span>
 <span class="tag">&lt;input <span class="func">type="<span class="var">checkbox</span>"</span>&gt;</span>
 </pre>
@@ -94,11 +82,11 @@
                     <i class="bi-hash"></i> Global Assign Sample Format
                   </div>
                   <div class="">
-                      <span class="copy-btn">Copy</span>
+                      <span class="copy-btn"><i class="bi-clipboard"></i></span>
                   </div>
               </div>
 <pre class="active js"><span class="key">assign</span>: {
-<span class="key">attr</span>: [<span class="string">'source'</span>, <span class="string">'destination'</span>, <span class="val">&lt;:modifier:&gt;</span>],
+  <span class="key">attr</span>: [<span class="string">'source'</span>, <span class="string">'destination'</span>, <span class="val">&lt;:modifier:&gt;</span>],
 }
 </pre>
             </div>
@@ -114,7 +102,7 @@
         <ul>
           <li>
             <code class="bc c-note">checked</code> 
-            This option is the default option that specifies that the source value should be toggled into the destination attribute on the custom checkbox when the checkbox is <i class="c-var">checked</i> and toggles it out when <i class="c-bool">unchecked</i>. 
+            This option toggles the source value into the destination attribute on the custom checkbox when the checkbox is <i class="c-var">checked</i> and toggles it out when <i class="c-bool">unchecked</i>. This option is also set as the default option if not specified.
             <div class="link-pane">
               <a href="../docs/toggle-attribute-checked.html"><span>view sample</span></a>
             </div>

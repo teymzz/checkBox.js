@@ -43,21 +43,20 @@
         </div>
         
         <div class="">
-          We can specify that a custom checkbox should assign the value from an attribute into another attribute when the custom checkbox is checked and should 
-          remove it when it is unchecked. In order to do this, let's create a sample html structure below.
+          We can specify that when a custom checkbox is <i class="c-var">checked</i>, the value from a source attribute should be assigned into another attribute and this value will also 
+          be removed when the checkbox is <i class="c-bool">unchecked</i>. In order to do this, let's create a sample html structure below.
         </div> <br>
         
         
         <div class="code">
             <div class="flex">
                 <div class="code-x">
-                    <strong>Global</strong>
                     <span class="code-btn" rel="html">HTML</span>
                     <span class="code-btn" rel="js">JS (Global)</span>
                     <span class="code-btn" rel="css">CSS</span>
                 </div>
                 <div class="">
-                    <span class="copy-btn">Copy</span>
+                    <span class="copy-btn"><i class="bi-clipboard"></i></span>
                 </div>
             </div>
 <pre class="html"><span class="tag">&lt;div <span class="func">checkbox class="<span class="var">foo</span>" data-switch="<span class="var">bar</span>"</span>&gt;</span>
@@ -76,9 +75,9 @@ new <span class="func">CheckBox(</span>{
         </div> <br>     
         
         <div class="">
-          From the sample above, we specified to toggle the value "<code class="c-var">bar</code>" of the html attribute <code class="bc c-note">data-switch</code> 
-          into the <code class="c-note bc">class</code> attribute when a checkbox is
-          checked. This was done from the javascript plugin's <code class="c-bool">assign</code> configuration option.            
+          From the sample above, due to the plugin's global configuration, the value "<code class="c-var">bar</code>" from the <code class="bc c-note">data-switch</code> 
+          attribute will be toggled into the <code class="c-note bc">class</code> attribute when a checkbox is
+          checked. This was done using the plugin's <code class="c-bool">assign</code> configuration option.            
           Alternatively, we can do this locally using the <code class="c-note bc">data-assign</code> attribute as shown below :
         </div> <br>
         
@@ -89,7 +88,7 @@ new <span class="func">CheckBox(</span>{
                        <i class="bi-hash"></i> Global: assign value on checked
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre><span class="tag">&lt;script&gt;</span>
@@ -108,15 +107,14 @@ new <span class="func">CheckBox(</span>{
         <div class="code">
             <div class="flex">
                 <div class="code-x">
-                    <strong>Local</strong>
                     <span class="code-btn" rel="html">HTML (Local)</span>
                     <span class="code-btn" rel="js">JS</span>
                     <span class="code-btn" rel="css">CSS</span>
                     <span class="code-btn" rel="view"><i class="bi-window"></i></span>
                 </div>
             </div>
-<pre class="html"><span class="tag">&lt;div <span class="func">checkers class="<span class="var">foo</span>" data-switch="<span class="var">bar</span>" data-assign="<span class="var">checked|data-switch|class</span>"</span>&gt;</span>
-<span class="tag">&lt;div <span class="func">marker style="<span class="var">background-color: #594fc8;</span>"</span>&gt;&lt;/div&gt;</span>
+<pre class="html active"><span class="tag">&lt;div <span class="func">checkers class="<span class="var">foo</span>" data-switch="<span class="var">bar</span>" data-assign="<span class="var">checked|data-switch|class</span>"</span>&gt;</span>
+  <span class="tag">&lt;div <span class="func">marker style="<span class="var">background-color: #594fc8;</span>"</span>&gt;&lt;/div&gt;</span>
 <span class="tag">&lt;/div&gt;</span>
 <span class="tag">&lt;input <span class="func">type="<span class="var">checkbox</span>"</span>&gt;</span>
 </pre>
@@ -151,6 +149,15 @@ new <span class="func">CheckBox(</span><span class="func">)</span>;
     <span class="var">background-color</span>: red;
 <span class="braces">}</span>
 </pre>
+        </div>
+        
+        <!-- checkbox view -->
+        <div class="code mvt-10">
+            <div class="fle" hidden>
+                <div class="code-x">
+                    <span class="code-btn" rel="view"><i class="bi-window"></i></span>
+                </div>
+            </div>
 <pre class="view active">
     <div class="checkbox-field">
         <div>
@@ -178,8 +185,8 @@ new <span class="func">CheckBox(</span><span class="func">)</span>;
               <i class="bi-arrow-left-circle"></i> 
             </a> 
             
-            <a href="../docs/toggle-attribute-both.html" class="nav-btn-rt" style="float:right;">
-              <i class="bi-arrow-right"></i> <span>Toggle:both</span>
+            <a href="../docs/toggle-attribute-unchecked.html" class="nav-btn-rt" style="float:right;">
+              <i class="bi-arrow-right"></i> <span>Toggle:unchecked</span>
             </a> 
         </div><br><br><br>
 

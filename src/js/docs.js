@@ -57,16 +57,16 @@ function pass(checker){
       flip: true,
   });
   
-  
   function onCopy(btn) {  
-  
     field = btn.parentNode.closest('.code').querySelector('pre.active');
-  
+
     function copied(response){
         if(response){
-            btn.innerText = 'Copied!'
+            btn.innerHTML = 'Copied!'
   
-            setTimeout(() => btn.innerText = 'Copy' , 500)
+            timeout = setTimeout(() => {
+              btn.innerHTML = '<i class="bi-clipboard "></i>'
+            } , 500)
         }
     }
     
@@ -93,7 +93,7 @@ function pass(checker){
   
   document.querySelectorAll('.copy-btn').forEach(btn => {
     btn.addEventListener('click', function(event){
-        onCopy(event.target);
+        onCopy(btn);
     })
   })
   

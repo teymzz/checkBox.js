@@ -43,8 +43,8 @@
         </div>
         
         <div class="">
-          We can specify that a custom checkbox should assign the value from an attribute into another attribute when the custom checkbox is unchecked and should 
-          remove it when it is checked. In order to do this, let's create a sample html structure below.
+          Similarly to the <i class="c-note">checked</i> modifier, we can specify that a custom checkbox should assign the value from an attribute into another attribute when the custom checkbox is <i class="c-bool">unchecked</i> and should 
+          remove it when it is <i class="c-var">checked</i>. In order to do this, let's create a sample html structure below.
         </div> <br>
         
         
@@ -54,11 +54,11 @@
                     Sample Html Structure
                 </div>
                 <div class="">
-                    <span class="copy-btn">Copy</span>
+                    <span class="copy-btn"><i class="bi-clipboard"></i></span>
                 </div>
             </div>
-<pre><span class="tag">&lt;div <span class="func">checkers class="<span class="var">foo</span>" data-switch="<span class="var">bar</span>"</span>&gt;</span>
-<span class="tag">&lt;div <span class="func">marker style="<span class="var">background-color: #594fc8;</span>"</span>&gt;&lt;/div&gt;</span>
+<pre class="active"><span class="tag">&lt;div <span class="func">checkers class="<span class="var">foo</span>" data-switch="<span class="var">bar</span>"</span>&gt;</span>
+  <span class="tag">&lt;div <span class="func">marker style="<span class="var">background-color: #594fc8;</span>"</span>&gt;&lt;/div&gt;</span>
 <span class="tag">&lt;/div&gt;</span>
 <span class="tag">&lt;input <span class="func">type="<span class="var">checkbox</span>"</span>&gt;</span>
 </pre>
@@ -66,25 +66,25 @@
         
         <div class="">
           From the sample html structure, assuming we need to add the <code class="c-var">bar</code> value into the <code class="c-note">class</code> attribute when a checkbox is
-          checked, we can easily achieve this using the sample script below :
+          <i class="c-bool">unchecked</i>, we can easily achieve this using the sample script below :
         </div> <br>
         
         <div class="">
             <div class="code">
                 <div class="flex">
                     <div class="">
-                       <i class="bi-hash"></i> Global: assign value on checked
+                       <i class="bi-hash"></i> Global: assign value when unchecked
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
-<pre><span class="tag">&lt;script&gt;</span>
+<pre class="active"><span class="tag">&lt;script&gt;</span>
 new <span class="func">CheckBox(</span>{
-<span class="key">assign</span>: {
-    <span class="key">target</span>: <span class="string">'[checkers]'</span>,
-    <span class="key">attr</span>: [<span class="string">'data-switch'</span>, <span class="string">'class'</span>, <span class="string">'unchecked'</span>]
-}    
+  <span class="key">assign</span>: {
+      <span class="key">target</span>: <span class="string">'[checkers]'</span>,
+      <span class="key">attr</span>: [<span class="string">'data-switch'</span>, <span class="string">'class'</span>, <span class="string">'unchecked'</span>]
+  }    
 }<span class="func">)</span>;
 <span class="tag">&lt;/script&gt;</span>    
 </pre>
@@ -102,7 +102,7 @@ new <span class="func">CheckBox(</span>{
                   <i class="bi-hash"></i> Local Assign Sample Format
                 </div>
             </div>
-<pre><span class="tag">&lt;div <span class="func">checkers class="<span class="var">foo</span>" data-switch="<span class="var">bar</span>" data-assign="<span class="var">unchecked|data-switch|class</span>"</span>&gt;</span>
+<pre class="active"><span class="tag">&lt;div <span class="func">checkers class="<span class="var">foo</span>" data-switch="<span class="var">bar</span>" data-assign="<span class="var">unchecked|data-switch|class</span>"</span>&gt;</span>
 <span class="tag">&lt;div <span class="func">marker style="<span class="var">background-color: #594fc8;</span>"</span>&gt;&lt;/div&gt;</span>
 <span class="tag">&lt;/div&gt;</span>
 <span class="tag">&lt;input <span class="func">type="<span class="var">checkbox</span>"</span>&gt;</span>
@@ -123,7 +123,7 @@ new <span class="func">CheckBox(</span>{
                     Custom css
                 </div>
                 <div class="">
-                    <span class="copy-btn">Copy</span>
+                    <span class="copy-btn"><i class="bi-clipboard"></i></span>
                 </div>
             </div>
 <pre class=""><span class="key">[checkers]</span> <span class="braces">{</span>

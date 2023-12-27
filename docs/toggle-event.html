@@ -33,7 +33,7 @@
                         <span class="code-btn" rel="view"><i class="bi-window"></i></span>
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre class="html">
@@ -53,7 +53,7 @@ checkbox.<span class="func">check({</span>
    
      <span class="var">let</span> responseField =  <span class="val">document</span>.<span class="func">querySelector(<span class="string">'.response'</span>)</span>;
      
-     <span class="">responseField</span>.<span class="val">innerHTML</span> = <span class="string">'checked : '</span>+<span class="key">checkbox</span>.checked;
+     <span class="">responseField</span>.<span class="val">innerHTML</span> = <span class="string">'checked : '</span> + <span class="key">checkbox</span>.checked;
    
   <span class="func">}</span>
   
@@ -86,10 +86,10 @@ checkbox.<span class="func">check({</span>
                 <div class="flex">
                     <div class="code-x">
                       <span class="code-btn" rel="html">HTML (Local)</span>
-                      <span class="code-btn" rel="js">JS (callback)</span>
+                      <span class="code-btn" rel="js">JS</span>
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre class="html active">
@@ -101,6 +101,8 @@ checkbox.<span class="func">check({</span>
 <span class="tag">&lt;div <span>class="<span>response</span>"</span>&gt;&lt;/div&gt;</span>
 </pre>
 <pre class="js">
+<span class="var">new</span> <span class="func">CheckBox(<span class="bool">true</span>)</span>;
+
 <span class="var">function</span> <span class="func">ontoggle(<span class="key">checkbox</span>){</span>
  
    <span class="var">let</span> responseField =  <span class="val">document</span>.<span class="func">querySelector(<span class="string">'.response'</span>)</span>;

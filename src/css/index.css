@@ -139,8 +139,8 @@ h1{
 
 .code .copy-btn {
     border: solid 1px #151326;
-    border-radius: 100vh;
-    padding: 5px 15px;
+    border-radius: .2em;
+    padding: 5px;
     color: #f2c93f;
     background-color: #231d36;
     /* box-shadow: 0 0 3px 0px #0d0c1c; */
