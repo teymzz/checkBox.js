@@ -45,12 +45,11 @@
             </div>
         
             <div class="">
-                Earlier, we have seen how to toggle attributes globally using the "<code class="c-note">assign</code>" option. 
-                The checkbox plugin however provides an extra feature for injecting extra attributes when toggling attributes. 
-                This feature is mostly useful when assigning attributes that occurs frequently on a webpage. In this case, rather 
-                than repeating the sample attribute, we can easily reduce the html structure smartly with the 
-                <code class="c-bool">alter</code> option which allows us to inject a certain constant value into a list of destination 
-                values before the values are added into the destination attribute. Consider the sample below:
+                Earlier, we have seen how to toggle an attribute's value globally using the "<code class="c-note">assign</code>" option. 
+                The checkbox plugin however provides an extra feature for injecting a default value into destination values 
+                when toggling attribute's values. This feature is mostly useful when assigning values that are mostly constant. In this case, rather 
+                than repeating the same value, we can easily reduce the html structure smartly by using the plugin's
+                <code class="c-bool">alter</code> option. Consider the sample below:
             </div> <br>
       
             
@@ -64,7 +63,7 @@
                         <span class="copy-btn">Copy</span>
                     </div>
                 </div>
-<pre class="html active"><span class="tag">&lt;div <span class="func">checkbox data-names="<span class="var">foo|bar</span>"</span>&gt;</span>
+<pre class="html active"><span class="tag">&lt;div <span class="func">checkbox data-names="<span class="var">foo|bar baz</span>" rel="<span>box</span>"</span>&gt;</span>
   <span class="tag">&lt;div <span class="func">marker=""</span>&gt;&lt;/div&gt;</span>
 <span class="tag">&lt;/div&gt;</span>
 <span class="tag">&lt;input <span class="func">type="<span class="var">checkbox</span>"</span>&gt;</span>
@@ -75,13 +74,26 @@
 checkbox.<span class="func">check(<span class="braces">{
 
     <span class="key">assign</span>: {
-        <span class="key">attr</span>: [<span class="string">'data-names'</span>, <span class="string">'class'</span>, <span class="string">'checked'</span>],
+        <span class="key">attr</span>: [<span class="string">'data-names'</span>, <span class="string">'rel'</span>, <span class="string">'checked'</span>],
     },
     <span class="key">toggle</span>: <span class="func">(<span class="arg">e</span>) => </span>{
-        if <span class="func">(<span class="arg">e.<span class="val">checked</span></span>)</span> {         
-            <span class="arg">e</span>.<span class="val">target</span>.classList.<span class="func">add(<span class="string">"animate"</span>)</span>
+        if <span class="func">(<span class="arg">e.<span class="val">checked</span></span>)</span> {    
+
+            <span class="var">let</span> <span class="val">dataNames</span> = <span class="arg">e</span>.<span class="val">target</span>.<span class="func">getAttribute(<span class="string">"data-names"</span>)</span>;
+            
+            <span class="comment">/*get checked values (i.e bar baz)*/</span>
+            <span class="var">let</span> <span class="val">checkedValues</span> = <span class="var">dataNames</span>.<span class="func">split(<span class="string">"|"</span>)</span><span class="val">[<span class="bool">1</span>]</span>;
+            
+            <span class="comment">/*add extra attribute to checked values*/</span>
+            <span class="var">checkedValues</span> += <span class="string">" box animate"</span>;
+            <span class="arg">e</span>.<span class="val">target</span>.<span class="func">setAttribute(<span class="string">"rel", <span class="var">checkedValues</span></span>)</span>;
+            
         } else {
-            <span class="arg">e</span>.<span class="val">target</span>.classList.<span class="func">remove(<span class="string">"animate"</span>)</span>
+            <span class="arg">e</span>.<span class="val">target</span>.classList.<span class="func">remove(<span class="string">"animate"</span>)</span>;
+            <span class="var">let</span> <span class="val">checkedValues</span> = <span class="var">dataNames</span>.<span class="func">split(<span class="string">"|"</span>)</span><span class="val">[<span class="bool">0</span>]</span>;
+            <span class="var">checkedValues</span> += <span class="string">" box"</span>;
+            
+            <span class="arg">e</span>.<span class="val">target</span>.<span class="func">setAttribute(<span class="string">"rel", <span class="var">checkedValues</span></span>)</span>;
         }
     }
 
@@ -90,10 +102,12 @@ checkbox.<span class="func">check(<span class="braces">{
             </div> <br>     
       
             <div class="">
-                From the sample javascript above, when the checkbox checked, the "<code class="c-var">bar</code>" value of the <code class="c-note">data-names</code> attribute 
-                will be toggled into the <code class="c-note">class</code> attribute of the same checkbox. Similarly, when the checkbox is unchecked, the 
-                "<code class="c-var">foo</code>" value will be toggled into the <code class="c-note">class</code> attribute. However, the javascript's <code class="c-bool">toogle()</code> 
-                callback function assigns an extra "<code class="c-var">animate</code>" value to the class attribute when the checkbox is checked. 
+                From the sample javascript above, when the checkbox is checked, the "<code class="bc c-var">bar baz</code>" value of the <code class="c-note bc">data-names</code> attribute 
+                will be toggled into the <code class="c-note bc">rel</code> attribute of the same checkbox. Similarly, when the checkbox is unchecked, the 
+                "<code class="c-var bc">foo</code>" value will be toggled into the <code class="c-note bc">class</code> attribute. However, the javascript's <code class="c-bool">toogle()</code> 
+                callback function assigns an extra "<code class="c-var">animate</code>" value to the <code class="c-note bc">rel</code> attribute only when the checkbox is checked. This additional adding of 
+                "<code class="c-var">animate</code>" attribute in the javascript section takes a bit longer and we have to redefine the "<code class="c-note">box</code>" value so it doesn't get overridden. The checkbox plugin provides 
+                an easier way to handle this which can be seen below :
             </div> <br>
 
                         
@@ -107,7 +121,7 @@ checkbox.<span class="func">check(<span class="braces">{
                         <span class="copy-btn">Copy</span>
                     </div>
                 </div>
-<pre class="html active"><span class="tag">&lt;div <span class="func">checkbox data-names="<span class="var">foo|bar</span>"</span>&gt;</span>
+<pre class="html active"><span class="tag">&lt;div <span class="func">checkbox data-names="<span class="var">foo|bar baz</span>" rel="<span>box</span>"</span>&gt;</span>
   <span class="tag">&lt;div <span class="func">marker=""</span>&gt;&lt;/div&gt;</span>
 <span class="tag">&lt;/div&gt;</span>
 <span class="tag">&lt;input <span class="func">type="<span class="var">checkbox</span>"</span>&gt;</span>
@@ -120,147 +134,30 @@ checkbox.<span class="func">check({
     <span class="key">assign</span>: {
         <span class="key">attr</span>: [<span class="string">'data-names'</span>, <span class="string">'class'</span>, <span class="string">'checked'</span>],
         <span class="key">alter</span>: <span class="func">(<span class="arg">dataNames</span>) => </span>{
-            return <span class="arg">dataNames</span>.<span class="func">map( <span class="arg">el</span> => <span class="string">'name_'</span> + <span class="arg">el</span> <span class="func">)</span>;</span>
+            return <span class="arg">dataNames</span>.<span class="func">map( <span class="arg">el</span> => <span class="string">'animate'</span> + <span class="arg">el</span> <span class="func">)</span>;</span>
         }
     }
 
 })</span>;
 </pre>
             </div> <br> 
-        
-            <div class="code">
-                <div class="flex">
-                    <div class="code-x">
-                        <span class="code-btn" rel="view"><i class="bi-window"></i></span>
-                    </div>
-                </div>
-                <div class="checkbox-field">
-                  <div>
-                      <div checkers="" class="foo" data-switch="bar|baz" data-assign="checked|data-switch|class"> 
-                          <div marker=""></div>
-                      </div>
-                      <input type="checkbox" value="foo"> 
-                  </div>
-                </div>
-            </div> <br> 
-
 
             <div class="">
-                This toggling effect above is usually applied in cases where we need to apply a smooth toggling effect. For example, the major 
-                use case of this feature can been seen when applying css animations especially from external libraries. Let's consider 
-                more sample structures with different modifiers below :
+                From the sample above, the <code class="c-bool">alter</code> option will easily modify the values by injecting an extra "<code class="c-var">animate</code>" value to the destination values "<code class="c-var">bar baz</code>" before it is finally added 
+                to the "<code class="c-note bc">rel</code>" destination attribute when it is <i>checked</i>. 
+                This injected value along with other values will also be replaced with <code class="c-var">"foo"</code> when the checkbox <i>unchecked</i> while the default value "<code class="c-var">box</code>" will be kept. 
+                The removal or addition of the injected value is however dependent on the modifier option (e.g <code class="c-string">"checked"</code>) applied. 
+                For example, if the modifier was set as "<code class="c-note">unchecked</code>", then "<code class="c-var">animate</code>" will be injected when the checkbox is <i>unchecked</i> while it will be removed when the checkbox is <i>checked</i>. This makes our code concise and easier to 
+                maintain.
             </div> <br>
-
-            <div class="code-box">
-                
-                <div class="code">
-                    <div class="flex">
-                        <div class="">
-                           <i class="bi-hash"></i> modifier (unchecked)
-                        </div>
-                        <div class="">
-                            <span class="copy-btn">Copy</span>
-                        </div>
-                    </div>
-<pre class="active"><span class="tag">&lt;div <span class="func">checkbox source="<span class="var">foo|bar</span>" data-assign="<span class="var">unchecked|source|class</span>"</span>&gt;</span>  
-    <span class="tag">&lt;div <span class="func">marker=""</span>&gt;&lt;/div&gt;</span>
-<span class="tag">&lt;/div&gt;</span>
-<span class="tag">&lt;input <span class="func">type="<span class="var">checkbox</span>"</span>&gt;</span>
-</pre>
-                </div> <br> 
-
-                <div class="">
-                    In the sample above, the "<code class="c-var">unchecked</code>" modifier option will switch the behaviour of the <code class="c-note">source</code> attribute such that 
-                    "<code class="c-var">foo</code>" will be toggled into the checkbox's <code class="c-note">class</code> attribute when the checkbox is checked while 
-                    "<code class="c-var">bar</code>" will be toggled in when the checkbox is unchecked
-                </div>
-
-            </div> <br>
-
-            <div class="code-box">
-                <div class="code">
-                    <div class="flex">
-                        <div class="">
-                           <i class="bi-hash"></i> modifier (:marker1)
-                        </div>
-                        <div class="">
-                            <span class="copy-btn">Copy</span>
-                        </div>
-                    </div>
-<pre class="active"><span class="tag">&lt;div <span class="func">checkbox source="<span class="var">foo|bar</span>" data-assign="<span class="var">:marker1|source|class</span>"</span>&gt;</span>  
-    <span class="tag">&lt;div <span class="func">marker style="<span class="var">background-color: red;</span>"</span>&gt;&lt;/div&gt;</span>
-    <span class="tag">&lt;div <span class="func">marker style="<span class="var">background-color: lime;</span>"</span>&gt;&lt;/div&gt;</span>
-<span class="tag">&lt;/div&gt;</span>
-<span class="tag">&lt;input <span class="func">type="<span class="var">checkbox</span>"</span>&gt;</span>
-</pre>
-                </div> <br> 
-
-                <div class="">
-                    In the sample above, the "<code class="c-var">:marker1</code>" modifier option will switch the behaviour of the source attribute such that 
-                    <code class="c-var">foo</code> will be toggled into the first marker's <code class="c-note">class</code> attribute when the checkbox is unchecked while 
-                    the second value "<code class="c-var">bar</code>" will be ignored. This means that only the first marker is affected because no value toggling activity will be performed on the second marker.
-                </div>
-            </div> <br>
-
-            <div class="code-box">
-                <div class="code">
-                    <div class="flex">
-                        <div class="">
-                           <i class="bi-hash"></i> modifier (:marker2)
-                        </div>
-                        <div class="">
-                            <span class="copy-btn">Copy</span>
-                        </div>
-                    </div>
-<pre class="active"><span class="tag">&lt;div <span class="func">checkbox source="<span class="var">foo|bar</span>" data-assign="<span class="var">:marker2|source|class</span>"</span>&gt;</span>   
-    <span class="tag">&lt;div <span class="func">marker style="<span class="var">background-color: red;</span>"</span>&gt;&lt;/div&gt;</span>
-    <span class="tag">&lt;div <span class="func">marker style="<span class="var">background-color: lime;</span>"</span>&gt;&lt;/div&gt;</span>
-<span class="tag">&lt;/div&gt;</span>
-<span class="tag">&lt;input <span class="func">type="<span class="var">checkbox</span>"</span>&gt;</span>
-</pre>
-                </div> <br> 
-            
-                <div class="">
-                    In the sample above, the "<code class="c-var">:marker2</code>" modifier option will switch the behaviour of the source attribute such that 
-                    <code class="c-var">bar</code> will be toggled into the second marker's <code class="c-note">class</code> attribute when the checkbox is checked while 
-                    the first value "<code class="c-var">foo</code>" will be ignored. This means that only the second marker is affected because no value toggling activity will be performed on the first marker.
-                </div>
-            </div> <br>
-
-
-            <div class="code-box">
-                <div class="code">
-                    <div class="flex">
-                        <div class="">
-                           <i class="bi-hash"></i> modifier (:markers)
-                        </div>
-                        <div class="">
-                            <span class="copy-btn">Copy</span>
-                        </div>
-                    </div>
-<pre class="active"><span class="tag">&lt;div <span class="func">checkbox source="<span class="var">foo|bar</span>" data-assign="<span class="var">:markers|source|class</span>"</span>&gt;</span>   
-    <span class="tag">&lt;div <span class="func">marker style="<span class="var">background-color: red;</span>"</span>&gt;&lt;/div&gt;</span>
-    <span class="tag">&lt;div <span class="func">marker style="<span class="var">background-color: lime;</span>"</span>&gt;&lt;/div&gt;</span>
-<span class="tag">&lt;/div&gt;</span>
-<span class="tag">&lt;input <span class="func">type="<span class="var">checkbox</span>"</span>&gt;</span>
-</pre>
-                </div> <br> 
-
-                <div class="">
-                    In the sample above, the "<code class="c-var">:markers</code>" modifier option will switch the behaviour of the source attribute such that 
-                    <code class="c-var">foo</code> will be toggled into the first marker's <code class="c-note">class</code> attribute when the checkbox is unchecked 
-                    while <code class="c-var">bar</code> will be toggled into the second marker's class attribute when the checkbox is checked.
-                </div>
-            </div> <br>
-
 
             <div class="nav-pane">
-            <a href="../docs/eager-loading.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:left; text-decoration: none">
+            <a href="../docs/toggling-attribute-advanced.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:left; text-decoration: none">
                 <i class="bi-arrow-left-circle"></i> 
             </a> 
             
-            <a href="../docs/smart-attributes.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:right; text-decoration: none">
-                <i class="bi-arrow-right-circle"></i> smart attributes
+            <a href="../docs/adding-labels.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:right; text-decoration: none">
+                <i class="bi-arrow-right-circle"></i> adding labels
             </a> 
             </div><br><br><br>
         </section>
