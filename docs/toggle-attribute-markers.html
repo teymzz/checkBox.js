@@ -69,7 +69,7 @@
                     Sample Html Structure
                 </div>
                 <div class="">
-                    <span class="copy-btn">Copy</span>
+                    <span class="copy-btn"><i class="bi-clipboard"></i></span>
                 </div>
             </div>
 <pre><span class="tag">&lt;div <span class="func">checkers class="<span class="var">foo</span>" data-switch="<span class="var">bar</span>"</span>&gt;</span>
@@ -81,7 +81,7 @@
         </div> <br>     
         
         <div class="">
-          From the sample html structure, assuming we need to add the <code class="c-var">bar</code> value into the <code class="c-note">class</code> attribute of the 
+          From the sample html structure, assuming we need to add the <code class="c-var">bar</code> value into the <code class="c-note bc">class</code> attribute of the 
           first marker only when the checkbox is unchecked and inversely add it to the second marker only when the checkbox is checked, we can easily achieve this using the sample script below :
         </div> <br>
         
@@ -92,7 +92,7 @@
                        <i class="bi-hash"></i> Global Assign - :marker2
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre><span class="tag">&lt;script&gt;</span>
@@ -108,7 +108,7 @@ new <span class="func">CheckBox(</span>{
         </div> <br> 
 
         <div class="">
-            Alternatively, we can do this locally using the <code class="c-note">data-assign</code> attribute
+            Alternatively, we can do this locally using the <code class="c-note bc">data-assign</code> attribute
         </div> <br>
         
         <!-- checkbox code -->
@@ -130,8 +130,8 @@ new <span class="func">CheckBox(</span>{
         
         <div class="">
           From the sample above, the <code class="bc c-var">bar</code> value will be added into the 
-          <code class="c-note">class</code> attribute of the first marker when the checkbox is checked and it will be removed and added 
-          into the second marker's <code class="c-note">class</code> attribute when 
+          <code class="c-note bc">class</code> attribute of the first marker when the checkbox is checked and it will be removed and added 
+          into the second marker's <code class="c-note bc">class</code> attribute when 
           the checkbox is checked. To see the effect of this, let's add a custom css below 
         </div> <br>
 
@@ -142,7 +142,7 @@ new <span class="func">CheckBox(</span>{
                     Custom css
                 </div>
                 <div class="">
-                    <span class="copy-btn">Copy</span>
+                    <span class="copy-btn"><i class="bi-clipboard"></i></span>
                 </div>
             </div>
 <pre class=""><span class="key">[checkers]</span> <span class="braces">{</span>
@@ -180,7 +180,7 @@ new <span class="func">CheckBox(</span>{
         
         <div class="">
             The sample css above was added to give a little width increase to the marker having the "<code class="c-var">bar</code>" value in it's 
-            <code class="c-note">class</code> attribute. The html response is shown below:
+            <code class="c-note bc">class</code> attribute. The html response is shown below:
         </div> <br>
         
         <div class="code">
@@ -203,7 +203,7 @@ new <span class="func">CheckBox(</span>{
         <div class="">
             The sample marker above will increase the length of the second marker to <code class="c-attr">120px</code> when the checkbox 
             is checked due to the value "<code class="c-var">bar</code>" that is added into the second marker's 
-            <code class="c-note">class</code> attribute.
+            <code class="c-note bc">class</code> attribute.
         </div>
         
         <div class="nav-pane">

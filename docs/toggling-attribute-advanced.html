@@ -60,7 +60,7 @@
                         <span class="code-btn" rel="css">CSS</span>
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre class="active"><span class="tag">&lt;div <span class="func">checkbox source="<span class="var">foo|bar</span>" data-assign="<span class="var">checked|source|class</span>"</span>&gt;</span>
@@ -96,8 +96,8 @@
             </div> <br>     
       
             <div class="">
-                From the sample html above, we have a <code class="c-note">source</code> attribute that contains two destination values which are <code class="c-var">foo</code> and 
-                <code class="c-var">bar</code>. When the checkbox is checked, the <code class="c-var">foo</code> value will be assigned into a "<code class="c-note">class</code>" destination attribute but if 
+                From the sample html above, we have a <code class="c-note bc">source</code> attribute that contains two destination values which are <code class="c-var">foo</code> and 
+                <code class="c-var">bar</code>. When the checkbox is checked, the <code class="c-var">foo</code> value will be assigned into a "<code class="c-note bc">class</code>" destination attribute but if 
                 the checkbox is unchecked, the <code class="c-var">bar</code> value will be assigned instead. 
                 The <code class="c-note bc">data-assign</code> attribute uses the modifier option "<code class="c-var">checked</code>" to specify that the destination value should be assigned on the custom checkbox itself. 
                 The type of modifier option applied will determine how the toggling effect is resolved. We also applied some simple css for width animation. The response will be similar to that which is shown below
@@ -134,7 +134,7 @@
                            <i class="bi-hash"></i> modifier (unchecked)
                         </div>
                         <div class="">
-                            <span class="copy-btn">Copy</span>
+                            <span class="copy-btn"><i class="bi-clipboard"></i></span>
                         </div>
                     </div>
 <pre class="active"><span class="tag">&lt;div <span class="func">checkbox source="<span class="var">foo|bar</span>" data-assign="<span class="var">unchecked|source|class</span>"</span>&gt;</span>  
@@ -145,8 +145,8 @@
                 </div> <br> 
 
                 <div class="">
-                    In the sample above, the "<code class="c-var">unchecked</code>" modifier option will switch the behaviour of the <code class="c-note">source</code> attribute such that 
-                    "<code class="c-var">foo</code>" will be toggled into the checkbox's <code class="c-note">class</code> attribute when the checkbox is checked while 
+                    In the sample above, the "<code class="c-var">unchecked</code>" modifier option will switch the behaviour of the <code class="c-note bc">source</code> attribute such that 
+                    "<code class="c-var">foo</code>" will be toggled into the checkbox's <code class="c-note bc">class</code> attribute when the checkbox is checked while 
                     "<code class="c-var">bar</code>" will be toggled in when the checkbox is unchecked
                 </div>
 
@@ -159,7 +159,7 @@
                            <i class="bi-hash"></i> modifier (:marker1)
                         </div>
                         <div class="">
-                            <span class="copy-btn">Copy</span>
+                            <span class="copy-btn"><i class="bi-clipboard"></i></span>
                         </div>
                     </div>
 <pre class="active"><span class="tag">&lt;div <span class="func">checkbox source="<span class="var">foo|bar</span>" data-assign="<span class="var">:marker1|source|class</span>"</span>&gt;</span>  
@@ -172,7 +172,7 @@
 
                 <div class="">
                     In the sample above, the "<code class="c-var">:marker1</code>" modifier option will switch the behaviour of the source attribute such that 
-                    <code class="c-var">foo</code> will be toggled into the first marker's <code class="c-note">class</code> attribute when the checkbox is unchecked while 
+                    <code class="c-var">foo</code> will be toggled into the first marker's <code class="c-note bc">class</code> attribute when the checkbox is unchecked while 
                     the second value "<code class="c-var">bar</code>" will be ignored. This means that only the first marker is affected because no value toggling activity will be performed on the second marker.
                 </div>
             </div> <br>
@@ -184,7 +184,7 @@
                            <i class="bi-hash"></i> modifier (:marker2)
                         </div>
                         <div class="">
-                            <span class="copy-btn">Copy</span>
+                            <span class="copy-btn"><i class="bi-clipboard"></i></span>
                         </div>
                     </div>
 <pre class="active"><span class="tag">&lt;div <span class="func">checkbox source="<span class="var">foo|bar</span>" data-assign="<span class="var">:marker2|source|class</span>"</span>&gt;</span>   
@@ -197,7 +197,7 @@
             
                 <div class="">
                     In the sample above, the "<code class="c-var">:marker2</code>" modifier option will switch the behaviour of the source attribute such that 
-                    <code class="c-var">bar</code> will be toggled into the second marker's <code class="c-note">class</code> attribute when the checkbox is checked while 
+                    <code class="c-var">bar</code> will be toggled into the second marker's <code class="c-note bc">class</code> attribute when the checkbox is checked while 
                     the first value "<code class="c-var">foo</code>" will be ignored. This means that only the second marker is affected because no value toggling activity will be performed on the first marker.
                 </div>
             </div> <br>
@@ -210,7 +210,7 @@
                            <i class="bi-hash"></i> modifier (:markers)
                         </div>
                         <div class="">
-                            <span class="copy-btn">Copy</span>
+                            <span class="copy-btn"><i class="bi-clipboard"></i></span>
                         </div>
                     </div>
 <pre class="active"><span class="tag">&lt;div <span class="func">checkbox source="<span class="var">foo|bar</span>" data-assign="<span class="var">:markers|source|class</span>"</span>&gt;</span>   
@@ -223,7 +223,7 @@
 
                 <div class="">
                     In the sample above, the "<code class="c-var">:markers</code>" modifier option will switch the behaviour of the source attribute such that 
-                    <code class="c-var">foo</code> will be toggled into the first marker's <code class="c-note">class</code> attribute when the checkbox is unchecked 
+                    <code class="c-var">foo</code> will be toggled into the first marker's <code class="c-note bc">class</code> attribute when the checkbox is unchecked 
                     while <code class="c-var">bar</code> will be toggled into the second marker's class attribute when the checkbox is checked.
                 </div>
             </div> <br>

@@ -49,7 +49,7 @@
             
             <div class="">
               The double markers is similar to the single markers except that two markers 
-              is added into the custom checkbox container instead of 
+              are added into the custom checkbox container instead of 
               a single marker.
             </div> <br>
 
@@ -59,6 +59,8 @@
                     <div class="code-x">
                         <span class="code-btn" rel="html">HTML</span>
                         <span class="code-btn" rel="css">CSS</span>
+                        <span class="code-btn" rel="js">JS</span>
+                        <span class="code-btn" rel="view"><i class="bi-window"></i></span>
                     </div>
                     <div class="">
                         <span class="copy-btn"><i class="bi-clipboard"></i></span>
@@ -100,17 +102,20 @@
     <span class="var">background-color</span>: lime;
 <span class="braces">}</span>
 </pre>
-            </div> <br>
-            
-            <div class="">
-              From the structure above, the plugin automatically detects that we have double markers and creates a toggle effect for each marker. 
-              The first marker will be displayed when the checkbox is unchecked while the second marker will be displayed when the checkbox is checked.
-            </div> <br>
+<pre class="js">
+<span class="tag">&lt;script&gt;</span>
 
-            <div class="code">
+new <span class="func">CheckBox()</span>; <span class="comment">//initialize and execute</span>
+
+<span class="tag">&lt;/script&gt;</span>    
+</pre>
+            </div>
+
+            <div class="code mvt-10">
                 <div class="flex">
-                    <div class="">
-                        HTML View (Toggle on checkbox)
+                    <div class="code-x">
+                        <strong class="flex mid-v">SCREEN</strong>
+                        <span class="code-btn active" rel="view"><i class="bi-window"></i></span>
                     </div>
                 </div>
                 <div class="" style="padding:10px">
@@ -120,7 +125,13 @@
 </div>
 <input type="checkbox" value="foo">                    
                 </div>
+            </div> <br>        
+                
+            <div class="">
+              From the structure above, by taking advantage of the <code class="c-note bc">checked</code> 
+              attribute, we easily created an animated toggle effect using css.
             </div> <br>
+
 
             
             <div class="" style="padding:10px 5px">

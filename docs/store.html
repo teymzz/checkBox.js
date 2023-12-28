@@ -30,7 +30,7 @@
                         CheckBox (Single marker)
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre>
@@ -48,7 +48,7 @@
                         CheckBox (Double markers)
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre>
@@ -67,7 +67,7 @@
             <br>
 
             <div class="mvt-10">
-                By default, the checkbox uses the <code class="c-note">[checkbox]</code> attribute selector to select 
+                By default, the checkbox uses the <code class="c-note bc">[checkbox]</code> attribute selector to select 
                 all custom checkboxes. The sample script above is the most basic way of initilializing the plugin and at 
                 the same time, executing it immediately.
             </div> <br>
@@ -81,7 +81,7 @@
             <h1>Plugin: Basic Configuration's Css Sample</h1>
             <div class="">
                 Once the script is initialized, all relative native input checkboxes are automatically hidden, leaving only the custom box with or without their marker(s).
-                The most basic way to design a custom checkbox that has no markers is by targeting the <code class="c-note">[checked]</code> attribute selector. The value of this attribute is determined 
+                The most basic way to design a custom checkbox that has no markers is by targeting the <code class="c-note bc">[checked]</code> attribute selector. The value of this attribute is determined 
                 based on the status of the native checkbox. The value <code class="c-func">"checked"</code> is for when the checkbox is checked while the value <code class="c-func">"unchecked"</code> for when it is unchecked. 
                 The example below shows how to use this attribute to design the custom checkbox in the simplest way.
             </div><br>    
@@ -92,7 +92,7 @@
                         HTML sample
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre>
@@ -108,7 +108,7 @@
                         Custom css
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre class="">
@@ -133,7 +133,7 @@
                         Script
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre>
@@ -171,13 +171,13 @@ new <span class="func">CheckBox()</span>; <span class="comment">//initialize and
             </div> <br>
             <div class="config-keys">
                 <div class="key">
-                    <code class="c-note">target</code> This is used to change the default custom checkbox <code class="c-attr">[checkbox]</code>  selector.
+                    <code class="c-note bc">target</code> This is used to change the default custom checkbox <code class="c-attr">[checkbox]</code>  selector.
                 </div>
                 <div class="key">
-                    <code class="c-note">marker</code> This is used to change the default custom checkbox marker <code class="c-attr">[marker]</code>  selector.
+                    <code class="c-note bc">marker</code> This is used to change the default custom checkbox marker <code class="c-attr">[marker]</code>  selector.
                 </div>
                 <div class="key">
-                    <code class="c-note">size</code> This is used to set the default size of the markers, accepting any valid unit of measurement. The string value supplied 
+                    <code class="c-note bc">size</code> This is used to set the default size of the markers, accepting any valid unit of measurement. The string value supplied 
                     is used for setting both the width and height of the markers. However, width and height can also be customized by the use of object. Some samples are shown below:
                     
                     <div class="mvt-10">
@@ -250,7 +250,7 @@ new <span class="func">CheckBox()</span>; <span class="comment">//initialize and
 
 
                 <div class="key">
-                    <code class="c-note">flip</code> This is takes a boolean value of <code class="c-bool">true</code> or <code class="c-bool">false</code>. 
+                    <code class="c-note bc">flip</code> This is takes a boolean value of <code class="c-bool">true</code> or <code class="c-bool">false</code>. 
                     This key comes into use when two markers are defined within the checkbox. 
                     The <code class="c-bool">true</code> value ensures that both markers are not displayed 
                     at once which means that the first marker will only be displayed when the checkbox is unchecked 
@@ -260,7 +260,7 @@ new <span class="func">CheckBox()</span>; <span class="comment">//initialize and
                 </div> <br>
 
                 <div class="key">
-                    <code class="c-note">fit</code> This is used for fitting checkbox images. It takes a boolean value of <code class="c-bool">true</code> or <code class="c-bool">false</code> while the default value is <code class="c-bool">true</code>. 
+                    <code class="c-note bc">fit</code> This is used for fitting checkbox images. It takes a boolean value of <code class="c-bool">true</code> or <code class="c-bool">false</code> while the default value is <code class="c-bool">true</code>. 
                     Assuming the default <code class="c-attr">[marker]</code> selector is not changed, the <code class="c-bool">true</code> value sets the following css on the selected markers. 
 
                     <div class="mvt-10">
@@ -287,7 +287,7 @@ new <span class="func">CheckBox()</span>; <span class="comment">//initialize and
                 </div><br>
 
                 <div class="key">
-                    <code class="c-note">init</code> This takes a callback function and is mostly used to set up a function 
+                    <code class="c-note bc">init</code> This takes a callback function and is mostly used to set up a function 
                     that must be called when the checkbox is initialized. It provides an 
                     argument which is an object that makes it easier control the entire custom checkbox.
                     These argument object contains keys which are 
@@ -306,7 +306,7 @@ new <span class="func">CheckBox()</span>; <span class="comment">//initialize and
                                     init sample
                                 </div>
                                 <div class="">
-                                    <span class="copy-btn">Copy</span>
+                                    <span class="copy-btn"><i class="bi-clipboard"></i></span>
                                 </div>
                             </div>
 <pre>
@@ -344,7 +344,7 @@ new <span class="func">CheckBox(</span>{
                 </div> <br>
 
                 <div class="key">
-                    <code class="c-note">toggle</code> This method defines a callback function that must be called every time a 
+                    <code class="c-note bc">toggle</code> This method defines a callback function that must be called every time a 
                     checkbox is toggled. The argument it takes returns an object which has keys similarly to the <span class="c-note">init()</span> 
                     method with some extra keys which are the 
                     <span class="c-func bc">color</span>, 
@@ -360,7 +360,7 @@ new <span class="func">CheckBox(</span>{
                                    sample: toggle
                                 </div>
                                 <div class="">
-                                    <span class="copy-btn">Copy</span>
+                                    <span class="copy-btn"><i class="bi-clipboard"></i></span>
                                 </div>
                             </div>
 <pre>
@@ -388,8 +388,8 @@ new <span class="func">CheckBox(</span>{
                         </div>
                     </div> <br>
                     <div class="">
-                        The sample code above is one which defines that the checkbox should run the <code class="c-note">init()</code> method immediately the class is initialized. 
-                        The <code class="c-note">toggle()</code> function will ensure that the <code class="c-note">init()</code> method is always executed whenever the checkbox is toggled.
+                        The sample code above is one which defines that the checkbox should run the <code class="c-note bc">init()</code> method immediately the class is initialized. 
+                        The <code class="c-note bc">toggle()</code> function will ensure that the <code class="c-note bc">init()</code> method is always executed whenever the checkbox is toggled.
                     </div> <br>
                     <div class="">
                         The <code class="c-note bc">data-func</code> attribute is used to define a callback function name that is called when the checkbox is toggled. This function is never called immediately 
@@ -398,7 +398,7 @@ new <span class="func">CheckBox(</span>{
                 </div> <br>
 
                 <div class="key">
-                    <code class="c-note">assign</code> 
+                    <code class="c-note bc">assign</code> 
                     This key takes an object as its value. The basic function of this is to assign the value of an attribute to another attribute based on the status of the checkbox. 
 
                     The format resembles the structure below : 
@@ -409,7 +409,7 @@ new <span class="func">CheckBox(</span>{
                                     assign format
                                 </div>
                                 <div class="">
-                                    <span class="copy-btn">Copy</span>
+                                    <span class="copy-btn"><i class="bi-clipboard"></i></span>
                                 </div>
                             </div>
 <pre class="active">
@@ -536,7 +536,7 @@ new <span class="func">CheckBox(</span>{
                     </div> <br>
 
                     <div class="">
-                        The <code class="bc c-note">data-assign</code> attribute is similar to the <code class="c-func">assign</code> key. Separated by pipe, the first value defines the 
+                        The <code class="c-note bc">data-assign</code> attribute is similar to the <code class="c-func">assign</code> key. Separated by pipe, the first value defines the 
                         animation stage, the middle value specifies the source attribute while the last part specifies the destination attribute. The sample format is shown below:
                     </div>
 
@@ -569,7 +569,7 @@ new <span class="func">CheckBox(</span>{
                         Full sample structure
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre>
@@ -614,7 +614,7 @@ let <span class="var">checker</span> = new <span class="func">CheckBox(<span cla
                         Custom css
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre class="">
@@ -720,7 +720,7 @@ let <span class="var">checker</span> = new <span class="func">CheckBox(<span cla
                         Script
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre>
@@ -797,7 +797,7 @@ new <span class="func">CheckBox(</span>{
                         CheckBox A1 (square)
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre>
@@ -824,7 +824,7 @@ new <span class="func">CheckBox(</span>{
                         CheckBox A2 (circled with custom class <code>rad-r</code>)
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre>
@@ -886,7 +886,7 @@ new <span class="func">CheckBox(</span>{
                         CheckBox B1 (square)
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre>
@@ -912,7 +912,7 @@ new <span class="func">CheckBox(</span>{
                         CheckBox B2 (circled with custom class <code>rad-r</code>)
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre>
@@ -1024,7 +1024,7 @@ new <span class="func">CheckBox(</span>{
                         CheckBox C2 (bounceIn)
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre>
@@ -1050,7 +1050,7 @@ new <span class="func">CheckBox(</span>{
                         CheckBox C3 (flash)
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre>
@@ -1081,7 +1081,7 @@ new <span class="func">CheckBox(</span>{
                         Previous Script
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre>
@@ -1133,7 +1133,7 @@ new <span class="func">CheckBox(</span>{
                         Script
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre>
@@ -1177,7 +1177,7 @@ new <span class="func">CheckBox(</span>{
                         Script
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre>
@@ -1220,7 +1220,7 @@ new <span class="func">CheckBox(</span>{
                         Script
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre>
@@ -1266,7 +1266,7 @@ new <span class="func">CheckBox(</span>{
                         CheckBox D (animated)
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre>
@@ -1295,7 +1295,7 @@ new <span class="func">CheckBox(</span>{
                         Script
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre>
@@ -1368,7 +1368,7 @@ let <span class="var">checker</span> = new <span class="func">CheckBox(<span cla
                         CheckBox E (data-assign attribute)
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre>
@@ -1418,7 +1418,7 @@ let <span class="var">checker</span> = new <span class="func">CheckBox(<span cla
                         CheckBox F (sizing)
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre>
@@ -1475,7 +1475,7 @@ let <span class="var">checker</span> = new <span class="func">CheckBox(<span cla
                         CheckBox G1 (data-label, data-access)
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre>
@@ -1510,7 +1510,7 @@ let <span class="var">checker</span> = new <span class="func">CheckBox(<span cla
             </div>
 
             <div class="">
-                It is important to note that instead of adding a label field after the <code class="c-note">input</code> element as shown above, it can also be applied outside the direct parent of the selected custom checkbox. 
+                It is important to note that instead of adding a label field after the <code class="c-note bc">input</code> element as shown above, it can also be applied outside the direct parent of the selected custom checkbox. 
                 In order to do this, the direct parent of the checkbox must have a <code class="c-note bc">data-role</code> attribute with a value of <code class="c-func">"checkbox"</code> assigned to it.
             </div>
             
@@ -1521,7 +1521,7 @@ let <span class="var">checker</span> = new <span class="func">CheckBox(<span cla
                         CheckBox G2 (data-role, data-label)
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre>
@@ -1574,7 +1574,7 @@ let <span class="var">checker</span> = new <span class="func">CheckBox(<span cla
                         CheckBox H (color)
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre>
@@ -1621,7 +1621,7 @@ let <span class="var">checker</span> = new <span class="func">CheckBox(<span cla
                         sample: color for markers & labels
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre>
@@ -1633,7 +1633,7 @@ let <span class="var">checker</span> = new <span class="func">CheckBox(<span cla
             <h1>Advanced Control on Markers</h1>
             <div class="">
                 The custom box attributes' value toggling are performed directly on the selected custom boxes. However, in certain situations, we may prefer to
-                toggle attribute on the markers.  This can be done easily by specifying the <code class="c-note">data-assign</code> attribute's value as <code class="c-func">":markers"</code>, 
+                toggle attribute on the markers.  This can be done easily by specifying the <code class="c-note bc">data-assign</code> attribute's value as <code class="c-func">":markers"</code>, 
                 <code class="c-func">":marker1"</code> or <code class="c-func">":marker2"</code>. This helps the plugin to determine where best to toggle the specified attribute's value. This feature is designed mostly for easy animations from external plugins.
                 
                 <br><br>
@@ -1650,7 +1650,7 @@ let <span class="var">checker</span> = new <span class="func">CheckBox(<span cla
                         CheckBox I (animate markers)
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre>
@@ -1803,7 +1803,7 @@ let <span class="var">checker</span> = new <span class="func">CheckBox(<span cla
                         checkbox J (icons)
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre>
@@ -1848,7 +1848,7 @@ let <span class="var">checker</span> = new <span class="func">CheckBox(<span cla
                         checkbox K (callback)
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre>
@@ -1894,7 +1894,7 @@ let <span class="var">checker</span> = new <span class="func">CheckBox(<span cla
                         Script
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre>
@@ -1983,7 +1983,7 @@ function <span class="func">view(<span class="arg">checkbox</span>)</span> {
                             checkbox L (cache fix)
                         </div>
                         <div class="">
-                            <span class="copy-btn">Copy</span>
+                            <span class="copy-btn"><i class="bi-clipboard"></i></span>
                         </div>
                     </div>
 <pre>
@@ -2028,7 +2028,7 @@ function <span class="func">view(<span class="arg">checkbox</span>)</span> {
                            New Script
                         </div>
                         <div class="">
-                            <span class="copy-btn">Copy</span>
+                            <span class="copy-btn"><i class="bi-clipboard"></i></span>
                         </div>
                     </div>
 <pre>
@@ -2135,7 +2135,7 @@ function <span class="func">view2(<span class="arg">checkbox</span>)</span> {
                         checkbox M (Radio buttons: a)
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre>
@@ -2243,7 +2243,7 @@ function <span class="func">view2(<span class="arg">checkbox</span>)</span> {
                         checkbox N (Radio buttons: b)
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre>
@@ -2358,7 +2358,7 @@ function <span class="func">view2(<span class="arg">checkbox</span>)</span> {
                         checkbox T (Select all)
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre>
@@ -2585,7 +2585,7 @@ function <span class="func">view2(<span class="arg">checkbox</span>)</span> {
             <div class="">
               The checkbox "reverse" effect is one in which is simalar to the detachment of a checkbox from 
               the list of toggeled boxes. In this case, rather than a complete detachment, any native checkbox with 
-              an attribute of <code class="c-note">data-bind</code> having a value of <code class="c-func">"reverse"</code> 
+              an attribute of <code class="c-note bc">data-bind</code> having a value of <code class="c-func">"reverse"</code> 
               will alway negate the parent checkbox. An example is shown below:
             </div>
 
@@ -2808,7 +2808,7 @@ function <span class="func">view2(<span class="arg">checkbox</span>)</span> {
                 nor freely exist within its group are toggled on. This means that because the third and fourth are children that agree, the parent element 
                 will have to wait until both of these children are toggled on before finally being toggled on. The reversed checkboxes will wait till the parent 
                 and both of the agreeing children are altogther in a single accord before finally negating them. The reversal is only initialized when the checkboxes are clicked upon. 
-                It may be better to set the attribute of <code class="c-note">checked</code> as a default on the native boxes to avoid confusion. This is done below:
+                It may be better to set the attribute of <code class="c-note bc">checked</code> as a default on the native boxes to avoid confusion. This is done below:
             </div>
 
             <div class="checkers box" style="width: 100%;">
@@ -2946,7 +2946,7 @@ function <span class="func">view2(<span class="arg">checkbox</span>)</span> {
                         Toggle 1: advanced attributes (no markers)
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre>
@@ -2968,7 +2968,7 @@ function <span class="func">view2(<span class="arg">checkbox</span>)</span> {
                         Toggle 2: advanced attributes (markers)
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre>
@@ -2994,14 +2994,14 @@ function <span class="func">view2(<span class="arg">checkbox</span>)</span> {
             </div> <br>
 
             <div class="">
-                In <code class="c-note">Toggle 1</code> above, two values are defined on the <code class="c-note bc">data-anime</code> attribute. 
+                In <code class="c-note bc">Toggle 1</code> above, two values are defined on the <code class="c-note bc">data-anime</code> attribute. 
                 Assuming that the values of this attribute is expected to be toggled into the <code class="c-note bc">class</code> attribute, the first 
                 value <code class="c-func">"fadeIn"</code> will be added to the <code class="c-note bc">class</code> attribute when the checkbox is unchecked 
                 also when the checkbox is checked. 
             </div> <br>
 
             <div class="">
-                In <code class="c-note">Toggle 2</code> above, rather than add the values directly on the checkbox, they will be added on the markers instead. 
+                In <code class="c-note bc">Toggle 2</code> above, rather than add the values directly on the checkbox, they will be added on the markers instead. 
                 The first value <code class="c-func">"fadeOut"</code> will be added to the first marker when unchecked while the second value <code class="c-func">"fadeIn"</code> 
                 will be added on the  second marker when the checkbox is checked. Also, it is important to take note that the <code class="c-note bc">data-assign</code> attribute 
                 is added while its value is set as <code class="c-func">":markers"</code>. 
@@ -3061,7 +3061,7 @@ function <span class="func">view2(<span class="arg">checkbox</span>)</span> {
                        Checkbox W: (data-parent)
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre>
@@ -3139,7 +3139,7 @@ function <span class="func">view2(<span class="arg">checkbox</span>)</span> {
                        Polar: (data-control)
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre>
@@ -3176,7 +3176,7 @@ function <span class="func">view2(<span class="arg">checkbox</span>)</span> {
                        Polar: (data-control)
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre>
@@ -3480,7 +3480,7 @@ function <span class="func">view2(<span class="arg">checkbox</span>)</span> {
                 if(response){
                     btn.innerText = 'Copied!'
         
-                    setTimeout(() => btn.innerText = 'Copy' , 500)
+                    setTimeout(() => btn.innerText = '<i class="bi-clipboard"></i>' , 500)
                 }
             }
             

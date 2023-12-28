@@ -63,9 +63,10 @@ function pass(checker){
     function copied(response){
         if(response){
             btn.innerHTML = 'Copied!'
+            let html = navigator.onLine ? '<i class="bi-clipboard "></i>' : '<i class="">Copy</i>'
   
             timeout = setTimeout(() => {
-              btn.innerHTML = '<i class="bi-clipboard "></i>'
+              btn.innerHTML = html
             } , 500)
         }
     }
@@ -133,14 +134,19 @@ function pass(checker){
     let isView = activeScreen.classList.contains('view')
 
     if(parent){
-        if(isHTML) {
-            parent.querySelector(`.code-btn[rel="html"]`).classList.add('active')
-        }else if(isCSS){
-            parent.querySelector(`.code-btn[rel="css"]`).classList.add('active')
-        }else if(isJS) {
-            parent.querySelector(`.code-btn[rel="js"]`).classList.add('active')
-        }else if(isView){
-            parent.querySelector(`.code-btn[rel="view"]`).classList.add('active')
+
+        try {
+            if(isHTML) {
+                parent.querySelector(`.code-btn[rel="html"]`).classList.add('active')
+            }else if(isCSS){
+                parent.querySelector(`.code-btn[rel="css"]`).classList.add('active')
+            }else if(isJS) {
+                parent.querySelector(`.code-btn[rel="js"]`).classList.add('active')
+            }else if(isView){
+                parent.querySelector(`.code-btn[rel="view"]`).classList.add('active')
+            }
+        } catch (error) {
+            // Do nothing ... 
         }
     }
 
@@ -165,3 +171,20 @@ function pass(checker){
       if(pre) pre.classList.add('active');
     })
   })
+
+  if(!navigator.onLine){
+
+    let icoMap = {
+        'bi-window' : 'View',
+        'bi-clipboard' : 'Copy',
+    }
+
+    for(let icon in icoMap) {
+        let icons = document.querySelectorAll('.'+icon);
+        icons.forEach(element =>{
+            element.classList.remove(icon);
+            element.innerHTML = icoMap[icon]
+        })
+    }
+
+  }

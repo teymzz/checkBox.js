@@ -49,42 +49,30 @@
             </div>
             
             <div class="">
-              Previously, we learnt that the way to structure a single-marker custom checkbox is similar to 
-              the structure below:
+              The sample below best reveal the format in which a custom checkbox can be designed with a single 
+              marker.
             </div> <br>
 
             
             <div class="code">
                 <div class="flex">
-                    <div class="">
-                        CheckBox (Single marker)
+                    <div class="code-x">
+                        <span class="code-btn" rel="html">HTML</span>
+                        <span class="code-btn" rel="js">JS</span>
+                        <span class="code-btn" rel="css">CSS</span>
+                        <span class="code-btn" rel="view"><i class="bi-window"></i></span>
                     </div>
                     <div class="">
                         <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
-<pre class="active">
+<pre class="html active">
 <span class="tag">&lt;div <span>checkbox</span>&gt;</span>
   <span class="tag">&lt;div <span>marker=""</span>&gt;&lt;/div&gt;</span>
 <span class="tag">&lt;/div&gt;</span>
 <span class="tag">&lt;input <span>type="<span>checkbox</span>"</span>&gt;</span>
 </pre>
-            </div> <br>
-            
-            <div class="">
-              Let's add some styling to the custom checkbox and marker.
-            </div> <br>
-
-            <div class="code">
-                <div class="flex">
-                    <div class="">
-                        Custom css
-                    </div>
-                    <div class="">
-                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
-                    </div>
-                </div>
-<pre class="active">
+<pre class="css">
 <span class="key">[checkbox]</span> <span class="braces">{</span>
     <span class="var">width</span>: fit-content;
     <span class="var">border-radius</span>: 5px;
@@ -113,31 +101,32 @@
     <span class="var">background-color</span>: lime;
 <span class="braces">}</span>
 </pre>
-            </div> <br>  
+<pre class="js">
+<span class="tag">&lt;script&gt;</span>
 
-            <div class="code">
-                <div class="flex">
-                    <div class="">
-                        HTML View (Toggle on checkbox)
-                    </div>
-                </div>
-                <div class="" style="padding:10px">
-<div checkbox>
-  <div marker=""></div>
-</div>
-<input type="checkbox" value="foo">                    
-                </div>
+new <span class="func">CheckBox()</span>; <span class="comment">//initialize and execute</span>
+
+<span class="tag">&lt;/script&gt;</span>    
+</pre>
+<pre class="view">
+    <div class="checkbox-field">
+        <div checkbox>
+            <div marker=""></div>
+        </div>
+        <input type="checkbox" value="foo">                    
+    </div>    
+</pre>
             </div> <br>
 
             <div class="">
-              From the above, we can see how to apply a single marker on the custom checkbox. 
-              The value of the attribute <code class="c-note">checked</code> is automatically assigned to 
+              From the sample above, we can see how to apply a single marker on the custom checkbox. 
+              An attribute <code class="c-note bc">checked</code> is automatically assigned to 
               the custom checkbox based on the current status of its native checkbox. This makes it easier to style 
               the custom checkbox. Let's take a look at double markers on the next page.
             </div>  <br>
             
             <div class="" style="padding:10px 5px">
-              <a href="../docs/markers.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:left; text-decoration: none">
+              <a href="../docs/single-marker.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:left; text-decoration: none">
                 <i class="bi-arrow-left-circle"></i> 
               </a> 
               

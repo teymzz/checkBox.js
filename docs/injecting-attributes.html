@@ -45,7 +45,7 @@
             </div>
         
             <div class="">
-                Earlier, we have seen how to toggle an attribute's value globally using the "<code class="c-note">assign</code>" option. 
+                Earlier, we have seen how to toggle an attribute's value globally using the "<code class="c-note bc">assign</code>" option. 
                 The checkbox plugin however provides an extra feature for injecting a default value into destination values 
                 when toggling attribute's values. This feature is mostly useful when assigning values that are mostly constant. In this case, rather 
                 than repeating the same value, we can easily reduce the html structure smartly by using the plugin's
@@ -60,7 +60,7 @@
                         <span class="code-btn" rel="js">JS</span>
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre class="html active"><span class="tag">&lt;div <span class="func">checkbox data-names="<span class="var">foo|bar baz</span>" rel="<span>box</span>"</span>&gt;</span>
@@ -106,7 +106,7 @@ checkbox.<span class="func">check(<span class="braces">{
                 will be toggled into the <code class="c-note bc">rel</code> attribute of the same checkbox. Similarly, when the checkbox is unchecked, the 
                 "<code class="c-var bc">foo</code>" value will be toggled into the <code class="c-note bc">class</code> attribute. However, the javascript's <code class="c-bool">toogle()</code> 
                 callback function assigns an extra "<code class="c-var">animate</code>" value to the <code class="c-note bc">rel</code> attribute only when the checkbox is checked. This additional adding of 
-                "<code class="c-var">animate</code>" attribute in the javascript section takes a bit longer and we have to redefine the "<code class="c-note">box</code>" value so it doesn't get overridden. The checkbox plugin provides 
+                "<code class="c-var">animate</code>" attribute in the javascript section takes a bit longer and we have to redefine the "<code class="c-note bc">box</code>" value so it doesn't get overridden. The checkbox plugin provides 
                 an easier way to handle this which can be seen below :
             </div> <br>
 
@@ -118,7 +118,7 @@ checkbox.<span class="func">check(<span class="braces">{
                         <span class="code-btn" rel="js">JS</span>
                     </div>
                     <div class="">
-                        <span class="copy-btn">Copy</span>
+                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre class="html active"><span class="tag">&lt;div <span class="func">checkbox data-names="<span class="var">foo|bar baz</span>" rel="<span>box</span>"</span>&gt;</span>
@@ -147,7 +147,7 @@ checkbox.<span class="func">check({
                 to the "<code class="c-note bc">rel</code>" destination attribute when it is <i>checked</i>. 
                 This injected value along with other values will also be replaced with <code class="c-var">"foo"</code> when the checkbox <i>unchecked</i> while the default value "<code class="c-var">box</code>" will be kept. 
                 The removal or addition of the injected value is however dependent on the modifier option (e.g <code class="c-string">"checked"</code>) applied. 
-                For example, if the modifier was set as "<code class="c-note">unchecked</code>", then "<code class="c-var">animate</code>" will be injected when the checkbox is <i>unchecked</i> while it will be removed when the checkbox is <i>checked</i>. This makes our code concise and easier to 
+                For example, if the modifier was set as "<code class="c-note bc">unchecked</code>", then "<code class="c-var">animate</code>" will be injected when the checkbox is <i>unchecked</i> while it will be removed when the checkbox is <i>checked</i>. This makes our code concise and easier to 
                 maintain.
             </div> <br>
 

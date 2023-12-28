@@ -133,6 +133,11 @@ h1{
 }
 
 /* --code field designs-- */
+code.bc {
+  font-size: .75em;
+  padding: .2em .6em;
+}
+
 .code{
     background-color: rgb(40, 37, 59);
 }

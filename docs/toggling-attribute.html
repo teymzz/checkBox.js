@@ -47,8 +47,8 @@
           is an integrated feature that is mostly useful for handling animations. 
           This feature defines the value assumed by a specified attribute when the 
           custom checkbox is checked or when it is unchecked. In order to do this, we need 
-          to specify a primary <code class="c-note">source</code> attribute and a secondary  
-          <code class="c-note">destination</code> attribute. The primary attribute is expected 
+          to specify a primary <code class="c-note bc">source</code> attribute and a secondary  
+          <code class="c-note bc">destination</code> attribute. The primary attribute is expected 
           to anchor the value that is expected to be toggled while the secondary attribute refers 
           to the attribute whose value is toggled. For example, consider the html structure below :
         </div> <br>
@@ -70,8 +70,8 @@
         </div> <br>     
       
         <div class="">
-          From the sample html structure, we have a <code class="c-note">source</code> and a <code class="c-note">destination</code> attribute. 
-          Assuming that we need to toggle the value of the source into the destination, we can do this globally using the “<code class="c-note">assign</code>” 
+          From the sample html structure, we have a <code class="c-note bc">source</code> and a <code class="c-note bc">destination</code> attribute. 
+          Assuming that we need to toggle the value of the source into the destination, we can do this globally using the “<code class="c-note bc">assign</code>” 
           configuration option. A sample format of this is shown below :
         </div> <br>
         
@@ -101,42 +101,42 @@
       
         <ul>
           <li>
-            <code class="bc c-note">checked</code> 
+            <code class="c-note bc">checked</code> 
             This option toggles the source value into the destination attribute on the custom checkbox when the checkbox is <i class="c-var">checked</i> and toggles it out when <i class="c-bool">unchecked</i>. This option is also set as the default option if not specified.
             <div class="link-pane">
               <a href="../docs/toggle-attribute-checked.html"><span>view sample</span></a>
             </div>
           </li> <br>
           <li>
-            <code class="bc c-note">unchecked</code> 
+            <code class="c-note bc">unchecked</code> 
             This option toggles the source value into the destination attribute on the custom checkbox when the checkbox is unchecked and toggles it out when checked.
             <div class="link-pane">
               <a href="../docs/toggle-attribute-unchecked.html"><span>view sample</span></a>
             </div>
           </li> <br>
           <li>
-            <code class="bc c-note">both</code>
+            <code class="c-note bc">both</code>
             This defines that the source value should be removed and re-toggled into the destination attribute on the custom checkbox in both cases when the checkbox is checked or unchecked.
             <div class="link-pane">
               <a href="../docs/toggle-attribute-both.html"><span>view sample</span></a>
             </div>
           </li> <br>
           <li>
-            <code class="bc c-note">:marker1</code>
+            <code class="c-note bc">:marker1</code>
             This option toggles the source value into the destination attribute on the first custom checkbox marker when the checkbox is checked and toggles it out when unchecked.
             <div class="link-pane">
               <a href="../docs/toggle-attribute-marker1.html"><span>view sample</span></a>
             </div>
           </li> <br>
           <li>
-            <code class="bc c-note">:marker2</code>
+            <code class="c-note bc">:marker2</code>
             This option toggles the source value into the destination attribute on the second custom checkbox marker when the checkbox is unchecked and toggles it out when checked.
             <div class="link-pane">
               <a href="../docs/toggle-attribute-marker2.html"><span>view sample</span></a>
             </div>
           </li> <br>
           <li>
-            <code class="bc c-note">:markers</code>
+            <code class="c-note bc">:markers</code>
             This defines that the source value should be removed and re-toggled into the destination attribute on the custom checkbox markers in both cases when the checkbox is checked or unchecked.
             <div class="link-pane">
               <a href="../docs/toggle-attribute-markers.html"><span>view sample</span></a>
@@ -161,7 +161,7 @@
         </div> <br>
       
         <div class="">
-          In the sample above, the <code class="bc c-note">data-assign</code> attribute's options are separated by pipe. The first option defines the state of the checkbox upon which the toggle effect is applied 
+          In the sample above, the <code class="c-note bc">data-assign</code> attribute's options are separated by pipe. The first option defines the state of the checkbox upon which the toggle effect is applied 
           while the middle option defines the name of the source attribute where the value is picked from. The last value however, specifies the destination attribute where the value toggle effect is applied. To better understand 
           this, let's assume we have an html structure below :
         </div> <br>
@@ -182,7 +182,7 @@
         </div> <br>
       
         <div class="">
-          From the sample structure above, the <code class="c-var"><i>anime</i></code> value will be toggled into the <code class="c-note">class</code> 
+          From the sample structure above, the <code class="c-var"><i>anime</i></code> value will be toggled into the <code class="c-note bc">class</code> 
           attribute without affecting the initial value (i.e <code class="c-var">box</code>). Let's add some css styling effect to the 
           custom checkbox so as to be able to know when the value is toggled. More usage samples are provided in the sample links previously discussed.
         </div> <br>

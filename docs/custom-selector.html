@@ -19,7 +19,7 @@
             </div>
             
             <div class="">
-              By default, the custom checkbox is identified through the <code class="c-note">“checkbox”</code> attribute. 
+              By default, the custom checkbox is identified through the <code class="c-note bc">“checkbox”</code> attribute. 
               We can easily change this selector by declaring a custom one. An example of this is shown below:
             </div> <br>
             
@@ -28,20 +28,26 @@
                 <div class="flex">
                     <div class="code-x">
                       <span class="code-btn" rel="html">HTML</span>
-                      <span class="code-btn" rel="js">JS</span>
+                      <span class="code-btn" rel="js1">JS#1</span>
+                      <span class="code-btn" rel="js2">JS#2</span>
                     </div>
                     <div class="">
-                      <span class="copy-btn">Copy</span>                      
+                      <span class="copy-btn"><i class="bi-clipboard"></i></span>                      
                     </div>
                 </div>
 <pre class="html active">
-<span class="tag">&lt;div <span>checkers=""</span>&gt;</span>
-  <span class="tag">&lt;div <span>marker=""</span>&gt;&lt;/div&gt;</span> 
-  <span class="tag">&lt;div <span>marker=""</span>&gt;&lt;/div&gt;</span>
-<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div <span>checkers=""</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
+
 <span class="tag">&lt;input <span>type="<span>checkbox</span>"</span>&gt;</span>
 </pre>
-<pre class="js">
+<pre class="js1">
+<span class="var">new</span> <span class="func">CheckBox({
+
+  <span class="var">target:</span> <span class="val">'[checkers]'</span> <span class="comment">//custom box selector</span>
+
+})</span>;
+</pre>
+<pre class="js2">
 <span class="var">let</span> checkbox = <span class="var">new</span> <span class="func">CheckBox(<span class="bool">true</span>)</span>;
 
 checkbox.<span class="func">check({
@@ -53,17 +59,18 @@ checkbox.<span class="func">check({
             </div> <br>           
             
             <div class="">
-              From the javascript code sample above, the <code class="c-note">[checkers]</code> selector was used to select the target html checkbox which will overide the 
-              default <code class="c-note">[checkbox]</code> selector. This can be good for localizing checkbox selection and also avoiding conflicts if necessary.
+              From the javascript code sample above, the <code class="c-note bc">[checkers]</code> selector was used to select the target html checkbox which comes immediately 
+              before the native checkbox. This will overide the default <code class="c-note bc">[checkbox]</code> selector and is also useful in cases where we may require different 
+              targets to prevent conflicts if necessary. Any of the two javascript methods above may be applied.
             </div> <br>    
             
             <div class="" style="padding:10px 5px">
-              <a href="../docs/sizing-markers.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:left; text-decoration: none">
+              <a href="../docs/basic.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:left; text-decoration: none">
                 <i class="bi-arrow-left-circle"></i> 
               </a> 
               
-              <a href="../docs/custom-marker.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:right; text-decoration: none">
-                <i class="bi-arrow-right-circle"></i> custom marker
+              <a href="../docs/markers.html" class="nav-btn-rt">
+                <i class="bi-arrow-right-circle"></i> Adding Markers
               </a> 
             </div><br><br><br>
             
