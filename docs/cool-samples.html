@@ -74,11 +74,10 @@
 
             <div class="" style="font-size: 1.2em;"> <br>
                 <h1 style="color:#51ceff">CheckBox.js</h1> <br>
-                <h4 style="color:#51ceff">Cool Samples</h4> <br>
             </div>
             
             <div class="">
-              This page contains different sample of checkboxes that can be applied on web pages.
+              Hi there, here are some cool samples of what the checkbox plugin can do!
             </div> <br>
             
            <div class="checkers box wid-full">
@@ -386,9 +385,9 @@
             </div>
                         
             <div class="nav-pane">
-              <ul>
+              <ul style="overflow-y: scroll">
                 <li>
-                  <a class="link" href="../index.html">intro</a>
+                  <a class="link" href="../index.html">introduction</a>
                 </li>
                 <li>
                   <a class="link" href="../docs/basic.html">basic</a>
@@ -397,36 +396,62 @@
                   <a class="link" href="../docs/markers.html">Adding Markers</a>
                 </li>
                 <li>
+                  <a class="link" href="../docs/init-event.html">Init Event</a>
+                </li>
+                <li>
+                  <a class="link" href="../docs/toggle-event.html">Toggle Event</a>
+                </li>
+                <li>
+                  <a class="link" href="../docs/eager-loading.html">Eager Loading</a>
+                </li>
+                <li>
                   <a class="link" href="../docs/adding-colors.html">Adding Colors</a>
                 </li>
                 <li>
-                  <a class="link" href="../docs/fitting--images.html">Adding Images</a>
+                  <a class="link" href="../docs/fitting-images.html">Fitting Images</a>
+                </li>
+                <li>
+                  <a class="link" href="../docs/fitting-icons.html">Fitting Icons</a>
+                </li>
+                <li>
+                  <a class="link" href="../docs/toggling-attribute.html">Toggling Attributes</a>
+                </li>
+                <li>
+                  <a class="link" href="../docs/injecting-attribute.html">Injecting Attribute</a>
                 </li>
                 <li>
                   <a class="link" href="../docs/adding-labels.html">Adding Labels</a>
                 </li>
                 <li>
-                  <a class="link" href="">init event</a>
+                  <a class="link" href="../docs/adding-labels.html">Adding Colors</a>
                 </li>
                 <li>
-                  <a class="link" href="">custom selector</a>
+                  <a class="link" href="../docs/advanced-effects.html">Advanced Effects</a>
+                </li>                
+                <li>
+                  <a class="link" href="../docs/radio-effect.html">Radio Effect</a>
                 </li>
                 <li>
-                  <a class="link" href="">custom markers</a>
+                  <a class="link" href="../docs/base-effect.html">Base Effect</a>
                 </li>
                 <li>
-                  <a class="link" href="">binding markers</a>
+                  <a class="link" href="../docs/base-reversal-effect.html">Base Reversal Effect</a>
                 </li>
                 <li>
-                  <a class="link" href=""></a>
+                  <a class="link" href="../docs/slide-effect.html">Slide Effect</a>
+                </li>
+                <li>
+                  <a class="link" href="../docs/rating-effect.html">Rating Effect</a>
+                </li>
+                <li>
+                  <a class="link" href="../docs/cool-samples.html">Cool Samples</a>
                 </li>
               </ul>
-              <a href="../docs/binding-parents.html" class="nav-btn-lt">
-                <i class="bi-arrow-left-circle"></i> 
+              <a href="../docs/basic.html" class="nav-btn-lt">
+                <i class="bi-house"></i> Home
               </a> 
-              
-              <a href="../docs/cool-samples.html" class="nav-btn-rt">
-                <i class="bi-arrow-right-circle"></i> cool samples
+              <a href="../docs/binding-parents.html" class="nav-btn-rt">
+                <i class="bi-arrow-left-circle"></i> Polar effect
               </a> 
             </div><br><br><br>
 
@@ -466,66 +491,15 @@
                 rootBox.innerHTML = (e.checkedBoxes) + ' stars';
             }
             
-           
-            
-            // Threshold for considering the device as shaking
-            const shakeThreshold = 15;
-            
-            // Initialize the last acceleration values
-            let lastX = null;
-            let lastY = null;
-            let lastZ = null;
-            
-            // Function to handle the device motion event
-            function handleMotionEvent(event) {
-              const acceleration = event.accelerationIncludingGravity;
-            
-              if (lastX !== null) {
-                const deltaX = Math.abs(acceleration.x - lastX);
-                const deltaY = Math.abs(acceleration.y - lastY);
-                const deltaZ = Math.abs(acceleration.z - lastZ);
-            
-                if (deltaX > shakeThreshold || deltaY > shakeThreshold || deltaZ > shakeThreshold) {
-                  // Device is shaking 
-                  
-                  let checkList = document.querySelector('.gear') 
-                  let customLists = checkList.querySelectorAll('[data-role="checkbox"]') 
-                  let checkedBox = checkList.querySelector('[data-role="checkbox"][checked="checked"]') 
-                  let checkedIndex = Array.from(checkList.children).indexOf(checkedBox); 
-                  if(customLists.length > 0) {
-                    if((checkedIndex + 1) === customLists.length){
-                        checkedIndex = 0;
-                    } else {
-                      checkedIndex = checkedIndex + 1;
-                    }
-                    customLists[checkedIndex].querySelector('[checkee]').click();
-                  }
-                }
-              }
-            
-              // Update the last acceleration values
-              lastX = acceleration.x;
-              lastY = acceleration.y;
-              lastZ = acceleration.z;
-            }
-            
-            // Add an event listener for the devicemotion event
-            window.addEventListener("devicemotion", handleMotionEvent);
             
             function view(checkbox) {
             
-                let input;
-                
-                input = document.getElementById('pass')
+                let input = document.getElementById('pass')
                 
                 if( checkbox.checked ) {
-                
-                input.setAttribute('type', 'text')
-                
+                  input.setAttribute('type', 'text')
                 } else {
-                
-                input.setAttribute('type', 'password')
-                
+                  input.setAttribute('type', 'password')
                 }
                 
             }

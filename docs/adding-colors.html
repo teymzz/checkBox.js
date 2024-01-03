@@ -157,7 +157,6 @@
                 <div class="code-x">
                   <b><i class="bi-hash"></i>markers</b>
                   <span class="code-btn" rel="html">HTML</span>
-                  <span class="code-btn" rel="css">CSS</span>
                   <span class="code-btn" rel="view"><i class="bi-window"></i></span>
                 </div>
                 <div class="">
@@ -206,7 +205,6 @@
                     <div class="code-x">
                       <b><i class="bi-hash"></i>markers (icons)</b>
                       <span class="code-btn" rel="html">HTML</span>
-                      <span class="code-btn" rel="css">CSS</span>
                       <span class="code-btn" rel="view"><i class="bi-window"></i></span>
                     </div>
                   </div>
@@ -215,8 +213,8 @@
                   </div>
               </div>
 <pre class="html">
-<span class="tag">&lt;div <span class="func"> class="<span class="var">checkbox-wrapper</span>" data-label="<span>Smile|Frown</span>"</span>&gt;</span>
-  <span class="tag">&lt;div <span class="func">checkbox data-color="<span class="var">@red|lime</span>" data-label="<span>Smile|Frown</span>"</span>&gt;</span>
+<span class="tag">&lt;div <span class="func"> class="<span class="var">checkbox-wrapper</span>" </span>&gt;</span>
+  <span class="tag">&lt;div <span class="func">checkbox data-color="<span class="var">@red|lime</span>" data-label="<span>Smile|Frown</span>" data-size="<span>20px</span>"</span>&gt;</span>
 
     <span class="tag">&lt;div <span class="func">marker=""</span>&gt;</span>
       <span class="tag">&lt;i <span class="func">class="bi bi-emoji-frown"</span>&gt;</span><span class="tag">&lt;/i&gt;</span>
@@ -234,7 +232,7 @@
 <pre class="view active">
   <div class="checkbox-field" >
     <div style="display: flex; gap: .5em; align-items: center; width: 100%;">
-      <div checkers data-size="auto" data-color="@red|lime" data-label="Unchecked|Checked" data-flip="true" style="display: flex; align-items: center; border:none"> 
+      <div checkers data-size="auto" data-color="@red|lime" data-label="Smile|Frown" data-flip="true" style="display: flex; align-items: center; border:none"> 
         <div marker="">
           <i class="bi bi-emoji-frown" style="display:flex; align-items:center"></i>
         </div>
@@ -256,6 +254,68 @@
                   
             
             <div class="nav-pane">
+              <ul style="overflow-y: scroll">
+                <li>
+                  <a class="link" href="../index.html">introduction</a>
+                </li>
+                <li>
+                  <a class="link" href="../docs/basic.html">basic</a>
+                </li>
+                <li>
+                  <a class="link" href="../docs/markers.html">Adding Markers</a>
+                </li>
+                <li>
+                  <a class="link" href="../docs/init-event.html">Init Event</a>
+                </li>
+                <li>
+                  <a class="link" href="../docs/toggle-event.html">Toggle Event</a>
+                </li>
+                <li>
+                  <a class="link" href="../docs/eager-loading.html">Eager Loading</a>
+                </li>
+                <li>
+                  <a class="link" href="../docs/adding-colors.html">Adding Colors</a>
+                </li>
+                <li>
+                  <a class="link" href="../docs/fitting-images.html">Fitting Images</a>
+                </li>
+                <li>
+                  <a class="link" href="../docs/fitting-icons.html">Fitting Icons</a>
+                </li>
+                <li>
+                  <a class="link" href="../docs/toggling-attribute.html">Toggling Attributes</a>
+                </li>
+                <li>
+                  <a class="link" href="../docs/injecting-attribute.html">Injecting Attribute</a>
+                </li>
+                <li>
+                  <a class="link" href="../docs/adding-labels.html">Adding Labels</a>
+                </li>
+                <li>
+                  <a class="link" href="../docs/adding-labels.html">Adding Colors</a>
+                </li>
+                <li>
+                  <a class="link" href="../docs/advanced-effects.html">Advanced Effects</a>
+                </li>                
+                <li>
+                  <a class="link" href="../docs/radio-effect.html">Radio Effect</a>
+                </li>
+                <li>
+                  <a class="link" href="../docs/base-effect.html">Base Effect</a>
+                </li>
+                <li>
+                  <a class="link" href="../docs/base-reversal-effect.html">Base Reversal Effect</a>
+                </li>
+                <li>
+                  <a class="link" href="../docs/slide-effect.html">Slide Effect</a>
+                </li>
+                <li>
+                  <a class="link" href="../docs/rating-effect.html">Rating Effect</a>
+                </li>
+                <li>
+                  <a class="link" href="../docs/cool-samples.html">Cool Samples</a>
+                </li>
+              </ul>
               <a href="../docs/adding-labels.html" class="nav-btn-lt">
                 <i class="bi-arrow-left-circle"></i> 
               </a> 
@@ -268,6 +328,7 @@
         </section>
         
         <script src="../src/js/docs.js"></script>
+        <script src="../src/js/navscript.js"></script>
         
         <script>
           let checkers = new CheckBox(true);

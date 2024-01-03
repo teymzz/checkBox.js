@@ -55,7 +55,13 @@ a, a:visited{
 }
 
 .nav-pane {
-  position: relative;
+  position: fixed;
+  width: 100%;
+  bottom : 0;
+  left:0;
+  right:0;
+  background-color: #fafafa;
+  padding: 0px;
 }
 
 .nav-pane ul {
@@ -64,20 +70,21 @@ a, a:visited{
   overflow: hidden;
   transition: width .5s, height .5s ease-in-out;
   position: absolute;
-  bottom: 20px;
+  bottom: 50px;
   background-color : #3e3a51; 
   border-radius : 5px;
 }
 
 .nav-pane ul.open{
   width: fit-content;
-  padding: 10px;
-  height: 300px;
+  height: 80vh;
 }
 
 .nav-pane ul li {
-  margin: 4px 0;
+  margin: 1px 0;
+  padding: 6px;
   list-style: none;
+  background-color: #272636;
 }
 
 .nav-pane ul li a{
@@ -87,17 +94,14 @@ a, a:visited{
 
 /* set navigation buttons */
 a[class*=nav-btn]{
-    background-color: #3e3a51 ; 
-    color: white; 
+    /*background-color: #3e3a51; */
+    color : #646464;
     border:none; 
     border-radius: 5px; 
     padding:14px 20px;
     text-decoration: none;
 }
 
-.nav-pane {
-    padding: 10px 0px;
-}
 a.nav-btn-lt {
     float: left;
     margin-right: 4px;
