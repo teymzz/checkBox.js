@@ -19,20 +19,23 @@
             </div>
             
             <div class="">
-              We have already seen how we can style markers using css from earlier samples. 
-              We can also achieve a similar sizing effect globally when we initialize the plugin. 
-              This global sizing can be applied in different ways as shown below:
+              The sizing of markers involves setting the width and height of a custom checkbox or its markers using either a global or a
+              local configuration. Earlier in previous examples, we have already seen how we can style markers using css. 
+              However, we can also do this globally when we initialize the plugin. This global sizing can be applied in different ways as shown below:
             </div> <br>
             
             <div class="code">
                 <div class="flex">
                     <div class="code-x">
+                        <strong class="flex mid-v">GLOBAL</strong>
                         <span class="code-btn active" rel="js1">JS#1</span>
                         <span class="code-btn" rel="js2">JS#2</span>
                         <span class="code-btn" rel="js3">JS#3</span>
                     </div>
                     <div class="">
-                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
+                        <span class="copy-btn">
+                          <i class="bi-clipboard"></i>
+                        </span>
                     </div>
                 </div>
 <pre class="js1 active">
@@ -73,20 +76,21 @@ checkbox.<span class="func">check({
             <div class="">
               The sample scripts above shows various ways through which the width and height of checkbox markers can be defined 
               by default when initializing the checkboxes. These defaults can be also overridden through the use of the 
-              <code class="c-note bc">data-size</code> html attribute as shown below :
+              <code class="bc c-note">data-size</code> html attribute as shown below :
             </div> <br>
             
             <!-- checkbox -->
             <div class="code">
                 <div class="flex">
                     <div class="code-x">
-                        <span class="code-btn active" rel="html">HTML</span>
+                        <strong class="flex mid-v">LOCAL</strong>
+                        <span>HTML</span>
                     </div>
                     <div class="">
                         <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
-<pre class="html active">
+<pre class="active">
 <span class="tag">&lt;div <span>checkbox="" data-size="<span>10px|30px</span>"</span>&gt;</span>
   <span class="tag">&lt;div <span>marker=""</span>&gt;&lt;/div&gt;</span>
   <span class="tag">&lt;div <span>marker=""</span>&gt;&lt;/div&gt;</span> 
@@ -96,13 +100,13 @@ checkbox.<span class="func">check({
             </div> <br>            
             
             <div class="">
-              In the sample html structure above, the <code class="c-note bc">data-size</code> will set the width and height of
-              both of the markers respectively. The left value sets the width, while the right value sets the height. However, 
+              In the sample html structure above, the <code class="c-note">data-size</code> will set the width and height of
+              both of the markers respectively. The left value sets the width, while the right value sets the height. However 
               if a single value is supplied, it will be used for both the width and the height.
             </div>
             
             <div class="" style="padding:10px 5px">
-              <a href="../docs/single-marker.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:left; text-decoration: none">
+              <a href="../docs/custom-marker.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:left; text-decoration: none">
                 <i class="bi-arrow-left-circle"></i> 
               </a> 
               

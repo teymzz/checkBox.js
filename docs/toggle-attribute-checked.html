@@ -16,21 +16,16 @@
         }
 
         [checkers] > [marker] {
-            width: 20px;
+            width: 30px;
             height: 20px;
+            background-color: #5d5c6288;
             transition: width .5s ease-in, 
                 background-color .5s ease-in-out;
-            background-color: transparent;
-        }
-
-        [checkers] > [marker] {
-            width: 50px;
-            background-color: green;
         }
 
         .bar[checkers] > [marker] {
-            width: 30px;
-            background-color: red;
+            width: 50px;
+            background-color: lime;
         }
         </style>
     </head>
@@ -53,14 +48,13 @@
                 <div class="code-x">
                     <span class="code-btn" rel="html">HTML</span>
                     <span class="code-btn" rel="js">JS (Global)</span>
-                    <span class="code-btn" rel="css">CSS</span>
                 </div>
                 <div class="">
                     <span class="copy-btn"><i class="bi-clipboard"></i></span>
                 </div>
             </div>
 <pre class="html"><span class="tag">&lt;div <span class="func">checkbox class="<span class="var">foo</span>" data-switch="<span class="var">bar</span>"</span>&gt;</span>
-<span class="tag">&lt;div <span class="func">marker style="<span class="var">background-color: #594fc8;</span>"</span>&gt;&lt;/div&gt;</span>
+  <span class="tag">&lt;div <span class="func">marker style="<span class="var">background-color: #594fc8;</span>"</span>&gt;&lt;/div&gt;</span>
 <span class="tag">&lt;/div&gt;</span>
 <span class="tag">&lt;input <span class="func">type="<span class="var">checkbox</span>"</span>&gt;</span>
 </pre>
@@ -75,8 +69,8 @@ new <span class="func">CheckBox(</span>{
         </div> <br>     
         
         <div class="">
-          From the sample above, due to the plugin's global configuration, the value "<code class="c-var">bar</code>" from the <code class="c-note bc">data-switch</code> 
-          attribute will be toggled into the <code class="c-note bc">class</code> attribute when a checkbox is
+          From the sample above, due to the plugin's global configuration, in the html section, the value "<code class="c-var">bar</code>" from the <code class="c-note bc">data-switch</code> 
+          attribute will be toggled into the <code class="c-note bc">class</code> attribute when the custom checkbox is
           checked. This was done using the plugin's <code class="c-bool">assign</code> configuration option.            
           Alternatively, we can do this locally using the <code class="c-note bc">data-assign</code> attribute as shown below :
         </div> <br>
@@ -130,23 +124,18 @@ new <span class="func">CheckBox(</span><span class="func">)</span>;
 <span class="braces">}</span>
 
 <span class="key">[checkers] &gt; [marker]</span> <span class="braces">{</span>
-    <span class="var">width</span>: 20px;
+    <span class="var">width</span>: 30px;
     <span class="var">height</span>: 20px;    
-    <span class="var">background-color</span>: transparent;
+    <span class="var">background-color</span>: #5d5c6288;
     <span class="var">transition</span>: width .5s ease-in-out, 
                 background-color .5s ease-in-out;
-<span class="braces">}</span>
-
-<span class="key">[checkers] &gt; [marker]</span> <span class="braces">{</span>
-    <span class="var">width</span>: 50px;
-    <span class="var">background-color</span>: green;
 <span class="braces">}</span>
 
 <span class="comment">/* set css for when bar is added */</span>
 
 <span class="key">.bar[checkers] &gt; [marker]</span> <span class="braces">{</span>
     <span class="var">width</span>: 30px;
-    <span class="var">background-color</span>: red;
+    <span class="var">background-color</span>: lime;
 <span class="braces">}</span>
 </pre>
         </div>
@@ -161,10 +150,10 @@ new <span class="func">CheckBox(</span><span class="func">)</span>;
 <pre class="view active">
     <div class="checkbox-field">
         <div>
-            <div checkers="" class="foo bar" data-switch="bar" data-assign="unchecked" checked="unchecked"> 
-            <div marker=""></div>
+            <div checkers="" class="foo" data-switch="bar" data-assign="checked"> 
+              <div marker=""></div>
             </div>
-            <input type="checkbox" value="foo"> 
+            <input type="checkbox"> 
         </div>
     </div>
 </pre>
@@ -173,7 +162,7 @@ new <span class="func">CheckBox(</span><span class="func">)</span>;
         
         
         <div class="">
-          From the sample above, the <code class="bc c-var">bar</code> value from the html structure will be assigned into the <code class="c-note bc">class</code> attribute when the checkbox is checked and it will be 
+          From the sample above, the <code class="bc c-var">bar</code> value from the html attribute <code class="c-note bc">data-assign</code> will be assigned into the <code class="c-note bc">class</code> attribute when the checkbox is checked and it will be 
           removed when the checkbox is unchecked.
         </div> <br>
         

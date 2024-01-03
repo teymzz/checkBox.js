@@ -50,46 +50,35 @@
             <div class="">
               The polar toggle effect is a bit similar to radio button effect except that this relatioship is only between the two markers of a 
               single custom checkbox. Each of the markers will be the only active buttons to toggle each other. This means that when a 
-              marker is active, it cannot toggle itself because it will require the action of the second marker to switch. In order to achieve this effect, both markers will be 
+              marker is active, it cannot toggle itself off because it will require the action of the second marker to switch. In order to achieve this effect, both markers will be 
               visible. Hence, <code class="c-note bc">data-flip</code> needs to be set as false and also, the 
-              <code class="c-note bc">data-control</code> attribute will be set as <code class="c-func">":markers"</code> while the markers 
-              will be manually designed using css.
+              <code class="c-note bc">data-control</code> attribute will be set as <code class="c-func">":markers"</code>.
             </div> <br>
             
-           <div class="checkers box wid-full">
-                <div class="">Polar: (data-control)</div>
+           <div class="code">
+              <div class="flex">
+                <div class="code-x">
+                  <span class="code-btn" rel="html">HTML</span>
+                  <span class="code-btn" rel="css">CSS</span>
+                  <span class="code-btn" rel="js">JS</span>
+                  <span class="code-btn active" rel="view"><i class="bi-window"></i></span>
+                </div>
                 <div class="">
-                    <div class="in-flex mid" style="padding: 10px; gap:.5em">
-                        <div data-role="checkbox" class="in-flex wrap">
-                            <div polar checkbox data-flip="false" data-control=":markers" data-anime="fadeIn|fadeIn" data-size="20" data-color="@red|green" data-assign=":markers" class="in-flex">
-                                <div marker></div>         
-                                <div marker></div>         
-                            </div>
-                            <input type="checkbox" value="polar">
-                        </div>
-                        <div class="in-flex mid-v">
-                            Polar markers' effect.
-                        </div>
-                    </div>                                                       
+                  <span class="copy-btn"><i class="bi-clipboard"></i></span>
                 </div>
-            </div>
-
-            <div class="">
-                In the sample above, any currently selected marker does not have the capacity to toggle itself. 
-                It will depend on when its opposite marker is clicked. This effect requires a custom css depending on how the markers are chosen to be designed. 
-                For the sample above, the custom css used is below : 
-            </div>
-
-            <div class="code mvt-10">
-                <div class="flex">
-                    <div class="">
-                       Polar: (data-control)
-                    </div>
-                    <div class="">
-                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
-                    </div>
-                </div>
-<pre>
+              </div>  
+<pre class="html active">
+<span class="tag">&lt;div <span>class=<span>"in-flex mid"</span> style=<span>"padding: 10px; gap:.5em"</span></span>&gt;</span>
+    <span class="tag">&lt;div <span>data-role=<span>"checkbox"</span> class=<span>"in-flex wrap"</span></span>&gt;</span>
+        <span class="tag">&lt;div <span>checkbox polar data-flip=<span>"false"</span> data-control=<span>":markers"</span> data-anime=<span>"fadeIn|fadeIn"</span> data-size=<span>"20"</span> data-color=<span>"@red|green"</span> data-assign=<span>":markers"</span></span>&gt;</span>
+            <span class="tag">&lt;div <span>marker</span>&gt;</span><span class="tag">&lt;/div&gt;</span>         
+            <span class="tag">&lt;div <span>marker</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;input <span>type=<span>"checkbox"</span> value=<span>"polar"</span></span>&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+</pre>
+<pre class="css">
 <span class="key">[polar] [marker]<span class="braces"> {
     <span class="var">border-radius: <span class="braces">100vh;</span></span>
     <span class="var">background-color: <span class="braces">#180b2b;</span></span>
@@ -113,38 +102,39 @@
 </span></pre>
             </div>
             
-            <div class="mvt-10">
-                The html sample format is shown below
-            </div>
-
-            <div class="code mvt-10">
-                <div class="flex">
-                    <div class="">
-                       Polar: (data-control)
-                    </div>
-                    <div class="">
-                        <span class="copy-btn"><i class="bi-clipboard"></i></span>
-                    </div>
+           <div class="code mvt-10">
+              <div class="flex">
+                <div class="code-x">
+                  <strong>SCREEN</strong>
+                  <span class="code-btn active" rel="view"><i class="bi-window"></i></span>
                 </div>
-<pre>
-<span class="tag">&lt;div <span>class=<span>"checkers box wid-full"</span></span>&gt;</span>
-    <span class="tag">&lt;div&gt;</span>Polar: (data-control)<span class="tag">&lt;/div&gt;</span>
-    <span class="tag">&lt;div <span>class=<span>"in-flex mid"</span> style=<span>"padding: 10px; gap:.5em"</span></span>&gt;</span>
-        <span class="tag">&lt;div <span>data-role=<span>"checkbox"</span> class=<span>"in-flex wrap"</span></span>&gt;</span>
-            <span class="tag">&lt;div <span>checkbox polar data-flip=<span>"false"</span> data-control=<span>":markers"</span> data-anime=<span>"fadeIn|fadeIn"</span> data-size=<span>"20"</span> data-color=<span>"@red|green"</span> data-assign=<span>":markers"</span></span>&gt;</span>
-                <span class="tag">&lt;div <span>marker</span>&gt;</span><span class="tag">&lt;/div&gt;</span>         
-                <span class="tag">&lt;div <span>marker</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
-            <span class="tag">&lt;/div&gt;</span>
-            <span class="tag">&lt;input <span>type=<span>"checkbox"</span> value=<span>"polar"</span></span>&gt;</span>
-        <span class="tag">&lt;/div&gt;</span>
-    <span class="tag">&lt;/div&gt;</span>
-<span class="tag">&lt;/div&gt;</span>
-</pre>
-            </div>
+              </div>  
+                
+              <pre class="view active">
+                <div class="checkbox-field">
+                  <div class="in-flex mid" style="padding: 10px; gap:.5em">
+                      <div data-role="checkbox" class="in-flex wrap">
+                          <div polar checkbox data-flip="false" data-control=":markers" data-anime="fadeIn|fadeIn" data-size="20" data-color="@red|green" data-assign=":markers" class="in-flex">
+                              <div marker></div>         
+                              <div marker></div>         
+                          </div>
+                          <input type="checkbox" value="polar">
+                      </div>
+                      <div class="in-flex mid-v">
+                          Polar markers' effect.
+                      </div>
+                  </div>                                                       
+                </div>
+              </pre>
+            </div> <br>
 
-            <div class="mvt-10">
-                In the sample above, the most important attributes for achieving a polar effect are the <code class="c-note bc">data-flip</code> 
-                and the <code class="c-note bc">data-control</code> attributes as shown in the sample above.
+            <div class="">
+                In the sample above, to uncheck the checkbox, the first marker has to be clicked. 
+                Similarly, to check the checkbox, the second marker has to be clicked. The brighter of the 
+                two colors helps us to know the current state of the checkbox. The polar effect means that each marker 
+                is the direct opposite of its sibling. A marker cannot inversely modify its active state unless its relative 
+                opposite marker is clicked. The main attributes for achieving a polar effect are the 
+                <code class="c-note bc">data-flip</code> and the <code class="c-note bc">data-control</code> attributes as shown in the sample above.
             </div>
                         
             <div class="nav-pane">

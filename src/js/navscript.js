@@ -36,7 +36,7 @@ function pressDown(e){
 function pressRelease(e){
     if(counter < 20) {
       clearInterval(interval)
-      window.location.href = e.target.getAttribute('href');
+      window.location.href = e.target.getAttribute('href') || e.target.closest("a").getAttribute("href");
 
       counter = 0;
     }else{

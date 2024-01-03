@@ -45,11 +45,11 @@
             </div>
         
             <div class="">
-                Earlier, we have seen how to toggle an attribute's value globally using the "<code class="c-note bc">assign</code>" option. 
+                Earlier, we have seen how to toggle an attribute's value globally using the <code class="c-bool bc">assign</code> option. 
                 The checkbox plugin however provides an extra feature for injecting a default value into destination values 
                 when toggling attribute's values. This feature is mostly useful when assigning values that are mostly constant. In this case, rather 
                 than repeating the same value, we can easily reduce the html structure smartly by using the plugin's
-                <code class="c-bool">alter</code> option. Consider the sample below:
+                <code class="c-bool bc">alter</code> option. Consider the sample below:
             </div> <br>
       
             
@@ -102,12 +102,12 @@ checkbox.<span class="func">check(<span class="braces">{
             </div> <br>     
       
             <div class="">
-                From the sample javascript above, when the checkbox is checked, the "<code class="bc c-var">bar baz</code>" value of the <code class="c-note bc">data-names</code> attribute 
+                From the sample javascript above, when the checkbox is checked, the <code class="bc c-var">"bar baz"</code> value of the <code class="c-note bc">data-names</code> attribute 
                 will be toggled into the <code class="c-note bc">rel</code> attribute of the same checkbox. Similarly, when the checkbox is unchecked, the 
-                "<code class="c-var bc">foo</code>" value will be toggled into the <code class="c-note bc">class</code> attribute. However, the javascript's <code class="c-bool">toogle()</code> 
-                callback function assigns an extra "<code class="c-var">animate</code>" value to the <code class="c-note bc">rel</code> attribute only when the checkbox is checked. This additional adding of 
-                "<code class="c-var">animate</code>" attribute in the javascript section takes a bit longer and we have to redefine the "<code class="c-note bc">box</code>" value so it doesn't get overridden. The checkbox plugin provides 
-                an easier way to handle this which can be seen below :
+                <code class="c-var bc">"foo"</code> value will be toggled into the <code class="c-note bc">class</code> attribute. However, the javascript's <code class="c-bool bc">toogle()</code> 
+                callback function assigns an extra <code class="c-var bc">"animate"</code> value to the <code class="c-note bc">rel</code> attribute only when the checkbox is checked. This additional adding of 
+                <code class="c-var bc">animate</code> attribute in the javascript section takes a bit longer and we have to redefine the <code class="c-var bc">"box"</code> value so it doesn't get overridden. 
+                The checkbox plugin provides an easier way to handle this which can be seen below :
             </div> <br>
 
                         
@@ -143,12 +143,12 @@ checkbox.<span class="func">check({
             </div> <br> 
 
             <div class="">
-                From the sample above, the <code class="c-bool">alter</code> option will easily modify the values by injecting an extra "<code class="c-var">animate</code>" value to the destination values "<code class="c-var">bar baz</code>" before it is finally added 
-                to the "<code class="c-note bc">rel</code>" destination attribute when it is <i>checked</i>. 
-                This injected value along with other values will also be replaced with <code class="c-var">"foo"</code> when the checkbox <i>unchecked</i> while the default value "<code class="c-var">box</code>" will be kept. 
-                The removal or addition of the injected value is however dependent on the modifier option (e.g <code class="c-string">"checked"</code>) applied. 
-                For example, if the modifier was set as "<code class="c-note bc">unchecked</code>", then "<code class="c-var">animate</code>" will be injected when the checkbox is <i>unchecked</i> while it will be removed when the checkbox is <i>checked</i>. This makes our code concise and easier to 
-                maintain.
+                From the sample above, the <code class="c-bool bc">alter</code> option will easily modify the values by injecting an extra <code class="c-var bc">"animate"</code> value to the destination values <code class="c-var bc">"bar baz"</code> before it is finally added 
+                to the <code class="c-note bc">rel</code> destination attribute when it is <i>checked</i>. 
+                This injected value along with other values will also be replaced with <code class="c-var bc">"foo"</code> when the checkbox <i>unchecked</i> while the default value <code class="c-var bc">box</code> will be kept. 
+                The removal or addition of the injected value is however dependent on the modifier option (e.g <code class="c-string bc">"checked"</code>) applied. 
+                For example, if the modifier was set as <code class="c-note bc">"unchecked"</code>, then <code class="c-var bc">"animate"</code> will be injected when the checkbox is <i>unchecked</i> while it will be removed when the checkbox is <i>checked</i>. 
+                This makes our code concise and easier to maintain.
             </div> <br>
 
             <div class="nav-pane">

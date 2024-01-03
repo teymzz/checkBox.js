@@ -1132,20 +1132,35 @@ class CheckBox {
                     if(color1 && marker1 && mColor) marker1.style.color = color1;
                     if(color2 && marker2 && mColor) marker2.style.color = color2;
                 }
+                
+                let grandParent, checkedBoxes;
+                
+                // get checkbox-list and selections
+                if(customParent){
+                  grandParent = customParent.closest('[data-role="checkbox-list"]');
+                  if(grandParent) {
+                    checkedBoxes = grandParent.querySelectorAll('input:checked').length
+                  }
+                }
+                
+                let properties = {
+                  native:input, 
+                  custom: customBox, 
+                  marker: marker, 
+                  checked: (input.checked), 
+                  fit: checkbox.fit, 
+                  flip: flip, 
+                  value: (input.value),
+                  checkList: grandParent, //checkbox list
+                  parent: customParent, //data role checkbox
+                  checkedBoxes: checkedBoxes,                  
+                }
 
                 if(typeof init === 'function'){
                     if(typeof animeAttr == 'function'){
                         animeAttr(customBox, input.checked, customBox.getAttribute('data-assign'), marker)
                     }
-                    init({
-                        native:input, 
-                        custom: customBox, 
-                        marker: marker, 
-                        checked: (input.checked), 
-                        fit: checkbox.fit, 
-                        flip: flip, 
-                        value: (input.value)
-                    });
+                    init(properties);
                 }else if (init === true) {
                     if(typeof animeAttr == 'function'){
                         animeAttr(customBox, input.checked, customBox.getAttribute('data-assign'), marker)
@@ -1153,28 +1168,7 @@ class CheckBox {
                 }
 
                 if(eager && callback !== ''){
-                  
-                    //get selections 
-                    let grandParent, checkedBoxes;
-                    
-                    grandParent = customParent.closest('[data-role="checkbox-list"]');
-                    if(grandParent) {
-                      checkedBoxes = grandParent.querySelectorAll('input:checked').length
-                    }
-                    
-                    window[callback]({
-                        native:input, 
-                        custom: customBox, 
-                        marker: marker, 
-                        checked: (input.checked), 
-                        disabled: (input.disabled), 
-                        fit: checkbox.fit, 
-                        flip: flip, 
-                        value: (input.value),
-                        parent: customParent,
-                        checkList: grandParent,
-                        checkedBoxes: checkedBoxes
-                    })
+                    window[callback](properties)
                 }
 
                 input.addEventListener('click', function(e){

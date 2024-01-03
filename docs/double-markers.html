@@ -48,9 +48,10 @@
             </div>
             
             <div class="">
-              The double markers is similar to the single markers except that two markers 
+              The double markers' structure is similar to the single markers except that two markers 
               are added into the custom checkbox container instead of 
-              a single marker.
+              a single marker. The first marker usually stands for when the native checkbox is 
+              <i class="c-bool">unchecked</i> while the second marker stand for when it is <i class="c-var">checked</i>.
             </div> <br>
 
             <!-- checkbox -->
@@ -76,6 +77,7 @@
 <pre class="css">
 <span class="key">[checkbox]</span> <span class="braces">{</span>
     <span class="var">width</span>: fit-content;
+    <span class="var">display</span>: flex;
     <span class="var">border-radius</span>: 5px;
     <span class="var">border</span>: solid;
     <span class="var">padding</span>: 4px;
@@ -103,19 +105,21 @@
 <span class="braces">}</span>
 </pre>
 <pre class="js">
-<span class="tag">&lt;script&gt;</span>
+<span class="var">let</span> checkbox = <span class="var">new</span> <span class="func">CheckBox(<span class="bool">true</span>)</span>;
 
-new <span class="func">CheckBox()</span>; <span class="comment">//initialize and execute</span>
+checkbox.<span class="func">check({
 
-<span class="tag">&lt;/script&gt;</span>    
+  <span class="var">marker:</span> <span class="val">'[btn]'</span> <span class="comment">//custom marker selector</span>
+
+})</span>;
 </pre>
             </div>
-
-            <div class="code mvt-10">
+            
+            <div class="code">
                 <div class="flex">
                     <div class="code-x">
-                        <strong class="flex mid-v">SCREEN</strong>
-                        <span class="code-btn active" rel="view"><i class="bi-window"></i></span>
+                      <strong class="">SCREEN</strong>
+                      <span class="code-btn active"><i class="bi-window"></i></span>
                     </div>
                 </div>
                 <div class="" style="padding:10px">
@@ -125,11 +129,12 @@ new <span class="func">CheckBox()</span>; <span class="comment">//initialize and
 </div>
 <input type="checkbox" value="foo">                    
                 </div>
-            </div> <br>        
-                
+            </div> <br>
+            
             <div class="">
-              From the structure above, by taking advantage of the <code class="c-note bc">checked</code> 
-              attribute, we easily created an animated toggle effect using css.
+              From the structure above, based on the css, the first 
+              marker will be displayed when the checkbox is unchecked 
+              while the second marker will be displayed when the checkbox is checked.
             </div> <br>
 
 
@@ -139,8 +144,8 @@ new <span class="func">CheckBox()</span>; <span class="comment">//initialize and
                 <i class="bi-arrow-left-circle"></i> 
               </a> 
               
-              <a href="../docs/sizing-markers.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:right; text-decoration: none">
-                <i class="bi-arrow-right-circle"></i> Sizing Markers
+              <a href="../docs/custom-marker.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:right; text-decoration: none">
+                <i class="bi-arrow-right-circle"></i> Custom Markers
               </a> 
             </div><br><br><br>
             

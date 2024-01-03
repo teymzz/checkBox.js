@@ -17,13 +17,17 @@
         }
         ul {
           padding: 10px;
-          background-color: #515e73;
+          background-color: #25273f;
         }
         
         ul li{
           border-radius: 5px;
           list-style: none;
-          background-color: #3e5167;
+          background-color: #2f314b;
+          padding: 10px;
+        }
+        
+        ul li > code:first-child{
           padding: 10px;
         }
         
@@ -47,8 +51,8 @@
           is an integrated feature that is mostly useful for handling animations. 
           This feature defines the value assumed by a specified attribute when the 
           custom checkbox is checked or when it is unchecked. In order to do this, we need 
-          to specify a primary <code class="c-note bc">source</code> attribute and a secondary  
-          <code class="c-note bc">destination</code> attribute. The primary attribute is expected 
+          to specify a primary <code class="c-note">source</code> attribute and a secondary  
+          <code class="c-note">destination</code> attribute. The primary attribute is expected 
           to anchor the value that is expected to be toggled while the secondary attribute refers 
           to the attribute whose value is toggled. For example, consider the html structure below :
         </div> <br>
@@ -70,8 +74,8 @@
         </div> <br>     
       
         <div class="">
-          From the sample html structure, we have a <code class="c-note bc">source</code> and a <code class="c-note bc">destination</code> attribute. 
-          Assuming that we need to toggle the value of the source into the destination, we can do this globally using the “<code class="c-note bc">assign</code>” 
+          From the sample html structure, we have a <code class="c-note">source</code> and a <code class="c-note">destination</code> attribute. 
+          Assuming that we need to toggle the value of the source into the destination, we can do this globally using the “<code class="c-note">assign</code>” 
           configuration option. A sample format of this is shown below :
         </div> <br>
         
@@ -85,83 +89,37 @@
                       <span class="copy-btn"><i class="bi-clipboard"></i></span>
                   </div>
               </div>
-<pre class="active js"><span class="key">assign</span>: {
-  <span class="key">attr</span>: [<span class="string">'source'</span>, <span class="string">'destination'</span>, <span class="val">&lt;:modifier:&gt;</span>],
-}
+<pre class="active js"><span class="c-var">new</span> <span class="func">CheckBox(</span><span class="braces">{</span>
+      <span class="key">assign</span>: {
+        <span class="key">attr</span>: [<span class="string">'source'</span>, <span class="string">'destination'</span>, <span class="val">&lt;:modifier:&gt;</span>]
+      }
+    <span class="braces">}</span>    
 </pre>
             </div>
         </div> <br>            
       
         <div class="">
           From the sample above, the <code class="bc c-bool">attr</code> key is a subkey of <code class="bc c-bool">assign</code> configuration key. The first two array values of this subkey 
-          respectively points to the name of the source and the destination attributes which have a close relationship. By specifying these attributes, we help the checkbox to know which attributes 
-          are closely related. The third array value however is an optional value that specifies the state of the checkbox in which the specified source value is either toggled in or toggled out of 
-          the destination attribute. These options are discussed below:
+          respectively points to the <code class="c-note bc">source</code> and the <code class="c-note bc">destination</code> attributes which have a close relationship. By specifying these attributes, 
+          we help the checkbox to know which attributes are closely related. The third array value however is a <code class="c-note bc">modifier</code> optional value that specifies the state of the checkbox in which the specified source 
+          value is either toggled in or toggled out of the destination attribute. These modifier options are discussed under local configuration.
         </div> <br>
-      
-        <ul>
-          <li>
-            <code class="c-note bc">checked</code> 
-            This option toggles the source value into the destination attribute on the custom checkbox when the checkbox is <i class="c-var">checked</i> and toggles it out when <i class="c-bool">unchecked</i>. This option is also set as the default option if not specified.
-            <div class="link-pane">
-              <a href="../docs/toggle-attribute-checked.html"><span>view sample</span></a>
-            </div>
-          </li> <br>
-          <li>
-            <code class="c-note bc">unchecked</code> 
-            This option toggles the source value into the destination attribute on the custom checkbox when the checkbox is unchecked and toggles it out when checked.
-            <div class="link-pane">
-              <a href="../docs/toggle-attribute-unchecked.html"><span>view sample</span></a>
-            </div>
-          </li> <br>
-          <li>
-            <code class="c-note bc">both</code>
-            This defines that the source value should be removed and re-toggled into the destination attribute on the custom checkbox in both cases when the checkbox is checked or unchecked.
-            <div class="link-pane">
-              <a href="../docs/toggle-attribute-both.html"><span>view sample</span></a>
-            </div>
-          </li> <br>
-          <li>
-            <code class="c-note bc">:marker1</code>
-            This option toggles the source value into the destination attribute on the first custom checkbox marker when the checkbox is checked and toggles it out when unchecked.
-            <div class="link-pane">
-              <a href="../docs/toggle-attribute-marker1.html"><span>view sample</span></a>
-            </div>
-          </li> <br>
-          <li>
-            <code class="c-note bc">:marker2</code>
-            This option toggles the source value into the destination attribute on the second custom checkbox marker when the checkbox is unchecked and toggles it out when checked.
-            <div class="link-pane">
-              <a href="../docs/toggle-attribute-marker2.html"><span>view sample</span></a>
-            </div>
-          </li> <br>
-          <li>
-            <code class="c-note bc">:markers</code>
-            This defines that the source value should be removed and re-toggled into the destination attribute on the custom checkbox markers in both cases when the checkbox is checked or unchecked.
-            <div class="link-pane">
-              <a href="../docs/toggle-attribute-markers.html"><span>view sample</span></a>
-            </div>
-          </li>
-        </ul> <br>
-      
-        <div class="">
-          Similarly to the global configuration, we can also assign values using the data-assign attribute. The sample html format is shown below:
-        </div> <br>
-      
-        <!-- checkbox code -->
+        
+       <!-- checkbox code -->
         <div class="code">
             <div class="flex">
                 <div class="">
                   <i class="bi-hash"></i> Local Assign Sample Format
                 </div>
             </div>
-<pre><span class="tag">&lt;div <span class="func">checkbox data-assign="<span class="var">checked|source|destination</span>" source="<span class="var">foo</span>" destination="<span class="var"></span>"</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
+<pre class="html active"><span class="tag">&lt;div <span class="func">checkbox data-assign="<span class="var">checked|source|destination</span>" source="<span class="var">foo</span>" destination="<span class="var"></span>"</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
 <span class="tag">&lt;input <span class="func">type="<span class="var">checkbox</span>"</span>&gt;</span>
 </pre>
         </div> <br>
-      
+        
         <div class="">
-          In the sample above, the <code class="c-note bc">data-assign</code> attribute's options are separated by pipe. The first option defines the state of the checkbox upon which the toggle effect is applied 
+          The sample html structure above best reveals how to perform a local assign configuration using the <code class="c-note bc">data-assign</code> html attribute on the custom checkbox.
+          From the sample structure above, we can see that the <code class="bc c-note">data-assign</code> attribute's values are separated by pipe. The first option defines the state of the checkbox upon which the toggle effect is applied 
           while the middle option defines the name of the source attribute where the value is picked from. The last value however, specifies the destination attribute where the value toggle effect is applied. To better understand 
           this, let's assume we have an html structure below :
         </div> <br>
@@ -173,7 +131,7 @@
                   Sample Html
                 </div>
             </div>
-<pre><span class="tag">&lt;div <span class="func">checkbox class="<span class="var">box</span>" data-class="<span class="var">anime</span>" data-assign="<span class="var">checked|data-class|class</span>"</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
+<pre class="html active"><span class="tag">&lt;div <span class="func">checkbox class="<span class="var">box</span>" data-class="<span class="var">anime</span>" data-assign="<span class="var">checked|data-class|class</span>"</span>&gt;</span><span class="tag">&lt;/div&gt;</span>
 <span class="tag">&lt;div <span class="func">marker</span>&gt;&lt;/div&gt;</span> 
 <span class="tag">&lt;div <span class="func">marker</span>&gt;&lt;/div&gt;</span>
 <span class="tag">&lt;/div&gt;</span>
@@ -182,13 +140,59 @@
         </div> <br>
       
         <div class="">
-          From the sample structure above, the <code class="c-var"><i>anime</i></code> value will be toggled into the <code class="c-note bc">class</code> 
-          attribute without affecting the initial value (i.e <code class="c-var">box</code>). Let's add some css styling effect to the 
-          custom checkbox so as to be able to know when the value is toggled. More usage samples are provided in the sample links previously discussed.
-        </div> <br>
+          From the sample structure above, the <code class="c-var"><i>anime</i></code> value will be toggled into the <code class="c-note">class</code> 
+          attribute without affecting the initial value (i.e <code class="c-var">box</code>) when the checkbox is checked. The <code class="c-var bc">checked</code> 
+          modifier value of <code class="c-note bc">data-assign</code> attribute determines when and where the toggling should be applied.
+        </div> <br>        
+      
+        <ul>
+          <strong>Modifiers</strong> <br>
+          <li style="margin-top: 20px">
+            <code class="bc c-note">checked</code> 
+            This default option toggles the source value into the destination attribute on the custom checkbox when the checkbox is <code class="c-var">checked</code> and toggles it out when <code class="c-bool">unchecked</code>. 
+            <div class="link-pane">
+              <a href="../docs/toggle-attribute-checked.html"><span>view sample</span></a>
+            </div>
+          </li> <br>
+          <li>
+            <code class="bc c-note">unchecked</code> 
+            This option toggles the source value into the destination attribute on the custom checkbox when the checkbox is <code class="c-bool">unchecked</code> and toggles it out when <code class="c-var">checked</code>.
+            <div class="link-pane">
+              <a href="../docs/toggle-attribute-unchecked.html"><span>view sample</span></a>
+            </div>
+          </li> <br>
+          <li>
+            <code class="bc c-note">both</code>
+            This defines that the source value should be removed and re-toggled into the destination attribute on the custom checkbox in both cases when the checkbox is either <code class="c-var">checked</code> or <code class="c-bool">unchecked</code>.
+            <div class="link-pane">
+              <a href="../docs/toggle-attribute-both.html"><span>view sample</span></a>
+            </div>
+          </li> <br>
+          <li>
+            <code class="bc c-note">:marker1</code>
+            This option toggles the source value into the destination attribute on the first custom checkbox marker when the checkbox is <code class="c-var">checked</code> and toggles it out when <code class="c-bool">unchecked</code>.
+            <div class="link-pane">
+              <a href="../docs/toggle-attribute-marker1.html"><span>view sample</span></a>
+            </div>
+          </li> <br>
+          <li>
+            <code class="bc c-note">:marker2</code>
+            This option toggles the source value into the destination attribute on the second custom checkbox marker when the checkbox is <code class="c-bool">unchecked</code> and toggles it out when <code class="c-var">checked</code>.
+            <div class="link-pane">
+              <a href="../docs/toggle-attribute-marker2.html"><span>view sample</span></a>
+            </div>
+          </li> <br>
+          <li>
+            <code class="bc c-note">:markers</code>
+            This defines that the source value should be removed and re-toggled into the destination attribute on the custom checkbox markers in both cases when the checkbox is <code class="c-var">checked</code> or <code class="c-bool">unchecked</code>.
+            <div class="link-pane">
+              <a href="../docs/toggle-attribute-markers.html"><span>view sample</span></a>
+            </div>
+          </li>
+        </ul> <br>
 
         <div class="" style="padding:10px 5px">
-          <a href="../docs/eager-loading.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:left; text-decoration: none">
+          <a href="../docs/fitting-images.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:left; text-decoration: none">
             <i class="bi-arrow-left-circle"></i> 
           </a> 
           

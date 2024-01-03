@@ -24,6 +24,13 @@
                 text-align: left; 
                 font-size:.7em;
             }
+            
+            .fill-marker {
+              display : grid;
+              place-items : center;
+              width: 100%;
+              height: 100%;
+            }
 
             .gold {
                 border-color:#c68811;
@@ -97,7 +104,7 @@
            <div class="checkers box wid-full">
                 <div class="">
                     <div class="" style="padding: 6px 6px; font-size:.85em;">
-                        Fade Marker
+                        Fade Marker (image)
                     </div>
                     <div class="in-flex mid" style="padding: 10px; gap:.5em">
                         <div data-role="checkbox" class="in-flex wrap rad-r">
@@ -117,7 +124,7 @@
            <div class="checkers box wid-full">
                 <div class="">
                     <div class="" style="padding: 6px 6px; font-size:.85em;">
-                        Flash Marker
+                        Flash Marker (image)
                     </div>
                     <div class="in-flex mid" style="padding: 10px; gap:.5em">
                         <div data-role="checkbox" class="in-flex wrap rad-r">
@@ -170,7 +177,67 @@
             <div class="checkers box wid-full">
                 <div class="">
                     <div class="" style="padding: 6px 6px; font-size:.85em;">
-                        Faded Radio Markers
+                      Font Icons Support (icon)
+                    </div>
+                    <div class="in-flex mid" style="padding: 10px; gap:.5em">
+                        <div data-role="checkbox-list">
+                            <div data-role="checkbox" class="in-flex wrap rad-r">
+                                <div checkee data-flip="true" data-label="Check|Checked" data-fit="true" data-anime="|fadeIn" data-size="20px" data-color="@orange|#5271fe" data-assign=":markers" class="in-flex">
+                                    <div marker style="">
+                                      <div class="fill-marker">
+                                        <i class="bi-person flex mid" style="color:currentColor"></i>
+                                      </div>         
+                                    </div>
+                                    <div marker style="">
+                                      <div class="fill-marker">
+                                        <i class="bi-person flex mid" style="color:currentColor"></i>
+                                      </div>         
+                                    </div>
+                                </div>
+                                <input type="checkbox">
+                                <span data-access="label" hidden></span>
+                            </div>
+                            <div data-role="checkbox" class="in-flex wrap rad-r">
+                                <div checkee data-flip="true" data-label="Check|Checked" data-fit="true" data-anime="|fadeIn" data-size="20px" data-color="@orange|#5271fe" data-assign=":markers" class="in-flex">
+                                    <div marker style="">
+                                      <div class="fill-marker">
+                                        <i class="bi-activity flex mid" style="color:currentColor"></i>
+                                      </div>         
+                                    </div>
+                                    <div marker style="">
+                                      <div class="fill-marker">
+                                        <i class="bi-activity flex mid" style="color:currentColor"></i>
+                                      </div>         
+                                    </div>
+                                </div>
+                                <input type="checkbox">
+                                <span data-access="label" hidden></span>
+                            </div>
+                            <div data-role="checkbox" class="in-flex wrap rad-r">
+                                <div checkee data-flip="true" data-label="Check|Checked" data-fit="true" data-anime="|fadeIn" data-size="20px" data-color="@orange|#5271fe" data-assign=":markers" class="in-flex">
+                                    <div marker style="">
+                                      <div class="fill-marker">
+                                        <i class="bi-bluetooth flex mid" style="color:currentColor"></i>
+                                      </div>         
+                                    </div>
+                                    <div marker style="">
+                                      <div class="fill-marker">
+                                        <i class="bi-bluetooth flex mid" style="color:currentColor"></i>
+                                      </div>         
+                                    </div>
+                                </div>
+                                <input type="checkbox">
+                                <span data-access="label" hidden></span>
+                            </div>
+                        </div>
+                    </div>                                                       
+                </div>
+            </div>
+            
+            <div class="checkers box wid-full">
+                <div class="">
+                    <div class="" style="padding: 6px 6px; font-size:.85em;">
+                        Faded Radio Markers (image)
                     </div>
                     <div class="in-flex mid" style="padding: 10px; gap:.5em">
                         <div data-role="checkbox-list" data-bind="radio">
@@ -198,12 +265,48 @@
                         </div>
                     </div>                                                       
                 </div>
+            </div> <br>
+            
+            <div class="checkers box wid-full">
+                <div class="flex">
+                    <div class="" style="padding: 6px 6px; font-size:.85em;">
+                        Password View
+                    </div>
+                </div>
+                
+                <div class="box" style="width: 100%; margin-top:0">
+                    <div hidden></div>    
+                    <div>
+                        <div class="in-flex mid rad-r" style="display: flex; gap: .5em; padding: .3em; background-color: #1d1b2b;">
+                            <div class="in-flex mid rad-r" style="align-items: center; margin: 0 12px;">
+                                <div checker data-anime="fadeIn" data-assign=":markers" data-func="view" data-init data-label="Show?|Hide?" class="in-flex">
+                                    <div marker>
+                                        <span class="flex" style="width:100%; height: 100%; color:red; align-items: center;">
+                                            <span class="bi bi-eye-slash flex mid"></span>
+                                        </span>
+                                    </div>
+                                    <div marker>
+                                        <span class="flex fit" style="color:lime; align-items: center;">
+                                            <span class="bi bi-eye flex"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <input type="checkbox" value="N">
+                                <!-- <span data-access="label" style="margin-left: 2px;">Show?</span> -->
+                            </div>
+                            <div class="in-flex mid">
+                                <input id="pass" type="password" value="1234" placeholder="password" class="rad-r">
+                            </div>                        
+                        </div>
+                    </div>
+                </div> 
             </div>
+            
                         
             <div class="checkers box wid-full">
                 <div class="">
                     <div class="" style="padding: 6px 6px; font-size:.85em;">
-                       Slide Checkbox
+                       Slide Checkbox (image)
                     </div>
                     <div class="in-flex mid" style="padding: 10px; gap:.5em">
                         <div data-role="checkbox-list" data-bind="slide" class="gear">
@@ -237,7 +340,7 @@
             <div class="checkers box wid-full">
                 <div class="">
                     <div class="" style="padding: 6px 6px; font-size:.85em;">
-                       Ratings Checkbox
+                       Ratings Checkbox (image)
                     </div>
                     <div class="in-flex mid" style="padding: 10px; gap:.5em">
                         <div data-role="checkbox-list" data-bind="rating">
@@ -276,7 +379,7 @@
                                 </div>
                                 <input type="checkbox">
                             </div>
-                            <div class="rootbox"></div>
+                            <div class="rootbox" style="display:flex; align-items:center;"></div>
                         </div>
                     </div>                                                       
                 </div>
@@ -291,7 +394,16 @@
                   <a class="link" href="../docs/basic.html">basic</a>
                 </li>
                 <li>
-                  <a class="link" href="../docs/markers.html">markers</a>
+                  <a class="link" href="../docs/markers.html">Adding Markers</a>
+                </li>
+                <li>
+                  <a class="link" href="../docs/adding-colors.html">Adding Colors</a>
+                </li>
+                <li>
+                  <a class="link" href="../docs/fitting--images.html">Adding Images</a>
+                </li>
+                <li>
+                  <a class="link" href="../docs/adding-labels.html">Adding Labels</a>
                 </li>
                 <li>
                   <a class="link" href="">init event</a>
@@ -354,109 +466,7 @@
                 rootBox.innerHTML = (e.checkedBoxes) + ' stars';
             }
             
-           /* const ratebox = document.querySelector('[data-bind="rating"]');
-            
-            const checkboxes = ratebox.querySelectorAll('[data-role="checkbox"]');
-            
-            let startCheckbox;
-
-            checkboxes.forEach((checkbox) => {
-              checkbox.addEventListener('touchstart', handleTouchStart);
-              checkbox.addEventListener('touchmove', handleTouchMove);
-            });
-
-            function handleTouchStart(event) {
-              startCheckbox = event.currentTarget;
-              const checkee = startCheckbox.querySelector('[checkee]');
-
-              if((getIndex(startCheckbox) === 0) && !isCheckeeChecked(checkee)){ 
-                checkee.click();
-              }
-            }
-
-            function handleTouchMove(event) {
-              event.stopPropagation();
-              
-              let rootBox = document.querySelector('.rootbox')
-              let rootval = parseInt(rootBox.innerText) || 0;
-              const currentCheckbox = document.elementFromPoint(event.touches[0].clientX, event.touches[0].clientY);
-              const customBox = currentCheckbox.querySelector('[checkee]');
-              if (customBox && (currentCheckbox !== startCheckbox)) {
-                
-                const checkex = customBox.nextElementSibling;
-                let front = isForwardSlide(startCheckbox, currentCheckbox);
-                let backs = isBackwardSlide(startCheckbox, currentCheckbox);
-                let neutral = (front === false) && (backs === false);
-                
-                if(front) {
-                  rootval = rootval+1;
-                } else if(backs) {
-                  rootval = rootval-1;
-                }
-                //startCheckbox = currentCheckbox;
-                let checkNum = getIndex(currentCheckbox);
-                // permit activity: if item is checkbox
-                let isCheckBox = currentCheckbox.getAttribute('data-role') === 'checkbox';
-                
-                if(isCheckBox) {
-                  startCheckbox = currentCheckbox;
-
-                    if(front && !isCheckeeChecked(customBox)){
-                      for(let i = 0; i < checkNum; i++){
-                        let ltCheck = checkboxes[i].querySelector('[checkee]')
-                        if(!ltCheck.nextElementSibling.checked){
-                          ltCheck.click()
-                        }
-                      }
-                      customBox.click();
-                     
-                    } else if (backs && !neutral){
-                      for(let i = checkboxes.length - 1; i > checkNum; i--){
-                        let ltCheck = checkboxes[i].querySelector('[checkee]')
-                        if(ltCheck.nextElementSibling.checked){
-                          ltCheck.click()
-                        }
-                      }
-                    }
-                  
-                }
-
-              }
-              
-            }
-
-            function isForwardSlide(startCheckbox, currentCheckbox) {
-              // Logic to determine if the slide is forward
-              return currentCheckbox.offsetLeft > startCheckbox.offsetLeft;
-              //return startCheckbox.offsetLeft < currentCheckbox.offsetLeft;
-              // Get the index of the current and start checkboxes
-              const currentIndex = getIndex(currentCheckbox);
-              const startIndex = getIndex(startCheckbox);
-            
-              // Logic to determine if the slide is forward
-              return currentIndex > startIndex;
-            }
-            
-            function isBackwardSlide(startCheckbox, currentCheckbox) {
-              // Logic to determine if the slide is backward
-              //return startCheckbox.offsetLeft > currentCheckbox.offsetLeft;
-              // Get the index of the current and start checkboxes
-              const currentIndex = getIndex(currentCheckbox);
-              const startIndex = getIndex(startCheckbox);
-            
-              // Logic to determine if the slide is forward
-              return currentIndex < startIndex;
-            }
-            
-            function isCheckeeChecked(checkee) {
-              // Logic to determine if the checkee element has the checked attribute
-              return checkee.getAttribute('checked') === "checked";
-            }
-         
-            // Helper function to get the index of the checkbox in its parent
-            function getIndex(checkbox) {
-              return Array.from(checkbox.parentNode.children).indexOf(checkbox);
-            }*/
+           
             
             // Threshold for considering the device as shaking
             const shakeThreshold = 15;
@@ -501,7 +511,25 @@
             
             // Add an event listener for the devicemotion event
             window.addEventListener("devicemotion", handleMotionEvent);
-
+            
+            function view(checkbox) {
+            
+                let input;
+                
+                input = document.getElementById('pass')
+                
+                if( checkbox.checked ) {
+                
+                input.setAttribute('type', 'text')
+                
+                } else {
+                
+                input.setAttribute('type', 'password')
+                
+                }
+                
+            }
+          
         </script>
         
         

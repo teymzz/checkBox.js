@@ -399,7 +399,7 @@
   
     <span class="comment">&lt;!--first checkbox section--&gt;</span>
     <span class="tag">&lt;div <span>data-role="<span>checkbox</span>"</span>&gt;</span>
-      <span class="tag">&lt;div <span>checkbox data-func="scroll" data-anime="<span>fadeIn</span>" data-assign="<span>:marker2</span>" data-color="<span>@#615c988d|lime</span>"</span>&gt;</span>
+      <span class="tag">&lt;div <span>checkbox data-func="<span>scroll</span>" data-anime="<span>fadeIn</span>" data-assign="<span>:marker2</span>" data-color="<span>@#615c988d|lime</span>"</span>&gt;</span>
       
         <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
         <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
@@ -410,7 +410,7 @@
     
     <span class="comment">&lt;!--second checkbox section--&gt;</span>
     <span class="tag">&lt;div <span>class="rotate" data-role="<span>checkbox</span>"</span>&gt;</span>
-      <span class="tag">&lt;div <span>checkbox data-func="scroll" data-anime="<span>rubberBand infinite</span>" data-assign="<span>:marker2</span>" data-color="<span>@#615c988d|gold</span>"</span>&gt;</span>
+      <span class="tag">&lt;div <span>checkbox data-func="<span>scroll</span>" data-anime="<span>rubberBand infinite</span>" data-assign="<span>:marker2</span>" data-color="<span>@#615c988d|gold</span>"</span>&gt;</span>
       
         <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
         <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
@@ -421,7 +421,7 @@
     
     <span class="comment">&lt;!--third checkbox section--&gt;</span>
     <span class="tag">&lt;div <span>data-role="<span>checkbox</span>"</span>&gt;</span>
-      <span class="tag">&lt;div <span>checkbox data-func="scroll" data-anime="<span>bounceIn|flash infinite</span>" data-assign="<span>:markers</span>" data-color="<span>@#615c988d|lime</span>"</span>&gt;</span>
+      <span class="tag">&lt;div <span>checkbox data-func="<span>scroll</span>" data-anime="<span>bounceIn|flash infinite</span>" data-assign="<span>:markers</span>" data-color="<span>@#615c988d|lime</span>"</span>&gt;</span>
       
         <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
         <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
@@ -473,10 +473,23 @@
   <span class="braces">}</span>
   </pre>
 <pre class="js active"><span class="tag">&lt;script&gt;</span>
-new <span class="func">CheckBox()</span>; <span class="comment">/*initialize checkbox*/</span>
+<span class="var">let</span> checkbox = <span class="var">new</span> <span class="func">CheckBox(<span class="bool">true</span>)</span>;
+  
+checkbox.<span class="func">check({
+
+  <span class="var">assign</span>: {
+    <span class="key">alter</span>: <span class="func">(<span class="arg">dataAnime</span>) => </span>{
+    
+        <span class="arg">dataAnime</span>.<span class="func">unshift(<span class="string">'animated'</span>)</span>;</span>
+        return <span class="arg">dataAnime</span>.<span class="func">map( <span class="arg">el</span> => <span class="string">'animate__'</span> + <span class="arg">el</span> <span class="func">)</span>;</span>
+        
+    }
+  }
+
+})</span>;
 
 <span class="comment">/*callback function*/</span>
-<span class="func">function scroll(<span class="arg">e</span>)</span>{
+<span class="func">function <span class="var">scroll</span>(<span class="arg">e</span>)</span>{
 
   <span class="func">if (<span class="arg">e</span>.<span class="val">checked</span>)</span> {
 
@@ -572,7 +585,7 @@ new <span class="func">CheckBox()</span>; <span class="comment">/*initialize che
             <div class="nav-pane">
               <ul>
                 <li>
-                  <a class="link" href="">basic</a>
+                  <a class="link" href="../docs/basic.html">basic</a>
                 </li>
                 <li>
                   <a class="link" href="../docs/markers.html">markers</a>
@@ -593,8 +606,8 @@ new <span class="func">CheckBox()</span>; <span class="comment">/*initialize che
                   <a class="link" href=""></a>
                 </li>
               </ul>
-              <a href="../docs/binding-parents.html" class="nav-btn-lt">
-                <i class="bi-arrow-left-circle"></i> 
+              <a href="../docs/base-reversal-effect.html" class="nav-btn-lt">
+                <i class="bi-arrow-left-circle"></i>
               </a> 
               
               <a href="../docs/rating-effect.html" class="nav-btn-rt">

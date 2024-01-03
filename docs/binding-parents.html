@@ -48,8 +48,25 @@
             [checkbox] [marker] {
               width: 20px;
               height: 20px; 
-              border-radius: inherit;    
+              border-radiubn.  Ndj inherit;    
               background-color: currentColor;
+            }
+            
+            .checker-btn {
+              padding: 5px; 
+              gap:.5em; 
+              border-radius: 100vh; 
+              border: none;
+            }rèé h,bn 
+            
+            .checker-btn > [data-role="checkbox"] {
+              border-radius: 100vh;
+            }
+            
+          vt  .checker-btn  [data-control="[parent]"] {
+              padding: 2.5px; 
+              border-radius: 100vh;
+              border:solid 1px transparent; 
             }
         </style>     
     </head>
@@ -59,7 +76,7 @@
 
             <div class="" style="font-size: 1.2em;"> <br>
                 <h1 style="color:#51ceff">CheckBox.js</h1> <br>
-                <h4 style="color:#51ceff">Binding Parent</h4> <br>
+                <h4 style="color:#51ceff">Binding Parent</h4> <br>ursc 
             </div>
             
             <div class="">
@@ -70,14 +87,17 @@
             <!-- checkbox T -->
             <div class="code mvt-1">
                 <div class="flex">
-                    <div class="">
-                       Checkbox: (data-control)
+                    <div class="code-x">
+                      <span class="code-btn" rel="html">HTML</span>
+                      <span class="code-btn" rel="css">CSS</span>
+                      <span class="code-btn" rel="js">JS</span>
+                      <span class="code-btn active" rel="view"><i class="bi-window"></i></span>
                     </div>
                     <div class="">
                         <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
-<pre>
+<pre class="html">
 <span class="tag">&lt;button <span>parent class="<span>in-flex mid</span>" style="<span>padding: 10px; gap:.5em</span>"</span>&gt;</span>
     <span class="tag">&lt;div <span>data-role="<span>checkbox</span>" class="<span>in-flex wrap</span>"</span>&gt;</span>
         <span class="tag">&lt;div <span>checkbox data-control="<span>[parent]</span>" data-size="<span>20px</span>" data-color="<span>@red|green</span>" class="<span>in-flex</span>"</span>&gt;</span>
@@ -93,13 +113,13 @@
 
         
             <div class="checkers box wid-full">
-                <div class="">Checkbox: (data-control)</div>
+                <div class="" hidden>Checkbox: (data-control)</div>
                 <div class="">
-                    <button parent class="in-flex mid" style="padding: 10px; gap:.5em">
+                    <button parent class="in-flex mid checker-btn">
                         <div data-role="checkbox" class="in-flex wrap">
                             <div checkbox data-control="[parent]" data-size="20px" data-color="@red|green">
-                                <div marker>
-                                    <div class="fit b-currentColor"></div>
+                                <div marker style="border-radius: 100vh">
+                                    <div class="fit b-currentColor" style="border-radius: 100vh"></div>
                                 </div>         
                             </div>
                             <input type="checkbox" value="W">

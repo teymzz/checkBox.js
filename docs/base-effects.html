@@ -130,8 +130,18 @@
   
   checkbox.<span class="func">check({
 
-    <span class="var">target:</span> <span class="val">'[checkers]'</span>
-  
+    <span class="var">target:</span> <span class="val">'[checkers]'</span>,
+    
+    <span class="var">assign</span>: {
+        <span class="key">alter</span>: <span class="func">(<span class="arg">dataAnime</span>) => </span>{
+        
+            <span class="comment">/* use a default attribute value */</span>
+            <span class="arg">dataAnime</span>.<span class="func">unshift(<span class="string">'animated'</span>)</span>;</span>
+            return <span class="arg">dataAnime</span>.<span class="func">map( <span class="arg">el</span> => <span class="string">'animate__'</span> + <span class="arg">el</span> <span class="func">)</span>;</span>
+            
+        }
+    }
+
   })</span>;
 </pre>
             </div>      

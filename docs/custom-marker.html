@@ -8,6 +8,37 @@
         <link darel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
         <link rel="stylesheet" type="text/css" href="../src/css/all.css">
         <script src="../checkBox.js"></script>
+        <style>
+          [checkbox] {
+              display: flex;
+              width: fit-content;
+              border-radius: 5px;
+              border: solid;
+              padding: 4px;
+          }
+          
+          [checkbox] > [btn] {
+              width: 20px;
+              height: 20px;
+          }
+          
+          [checkbox][checked="checked"] > [btn]:nth-child(1) {
+              opacity: .1;
+          }
+          
+          [checkbox]:not([checked="checked"]) > [btn]:nth-child(2) {
+              opacity: .1;
+          }
+          
+          [checkbox] > [btn]:nth-child(1)  {
+              background-color: white;
+          }
+          
+          [checkbox] > [btn]:nth-child(2) {
+              background-color: lime;
+          }
+
+        </style>
     </head>
     
     <body>
@@ -19,7 +50,7 @@
             </div>
             
             <div class="">
-              By default, the custom checkbox marker is selected through the “<code class="c-note bc">[marker]</code>” attribute selector. 
+              By default, the custom checkbox marker is selected through the <code class="bc c-note">[marker]</code> attribute selector. 
               We can easily overide this selector by declaring a new custom selector. An example of this is shown below
             </div> <br>
             
@@ -28,8 +59,8 @@
                 <div class="flex">
                     <div class="code-x">
                         <span class="code-btn" rel="html">HTML</span>
-                        <span class="code-btn" rel="js">JS</span>
                         <span class="code-btn" rel="css">CSS</span>
+                        <span class="code-btn" rel="js">JS</span>
                         <span class="code-btn" rel="view"><i class="bi-window"></i></span>
                     </div>
                     <div class="">
@@ -37,11 +68,40 @@
                     </div>
                 </div>
 <pre class="html active">
-<span class="tag">&lt;div <span>checkbox=""</span>&gt;</span>
-  <span class="tag">&lt;div <span>btn="" style="<span>background-color: white;</span>"</span>&gt;&lt;/div&gt;</span> 
-  <span class="tag">&lt;div <span>btn="" style="<span>background-color: lime;</span>"</span>&gt;&lt;/div&gt;</span>
+<span class="tag">&lt;div <span>checkbox</span>&gt;</span>
+  <span class="tag">&lt;div <span>btn=""</span>&gt;&lt;/div&gt;</span> 
+  <span class="tag">&lt;div <span>btn=""</span>&gt;&lt;/div&gt;</span> 
 <span class="tag">&lt;/div&gt;</span>
 <span class="tag">&lt;input <span>type="<span>checkbox</span>"</span>&gt;</span>
+</pre>
+<pre class="css">
+<span class="key">[checkbox]</span> <span class="braces">{</span>
+    <span class="var">width</span>: fit-content;
+    <span class="var">border-radius</span>: 5px;
+    <span class="var">border</span>: solid;
+    <span class="var">padding</span>: 4px;
+<span class="braces">}</span>
+
+<span class="key">[checkbox] > [btn]</span> <span class="braces">{</span>
+    <span class="var">width</span>: 20px;
+    <span class="var">height</span>: 20px;
+<span class="braces">}</span>
+
+<span class="key">[checkbox][checked="checked"] > [btn]:nth-child(1)</span> <span class="braces">{</span>
+    <span class="var">opacity</span>: .1;
+<span class="braces">}</span>
+
+<span class="key">[checkbox]:not([checked="checked"]) > [btn]:nth-child(2)</span> <span class="braces">{</span>
+    <span class="var">opacity</span>: .1;
+<span class="braces">}</span>
+
+<span class="key">[checkbox] > [btn]:nth-child(1) </span> <span class="braces">{</span>
+    <span class="var">background-color</span>: white;
+<span class="braces">}</span>
+
+<span class="key">[checkbox] > [btn]:nth-child(2) </span><span class="braces">{</span>
+    <span class="var">background-color</span>: lime;
+<span class="braces">}</span>
 </pre>
 <pre class="js">
 <span class="var">let</span> checkbox = <span class="var">new</span> <span class="func">CheckBox(<span class="bool">true</span>)</span>;
@@ -52,35 +112,23 @@ checkbox.<span class="func">check({
 
 })</span>;
 </pre>
-<pre class="css">
-<span class="key">[checkbox]</span> <span class="braces">{</span>
-  <span class="var">width</span>: 20px;
-  <span class="var">height</span>: 20px;
-<span class="braces">}</span>
-
-<span class="key">[checkbox] > [btn]</span> <span class="braces">{</span>
-  <span class="var">width</span>: 100%;
-  <span class="var">height</span>: 100%;
-<span class="braces">}</span>
-
-<span class="key">[checkbox] > [btn]:nth-child(1)</span> <span class="braces">{</span>
-  <span class="var">background-color</span>: white;
-<span class="braces">}</span>
-
-<span class="key">[checkbox] > [btn]:nth-child(2)</span> <span class="braces">{</span>
-  <span class="var">background-color</span>: lime;
-<span class="braces">}</span>
-</pre>
-<pre class="view">
-  <div class="checkbox-field">
-    <div checkers="" data-size="20px" data-flip="true">
-      <div btn="" style="background-color: white;"></div> 
-      <div btn="" style="background-color: lime;"></div>
-    </div>
-    <input type="checkbox">    
-  </div>
-</pre>
-            </div> <br>           
+            </div>
+            
+            <div class="code">
+                <div class="flex">
+                    <div class="code-x">
+                      <strong class="">SCREEN</strong>
+                      <span class="code-btn active"><i class="bi-window"></i></span>
+                    </div>
+                </div>
+                <div class="" style="padding:10px">
+<div checkbox data-flip="false">
+  <div btn=""></div>
+  <div btn=""></div>
+</div>
+<input type="checkbox" value="foo">                    
+                </div>
+            </div> <br>      
             
             <div class="">
               From the sample above, in the javascript section, the <code class="c-note bc">[btn]</code> 
@@ -88,12 +136,12 @@ checkbox.<span class="func">check({
             </div> <br>     
 
             <div class="nav-pane">
-              <a href="../docs/custom-selector.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:left; text-decoration: none">
+              <a href="../docs/double-markers.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:left; text-decoration: none">
                 <i class="bi-arrow-left-circle"></i> 
               </a> 
               
-              <a href="../docs/init-event.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:right; text-decoration: none">
-                <i class="bi-arrow-right-circle"></i> init event
+              <a href="../docs/sizing-markers.html" style="background-color: #3e3a51 ; color: white; border:none; border-radius: 5px; padding:14px 20px; float:right; text-decoration: none">
+                <i class="bi-arrow-right-circle"></i> Sizing Markers
               </a> 
             </div><br><br><br>
 

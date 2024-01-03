@@ -96,6 +96,11 @@
   flex-grow: 1;
 }
 
+.center {
+    display: grid;
+    place-items: center;
+}
+
 .mid {
     justify-content: center;
     align-items: center;

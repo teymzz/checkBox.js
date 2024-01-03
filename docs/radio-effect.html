@@ -66,7 +66,7 @@
             <div class="">
               The radio effect is a custom checkbox effect that is similar to the input radio buttons and 
               it is specified by adding an extra attribute of <code class="c-note bc">data-bind</code> 
-              with a value of <code class="c-func">'radio'</code> into 
+              with a value of <code class="c-var bc">"radio"</code> into 
               the parent element of the custom boxes. An example is shown below.
             </div> <br>
             
@@ -77,6 +77,7 @@
                       <strong>Radio Effect</strong>
                       <span class="code-btn" rel="html">HTML</span>
                       <span class="code-btn" rel="css">CSS</span>
+                      <span class="code-btn" rel="js">JS</span>
                     </div>
                     <div class="">
                         <span class="copy-btn"><i class="bi-clipboard"></i></span>
@@ -161,6 +162,23 @@
     
 <span class="braces">}</span>
 </pre>
+<pre class="js">
+<span class="var">let</span> checkbox = <span class="var">new</span> <span class="func">CheckBox(<span class="bool">true</span>)</span>;
+
+checkbox.<span class="func">check({
+
+    <span class="key">assign</span>: {
+        <span class="key">alter</span>: <span class="func">(<span class="arg">dataAnime</span>) => </span>{
+        
+            <span class="comment">/* use a default attribute value */</span>
+            <span class="arg">dataAnime</span>.<span class="func">unshift(<span class="string">'animated'</span>)</span>;</span>
+            return <span class="arg">dataAnime</span>.<span class="func">map( <span class="arg">el</span> => <span class="string">'animate__'</span> + <span class="arg">el</span> <span class="func">)</span>;</span>
+            
+        }
+    }
+
+})</span>;
+</pre>
           </div> <br>
              
           <div class="code">
@@ -212,9 +230,10 @@
             
             <div class="">
               From the sample above, we can see how easy it is to customize and animate 
-              checkboxes using the checkbox plugin.
+              checkboxes using the checkbox plugin. In order to use the <i class="c-var">animate.css</i> animation classes, 
+              from the javascript section, we smartly modified the destination values such that each animation class will have a prefix of <code class="c-var bc">"animated__"</code> 
+              assigned to them. This reduces the length of values we needed to supply on the html structure and also improves code readability.
             </div> <br>
-                  
             
             <div class="nav-pane">
               <a href="../docs/advanced-effects.html" class="nav-btn-lt">

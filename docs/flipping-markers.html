@@ -45,10 +45,10 @@
             
            <div class="">
               Double markers can be easily flipped by setting the <code class="c-note bc">flip</code> global configuration option or the <code class="c-note bc">data-flip</code> 
-              local configuration attribute on the custom checkbox. This feature makes one marker hidden at a time while the other is visible. The value of this option is either <code class="c-bool">true</code> or <code class="c-bool">false</code>. The 
-              <code class="c-bool">true</code> value means that only one marker will be displayed at a time. For example, the first marker will be displayed 
-              when the checkbox is toggled off while the second marker will be displayed when the checkbox is toggled on. However, the <code class="c-bool">false</code> 
-              value means that both markers will be visible at the same time.
+              local configuration attribute on the custom checkbox. This feature makes one marker hidden at a time while the other is visible. The value of this option is either <code class="c-bool bc">true</code> or <code class="c-bool bc">false</code>. The 
+              <code class="c-bool bc">true</code> value means that only one marker will be displayed at a time. For example, the first marker will be displayed 
+              when the checkbox is toggled off while the second marker will be displayed when the checkbox is toggled on. However, the <code class="c-bool bc">false</code> 
+              value means that both markers will be visible at the same time. The sample below best reveals how to configure the checkbox globally for flipping markers.
             </div> <br>
             
             <div class="">
@@ -82,25 +82,25 @@ new <span class="func">CheckBox(</span>{
 <span class="tag">&lt;/script&gt;</span>    
 </pre>
 <pre class="css">
-  <span class="key">[checkbox]</span> <span class="braces">{</span>
-      <span class="var">width</span>: fit-content;
-      <span class="var">border-radius</span>: 5px;
-      <span class="var">border</span>: solid;
-      <span class="var">padding</span>: 4px;
-  <span class="braces">}</span>
-  
-  <span class="key">[checkbox] > [marker]</span> <span class="braces">{</span>
-      <span class="var">width</span>: 20px;
-      <span class="var">height</span>: 20px;
-  <span class="braces">}</span>
-  
-  <span class="key">[checkbox][checked="unchecked"] > [marker]:nth-child(1) </span> <span class="braces">{</span>
-      <span class="var">background-color</span>: white;
-  <span class="braces">}</span>
-  
-  <span class="key">[checkbox][checked="checked"] > [marker]:nth-child(2) </span><span class="braces">{</span>
-      <span class="var">background-color</span>: lime;
-  <span class="braces">}</span>
+<span class="key">[checkbox]</span> <span class="braces">{</span>
+    <span class="var">width</span>: fit-content;
+    <span class="var">border-radius</span>: 5px;
+    <span class="var">border</span>: solid;
+    <span class="var">padding</span>: 4px;
+<span class="braces">}</span>
+
+<span class="key">[checkbox] > [marker]</span> <span class="braces">{</span>
+    <span class="var">width</span>: 20px;
+    <span class="var">height</span>: 20px;
+<span class="braces">}</span>
+
+<span class="key">[checkbox][checked="unchecked"] > [marker]:nth-child(1) </span> <span class="braces">{</span>
+    <span class="var">background-color</span>: white;
+<span class="braces">}</span>
+
+<span class="key">[checkbox][checked="checked"] > [marker]:nth-child(2) </span><span class="braces">{</span>
+    <span class="var">background-color</span>: lime;
+<span class="braces">}</span>
   </pre> 
   <pre class="view">
     <div checkbox data-flip="true"> 
@@ -114,7 +114,7 @@ new <span class="func">CheckBox(</span>{
             </div> <br> 
             
             <div class="">
-              Alternatively, we can equally setup a local configuration using the <code class="c-note bc">data-flip</code> attribute as shown below :
+              Alternatively, we can setup a local configuration from the html structure by using the <code class="c-note bc">data-flip</code> attribute as shown below :
             </div> <br>         
             
             <!-- checkbox -->
@@ -141,8 +141,7 @@ new <span class="func">CheckBox(</span>{
 <pre class="js">
   <span class="tag">&lt;script&gt;</span>
   
-  new <span class="func">CheckBox(</span>{
-  }<span class="func">)</span>;
+  new <span class="func">CheckBox(</span><span class="func">)</span>;
   
   <span class="tag">&lt;/script&gt;</span>    
 </pre>
@@ -188,8 +187,8 @@ new <span class="func">CheckBox(</span>{
                 <i class="bi-arrow-left-circle"></i> 
               </a> 
               
-              <a href="../docs/fitting-images.html" class="nav-btn-rt">
-                <i class="bi-arrow-right-circle"></i> fitting images
+              <a href="../docs/init-event.html" class="nav-btn-rt">
+                <i class="bi-arrow-right-circle"></i> Init Event
               </a> 
             </div><br><br><br>
 

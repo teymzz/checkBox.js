@@ -61,13 +61,15 @@ function pass(checker){
     field = btn.parentNode.closest('.code').querySelector('pre.active');
 
     function copied(response){
-        if(response){
-            btn.innerHTML = 'Copied!'
-            let html = navigator.onLine ? '<i class="bi-clipboard "></i>' : '<i class="">Copy</i>'
-  
-            timeout = setTimeout(() => {
-              btn.innerHTML = html
-            } , 500)
+        if(field) {
+          if(response){
+              btn.innerHTML = 'Copied!'
+              let html = navigator.onLine ? '<i class="bi-clipboard "></i>' : '<i class="">Copy</i>'
+    
+              timeout = setTimeout(() => {
+                btn.innerHTML = html
+              } , 500)
+          }
         }
     }
     
