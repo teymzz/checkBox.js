@@ -13,12 +13,37 @@
              padding: 10px;
              border-radius: 100vh;
              border: none;
+             display: inline-flex;
+             justify-content: center;
+             align-items: center;
+             gap: .5em;
            }
            
            button > * {
              display:inline-flex;
-             white-space: wrap; 
-             border-radius: 100vh;
+           }
+
+           button > *:first-child {
+             border: solid 2px #3a3446;
+           }
+           
+           button [checkbox] {
+             border: solid 4px transparent;
+             display: inline-flex;
+           }
+
+           button :where(:first-child,[marker],.fit) {
+            border-radius: 100vh;
+           }
+
+           button .text-field {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+           }
+
+           .b-currentColor {
+            background-color: currentColor;
            }
         </style>     
     </head>
@@ -50,73 +75,76 @@
                     </div>
                 </div>
 <pre class="html">
-<span class="tag">&lt;button <span>parent class="<span>in-flex mid</span>" style="<span>padding: 10px; gap:.5em</span>"</span>&gt;</span>
-    <span class="tag">&lt;div <span>data-role="<span>checkbox</span>" class="<span>in-flex wrap</span>"</span>&gt;</span>
-        <span class="tag">&lt;div <span>checkbox data-control="<span>[parent]</span>" data-size="<span>20px</span>" data-color="<span>@red|green</span>" class="<span>in-flex</span>"</span>&gt;</span>
+<span class="tag">&lt;button <span>parent</span>&gt;</span>
+    <span class="tag">&lt;div <span>data-role="<span>checkbox</span>"</span>&gt;</span>
+        <span class="tag">&lt;div <span>checkbox data-control="<span>[parent]</span>" data-size="<span>20px</span>" data-color="<span>@red|green</span>"</span>&gt;</span>
             <span class="tag">&lt;div <span>marker</span>&gt;</span>
                 <span class="tag">&lt;div <span>class="<span>fit b-currentColor</span>"</span>&gt;&lt;/div&gt;</span>
             <span class="tag">&lt;/div&gt;</span>         
         <span class="tag">&lt;/div&gt;</span>
-        <span class="tag">&lt;input <span>type="<span>checkbox</span>" value="<span>W</span>"</span>&gt;</span>
+        <span class="tag">&lt;input <span>type="<span>checkbox</span>"</span>&gt;</span>
     <span class="tag">&lt;/div&gt;</span>
 <span class="tag">&lt;/button&gt;</span> 
 </pre>
-<pre class="css"><span class="key">[data-role="checkbox-list"]</span> <span class="braces">{</span>
-  <span class="var">display</span>: inline-flex;
-  <span class="var">gap</span>: .5em;  
-<span class="braces">}</span>
-  
-<span class="key">[data-role="checkbox-list"] [marker]</span> <span class="braces">{</span>
-  <span class="var">width</span>: 20px;
-  <span class="var">height</span>: 20px;  
-<span class="braces">}</span>
-  
-<span class="key">[checkbox]</span> <span class="braces">{</span>
-  <span class="var">display</span>: inline-flex;
-  <span class="var">border</span>: dotted 2px;  
+
+<pre class="css"><span class="key">button</span> <span class="braces">{</span>
+  <span class="var">padding</span>: 10px;
   <span class="var">border-radius</span>: 100vh;  
-  <span class="var">padding</span>: 4px;  
-<span class="braces">}</span>
-  
-<span class="key">[checkbox] [marker]</span> <span class="braces">{</span>
-  <span class="var">width</span>: 20px;
-  <span class="var">height</span>: 20px; 
-  <span class="var">border-radius</span>: inherit;    
-  <span class="var">background-color</span>: currentColor;    
+  <span class="var">border</span>: none;  
+  <span class="var">display</span>: inline-flex;  
+  <span class="var">justify-content</span>: center;  
+  <span class="var">align-items</span>: center;    
+  <span class="var">gap</span>: .5em;    
 <span class="braces">}</span>
 
-<span class="key">.rotate[checkbox][checked="checked"]</span> <span class="braces">{</span>
-    <span class="var">animation</span>: rotate 5s infinite linear;;
+<span class="key">button > *</span> <span class="braces">{</span>
+  <span class="var">display</span>:inline-flex;
 <span class="braces">}</span>
 
-<span class="key">@keyframes rotate</span> <span class="braces">{</span>
-
-    <span class="key">0% {</span>
-      <span class="var">transform</span>: rotate(0deg);
-    <span class="key">}</span>
-    
-    <span class="key">100% {</span>
-      <span class="var">transform</span>: rotate(360deg);
-    <span class="key">}</span>
-    
+<span class="key">button > *:first-child</span> <span class="braces">{</span>
+  <span class="var">border</span>: solid 2px #3a3446;
 <span class="braces">}</span>
-  </pre>
+
+<span class="key">button [checkbox]</span> <span class="braces">{</span>
+  <span class="var">border</span>: solid 4px transparent;
+  <span class="var">display: inline-flex;
+<span class="braces">}</span>
+
+<span class="key">button :where(:first-child,[marker],.fit)</span> <span class="braces">{</span>
+ <span class="var">border-radius</span>: 100vh;
+<span class="braces">}</span>
+
+<span class="key">button .text-field</span> <span class="braces">{</span>
+ <span class="var">display</span>: flex;
+ <span class="var">justify-content</span>: center;
+ <span class="var">align-items</span>: center;
+<span class="braces">}</span>
+
+<span class="key">.b-currentColor</span> <span class="braces">{</span>
+ <span class="var">background-color</span>: currentColor;
+<span class="braces">}</span>
+</pre>
+<pre class="js">
+<span class="var">let</span> checkbox = <span class="var">new</span> <span class="func">CheckBox(<span class="bool">true</span>)</span>;
+
+checkbox.<span class="func">check()</span>;
+</pre>
             </div> 
 
         
             <div class="checkers box wid-full">
-                <div class="" hidden>Checkbox: (data-control)</div>
+                <div class="" hidden></div>
                 <div class="">
-                    <button parent class="in-flex mid checker-btn">
+                    <button parent class="checker-btn">
                         <div data-role="checkbox">
                             <div checkbox data-control="[parent]" data-size="20px" data-color="@red|green">
-                                <div marker style="border-radius: 100vh">
-                                    <div class="fit b-currentColor" style="border-radius: 100vh"></div>
+                                <div marker>
+                                    <div class="fit b-currentColor"></div>
                                 </div>         
                             </div>
-                            <input type="checkbox" value="W">
+                            <input type="checkbox">
                         </div>
-                        <div class="in-flex mid-v">
+                        <div class="text-field">
                             Click on button
                         </div>
                     </button>                                                                            
