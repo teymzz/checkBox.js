@@ -73,6 +73,7 @@ a, a:visited{
   bottom: 50px;
   background-color : #3e3a51; 
   border-radius : 5px;
+  overflow-y: scroll;
 }
 
 .nav-pane ul.open{
@@ -94,7 +95,6 @@ a, a:visited{
 
 /* set navigation buttons */
 a[class*=nav-btn]{
-    /*background-color: #3e3a51; */
     color : #646464;
     border:none; 
     border-radius: 5px; 
@@ -259,5 +259,24 @@ pre .comment {
 @media (min-width: 1000px) {
     body{
         padding: 0 20%;
+    }
+    
+    .nav-pane {
+        position: relative;
+        width: 100%;
+        bottom : 0;
+        left:0;
+        right:0;
+        background-color: #fafafa;
+        padding: 0px;
+    }
+
+    a[class*=nav-btn]{
+        background-color: #3e3a51;
+        color: white;
+    }
+
+    .nav-pane ul {
+        bottom: 10px;
     }
 }
