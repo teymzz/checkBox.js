@@ -94,8 +94,7 @@ a, a:visited{
 
 /* set navigation buttons */
 a[class*=nav-btn]{
-    /*background-color: #3e3a51; */
-    color : #a5a5a5;
+    color : #797878;
     border:none; 
     border-radius: 5px; 
     padding:14px 20px;
