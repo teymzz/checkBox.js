@@ -55,11 +55,58 @@ a, a:visited{
 }
 
 section.side-bar {
-    display: none;
+    position: fixed;
+    left: -300px;
+    z-index: 1;
+    transition: left .2s;
+}
+
+section.side-bar.active {
+    left: 0;
+    transition: left .2s;
+}
+
+.side-bar > *{
+    background-color: #282138;
+    padding: 20px;
+    border-radius: 10px;
+    height: 100%; 
+    overflow-y: auto
+}
+
+section.side-bar .side-bar-fit{
+    position : relative;
+}
+
+section.side-bar .close{
+    position : absolute;
+    height: 50px;
+    width: 50px;
+    background-color : #3c3c5ce0;
+    display: grid;
+    place-items: center;
+    right: 20px;
+    top: 20px;
+    border-radius: 100vh;
 }
 
 section.side-bar a{
     text-decoration: none;
+}
+
+section.side-bar.active::after{
+    content: " ";
+    display: block;
+    position: fixed;
+    width:100%;
+    height:100%;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    inset: 0 0 0 0;
+    background-color: #211f3bb7;
+    z-index: -1;
 }
 
 section.side-bar .nav-list{
@@ -311,14 +358,6 @@ pre .comment {
         width:calc(100% - 320px);
         position: relative; 
         left:300px;
-    }
-
-    .side-bar > *{
-        background-color: #282138;
-        padding: 20px;
-        border-radius: 10px;
-        height: 100%; 
-        overflow-y: auto
     }
     
     .nav-pane {

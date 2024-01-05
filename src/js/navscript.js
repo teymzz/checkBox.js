@@ -7,10 +7,13 @@ options = () => {
   return {
     open:() =>{
       let ul = document.querySelector('.nav-pane ul');
-      ul.classList.add('open');
+      let sidebar = document.querySelector('.side-bar');
+      //ul.classList.add('open');
+      sidebar.classList.add('active');
     },
     close: ()=>{
       let ul = document.querySelector('.nav-pane ul');
+      let barClose = document.querySelector('.side-bar .close');
       setTimeout(() => { ul.classList.remove('open');  }, 5000);
     }
   }
@@ -44,6 +47,14 @@ function pressRelease(e){
     }
     clearTimeout(pressTimer);  
 }
+
+function pressClose(){
+  let sideClose = document.querySelector('.side-bar .close');
+  sideClose.addEventListener('click', function() {
+    document.querySelector('.side-bar').classList.remove('active')
+  })
+}
+pressClose();
 
 link.forEach(element => {
    
