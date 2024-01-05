@@ -54,6 +54,40 @@ a, a:visited{
     color: #c066b2;
 }
 
+section.side-bar {
+    display: none;
+}
+
+section.side-bar a{
+    text-decoration: none;
+}
+
+section.side-bar .nav-list{
+    margin:10px 0;
+    color: #8266c0;
+}
+section.side-bar .nav-list.active{
+    margin:10px 0;
+    color: #5c5c5c;
+}
+
+section.side-bar .nav-list a{
+    color:inherit;
+}
+
+section.side-bar .nav-list a::before{
+    content: " ";
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+    border:solid 2px currentColor;
+    border-radius: 100vh;
+    top: -2px;
+    width: 5px;
+    height: 5px;
+    background-color: transparent;
+}
+
 .nav-pane {
   position: fixed;
   width: 100%;
@@ -73,6 +107,7 @@ a, a:visited{
   bottom: 50px;
   background-color : #3e3a51; 
   border-radius : 5px;
+  overflow-y: scroll;
 }
 
 .nav-pane ul.open{
@@ -94,7 +129,7 @@ a, a:visited{
 
 /* set navigation buttons */
 a[class*=nav-btn]{
-    color : #797878;
+    color : #646464;
     border:none; 
     border-radius: 5px; 
     padding:14px 20px;
@@ -105,11 +140,10 @@ a.nav-btn-lt {
     float: left;
     margin-right: 4px;
 }
+
 a.nav-btn-rt {
     float: right;
 }
-
-
 
 h1{
     color: rgb(244, 118, 238)
@@ -257,6 +291,52 @@ pre .comment {
 
 @media (min-width: 1000px) {
     body{
-        padding: 0 20%;
+        /* padding: 0 20%; */
+        padding:0; 
+        display: flex;
+    }
+
+    section.side-bar{
+        display: block;
+        width:300px; 
+        height: 100vh;  
+        padding: 20px; 
+        position: fixed; 
+        top:0; 
+        left:0; 
+        font-size: 20px;
+    }
+
+    body section:nth-child(2) {
+        width:calc(100% - 320px);
+        position: relative; 
+        left:300px;
+    }
+
+    .side-bar > *{
+        background-color: #282138;
+        padding: 20px;
+        border-radius: 10px;
+        height: 100%; 
+        overflow-y: auto
+    }
+    
+    .nav-pane {
+        position: relative;
+        width: 100%;
+        bottom : 0;
+        left:0;
+        right:0;
+        background-color: #fafafa;
+        padding: 0px;
+    }
+
+    a[class*=nav-btn]{
+        background-color: #3e3a51;
+        color: white;
+    }
+
+    .nav-pane ul {
+        bottom: 10px;
     }
 }

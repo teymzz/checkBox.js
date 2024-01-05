@@ -60,6 +60,8 @@ function pass(checker){
   function onCopy(btn) {  
     field = btn.parentNode.closest('.code').querySelector('pre.active');
 
+    if(!field) return false; 
+
     function copied(response){
         if(field) {
           if(response){
