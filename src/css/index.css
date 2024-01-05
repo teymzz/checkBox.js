@@ -59,6 +59,7 @@ section.side-bar {
     left: -300px;
     z-index: 1;
     transition: left .2s;
+    height: 100vh;
 }
 
 section.side-bar.active {
@@ -66,7 +67,7 @@ section.side-bar.active {
     transition: left .2s;
 }
 
-.side-bar > *{
+.side-bar > .side-bar-fit{
     background-color: #282138;
     padding: 20px;
     border-radius: 10px;
@@ -88,6 +89,7 @@ section.side-bar .close{
     right: 20px;
     top: 20px;
     border-radius: 100vh;
+    z-index: 1;
 }
 
 section.side-bar a{
@@ -352,6 +354,14 @@ pre .comment {
         top:0; 
         left:0; 
         font-size: 20px;
+    }
+    
+    section.side-bar .close{
+        display: none;
+    }
+    
+    section.side-bar.active::after{
+        display:none;
     }
 
     body section:nth-child(2) {
