@@ -137,6 +137,9 @@
               <div class="nav-list" id="rating-effect">
                   <a href="../docs/rating-effect.html">Rating Effect</a>
               </div>
+              <div class="nav-list" id="maximum-effect">
+                  <a href="../docs/maximum-effect.html">Maximum Effect</a>
+              </div>
               <div class="nav-list" id="polar-effect">
                   <a href="../docs/polar-effect.html">Polar Effect</a>
               </div>
@@ -155,20 +158,20 @@
 
             <div class="" style="font-size: 1.2em;"> <br>
                 <h1 style="color:#51ceff">CheckBox.js</h1> <br>
-                <h4 style="color:#51ceff">Rating effect</h4> <br>
+                <h4 style="color:#51ceff">Maximum effect</h4> <br>
             </div>
             
             <div class="">
-              The rating toggle effect includes a list of custom checkboxes that exists together purposely for rating 
-              items. In this effect, when a checkbox is checked, all relative custom checkboxes to its left side are automatically toggled on 
-              while those to the right are toggled off. This is achieved by setting <code class="c-note bc">data-bind</code> attribute to <code class="c-var bc">"rating"</code>. 
-              An example of this is shown below:
+              The checkbox maximum effect is a condition that is used to restrict the number of checkboxes that can be selected in a group list. 
+              This effect uses the <code class="c-note bc">data-max</code> attribute to specify the maximum number of items that can be selected while 
+              the <code class="c-note bc">data-maxim</code> is a callback function that is executed when the maximum condition is overuled. Consider the sample 
+              struture below:
             </div> <br>
 
             <div class="code"> 
               <div class="flex">
                 <div class="code-x">
-                  <strong>Rating Effect</strong>
+                  <strong>Maximum Effect</strong>
                   <span class="code-btn" rel="html">HTML</span>
                   <span class="code-btn" rel="css">CSS</span>
                   <span class="code-btn" rel="js">JS</span>
@@ -179,9 +182,9 @@
                   <span class="copy-btn"><i class="bi-clipboard"></i></span>
                 </div>
               </div>
-<pre class="html">
+<pre class="html active">
   <span class="comment">&lt;!--parent checkbox (group)--&gt;</span>
-  <span class="tag">&lt;div <span>data-role="<span>checkbox-list</span>" data-bind="<span>rating</span>"</span>&gt;</span>
+  <span class="tag">&lt;div <span>data-role="<span>checkbox-list</span>" data-max="<span>2</span>" data-maxim="<span>overrule</span>"</span>&gt;</span>
   
     <span class="comment">&lt;!--first checkbox section--&gt;</span>
     <span class="tag">&lt;div <span>data-role="<span>checkbox</span>"</span>&gt;</span>
@@ -363,9 +366,10 @@ checkbox.<span class="func">check({
             </div>
 
             <div class="">
-                Naturally, it is difficult to detect the number of checkbox that are checked due to the structure of the plugin. However, 
-                this data is made obtainable by the plugin through the <code class="c-note bc">checkedBoxes</code> method which provides the exact 
-                number of checkboxes that are currently checked. A sample of this is shown below :
+                From the sample above, we have a list of custom checkboxes that are restricted to only a maximum of two selections at a 
+                time through the use of <code class="c-note bc">data-bind</code> attribute. When more than two selections are made, the 
+                <code class="c-var bc">overule</code> callback function defined in <code class="c-note bc">data-maxim</code> attribute 
+                will be triggered. 
             </div> <br>
             
             <div class="code"> 
@@ -490,7 +494,7 @@ checkbox.<span class="func">check({
            <div class="checkers box wid-full">
                 <div class=""></div>
                 <div class="">
-                  <div data-role="checkbox-list" data-bind="rating">
+                  <div data-role="checkbox-list" data-max="3" data-maxim="validate" data-bind="rating">
               
                     <!--first checkbox section-->
                     <div data-role="checkbox">
@@ -641,41 +645,38 @@ checkbox.<span class="func">check({
             },
             toggle: (e) =>  e.init(e)
           })
+
+          function validate(e){
+            if(e.checked.length == 3){
+
+                let unchecked = e.unchecked;
+
+                unchecked.forEach(uncheck => {
+                    uncheck.style.border = "dotted 2px red"
+                    setTimeout(() => uncheck.style.border = "dotted 2px #7975a4dc" , 500)
+                })
+            } else {
+
+                let unchecked = e.unchecked;
+                
+                unchecked.forEach(uncheck => {
+                    uncheck.style.display = "block"
+                })
+            }
+
+
+          }
+
+          function underule(e) {
+            
+
+            let unchecked = e.unchecked;
+
+            unchecked.forEach(uncheck => {
+                uncheck.style.display = "block"
+            })
+          }
         </script>
 
     </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

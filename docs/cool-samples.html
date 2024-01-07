@@ -35,6 +35,10 @@
             .gold {
                 border-color:#c68811;
             }
+
+            .red {
+                border-color:red;
+            }
             
             .gold.rotate {
                 border: dotted 2px #c68811;
@@ -71,93 +75,99 @@
     
     <body>
         <section class="side-bar">
-            <span class="close flex mid">&times;</span>
-            <div class="side-bar-fit">
-                <div class="nav-list">
+          <span class="close flex mid">&times;</span>
+          <div class="side-bar-fit">
+                <div class="nav-list" id="">
                     <a href="../index.html">Home</a>
                 </div>
-                <div class="nav-list">
+                <div class="nav-list" id="basic">
                     <a href="../docs/basic.html">Basic</a>
                 </div>
-                <div class="nav-list">
+                <div class="nav-list" id="custom-selector">
                     <a href="../docs/custom-selector.html">Custom Selector</a>
                 </div>
-                <div class="nav-list">
+                <div class="nav-list" id="markers">
                     <a href="../docs/markers.html">Markers</a>
                 </div>
-                <div class="nav-list">
-                    <a href="../docs/single-marker.html">Single Markers</a>
+                <div class="nav-list" id="single-marker">
+                    <a href="../docs/single-marker.html">Single Marker</a>
                 </div>
-                <div class="nav-list">
+                <div class="nav-list"id="double-markers">
                     <a href="../docs/double-markers.html">Double Markers</a>
                 </div>
-                <div class="nav-list">
+                <div class="nav-list" id="custom-marker">
+                    <a href="../docs/custom-marker.html">Custom Marker</a>
+                </div>
+                <div class="nav-list" id="sizing-markers">
                     <a href="../docs/sizing-markers.html">Sizing Markers</a>
                 </div>
-                <div class="nav-list">
+                <div class="nav-list" id="flipping-markers">
                     <a href="../docs/flipping-markers.html">Flipping Markers</a>
                 </div>
-                <div class="nav-list">
+                <div class="nav-list" id="init-event">
                     <a href="../docs/init-event.html">Init Event</a>
                 </div>
-                <div class="nav-list">
+                <div class="nav-list" id="toggle-event">
                     <a href="../docs/toggle-event.html">Toggle Event</a>
                 </div>
-                <div class="nav-list">
+                <div class="nav-list" id="eager-loading">
                     <a href="../docs/eager-loading.html">Eager Loading</a>
                 </div>
-                <div class="nav-list">
+                <div class="nav-list" id="fitting-images">
                     <a href="../docs/fitting-images.html">Fitting Images</a>
                 </div>
-                <div class="nav-list">
+                <div class="nav-list" id="fitting-icons">
                     <a href="../docs/fitting-icons.html">Fitting Icons</a>
                 </div>
-                <div class="nav-list">
+                <div class="nav-list" id="toggling-attribute">
                     <a href="../docs/toggling-attribute.html">Toggling Attributes</a>
                 </div>
-                <div class="nav-list">
+                <div class="nav-list" id="toggling-attribute-advanced">
                     <a href="../docs/toggling-attribute-advanced.html">Advanced Toggling</a>
                 </div>
-                <div class="nav-list">
+                <div class="nav-list" id="injecting-attribute">
                     <a href="../docs/injecting-attributes.html">Injecting Attributes</a>
                 </div>
-                <div class="nav-list">
+                <div class="nav-list" id="adding-labels">
                     <a href="../docs/adding-labels.html">Adding Labels</a>
                 </div>
-                <div class="nav-list">
+                <div class="nav-list" id="adding-colors">
                     <a href="../docs/adding-colors.html">Adding Colors</a>
                 </div>
-                <div class="nav-list">
+                <div class="nav-list" id="disable-checkbox">
                     <a href="../docs/disable-checkbox.html">Disable Checkbox</a>
                 </div>
-                <div class="nav-list">
+                <div class="nav-list" id="advanced-effects">
                     <a href="../docs/advanced-effects.html">Advanced Effects</a>
                 </div>
-                <div class="nav-list">
+                <div class="nav-list" id="radio-effect">
                     <a href="../docs/radio-effect.html">Radio Effect</a>
                 </div>
-                <div class="nav-list">
+                <div class="nav-list" id="base-effects">
                     <a href="../docs/base-effects.html">Base Effect</a>
                 </div>
-                <div class="nav-list">
+                <div class="nav-list" id="base-reversal-effect">
                     <a href="../docs/base-reversal-effect.html">Base Reversal Effect</a>
                 </div>
-                <div class="nav-list">
+                <div class="nav-list" id="slide-effect">
                     <a href="../docs/slide-effect.html">Slide Effect</a>
                 </div>
-                <div class="nav-list">
+                <div class="nav-list" id="rating-effect">
                     <a href="../docs/rating-effect.html">Rating Effect</a>
                 </div>
-                <div class="nav-list">
+                <div class="nav-list" id="polar-effect">
                     <a href="../docs/polar-effect.html">Polar Effect</a>
                 </div>
-                <div class="nav-list">
+                <div class="nav-list" id="polar-effect">
+                    <a href="../docs/maximum-effect.html">Maximum Effect</a>
+                </div>
+                <div class="nav-list" id="binding-parents">
                     <a href="../docs/binding-parents.html">Binding Parent</a>
                 </div>
-                <div class="nav-list">
+                <div class="nav-list" id="fixing-cache">
                     <a href="../docs/fixing-cache.html">Fixing Cache</a>
                 </div>
-                <div class="nav-list active">
+                <div class="nav-list" id="cool-samples">
                     <a href="../docs/cool-samples.html">Cool Samples</a>
                 </div>
             </div>
@@ -290,12 +300,12 @@
                             </div>
                             <div data-role="checkbox" class="in-flex wrap rad-r">
                                 <div checkee data-flip="true" data-label="Check|Checked" data-fit="true" data-anime="|fadeIn" data-size="30px" data-fsize="20px" data-color="@orange|#5271fe" data-assign=":markers" class="in-flex">
-                                    <div marker style="">
+                                    <div marker>
                                       <div class="fill-marker">
                                         <i class="bi-activity flex mid" style="color:currentColor"></i>
                                       </div>         
                                     </div>
-                                    <div marker style="">
+                                    <div marker>
                                       <div class="fill-marker">
                                         <i class="bi-activity flex mid" style="color:currentColor"></i>
                                       </div>         
@@ -311,7 +321,7 @@
                                         <i class="bi-bluetooth flex mid" style="color:currentColor"></i>
                                       </div>         
                                     </div>
-                                    <div marker style="">
+                                    <div marker>
                                       <div class="fill-marker">
                                         <i class="bi-bluetooth flex mid" style="color:currentColor"></i>
                                       </div>         
@@ -370,7 +380,7 @@
                     <div>
                         <div class="in-flex mid rad-r" style="display: flex; gap: .5em; padding: .3em; background-color: #1d1b2b;">
                             <div class="in-flex mid rad-r" style="align-items: center; margin: 0 12px;">
-                                <div checker data-anime="fadeIn" data-assign=":markers" data-func="view" data-init data-label="Show?|Hide?" class="in-flex">
+                                <div checker data-anime="fadeIn" data-size="100%" data-fsize="100%" data-assign=":markers" data-func="view" data-init data-label="Show?|Hide?" class="in-flex">
                                     <div marker>
                                         <span class="flex" style="width:100%; height: 100%; color:red; align-items: center;">
                                             <span class="bi bi-eye-slash flex mid"></span>
@@ -467,6 +477,103 @@
                                 <div checkee data-flip="true" data-init="true" data-func="toast" data-label="Check|Uncheck" data-fit="true" data-anime="|bounceIn" data-size="20px" data-color="@#3a3446|#c68811" data-assign=":markers" class="in-flex">
                                     <div marker style="background-image:url(../src/images/check-12-gold.png)"></div>         
                                     <div marker style="background-image:url(../src/images/check-12-gold-fill.png)"></div>         
+                                </div>
+                                <input type="checkbox">
+                            </div>
+                            <div class="rootbox" style="display:flex; align-items:center;"></div>
+                        </div>
+                    </div>                                                       
+                </div>
+            </div>
+
+                        
+            <div class="checkers box wid-full">
+                <div class="">
+                    <div class="" style="padding: 6px 6px; font-size:.85em;">
+                       Slide animation checkbox (animated background)
+                    </div>
+                    <div class="in-flex mid" style="padding: 10px; gap:.5em">
+                        <div data-role="checkbox-list" data-bind="slide-2500">
+                            <div data-role="checkbox" class="in-flex wrap rad-r">
+                                <div checkee data-flip="true" data-init="true" data-func="gold" data-label="Check|Uncheck" data-fit="true" data-anime="slideInRight|slideInLeft" data-size="50px|2px" data-color="@#3a3446|#c68811" data-assign=":markers" class="in-flex">
+                                    <div marker class="b-currentColor"></div>         
+                                    <div marker class="b-currentColor"></div>         
+                                </div>
+                                <input type="checkbox">
+                            </div>
+                            <div data-role="checkbox" class="in-flex wrap rad-r">
+                                <div checkee data-flip="true" data-init="true" data-func="gold" data-label="Check|Uncheck" data-fit="true" data-anime="slideInRight|slideInLeft" data-size="50px|2px" data-color="@#3a3446|#c68811" data-assign=":markers" class="in-flex">
+                                    <div marker class="b-currentColor"></div>         
+                                    <div marker class="b-currentColor"></div>         
+                                </div>
+                                <input type="checkbox">
+                            </div>
+                            <div data-role="checkbox" class="in-flex wrap rad-r">
+                                <div checkee data-flip="true" data-init="true" data-func="gold" data-label="Check|Uncheck" data-fit="true" data-anime="slideInRight|slideInLeft" data-size="50px|2px" data-color="@#3a3446|#c68811" data-assign=":markers" class="in-flex">
+                                    <div marker class="b-currentColor"></div>         
+                                    <div marker class="b-currentColor"></div>         
+                                </div>
+                                <input type="checkbox">
+                            </div>
+                            <div data-role="checkbox" class="in-flex wrap rad-r">
+                                <div checkee data-flip="true" data-init="true" data-func="gold" data-label="Check|Uncheck" data-fit="true" data-anime="slideInRight|slideInLeft" data-size="50px|2px" data-color="@#3a3446|#c68811" data-assign=":markers" class="in-flex">
+                                    <div marker class="b-currentColor"></div>         
+                                    <div marker class="b-currentColor"></div>         
+                                </div>
+                                <input type="checkbox">
+                            </div>
+                            <div data-role="checkbox" class="in-flex wrap rad-r">
+                                <div checkee data-flip="true" data-init="true" data-func="gold" data-label="Check|Uncheck" data-fit="true" data-anime="slideInRight|slideInLeft" data-size="50px|2px" data-color="@#3a3446|#c68811" data-assign=":markers" class="in-flex">
+                                    <div marker class="b-currentColor"></div>         
+                                    <div marker class="b-currentColor"></div>         
+                                </div>
+                                <input type="checkbox">
+                            </div>
+                            <div class="rootbox" style="display:flex; align-items:center;"></div>
+                        </div>
+                    </div>                                                       
+                </div>
+            </div>
+                        
+            <div class="checkers box wid-full">
+                <div class="">
+                    <div class="" style="padding: 6px 6px; font-size:.85em;">
+                        Checkbox (select maximum of 2)
+                    </div>
+                    <div class="in-flex mid" style="padding: 10px; gap:.5em">
+                        <div data-role="checkbox-list" data-max="2" data-maxim="het">
+                            <div data-role="checkbox" class="in-flex wrap rad-r">
+                                <div checkee data-flip="true" data-init="true" data-func="gold" data-label="Check|Uncheck" data-fit="true" data-anime="slideInRight|slideInLeft" data-size="50px|2px" data-color="@#3a3446|#c68811" data-assign=":markers" class="in-flex">
+                                    <div marker class="b-currentColor"></div>         
+                                    <div marker class="b-currentColor"></div>         
+                                </div>
+                                <input type="checkbox">
+                            </div>
+                            <div data-role="checkbox" class="in-flex wrap rad-r">
+                                <div checkee data-flip="true" data-init="true" data-func="gold" data-label="Check|Uncheck" data-fit="true" data-anime="slideInRight|slideInLeft" data-size="50px|2px" data-color="@#3a3446|#c68811" data-assign=":markers" class="in-flex">
+                                    <div marker class="b-currentColor"></div>         
+                                    <div marker class="b-currentColor"></div>         
+                                </div>
+                                <input type="checkbox">
+                            </div>
+                            <div data-role="checkbox" class="in-flex wrap rad-r">
+                                <div checkee data-flip="true" data-init="true" data-func="gold" data-label="Check|Uncheck" data-fit="true" data-anime="slideInRight|slideInLeft" data-size="50px|2px" data-color="@#3a3446|#c68811" data-assign=":markers" class="in-flex">
+                                    <div marker class="b-currentColor"></div>         
+                                    <div marker class="b-currentColor"></div>         
+                                </div>
+                                <input type="checkbox">
+                            </div>
+                            <div data-role="checkbox" class="in-flex wrap rad-r">
+                                <div checkee data-flip="true" data-init="true" data-func="gold" data-label="Check|Uncheck" data-fit="true" data-anime="slideInRight|slideInLeft" data-size="50px|2px" data-color="@#3a3446|#c68811" data-assign=":markers" class="in-flex">
+                                    <div marker class="b-currentColor"></div>         
+                                    <div marker class="b-currentColor"></div>         
+                                </div>
+                                <input type="checkbox">
+                            </div>
+                            <div data-role="checkbox" class="in-flex wrap rad-r">
+                                <div checkee data-flip="true" data-init="true" data-func="gold" data-label="Check|Uncheck" data-fit="true" data-anime="slideInRight|slideInLeft" data-size="50px|2px" data-color="@#3a3446|#c68811" data-assign=":markers" class="in-flex">
+                                    <div marker class="b-currentColor"></div>         
+                                    <div marker class="b-currentColor"></div>         
                                 </div>
                                 <input type="checkbox">
                             </div>
@@ -604,6 +711,24 @@
         
         <script src="../src/js/docs.js"></script>
         <script src="../src/js/navscript.js"></script>
+        <script>
+            function het(props){
+                let unchecked = props.unchecked;
+                unchecked.forEach(uncheck=>{
+                    uncheck.parentNode.classList.add('red');
+                    setTimeout(()=> uncheck.parentNode.classList.remove('red'), 500)
+                })
+                // console.log(unchecked);
+                // for (let i in unchecked){
+                //     console.log(unchecked[i], '......................')
+                //     // unchecked[i].classList.add('gold');
+                // }
+                // console.log(props) //.classList.add('gold');
+                // for (let i in props.unchecked){
+                // }
+                // console.log(event)
+            }
+        </script>
 
     </body>
 </html>

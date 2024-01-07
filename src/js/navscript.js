@@ -73,3 +73,15 @@ link.forEach(element => {
     element.addEventListener('touchend', (e) => pressRelease(e));
   
 })
+
+// auto detect menu 
+
+
+window.onload = function() {
+  let url = location.href.split('/');
+  url = url[url.length - 1];
+  url = url.split('.html')[0];
+  let menu = document.getElementById(url);
+  menu.classList.add('active');
+  menu.scrollIntoView()
+}

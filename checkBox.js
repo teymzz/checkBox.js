@@ -886,10 +886,9 @@ class CheckBox {
                             let exToggles = {...customLists};
                             
                             let boxes = Object.keys(exToggles).length;
-                            let ltBoxes = [], rtBoxes = [];
                                
                            
-                           for(let i = boxes - 1; i > index; i--){
+                            for(let i = boxes - 1; i > index; i--){
                               let checkboxItem = exToggles[i].nextElementSibling;
                               if(checkboxItem.checked){
                                 customLists[index].setAttribute('check-pause', 'true')
@@ -1187,6 +1186,56 @@ class CheckBox {
                 });
 
                 customBox.addEventListener('click', function(){
+                    
+                    
+                    if(grandParent){
+
+                        checkedBoxes = properties.checkedBoxes;
+                        
+                        //checkedBoxes = grandParent.querySelectorAll('input:checked').length
+         
+                        if(at(grandParent).hasAttr('data-max')) {
+                            let max, callback;
+
+                            if(at(grandParent).hasAttr('data-maxim')){
+                                callback = at(grandParent,'data-maxim').value();
+                            }
+
+                            max = parseInt(at(grandParent, 'data-max').value()); 
+                            if((checkedBoxes === max) && !at(customBox,'checked').is('checked')) {
+
+                                if(typeof window[callback] === 'function') {
+                                    let props = {};
+                                    props.checked = grandParent.querySelectorAll(checkbox.target+'[checked="checked"]');
+                                    props.unchecked = grandParent.querySelectorAll(checkbox.target+':not([checked="checked"])');
+                                    props.max = true;
+                                    window[callback](props);
+                                }
+                                return false;
+                                
+                            } else {
+
+                                if(typeof window[callback] === 'function') {
+                                    let props = {};
+                                    props.checked = grandParent.querySelectorAll(checkbox.target+'[checked="checked"]');
+                                    props.unchecked = grandParent.querySelectorAll(checkbox.target+':not([checked="checked"])');
+                                    props.max = false;
+                                    window[callback](props);
+                                }                                
+
+                            }
+                            
+                            // else if (checkedBoxes < max){
+                                 
+                            //         if(typeof window[callfront] === 'function') {
+                            //             let props = {};
+                            //             props.checked = grandParent.querySelectorAll(checkbox.target+'[checked="checked"]');
+                            //             props.unchecked = grandParent.querySelectorAll(checkbox.target+':not([checked="checked"])');
+                            //             window[callfront](props);
+                            //         } 
+                            // }
+                        }
+                    }
                     //if not e-prev defined
                     if(!at(customBox, 'check-pause').is('true')){
                       if(input.getAttribute('e-prev') === null){
@@ -1268,27 +1317,37 @@ class CheckBox {
         function touchSlide(ratebind, target){
           
             const rateboxes = ratebind.querySelectorAll('[data-role="checkbox"]');
-            let startCheckbox;
+            let startCheckbox; let mousePressed;
 
             rateboxes.forEach((ratebox) => {
               ratebox.addEventListener('touchstart', handleTouchStart);
               ratebox.addEventListener('touchmove', handleTouchMove);
+              ratebox.addEventListener('mousedown', handleTouchStart);
+              ratebox.addEventListener('mousemove', handleTouchMove);
+              ratebox.addEventListener('mouseup', handleMouseEnd);
             });
 
             function handleTouchStart(event) {
               startCheckbox = event.currentTarget;
               let customBox = startCheckbox.querySelector(target);
-
+              mousePressed = true;
               if((getIndex(startCheckbox) === 0) && !isChecked(customBox)){ 
-                customBox.click();
+                // customBox.click();********************************************
               }
             }
 
             function handleTouchMove(event) {
               event.stopPropagation();
-              
-              const currentCheckbox = document.elementFromPoint(event.touches[0].clientX, event.touches[0].clientY);
-              const customBox = currentCheckbox.querySelector(target);
+              let currentCheckbox; let customBox;
+
+              if(event.touches){
+                 currentCheckbox = document.elementFromPoint(event.touches[0].clientX, event.touches[0].clientY);
+                }else{
+                  if(mousePressed) {
+                      currentCheckbox = document.elementFromPoint(event.clientX, event.clientY);
+                  }
+              }
+              if(currentCheckbox) customBox = currentCheckbox.querySelector(target);
               
               if (customBox && (currentCheckbox !== startCheckbox)) {
                 
@@ -1327,6 +1386,10 @@ class CheckBox {
 
               }
               
+            }
+
+            function handleMouseEnd(event){
+                mousePressed = false;
             }
 
             function isForwardSlide(startCheckbox, currentCheckbox) {
