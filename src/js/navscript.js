@@ -78,10 +78,32 @@ link.forEach(element => {
 
 
 window.onload = function() {
-  let url = location.href.split('/');
-  url = url[url.length - 1];
-  url = url.split('.html')[0];
-  let menu = document.getElementById(url);
-  menu.classList.add('active');
-  menu.scrollIntoView()
+    
+  var origin = window.location.origin;
+  var page = origin + '/' + 'checkbox/';
+  var docs = page + 'docs/';
+  var nav = page + 'docs/navbar.html';
+      
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", nav, true);
+      
+  xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+          let navArea = document.querySelector('.side-bar-fit');
+          navArea.innerHTML = xhr.responseText
+          let url = location.href.split('/');
+          url = url[url.length - 1];
+          url = url.split('.html')[0];
+          let menu = document.getElementById(url);
+          menu.classList.add('active');
+          menu.scrollIntoView()
+      }
+  };
+  xhr.send();
+  // let url = location.href.split('/');
+  // url = url[url.length - 1];
+  // url = url.split('.html')[0];
+  // let menu = document.getElementById(url);
+  // menu.classList.add('active');
+  // menu.scrollIntoView()
 }
