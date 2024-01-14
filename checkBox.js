@@ -633,6 +633,7 @@ class CheckBox {
                 
                 checkList.setAttribute('initialized', true);
                 let checkListBind = at(checkList, 'data-bind');
+                let checkListTouch = at(checkList, 'data-touch');
                 let dataBindValue = checkListBind.value().split("-");
                 let isSlide = false, slideTime = 2500;
                 
@@ -907,7 +908,10 @@ class CheckBox {
 
                         })
                         
-                        touchSlide(checkList, checkbox.target)
+                        //allow touch effect
+                        if(checkListTouch.is('enabled')){
+                          touchSlide(checkList, checkbox.target)
+                        }
 
                     })
 
@@ -1190,9 +1194,9 @@ class CheckBox {
                     
                     if(grandParent){
 
-                        checkedBoxes = properties.checkedBoxes;
+                        //checkedBoxes = properties.checkedBoxes;
                         
-                        //checkedBoxes = grandParent.querySelectorAll('input:checked').length
+                        checkedBoxes = grandParent.querySelectorAll('input:checked').length
          
                         if(at(grandParent).hasAttr('data-max')) {
                             let max, callback;
@@ -1203,7 +1207,7 @@ class CheckBox {
 
                             max = parseInt(at(grandParent, 'data-max').value()); 
                             if((checkedBoxes === max) && !at(customBox,'checked').is('checked')) {
-
+                                  //alert()
                                 if(typeof window[callback] === 'function') {
                                     let props = {};
                                     props.checked = grandParent.querySelectorAll(checkbox.target+'[checked="checked"]');
@@ -1214,7 +1218,7 @@ class CheckBox {
                                 return false;
                                 
                             } else {
-
+                                /*
                                 if(typeof window[callback] === 'function') {
                                     let props = {};
                                     props.checked = grandParent.querySelectorAll(checkbox.target+'[checked="checked"]');
@@ -1222,7 +1226,7 @@ class CheckBox {
                                     props.max = false;
                                     window[callback](props);
                                 }                                
-
+                                */
                             }
                             
                             // else if (checkedBoxes < max){
@@ -1356,7 +1360,6 @@ class CheckBox {
                 let backs = isBackwardSlide(startCheckbox, currentCheckbox);
                 let neutral = (front === false) && (backs === false);
                 
-                //startCheckbox = currentCheckbox;
                 let checkNum = getIndex(currentCheckbox);
                 // permit activity: if item is checkbox
                 let isCheckBox = currentCheckbox.getAttribute('data-role') === 'checkbox';
