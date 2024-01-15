@@ -96,7 +96,7 @@ window.onload = function() {
           url = url.split('.html')[0];
           let menu = document.getElementById(url);
           menu.classList.add('active');
-          menu.scrollIntoView()
+          menu.scrollIntoView({behavior: "smooth"})
       }
   };
   xhr.send();

@@ -633,7 +633,7 @@ class CheckBox {
                 
                 checkList.setAttribute('initialized', true);
                 let checkListBind = at(checkList, 'data-bind');
-                let checkListTouch = at(checkList, 'data-touch');
+                let checkListSwipe = at(checkList, 'data-swipe');
                 let dataBindValue = checkListBind.value().split("-");
                 let isSlide = false, slideTime = 2500;
                 
@@ -909,7 +909,7 @@ class CheckBox {
                         })
                         
                         //allow touch effect
-                        if(checkListTouch.is('enabled')){
+                        if(checkListSwipe.is('enabled')){
                           touchSlide(checkList, checkbox.target)
                         }
 
