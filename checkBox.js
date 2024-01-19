@@ -6,6 +6,8 @@ class CheckBox {
 
         checkbox.hardchecks = [];
 
+        checkbox.customListItems = [];
+
         if(config === true) return checkbox;
         
         let defaults, customBoxes, init, toggle, assign, css, size, fsize, fit, checkEvent;
@@ -28,7 +30,6 @@ class CheckBox {
         };
 
         config = {...defaults, ...config};
-
         checkbox.target = config.target;
         checkbox.marker = config.marker;
         checkbox.flip = config.flip;
@@ -628,6 +629,10 @@ class CheckBox {
 
             //get all custom checkboxes in the checkbox list...
             let customLists = checkList.querySelectorAll(checkbox.target);
+
+            if(at(checkList).hasAttr('id')){
+                checkbox.customListItems[at(checkList).attrvals('id')] = checkList;
+            }
 
             if(customLists.length > 0){
                 
@@ -1427,6 +1432,51 @@ class CheckBox {
 
     check(config) {
         new CheckBox(config);
+    }
+
+    customList(id) {
+
+
+        console.log(checkbox)
+        return;
+
+        //get id from custom lists 
+        let customListItem = checkbox.customListItems[id];
+        let customListSelector = this.target;
+
+        return {
+
+            item: () => customListItem,
+
+            prev: () => {
+
+                //get all custom boxes... 
+                let customBoxes, customBoxesNum, checkedList = [], previous, lastChecked = 0;
+                
+                customBoxes = customListItem.querySelectorAll('input[type="checkbox"]');
+                customBoxesNum = customBoxes.length;
+
+
+                customBoxes.forEach(customBox =>{
+                    if(customBox.checked) {
+                        checkedList.push(customBox);
+                    }
+                })
+
+                //get the last checked item ... 
+                if(checkedList.length > 0){
+                    lastChecked = checkedList[checkedList.length-1]; 
+                    previous = ((lastChecked - 1) < 0) ? 0 : previous;  
+                }
+
+                //get custom box of previous item  ... 
+                let customBox = previous.closest(customListSelector);
+                customBox.click();
+
+            }
+
+        }
+
     }
 
 }
