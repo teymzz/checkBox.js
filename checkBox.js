@@ -6,7 +6,7 @@ class CheckBox {
 
         checkbox.hardchecks = [];
 
-        checkbox.customListItems = [];
+        checkbox.customListItems = {};
 
         if(config === true) return checkbox;
         
@@ -631,7 +631,7 @@ class CheckBox {
             let customLists = checkList.querySelectorAll(checkbox.target);
 
             if(at(checkList).hasAttr('id')){
-                checkbox.customListItems[at(checkList).attrvals('id')] = checkList;
+                checkbox.customListItems[at(checkList,'id').value()] = checkList;
             }
 
             if(customLists.length > 0){
@@ -1431,48 +1431,64 @@ class CheckBox {
     }
 
     check(config) {
-        new CheckBox(config);
+      return new CheckBox(config);
     }
 
     customList(id) {
-
-
-        console.log(checkbox)
-        return;
+        let checkbox = this;
 
         //get id from custom lists 
         let customListItem = checkbox.customListItems[id];
-        let customListSelector = this.target;
-
-        return {
+        let customListSelector = checkbox.target;
+        let customBoxes = customListItem.querySelectorAll(customListSelector);
+        let customBoxesNum = customBoxes.length;
+        let controller;
+        
+        if(!customListItem) return {}; //Accept only checkbox lists with id
+        
+        function currentCheckbox(){
+          let i = 0;
+          customBoxes.forEach((customBox, index) =>{
+              if(customBox.getAttribute('checked') === 'checked') {
+                i = index;
+              }
+          })
+          return i;
+        }
+        
+        return controller = {
 
             item: () => customListItem,
 
             prev: () => {
 
                 //get all custom boxes... 
-                let customBoxes, customBoxesNum, checkedList = [], previous, lastChecked = 0;
-                
-                customBoxes = customListItem.querySelectorAll('input[type="checkbox"]');
-                customBoxesNum = customBoxes.length;
+                let current = currentCheckbox();
+                let previous = current - 1;
 
+                if(previous < 0) previous = customBoxesNum - 1;
+               
+                customBoxes[previous].click();
+            }, 
+            
+            next: () => {
+                //get all custom boxes... 
+                let current = currentCheckbox();
+                let next = current + 1;
 
-                customBoxes.forEach(customBox =>{
-                    if(customBox.checked) {
-                        checkedList.push(customBox);
-                    }
-                })
-
-                //get the last checked item ... 
-                if(checkedList.length > 0){
-                    lastChecked = checkedList[checkedList.length-1]; 
-                    previous = ((lastChecked - 1) < 0) ? 0 : previous;  
-                }
-
-                //get custom box of previous item  ... 
-                let customBox = previous.closest(customListSelector);
-                customBox.click();
-
+                if(next > (customBoxesNum - 1)) next = 0;
+               
+                customBoxes[next].click();
+            },
+            
+            choose: (number) => controller.to(number),
+            
+            to: (number) => {
+              
+              if(customBoxes[number-1]) {
+                customBoxes[number-1].click();
+              }
+              
             }
 
         }

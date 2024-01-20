@@ -11,7 +11,7 @@ function pass(checker){
   
     let checkbox = new CheckBox(true);
   
-    checkbox.check({
+    let check1 = checkbox.check({
         assign: {
             attr: ['data-anime', 'class'],
             alter: function(dataAnime){
