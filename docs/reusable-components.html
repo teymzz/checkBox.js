@@ -11,6 +11,7 @@
         <style>
             .controls {
               display : inline-flex;
+              align-items: center;
             }
             button {
               border: none;
@@ -59,16 +60,15 @@
 
             <div class="" style="font-size: 1.2em;"> <br>
                 <h1 style="color:#51ceff">CheckBox.js</h1> <br>
-                <h4 style="color:#51ceff">Fixing Cache</h4> <br>
+                <h4 style="color:#51ceff">Binding Controls</h4> <br>
             </div>
             
             <div class="">
-              Cache fixes are important for browsers that mostly stores the user activity state 
-              of checkboxes. A checkbox that is not checked by default may end up being checked 
-              due to the cache storage of the interaction between users and their respective browsers. 
-              In order to avoid this, we can explicitly define the state which a checkbox should begin from 
-              by setting the <code class="c-note bc">checked</code> attribute as either <code class="c-bool bc">true</code>
-              or <code class="c-bool bc">false</code>. An example of this is shown below: 
+              The checkbox control button functionality is an integrated feature that is specifically designed to navigate through 
+              a list of custom checkboxes within a checkbox group list. In order to use this feature, a checkbox group list must have 
+              a unique <code class="c-note bc">id</code> attribute after which the methods   
+              <code class="c-bool bc">next()</code>, <code class="c-bool bc">prev()</code> and <code class="c-bool bc">to()</code> becomes 
+              available to select or navigate through the checkbox group list. The example below reveals the function of these methods: 
             </div> <br>
             
            <div class="code">
@@ -83,45 +83,53 @@
                   <span class="copy-btn"><i class="bi-clipboard"></i></span>
                 </div>
               </div>  
-<pre class="html active">
+<pre class="html active">  <!-- start html -->
 <span class="comment">&lt;!--parent checkbox (group)--&gt;</span>
-<span class="tag">&lt;div <span>data-role="<span>checkbox-list</span>" data-bind="<span>radio</span>"</span>&gt;</span>
+<span class="tag">&lt;div <span>class="<span>checkbox-wrapper</span>"</span>&gt;</span>
+  <span class="tag">&lt;div <span>id="<span>group-1</span>" data-role="<span>checkbox-list</span>" data-bind="<span>radio</span>"</span>&gt;</span>
 
-  <span class="comment">&lt;!--first checkbox section--&gt;</span>
-  <span class="tag">&lt;div <span>data-role="<span>checkbox</span>"</span>&gt;</span>
-    <span class="tag">&lt;div <span>checkbox data-anime="<span>bounceIn</span>" data-assign="<span>:marker2</span>" data-color="<span>@#615c988d|lime</span>"</span>&gt;</span>
-    
-      <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
-      <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
+    <span class="comment">&lt;!--first checkbox section--&gt;</span>
+    <span class="tag">&lt;div <span>data-role="<span>checkbox</span>"</span>&gt;</span>
+      <span class="tag">&lt;div <span>checkbox data-anime="<span>bounceIn</span>" data-assign="<span>:marker2</span>" data-color="<span>@#615c988d|lime</span>"</span>&gt;</span>
       
+        <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
+        <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
+      
+      <span class="tag">&lt;/div&gt;</span>
+      <span class="tag">&lt;input <span>type="<span>checkbox</span>" value="<span>C1</span>"</span>&gt;</span>
+    <span class="tag">&lt;/div&gt;</span> 
+    
+    <span class="comment">&lt;!--second checkbox section--&gt;</span>
+    <span class="tag">&lt;div <span>class="rotate" data-role="<span>checkbox</span>"</span>&gt;</span>
+      <span class="tag">&lt;div <span>checkbox data-anime="<span>bounceIn</span>" data-assign="<span>:marker2</span>" data-color="<span>@#615c988d|lime</span>"</span>&gt;</span>
+      
+        <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
+        <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
+      
+      <span class="tag">&lt;/div&gt;</span>
+      <span class="tag">&lt;input <span>type="<span>checkbox</span>" checked="<span>true</span>" value="<span>C2</span>"</span>&gt;</span>
     <span class="tag">&lt;/div&gt;</span>
-    <span class="tag">&lt;input <span>type="<span>checkbox</span>" value="<span>C1</span>"</span>&gt;</span>
-  <span class="tag">&lt;/div&gt;</span> 
+    
+    <span class="comment">&lt;!--third checkbox section--&gt;</span>
+    <span class="tag">&lt;div <span>data-role="<span>checkbox</span>"</span>&gt;</span>
+      <span class="tag">&lt;div <span>checkbox data-anime="<span>bounceIn</span>" data-assign="<span>:marker2</span>" data-color="<span>@#615c988d|lime</span>"</span>&gt;</span>
+      
+        <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
+        <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
+      
+      <span class="tag">&lt;/div&gt;</span>
+      <span class="tag">&lt;input <span>type="<span>checkbox</span>" value="<span>C3</span>"</span>&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
   
-  <span class="comment">&lt;!--second checkbox section--&gt;</span>
-  <span class="tag">&lt;div <span>class="rotate" data-role="<span>checkbox</span>"</span>&gt;</span>
-    <span class="tag">&lt;div <span>checkbox data-anime="<span>bounceIn</span>" data-assign="<span>:marker2</span>" data-color="<span>@#615c988d|lime</span>"</span>&gt;</span>
-    
-      <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
-      <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
-      
-    <span class="tag">&lt;/div&gt;</span>
-    <span class="tag">&lt;input <span>type="<span>checkbox</span>" checked="<span>true</span>" value="<span>C2</span>"</span>&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>  
+
+  <span class="comment">&lt;!-- add some control buttons --&gt;</span>  
+  <span class="tag">&lt;div <span>class="<span>controls</span>"</span>&gt;</span>
+    <span class="tag">&lt;button <span>id="<span>b1</span>"</span>&gt;</span><span class="tag">&lt;i <span>class="<span>bi-chevron-left</span>"</span>&gt;</span><span class="tag">&lt;/i&gt;</span><span class="tag">&lt;/button&gt;</span>
+    <span class="tag">&lt;button <span>id="<span>b2</span>"</span>&gt;</span><span class="tag">&lt;i <span>class="<span>bi-chevron-right</span>"</span>&gt;</span><span class="tag">&lt;/i&gt;</span><span class="tag">&lt;/button&gt;</span>
   <span class="tag">&lt;/div&gt;</span>
-  
-  <span class="comment">&lt;!--third checkbox section--&gt;</span>
-  <span class="tag">&lt;div <span>data-role="<span>checkbox</span>"</span>&gt;</span>
-    <span class="tag">&lt;div <span>checkbox data-anime="<span>bounceIn</span>" data-assign="<span>:marker2</span>" data-color="<span>@#615c988d|lime</span>"</span>&gt;</span>
-    
-      <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
-      <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
-      
-    <span class="tag">&lt;/div&gt;</span>
-    <span class="tag">&lt;input <span>type="<span>checkbox</span>" value="<span>C3</span>"</span>&gt;</span>
-  <span class="tag">&lt;/div&gt;</span>
-  
 <span class="tag">&lt;/div&gt;</span>
-</pre>
+</pre> <!-- start css -->
 <pre class="css"><span class="key">[data-role="checkbox-list"]</span> <span class="braces">{</span>
   <span class="var">display</span>: inline-flex;
   <span class="var">gap</span>: .5em;  
@@ -161,11 +169,11 @@
     <span class="key">}</span>
     
 <span class="braces">}</span>
-</pre>
+</pre>  <!-- start js -->
 <pre class="js">
 <span class="var">let</span> checkbox = <span class="var">new</span> <span class="func">CheckBox(<span class="bool">true</span>)</span>;
 
-checkbox.<span class="func">check({
+<span class="var">let</span> check1 = <span class="var">checkbox</span>.<span class="func">check({
 
     <span class="key">assign</span>: {
         <span class="key">alter</span>: <span class="func">(<span class="arg">dataAnime</span>) => </span>{
@@ -178,7 +186,19 @@ checkbox.<span class="func">check({
     }
 
 })</span>;
-</pre>
+
+<span class="comment">/* bind controller buttons */</span>
+<span class="var">let</span> prevBtn = <span class="key">document</span>.<span class="func">querySelector(<span class="string">'#b1'</span>)</span>;
+<span class="var">let</span> nextBtn = <span class="key">document</span>.<span class="func">querySelector(<span class="string">'#b2'</span>)</span>;
+
+<span class="var">prevBtn</span>.<span class="func">addEventListener(</span><span class="string">'click'</span>, <span class="func">()</span> => {
+    <span class="var">check1</span>.<span class="func">customList(<span class="string">'group-1'</span>)</span>.<span class="key">prev()</span> 
+}<span class="func">)</span>
+
+<span class="var">nextBtn</span>.<span class="func">addEventListener(</span><span class="string">'click'</span>, <span class="func">()</span> => {
+    <span class="var">check1</span>.<span class="func">customList(<span class="string">'group-1'</span>)</span>.<span class="key">next()</span> 
+}<span class="func">)</span>
+</pre>  <!-- end js -->
             </div>
             
             <div class="code">
@@ -201,7 +221,7 @@ checkbox.<span class="func">check({
                       <div marker class=""></div>
                       
                     </div>
-                    <input type="checkbox" value="C1">
+                    <input type="checkbox">
                   </div> 
                   
                   <!--second checkbox section-->
@@ -212,7 +232,7 @@ checkbox.<span class="func">check({
                       <div marker class=""></div>
                       
                     </div>
-                    <input type="checkbox" checked="true" value="C2">
+                    <input type="checkbox" checked="true">
                   </div>
                   
                   <!--third checkbox section-->
@@ -223,7 +243,7 @@ checkbox.<span class="func">check({
                       <div marker class=""></div>
                       
                     </div>
-                    <input type="checkbox" value="C3">
+                    <input type="checkbox">
                   </div>
                   
                   <div class="controls">
@@ -246,7 +266,7 @@ checkbox.<span class="func">check({
                       <div marker class=""></div>
                       
                     </div>
-                    <input type="checkbox" value="C1">
+                    <input type="checkbox">
                   </div> 
                   
                   <!--second checkbox section-->
@@ -257,7 +277,7 @@ checkbox.<span class="func">check({
                       <div marker class=""></div>
                       
                     </div>
-                    <input type="checkbox" checked="true" value="C2">
+                    <input type="checkbox" checked="true">
                   </div>
                   
                   <!--third checkbox section-->
@@ -268,7 +288,7 @@ checkbox.<span class="func">check({
                       <div marker class=""></div>
                       
                     </div>
-                    <input type="checkbox" value="C3">
+                    <input type="checkbox">
                   </div>
                   
                   <div class="controls">
@@ -295,7 +315,7 @@ checkbox.<span class="func">check({
                 <i class="bi-arrow-left-circle"></i> 
               </a> 
               
-              <a href="../docs/binding-controls.html" class="nav-btn-rt">
+              <a href="../docs/cool-samples.html" class="nav-btn-rt">
                 <i class="bi-arrow-right-circle"></i> Cool Samples
               </a> 
             </div><br><br><br>
@@ -303,6 +323,39 @@ checkbox.<span class="func">check({
         </section>
         
         <script src="../src/js/docs.js"></script>
+        <script>
+        
+          let buttons = document.querySelectorAll('button');
+          
+          buttons.forEach( button => {
+            let parent = button.closest('.controls');
+            let index = Array.prototype.indexOf.call(parent.children, button);
+            let listId = button.closest('[data-role="checkbox-list"]').getAttribute('id')
+            button.addEventListener('click', () =>{
+             // check1.customList(listId).to(1);
+              if(index == 0) {
+               check1.customList(listId).prev()
+              }else{
+               check1.customList(listId).next()
+              }
+            })
+          })
+          
+          /*
+          document.querySelector('#b1').addEventListener("click", function(){
+            check1.customList('rada').prev()
+          })
+          document.querySelector('#b2').addEventListener("click", function(){
+            check1.customList('rada').next()
+          })
+          
+          document.querySelector('#b3').addEventListener("click", function(){
+            check1.customList('rade').prev()
+          })
+          document.querySelector('#b4').addEventListener("click", function(){
+            check1.customList('rade').next()
+          })*/
+        </script>
         <script src="../src/js/navscript.js"></script>
 
     </body>

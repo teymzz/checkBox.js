@@ -1442,6 +1442,7 @@ class CheckBox {
         let customListSelector = checkbox.target;
         let customBoxes = customListItem.querySelectorAll(customListSelector);
         let customBoxesNum = customBoxes.length;
+        let checkedOnes = []
         let controller;
         
         if(!customListItem) return {}; //Accept only checkbox lists with id
@@ -1451,6 +1452,7 @@ class CheckBox {
           customBoxes.forEach((customBox, index) =>{
               if(customBox.getAttribute('checked') === 'checked') {
                 i = index;
+                checkedOnes.push(customBox);
               }
           })
           return i;
@@ -1480,16 +1482,44 @@ class CheckBox {
                
                 customBoxes[next].click();
             },
+
+            switch: (number, type = 'both') => {
+                let current = currentCheckbox();
+                let choice = customBoxes[number-1];
+
+                if(!(['on','off','both'].includes(type))){
+                    console.error('invalid type supplied for switch');
+                    return false; 
+                }
+
+                function resetAll() {
+                    checkedOnes.forEach(checked => {
+                        if(choice && (checked !== choice) && (checked.getAttribute('checked') === 'checked')) {
+                            checked.click();
+                        }
+                    })
+                }
+
+                if(type === 'on'){
+
+                    if(choice && (choice.getAttribute('checked') !== 'checked')) {
+                        choice.click();
+                    }
+
+                } else if (type === 'off') {
+                    if(choice && (choice.getAttribute('checked') === 'checked')) {
+                        choice.click();
+                    }
+                } else {
+
+                    choice.click();
+                    
+                }
+              
+            },
             
             choose: (number) => controller.to(number),
             
-            to: (number) => {
-              
-              if(customBoxes[number-1]) {
-                customBoxes[number-1].click();
-              }
-              
-            }
 
         }
 

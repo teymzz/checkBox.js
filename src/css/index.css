@@ -26,6 +26,15 @@ body {
   align-items: center;
 }
 
+.code-x > strong {
+  display: flex;
+  align-items: center;
+}
+
+i[class=""] {
+  font-style: normal;
+}
+
 .code-x > span .bi-window{
   display: flex;
   align-items: center;

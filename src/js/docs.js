@@ -66,7 +66,7 @@ function pass(checker){
         if(field) {
           if(response){
               btn.innerHTML = 'Copied!'
-              let html = navigator.onLine ? '<i class="bi-clipboard "></i>' : '<i class="">Copy</i>'
+              let html = navigator.onLine ? '<i class="bi-clipboard "></i>' : '<i class="">&#x2398</i>'
     
               timeout = setTimeout(() => {
                 btn.innerHTML = html
@@ -179,8 +179,12 @@ function pass(checker){
   if(!navigator.onLine){
 
     let icoMap = {
-        'bi-window' : 'View',
-        'bi-clipboard' : 'Copy',
+        'bi-window' : '&#9863;',
+        'bi-clipboard' : '&#x2398;',
+        'bi-chevron-left' : '&#10094;',
+        'bi-chevron-right' : '&#10095;',
+        'bi-arrow-left-circle': '&#8617;',
+        'bi-arrow-right-circle': '&#8618;',
     }
 
     for(let icon in icoMap) {
