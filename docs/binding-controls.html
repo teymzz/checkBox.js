@@ -246,8 +246,8 @@
                   </div>
                   
                   <div class="controls">
-                    <button id="b1"><i class="bi-chevron-left"></i></button>
-                    <button id="b2"><i class="bi-chevron-right"></i></button>
+                    <button id="b1" class="btn"><i class="bi-chevron-left"></i></button>
+                    <button id="b2" class="btn"><i class="bi-chevron-right"></i></button>
                   </div>
                 </div>
                 
@@ -265,8 +265,6 @@
                 selects a checkbox within a list of checkboxes using its postional index starting from the range of one(1) to the maximum number of available 
                 checkboxes. For example, in the sample below, the second checkbox is easily selected in the list of three checkbox items. 
             </div> <br>
-
-            
             
            <div class="code">
             <div class="flex">
@@ -299,7 +297,7 @@
                 
                 <div class="checkbox-wrapper">
                      <!--parent checkbox (group)-->
-                  <div id="posit" data-role="checkbox-list" data-bind="rating" data-max="2">
+                  <div id="posit" data-role="checkbox-list" data-bind="radio">
                   
                     <!--first checkbox section-->
                     <div data-role="checkbox">
@@ -345,9 +343,68 @@
 
             <div class="">
                 Note that in the sample above, the <code class="c-note bc">data-bind</code> attribute is a set as <code class="c-var bc">radio</code> . Under 
-                a different option, the response will be different. Also, when switching the state of checkboxes using positional values as shown above, we can 
-                specify the specific state of the checkbox that must be fulfilled using provided options which are <code class="c-note bc"></code> 
+                a different option, the response will be different. Also, when switching the state of checkboxes using the <code class="c-note bc">switch()</code> 
+                method as shown above, a second argument can help to specify the type of activity expected to be fulfilled through the options
+                <code class="c-var bc">"on"</code>,
+                <code class="c-var bc">"off"</code>,
+                <code class="c-var bc">"both"</code>. For example, the sample below expects that the selected checkbox should be either on or off
             </div> <br>
+            
+            <div class="code">
+              <div class="flex">
+                  <div class="code-x">
+                    <strong>SCREEN</strong>
+                    <span class="code-btn"><i class="bi-window"></i></span>
+                  </div>
+              </div>
+              
+              <div class="checkbox-wrapper">
+                   <!--parent checkbox (group)-->
+                <div id="switch" data-role="checkbox-list" data-bind="radijo">
+                
+                  <!--first checkbox section-->
+                  <div data-role="checkbox">
+                    <div checkbox data-anime="bounceIn" data-assign=":marker2" data-color="@#615c988d|orange" data-flip="true">
+                    
+                      <div marker class=""></div>
+                      <div marker class=""></div>
+                      
+                    </div>
+                    <input type="checkbox">
+                  </div> 
+                  
+                  <!--second checkbox section-->
+                  <div data-role="checkbox">
+                    <div checkbox data-anime="bounceIn" data-assign=":marker2" data-color="@#615c988d|lime">
+                    
+                      <div marker class=""></div>
+                      <div marker class=""></div>
+                      
+                    </div>
+                    <input type="checkbox">
+                  </div>
+                  
+                  <!--third checkbox section-->
+                  <div data-role="checkbox">
+                    <div checkbox data-anime="bounceIn" data-assign=":marker2" data-color="@#615c988d|lime">
+                    
+                      <div marker class=""></div>
+                      <div marker class=""></div>
+                      
+                    </div>
+                    <input type="checkbox">
+                  </div>
+                  
+                  <div class="controls">
+                    <input id="choose" type="number" min="1" max="3" value="1" style="width:60px; padding:8px">
+                    <button id="on" class="switch-btn">on</button>
+                    <button id="off" class="switch-btn">off</button>
+                  </div>
+                </div>
+                
+              </div>
+  
+            </div> <br>              
                         
             <div class="nav-pane">
               <a href="../docs/binding-parents.html" class="nav-btn-lt">
@@ -364,7 +421,7 @@
         <script src="../src/js/docs.js"></script>
         <script>
         
-          let buttons = document.querySelectorAll('button');
+          let buttons = document.querySelectorAll('.btn');
           
           buttons.forEach( button => {
             let parent = button.closest('.controls');
@@ -385,20 +442,24 @@
             check1.customList('posit').switch(value)
           })
           
-          /*
-          document.querySelector('#b1').addEventListener("click", function(){
-            check1.customList('rada').prev()
-          })
-          document.querySelector('#b2').addEventListener("click", function(){
-            check1.customList('rada').next()
-          })
+          let switchBtns = document.querySelectorAll('.switch-btn');
           
-          document.querySelector('#b3').addEventListener("click", function(){
-            check1.customList('rade').prev()
+          switchBtns.forEach( switchBtn => {
+            let parent = switchBtn.closest('.controls');
+            let index = Array.prototype.indexOf.call(parent.children, switchBtn);
+            let listId = switchBtn.closest('[data-role="checkbox-list"]').getAttribute('id')
+            switchBtn.addEventListener('click', () => { 
+             // check1.customList(listId).switch(1);
+             let inputBtn = switchBtn.closest('.controls').querySelector('input');
+             let inputValue = parseInt(inputBtn.value)
+             
+              if(switchBtn.getAttribute('id') === 'on') {
+               check1.customList(listId).switch(inputValue, 'on')
+              }else{
+               check1.customList(listId).switch(inputValue, 'off')
+              }
+            })
           })
-          document.querySelector('#b4').addEventListener("click", function(){
-            check1.customList('rade').next()
-          })*/
         </script>
         <script src="../src/js/navscript.js"></script>
 

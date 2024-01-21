@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .clock {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background-color: #20557c;
+    }
+    
+    .central {
+      border-color : #d9e1e2;
+      animation: rotate 6s infinite linear;
+      position:relative;
+      display : grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      padding : 10px;
+      border-radius: 100vh;
+    }
+    
+    @keyframes rotate {
+      0% {
+        transform: rotate(-5deg);
+      }
+      50% {
+        transform: rotate(5deg);
+      }
+      100%{
+        transform: rotate(-5deg);
+      }
+    }
+
+    .number {
+      position: absolute;
+      display : grid; 
+      place-items:center;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #333;
+      color: #fff;
+      font-size: 12px;
+      text-align: center;
+      line-height: 20px;
+    }
+    
+    .number.hour{
+      background-color : #c0a63b;
+      font-size : 14px;
+      font-weight: 500;
+      outline : solid 2px #c0a63b;
+      outline-offset: 4px;
+    }
+    
+    :root {
+      --x : 1%;
+      --y : 1%;
+    }
+    
+    .number1 { transform: translate(calc(var(--x) + 200%), calc(var(--x) + -350%)); }
+    .number2 { transform: translate(calc(var(--x) + 350%), calc(var(--x) + -200%)); }
+    .number3 { transform: translate(calc(var(--x) + 400%), calc(var(--x) + 0%)); }
+    .number4 { transform: translate(calc(var(--x) + 350%), calc(var(--x) + 200%)); }
+    .number5 { transform: translate(calc(var(--x) + 200%), calc(var(--x) + 350%)); }
+    .number6 { transform: translate(calc(var(--x) + 0%), calc(var(--x) + 400%)); }
+    .number7 { transform: translate(calc(var(--x) + -200%), calc(var(--x) + 350%)); }
+    .number8 { transform: translate(calc(var(--x) + -350%), calc(var(--x) + 200%)); }
+    .number9 { transform: translate(calc(var(--x) + -400%), calc(var(--x) + 0%)); }
+    .number10 { transform: translate(calc(var(--x) + -350%), calc(var(--x) + -200%)); }
+    .number11 { transform: translate(calc(var(--x) + -200%), calc(var(--x) + -350%)); }
+    .number12 { transform: translate(calc(var(--x) + 0%), calc(var(--x) + -400%)); }
+    .number {
+      transition: all .2s ease-in-out;
+    }
+    .number.seconds {
+      background-color : transparent;
+      font-size : 20px;
+      font-weight: 500;
+      outline : none;
+      color: #dfdada;
+      transform: translate(0%, 0%); 
+    }
+/*
+    .number2 { transform: translate(85.4%, 14.4%); }
+    .number3 { transform: translate(97.2%, 50%); }
+    .number4 { transform: translate(85.4%, 85.4%); }
+    .number5 { transform: translate(50%, 100%); }
+    .number6 { transform: translate(14.4%, 85.4%); }
+    .number7 { transform: translate(2.8%, 50%); }
+    .number8 { transform: translate(14.4%, 14.4%); }
+    .number9 { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+    .number10 { transform: translate(50%, 0); }
+    .number11 { transform: translate(50%, 0); }
+    .number12 { transform: translate(50%, 0); }
+    */
+  </style>
+</head>
+<body>
+  <div class="clock">
+    <div class="central">
+      <div class="number number1">1</div>
+      <div class="number number2">2</div>
+      <div class="number number3">3</div>
+      <div class="number number4">4</div>
+      <div class="number number5">5</div>
+      <div class="number number6">6</div>
+      <div class="number number7">7</div>
+      <div class="number number8">8</div>
+      <div class="number number9">9</div>
+      <div class="number number10">10</div>
+      <div class="number number11">11</div>
+      <div class="number number12">12</div>
+    </div>
+  </div>
+  <script>
+    let i = 0; let hour; let min;
+    setInterval(() => {
+      i++;
+      if(i > 12) i = 1;
+      let select = document.querySelector('.number'+i)
+      select.classList.add('seconds')
+      setTimeout(() => {select.classList.remove('seconds')}, 1000)
+      date = new Date();
+      let newhour = date.getHours();
+      let newmin = date.getMinutes();
+      newhour = (newhour % 12) || 12
+      if(newhour !== hour){
+        hour = newhour;
+        let oldHour = document.querySelector('.number.hour')
+        if(oldHour) oldHour.classList.remove('hour');
+        document.querySelector('.number'+hour).classList.add('hour')
+      }
+      
+    }, 1000)
+    
+   // alert((new Date))
+    
+    
+  </script>
+</body>
+</html>

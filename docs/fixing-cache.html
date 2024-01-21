@@ -295,7 +295,7 @@ checkbox.<span class="func">check({
                 <i class="bi-arrow-left-circle"></i> 
               </a> 
               
-              <a href="../docs/binding-controls.html" class="nav-btn-rt">
+              <a href="../docs/cool-samples.html" class="nav-btn-rt">
                 <i class="bi-arrow-right-circle"></i> Cool Samples
               </a> 
             </div><br><br><br>
@@ -303,6 +303,24 @@ checkbox.<span class="func">check({
         </section>
         
         <script src="../src/js/docs.js"></script>
+        <script>
+        
+          let buttons = document.querySelectorAll('button');
+          
+          buttons.forEach( button => {
+            let parent = button.closest('.controls');
+            let index = Array.prototype.indexOf.call(parent.children, button);
+            let listId = button.closest('[data-role="checkbox-list"]').getAttribute('id')
+            button.addEventListener('click', () =>{
+             // check1.customList(listId).to(1);
+              if(index == 0) {
+               check1.customList(listId).prev()
+              }else{
+               check1.customList(listId).next()
+              }
+            })
+          })
+        </script>
         <script src="../src/js/navscript.js"></script>
 
     </body>

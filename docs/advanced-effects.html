@@ -56,11 +56,10 @@
             </div> <br>
 
             <div class="">
-              The checkbox plugin supports extended relationships between custom checkboxes. This relationship is one that involves a group 
-              of custom checkboxes that are closely or inversely related. Since this relationshiprequires a parent group, the html structure is also 
-              slightly different. Here, the parent element is usually defined with an attribute of <code class="c-note bc">data-role</code> 
-              and the value is usually set as <code class="c-func bc">"checkbox-list"</code>. This parent element is used to group the custom checkboxes.
-              Once we place the custom checkbox inside this parent element, we can then proceed to define the type of toggle effect we need to achieve. 
+              The checkbox plugin supports extended relationships within a grouped list of custom checkboxes that are closely related. This 
+              group of two or more custom checkboxes is referred to as <code class="c-note bc">“checkbox list”</code> and they are binded under the parent group identified with the 
+              html attribute of <code class="c-note bc">data-role</code> and its value set as <code class="c-func bc">"checkbox-list"</code>. 
+              Once we place the custom checkboxes inside this parent group, we can then proceed to define the type of toggle effect we need to achieve. 
               The sample structure for setting up advance effects is shown below:
             </div> <br>
             
@@ -115,9 +114,10 @@
             </div> <br>
             
             <div class="">
-              From the sample above, each custom checkbox is sectionalized using the <code class="c-note bc">data-role</code> attribute. 
-              This attribute specifies the primary parent group as <code class="c-var bc">checkbox-list</code> while it's direct children are 
-              specified as <code class="c-var bc">checkbox</code>. Once this html structure is defined, the plugin will assume that all the children 
+              From the sample above, the <code class="c-note bc">data-role</code> attribute is used to specify both the parent and the children of a checkbox list. 
+              While the parent is specified as <code class="c-var bc">"checkbox-list"</code>, its direct children are specified as <code class="c-var bc">"checkbox"</code>
+              which helps to sectionalize each custom checkbox. 
+              Once this html structure is defined, the plugin will assume that all the children 
               checkboxes belong to the parent <code class="c-var bc">checkbox-list</code> and this will force the plugin to set up a relationship amongst them based on the type of 
               relationship effect applied. There are basically five types of effects available which are the 
               <span class="c-func bc">"radio"</span>, 

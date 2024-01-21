@@ -1448,7 +1448,7 @@ class CheckBox {
         if(!customListItem) return {}; //Accept only checkbox lists with id
         
         function currentCheckbox(){
-          let i = 0;
+          let i = -1;
           customBoxes.forEach((customBox, index) =>{
               if(customBox.getAttribute('checked') === 'checked') {
                 i = index;
