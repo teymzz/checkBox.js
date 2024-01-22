@@ -66,10 +66,11 @@
             
             <div class="">
               The checkbox control button functionality is an integrated feature that is specifically designed to navigate through 
-              a list of custom checkboxes within a checkbox group list. In order to use this feature, a checkbox group list must have 
-              a unique <code class="c-note bc">id</code> attribute after which the methods   
-              <code class="c-bool bc">next()</code>, <code class="c-bool bc">prev()</code> and <code class="c-bool bc">switch()</code> becomes 
-              available to select or navigate through the checkbox group list. The example below reveals the function of these methods: 
+              a checkbox list. In order to use this feature, a checkbox list must have 
+              a unique <code class="c-note bc">id</code> attribute whose id value is supplied into the <code class="c-note bc">checkList()</code> method. 
+              Once the <code class="c-note bc">checkList()</code> method successfully pulls the object of the specified unique id, it 
+              returns controller methods which includes the <code class="c-bool bc">next()</code>, <code class="c-bool bc">prev()</code> and <code class="c-bool bc">switch()</code> 
+              that can be used to navigate through the checkbox list. The example below reveals the function of these methods: 
             </div> <br>
             
            <div class="code">
@@ -174,7 +175,7 @@
 <pre class="js active">
 <span class="var">let</span> checkbox = <span class="var">new</span> <span class="func">CheckBox(<span class="bool">true</span>)</span>;
 
-<span class="var">let</span> check1 = <span class="var">checkbox</span>.<span class="func">check(<span class="braces">{</span>
+<span class="var">checkbox</span> = <span class="var">checkbox</span>.<span class="func">check(<span class="braces">{</span>
 
     <span class="key">assign</span>: <span class="braces">{</span>
         <span class="key">alter</span>: <span class="func">(<span class="arg">dataAnime</span>) => </span><span class="braces">{</span>
@@ -191,11 +192,11 @@
 <span class="var">let</span> nextBtn = <span class="key">document</span>.<span class="func">querySelector(<span class="string">'#b2'</span>)</span>;
 
 <span class="var">prevBtn</span>.<span class="func">addEventListener(</span><span class="string">'click'</span>, <span class="func">()</span> => {
-    <span class="var">check1</span>.<span class="func">customList(<span class="string">'group-1'</span>)</span>.<span class="key">prev()</span> 
+    <span class="var">checkbox</span>.<span class="func">checkList(<span class="string">'group-1'</span>)</span>.<span class="key">prev()</span> 
 }<span class="func">)</span>
 
 <span class="var">nextBtn</span>.<span class="func">addEventListener(</span><span class="string">'click'</span>, <span class="func">()</span> => {
-    <span class="var">check1</span>.<span class="func">customList(<span class="string">'group-1'</span>)</span>.<span class="key">next()</span> 
+    <span class="var">checkbox</span>.<span class="func">checkList(<span class="string">'group-1'</span>)</span>.<span class="key">next()</span> 
 }<span class="func">)</span>
 </pre>  <!-- end js -->
             </div>
@@ -258,13 +259,203 @@
             <div class="">
                 From the sample above, by adding a unique <code class="c-note bc">id</code> attribute to the checkbox-list container 
                 div item, we were able to easily bind controller buttons to the checkbox group by first selecting the unique field through its 
-                <code class="c-note bc">id</code> attribute using the <code class="c-key bc">customList()</code> method. 
+                <code class="c-note bc">id</code> attribute using the <code class="c-key bc">checkList()</code> method. 
                 Once this field is successfully selected, an object is returned that contains the <code class="c-bool bc">prev()</code> 
                 and <code class="c-bool bc">next()</code> methods which are respectively used to select the previous or next checkbox item. This feature 
-                makes it easier to control the checkbox flow. Another method is the <code class="bc c-bool">switch()</code> method which pratically 
+                makes it easier to control the checkbox flow. An easier way to bind control buttons is through the use of 
+                <code class="c-note bc">data-controls</code> attribute whose values are unique ids that points respectively to a left and right navigation buttons. 
+                A sample of this is shown below:
+            </div> <br>
+
+                        
+           <div class="code">
+            <div class="flex">
+              <div class="code-x">
+                <span class="code-btn" rel="html">HTML</span>
+                <span class="code-btn" rel="css">CSS</span>
+                <span class="code-btn" rel="js">JS</span>
+                <span class="code-btn active" rel="view"><i class="bi-window"></i></span>
+              </div>
+              <div class="">
+                <span class="copy-btn"><i class="bi-clipboard"></i></span>
+              </div>
+            </div>  
+<pre class="html">  <!-- start html -->
+<span class="comment">&lt;!--parent checkbox (group)--&gt;</span>
+<span class="tag">&lt;div <span>class="<span>checkbox-wrapper</span>"</span>&gt;</span>
+<span class="tag">&lt;div <span>id="<span>group-1</span>" data-role="<span>checkbox-list</span>" data-bind="<span>radio</span>"</span>&gt;</span>
+
+  <span class="comment">&lt;!--first checkbox section--&gt;</span>
+  <span class="tag">&lt;div <span>data-role="<span>checkbox</span>"</span>&gt;</span>
+    <span class="tag">&lt;div <span>checkbox data-anime="<span>bounceIn</span>" data-assign="<span>:marker2</span>" data-color="<span>@#615c988d|lime</span>"</span>&gt;</span>
+    
+      <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
+      <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
+    
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;input <span>type="<span>checkbox</span>" value="<span>C1</span>"</span>&gt;</span>
+  <span class="tag">&lt;/div&gt;</span> 
+  
+  <span class="comment">&lt;!--second checkbox section--&gt;</span>
+  <span class="tag">&lt;div <span>class="rotate" data-role="<span>checkbox</span>"</span>&gt;</span>
+    <span class="tag">&lt;div <span>checkbox data-anime="<span>bounceIn</span>" data-assign="<span>:marker2</span>" data-color="<span>@#615c988d|lime</span>"</span>&gt;</span>
+    
+      <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
+      <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
+    
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;input <span>type="<span>checkbox</span>" checked="<span>true</span>" value="<span>C2</span>"</span>&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+  
+  <span class="comment">&lt;!--third checkbox section--&gt;</span>
+  <span class="tag">&lt;div <span>data-role="<span>checkbox</span>"</span>&gt;</span>
+    <span class="tag">&lt;div <span>checkbox data-anime="<span>bounceIn</span>" data-assign="<span>:marker2</span>" data-color="<span>@#615c988d|lime</span>"</span>&gt;</span>
+    
+      <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
+      <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
+    
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;input <span>type="<span>checkbox</span>" value="<span>C3</span>"</span>&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+
+<span class="tag">&lt;/div&gt;</span>  
+
+<span class="comment">&lt;!-- add some control buttons --&gt;</span>  
+<span class="tag">&lt;div <span>class="<span>controls</span>"</span>&gt;</span>
+  <span class="tag">&lt;button <span>id="<span>b1</span>"</span>&gt;</span><span class="tag">&lt;i <span>class="<span>bi-chevron-left</span>"</span>&gt;</span><span class="tag">&lt;/i&gt;</span><span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;button <span>id="<span>b2</span>"</span>&gt;</span><span class="tag">&lt;i <span>class="<span>bi-chevron-right</span>"</span>&gt;</span><span class="tag">&lt;/i&gt;</span><span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+</pre> <!-- start css -->
+<pre class="css"><span class="key">[data-role="checkbox-list"]</span> <span class="braces">{</span>
+<span class="var">display</span>: inline-flex;
+<span class="var">gap</span>: .5em;  
+<span class="braces">}</span>
+
+<span class="key">[data-role="checkbox-list"] [marker]</span> <span class="braces">{</span>
+<span class="var">width</span>: 20px;
+<span class="var">height</span>: 20px;  
+<span class="braces">}</span>
+
+<span class="key">[checkbox]</span> <span class="braces">{</span>
+<span class="var">display</span>: inline-flex;
+<span class="var">border</span>: dotted 2px;  
+<span class="var">border-radius</span>: 100vh;  
+<span class="var">padding</span>: 4px;  
+<span class="braces">}</span>
+
+<span class="key">[checkbox] [marker]</span> <span class="braces">{</span>
+<span class="var">width</span>: 20px;
+<span class="var">height</span>: 20px; 
+<span class="var">border-radius</span>: inherit;    
+<span class="var">background-color</span>: currentColor;    
+<span class="braces">}</span>
+
+<span class="key">.rotate[checkbox][checked="checked"]</span> <span class="braces">{</span>
+  <span class="var">animation</span>: rotate 5s infinite linear;;
+<span class="braces">}</span>
+
+<span class="key">@keyframes rotate</span> <span class="braces">{</span>
+
+  <span class="key">0% {</span>
+    <span class="var">transform</span>: rotate(0deg);
+  <span class="key">}</span>
+  
+  <span class="key">100% {</span>
+    <span class="var">transform</span>: rotate(360deg);
+  <span class="key">}</span>
+  
+<span class="braces">}</span>
+</pre>  <!-- start js -->
+<pre class="js active">
+<span class="var">let</span> checkbox = <span class="var">new</span> <span class="func">CheckBox(<span class="bool">true</span>)</span>;
+
+<span class="var">checkbox</span> = <span class="var">checkbox</span>.<span class="func">check(<span class="braces">{</span>
+
+  <span class="key">assign</span>: <span class="braces">{</span>
+      <span class="key">alter</span>: <span class="func">(<span class="arg">dataAnime</span>) => </span><span class="braces">{</span>
+          <span class="comment">/* use a default attribute value */</span>
+          <span class="arg">dataAnime</span>.<span class="func">unshift(<span class="string">'animated'</span>)</span>;</span>
+          return <span class="arg">dataAnime</span>.<span class="func">map( <span class="arg">el</span> => <span class="string">'animate__'</span> + <span class="arg">el</span> <span class="func">)</span>;</span>        
+      <span class="braces">}</span>
+  <span class="braces">}</span>
+
+<span class="braces">}</span>)</span>;
+
+<span class="comment">/* bind controller buttons */</span>
+<span class="var">let</span> prevBtn = <span class="key">document</span>.<span class="func">querySelector(<span class="string">'#b1'</span>)</span>;
+<span class="var">let</span> nextBtn = <span class="key">document</span>.<span class="func">querySelector(<span class="string">'#b2'</span>)</span>;
+
+<span class="var">prevBtn</span>.<span class="func">addEventListener(</span><span class="string">'click'</span>, <span class="func">()</span> => {
+  <span class="var">checkbox</span>.<span class="func">checkList(<span class="string">'group-1'</span>)</span>.<span class="key">prev()</span> 
+}<span class="func">)</span>
+
+<span class="var">nextBtn</span>.<span class="func">addEventListener(</span><span class="string">'click'</span>, <span class="func">()</span> => {
+  <span class="var">checkbox</span>.<span class="func">checkList(<span class="string">'group-1'</span>)</span>.<span class="key">next()</span> 
+}<span class="func">)</span>
+</pre>  <!-- end js -->
+          </div>
+
+          <div class="code">
+            <div class="flex">
+                <div class="code-x">
+                  <strong>SCREEN</strong>
+                  <span class="code-btn"><i class="bi-window"></i></span>
+                </div>
+            </div>
+            
+            <div class="checkbox-wrapper">
+                 <!--parent checkbox (group)-->
+              <div id="rado" data-role="checkbox-list" data-bind="radio" data-nav="left|right|mouseenter-1000">
+              
+                <!--first checkbox section-->
+                <div data-role="checkbox">
+                  <div checkbox data-anime="bounceIn" data-assign=":marker2" data-color="@#615c988d|orange" data-flip="true">
+                  
+                    <div marker class=""></div>
+                    <div marker class=""></div>
+                    
+                  </div>
+                  <input type="checkbox">
+                </div> 
+                
+                <!--second checkbox section-->
+                <div data-role="checkbox">
+                  <div checkbox data-anime="bounceIn" data-assign=":marker2" data-color="@#615c988d|lime">
+                  
+                    <div marker class=""></div>
+                    <div marker class=""></div>
+                    
+                  </div>
+                  <input type="checkbox">
+                </div>
+                
+                <!--third checkbox section-->
+                <div data-role="checkbox">
+                  <div checkbox data-anime="bounceIn" data-assign=":marker2" data-color="@#615c988d|lime">
+                  
+                    <div marker class=""></div>
+                    <div marker class=""></div>
+                    
+                  </div>
+                  <input type="checkbox">
+                </div>
+                
+                <div class="controls">
+                  <button id="left" class="btn-x"><i class="bi-chevron-left"></i></button>
+                  <button id="right" class="btn-y"><i class="bi-chevron-right"></i></button>
+                </div>
+              </div>
+              
+            </div>
+
+          </div> <br>
+
+            <div class="">
+                Another method is the <code class="bc c-bool">switch()</code> method which pratically 
                 selects a checkbox within a list of checkboxes using its postional index starting from the range of one(1) to the maximum number of available 
                 checkboxes. For example, in the sample below, the second checkbox is easily selected in the list of three checkbox items. 
-            </div> <br>
+            </div>
             
            <div class="code">
             <div class="flex">
@@ -282,7 +473,7 @@
 
 <span class="var">numField</span>.<span class="func">addEventListener(</span><span class="string">'change'</span>, <span class="func">()</span> => {
   <span class="var">let</span> value = <span class="bool">this</span>.<span class="key">value</span>;
-  <span class="var">check1</span>.<span class="func">customList(<span class="string">'group-1'</span>)</span>.<span class="key">switch(<span class="var">value</span>)</span> 
+  <span class="var">check1</span>.<span class="func">checkList(<span class="string">'group-1'</span>)</span>.<span class="key">switch(<span class="var">value</span>)</span> 
 }<span class="func">)</span>
 </pre>  <!-- end js -->
           </div>
@@ -345,9 +536,8 @@
                 Note that in the sample above, the <code class="c-note bc">data-bind</code> attribute is a set as <code class="c-var bc">radio</code> . Under 
                 a different option, the response will be different. Also, when switching the state of checkboxes using the <code class="c-note bc">switch()</code> 
                 method as shown above, a second argument can help to specify the type of activity expected to be fulfilled through the options
-                <code class="c-var bc">"on"</code>,
-                <code class="c-var bc">"off"</code>,
-                <code class="c-var bc">"both"</code>. For example, the sample below expects that the selected checkbox should be either on or off
+                <code class="c-var bc">"on"</code>, <code class="c-var bc">"off"</code>, <code class="c-var bc">"both"</code>. For example, the sample below expects 
+                that checkbox response should depend on the value of the input field when the button clicked. 
             </div> <br>
             
             <div class="code">
@@ -403,6 +593,11 @@
                 </div>
                 
               </div>
+
+              <div class="">
+                The plugin already makes the binding of controller buttons easy through the use of <code class="c-note bc">data-controls</code> 
+                attribute. This attribute takes two arguments separated by a pipe where the left value points to the id of any element that 
+              </div>
   
             </div> <br>              
                         
@@ -428,18 +623,18 @@
             let index = Array.prototype.indexOf.call(parent.children, button);
             let listId = button.closest('[data-role="checkbox-list"]').getAttribute('id')
             button.addEventListener('click', () =>{
-             // check1.customList(listId).switch(1);
+             // check1.checkList(listId).switch(1);
               if(index == 0) {
-               check1.customList(listId).prev()
+               check1.checkList(listId).prev()
               }else{
-               check1.customList(listId).next()
+               check1.checkList(listId).next()
               }
             })
           })
 
           document.querySelector('#choose').addEventListener("change", function(e){
             let value = parseInt(this.value);
-            check1.customList('posit').switch(value)
+            check1.checkList('posit').switch(value)
           })
           
           let switchBtns = document.querySelectorAll('.switch-btn');
@@ -449,14 +644,14 @@
             let index = Array.prototype.indexOf.call(parent.children, switchBtn);
             let listId = switchBtn.closest('[data-role="checkbox-list"]').getAttribute('id')
             switchBtn.addEventListener('click', () => { 
-             // check1.customList(listId).switch(1);
+             // check1.checkList(listId).switch(1);
              let inputBtn = switchBtn.closest('.controls').querySelector('input');
              let inputValue = parseInt(inputBtn.value)
              
               if(switchBtn.getAttribute('id') === 'on') {
-               check1.customList(listId).switch(inputValue, 'on')
+               check1.checkList(listId).switch(inputValue, 'on')
               }else{
-               check1.customList(listId).switch(inputValue, 'off')
+               check1.checkList(listId).switch(inputValue, 'off')
               }
             })
           })

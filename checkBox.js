@@ -640,8 +640,78 @@ class CheckBox {
                 let checkListBind = at(checkList, 'data-bind');
                 let checkListSwipe = at(checkList, 'data-swipe');
                 let dataBindValue = checkListBind.value().split("-");
+                let checkListNav = at(checkList, 'data-nav').attrvals('|');
                 let isSlide = false, slideTime = 2500;
                 
+                if(checkListNav.length > 0 && (at(checkList,'id') !== '')) {
+                    
+                    //get the controller buttons 
+                    let PrevNav = document.getElementById(checkListNav[0]);
+                    let NextNav = document.getElementById(checkListNav[1]);
+                    let NavBtns = checkbox.checkList(at(checkList,'id').value());
+                    let NavEvents = checkListNav[2];
+
+                    if(NavEvents === undefined) {
+                        if(PrevNav){ 
+                            PrevNav.addEventListener('click', function(){
+                                NavBtns.prev();
+                            })
+                        }
+
+                        if(NextNav){
+                            NextNav.addEventListener('click', function(){
+                                NavBtns.next();
+                            })
+                        }                        
+                    } else {
+                        let scrollEvents = NavEvents.split(',');
+                        
+                        scrollEvents.forEach( event => {
+                            let forwards, interval, timer;
+
+                            forwards = event.split('-');
+                            if(forwards.length > 1){
+                                event = forwards[0];
+                                timer = parseInt(forwards[1]);
+                            }
+                            
+                            if(PrevNav){ 
+                                PrevNav.addEventListener(event, function(e){
+                                    NavBtns.prev(); 
+                                    if(forwards && timer && (event === 'mouseenter')) interval = setInterval(() => { NavBtns.prev(); }, timer)
+                                })
+
+                                if(event === 'mouseenter') {
+                                    PrevNav.addEventListener('mouseleave', function(){
+                                        if(interval) clearInterval(interval);
+                                    })
+                                }
+                            }
+
+                            if(NextNav){
+                                NextNav.addEventListener(event, function(e){
+                                    if(e.target === NextNav){
+                                        NavBtns.next(); 
+                                        if(forwards && timer && (event = mouseenter)) {
+                                            interval = setInterval(() => { NavBtns.next(); }, timer)
+                                        }
+                                    }
+                                })
+                                
+                                if(['mouseenter','focus'].includes(event)){
+                                    if(event === 'mouseenter') { 
+                                        NextNav.addEventListener('mouseleave', function(){
+                                            if(interval) clearInterval(interval);
+                                        })
+                                    }
+                                }
+                            } 
+                        })
+                    }
+
+                }
+
+
                 if(dataBindValue.length === 2){
                   isSlide = dataBindValue['0'] === 'slide';
                   slideTime = parseInt(dataBindValue['1']);
@@ -1434,7 +1504,7 @@ class CheckBox {
       return new CheckBox(config);
     }
 
-    customList(id) {
+    checkList(id) {
         let checkbox = this;
 
         //get id from custom lists 
