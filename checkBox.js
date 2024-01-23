@@ -654,20 +654,27 @@ class CheckBox {
                     if(NavEvents === undefined) {
                         if(PrevNav){ 
                             PrevNav.addEventListener('click', function(){
-                                NavBtns.prev();
+                                NavBtns.prev(1000);
                             })
                         }
 
                         if(NextNav){
                             NextNav.addEventListener('click', function(){
-                                NavBtns.next();
+                                NavBtns.next(1000);
                             })
                         }                        
                     } else {
                         let scrollEvents = NavEvents.split(',');
-                        
+                        let intervalNext = {}; 
+                        let intervalPrev = {};
+                        let inflow = false, pushedEvents = [];
                         scrollEvents.forEach( event => {
-                            let forwards, interval, timer;
+                          
+                            if(pushedEvents.includes(event)) return;
+                            
+                            let forwards, inFlow = false, timer;
+                            
+                            let flowEvents = ['mouseenter','mousedown','touchstart'];
 
                             forwards = event.split('-');
                             if(forwards.length > 1){
@@ -675,37 +682,50 @@ class CheckBox {
                                 timer = parseInt(forwards[1]);
                             }
                             
-                            if(PrevNav){ 
-                                PrevNav.addEventListener(event, function(e){
-                                    NavBtns.prev(); 
-                                    if(forwards && timer && (event === 'mouseenter')) interval = setInterval(() => { NavBtns.prev(); }, timer)
-                                })
-
-                                if(event === 'mouseenter') {
-                                    PrevNav.addEventListener('mouseleave', function(){
-                                        if(interval) clearInterval(interval);
-                                    })
-                                }
-                            }
-
-                            if(NextNav){
-                                NextNav.addEventListener(event, function(e){
-                                    if(e.target === NextNav){
-                                        NavBtns.next(); 
-                                        if(forwards && timer && (event = mouseenter)) {
-                                            interval = setInterval(() => { NavBtns.next(); }, timer)
-                                        }
+                            if(event === 'touchstart') event = 'mouseenter';
+                            
+                            let eventFlip = {mouseenter:'mouseleave',touchstart:'touchend'}
+                            
+                            function NavSlider(Nav) {
+                              if(Nav){
+                                let interval = (Nav === PrevNav)? intervalPrev : intervalNext;
+                                Nav.addEventListener(event, function(e){
+                                    if(e.target === Nav){
+                                          (Nav === PrevNav)? NavBtns.prev() : NavBtns.next(); 
+                                          if(forwards && timer && (flowEvents.includes(event))) {
+                                              if(event === 'mouseenter') inFlow = true;
+                                              interval[event] = setInterval(() => { (Nav === PrevNav)? NavBtns.prev() : NavBtns.next();  }, timer)
+                                          }
                                     }
                                 })
                                 
-                                if(['mouseenter','focus'].includes(event)){
-                                    if(event === 'mouseenter') { 
-                                        NextNav.addEventListener('mouseleave', function(){
-                                            if(interval) clearInterval(interval);
+                                if(flowEvents.includes(event)){
+                                   if(event === 'mouseenter') { 
+                                        Nav.addEventListener('touchend', function(){ 
+                                            //alert()
+                                            //if(interval.hasOwnProperty('mouseenter')) 
+                                            setTimeout(() => clearInterval(interval['mouseenter']), 200);
+                                        })
+                                        Nav.addEventListener('mouseleave', function(){
+                                            if(interval.hasOwnProperty('mouseenter')) clearInterval(interval['mouseenter']);
+                                            delete interval['mouseenter'];
+                                            inFlow = false;
+                                        })
+                                        Nav.addEventListener('touchstart', function(){
+                                             if(interval.hasOwnProperty('mouseenter')){
+                                               interval[event] = setInterval(() => { (Nav === PrevNav)? NavBtns.prev() : NavBtns.next();  }, timer)
+                                             }
                                         })
                                     }
                                 }
-                            } 
+                              }
+                              
+                            }
+                            
+                            NavSlider(PrevNav)
+                            NavSlider(NextNav)
+
+
                         })
                     }
 
@@ -1528,29 +1548,61 @@ class CheckBox {
           return i;
         }
         
+        let nextInterval, nextActive = false;
+        let prevInterval, prevActive = false;
+        
         return controller = {
 
             item: () => customListItem,
 
-            prev: () => {
+            prev: (interval) => {
 
-                //get all custom boxes... 
-                let current = currentCheckbox();
-                let previous = current - 1;
-
-                if(previous < 0) previous = customBoxesNum - 1;
+              if(nextActive) {
+                clearInterval(nextInterval);
+                nextActive = false;
+              }
                
-                customBoxes[previous].click();
+              //get all custom boxes... 
+              let current = currentCheckbox();
+              let previous = current - 1;
+
+              if(previous < 0) previous = customBoxesNum - 1;
+             
+              customBoxes[previous].click();
+              
+              if(interval && (!prevActive)) {
+                prevActive = true;
+                prevInterval = setInterval(() => controller.prev(), interval)
+              }
             }, 
             
-            next: () => {
-                //get all custom boxes... 
-                let current = currentCheckbox();
-                let next = current + 1;
+            stop : () => {
+              if(nextActive){
+                nextActive = false;
+                clearInterval(nextInterval)
+              }
+              if(prevActive){
+                prevActive = false;
+                clearInterval(prevInterval)
+              }
+            },
+            
+            next: (interval) => {
+              if(prevActive) {
+                clearInterval(prevInterval)
+                prevActive = false;
+              }
+              //get all custom boxes... 
+              let current = currentCheckbox();
+              let next = current + 1;
 
-                if(next > (customBoxesNum - 1)) next = 0;
-               
-                customBoxes[next].click();
+              if(next > (customBoxesNum - 1)) next = 0;
+             
+              customBoxes[next].click();
+              if(interval && (!nextActive)) {
+                nextActive = true;
+                nextInterval = setInterval(() => controller.next(), interval)
+              }
             },
 
             switch: (number, type = 'both') => {
