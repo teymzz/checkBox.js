@@ -61,17 +61,110 @@
 
             <div class="" style="font-size: 1.2em;"> <br>
                 <h1 style="color:#51ceff">CheckBox.js</h1> <br>
-                <h4 style="color:#51ceff">Binding Controls</h4> <br>
+                <h4 style="color:#51ceff">Navigation Effect</h4> <br>
             </div>
             
             <div class="">
-              The checkbox control button functionality is an integrated feature that is specifically designed to navigate through 
-              a checkbox list. In order to use this feature, a checkbox list must have 
-              a unique <code class="c-note bc">id</code> attribute whose id value is supplied into the <code class="c-note bc">checkList()</code> method. 
-              Once the <code class="c-note bc">checkList()</code> method successfully pulls the object of the specified unique id, it 
-              returns controller methods which includes the <code class="c-bool bc">next()</code>, <code class="c-bool bc">prev()</code> and <code class="c-bool bc">switch()</code> 
-              that can be used to navigate through the checkbox list. The example below reveals the function of these methods: 
+              The checkbox navigational effect deals with adding controller buttons to a uniquely specified checkbox list. In order to 
+              uniquely specify a checkbox list, an <code class="c-note bc">id</code> attribute must be added to the checkbox list container 
+              element. The sample html structure clearly reveals this.
             </div> <br>
+            
+            <div class="code">
+              <div class="flex">
+                <div class="code-x">
+                  <span class="code-btn" rel="html">HTML</span>
+                </div>
+                <div class="">
+                  <span class="copy-btn"><i class="bi-clipboard"></i></span>
+                </div>
+              </div>  
+<pre class="html active"><!-- start html -->
+<span class="tag">&lt;div <span>class="<span>checkbox-wrapper</span>"</span>&gt;</span>
+
+  <span class="comment">&lt;!--parent checkbox (group)--&gt;</span>
+  <span class="tag">&lt;div <span>id="<span>checklist-1</span>" data-role="<span>checkbox-list</span>" data-bind="<span>radio</span>"</span>&gt;</span>
+
+    <span class="comment">&lt;!--first checkbox section--&gt;</span>
+    <span class="tag">&lt;div <span>data-role="<span>checkbox</span>"</span>&gt;</span>
+      <span class="tag">&lt;div <span>checkbox data-color="<span>@#615c988d|lime</span>"</span>&gt;</span>
+        <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
+        <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
+      <span class="tag">&lt;/div&gt;</span>
+      <span class="tag">&lt;input <span>type="<span>checkbox</span>"</span>&gt;</span>
+    <span class="tag">&lt;/div&gt;</span> 
+    
+    <span class="comment">&lt;!--second checkbox section--&gt;</span>
+    <span class="tag">&lt;div <span>data-role="<span>checkbox</span>"</span>&gt;</span>
+      <span class="tag">&lt;div <span>checkbox data-color="<span>@#615c988d|lime</span>"</span>&gt;</span>
+        <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
+        <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>    
+      <span class="tag">&lt;/div&gt;</span>
+      <span class="tag">&lt;input <span>type="<span>checkbox</span>"</span>&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+    
+    <span class="comment">&lt;!--third checkbox section--&gt;</span>
+    <span class="tag">&lt;div <span>data-role="<span>checkbox</span>"</span>&gt;</span>
+      <span class="tag">&lt;div <span>checkbox data-color="<span>@#615c988d|lime</span>"</span>&gt;</span>
+        <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
+        <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span> 
+      <span class="tag">&lt;/div&gt;</span>
+      <span class="tag">&lt;input <span>type="<span>checkbox</span>"</span>&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+  
+  <span class="tag">&lt;/div&gt;</span>  
+
+  <span class="comment">&lt;!-- add some control buttons --&gt;</span>  
+  <span class="tag">&lt;div <span>class="<span>controls</span>"</span>&gt;</span>
+    <span class="tag">&lt;button <span>id="<span>b1</span>"</span>&gt;</span><span class="tag">&lt;i <span>class="<span>bi-chevron-left</span>"</span>&gt;</span><span class="tag">&lt;/i&gt;</span><span class="tag">&lt;/button&gt;</span>
+    <span class="tag">&lt;button <span>id="<span>b2</span>"</span>&gt;</span><span class="tag">&lt;i <span>class="<span>bi-chevron-right</span>"</span>&gt;</span><span class="tag">&lt;/i&gt;</span><span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+
+<span class="tag">&lt;/div&gt;</span>
+</pre> 
+            </div><br>
+
+            <div class="">
+                In the sample structure above, the id of the checkbox list is specified as <code class="c-note bc">checkbox-1</code>. 
+                Once we uniquely specify a checkbox list, we can easily fetch the in-built navigation controller methods available in the plugin 
+                through the <code class="c-bool bc">checkList()</code> method. 
+                The sample below reveals this 
+            </div><br>
+            
+           <div class="code">
+              <div class="flex">
+                <div class="code-x">
+                  <span class="code-btn" rel="js">JS</span>
+                  <span class="code-btn active" rel="view"><i class="bi-window"></i></span>
+                </div>
+                <div class="">
+                  <span class="copy-btn"><i class="bi-clipboard"></i></span>
+                </div>
+              </div>  <!-- start js -->
+<pre class="js active">
+<span class="var">let</span> checkbox = <span class="var">new</span> <span class="func">CheckBox(<span class="bool">true</span>)</span>;
+
+<span class="var">checkbox</span> = <span class="var">checkbox</span>.<span class="func">check()</span>;
+<span class="var">controllers</span> = <span class="var">checkbox</span>.<span class="func">checkList(<span class="string">'checklist-1'</span>)</span>;
+
+<span class="comment">/*fetch checklist's navigation controller methods*/</span>
+<span class="var">console</span>.<span class="func">log(<span class="var">controllers</span>)</span>;
+            </div> <br>
+
+            <div class="">
+                The navigation controller methods available are the 
+                <code class="bc c-note">prev()</code>,
+                <code class="bc c-note">next()</code>,
+                <code class="bc c-note">switch()</code> and
+                <code class="bc c-note">stop()</code> methods. These methods are discussed below
+            </div> <br>
+
+            <div class="">
+                <ul>
+                    
+                </ul>
+            </div>
+            
             
            <div class="code">
               <div class="flex">

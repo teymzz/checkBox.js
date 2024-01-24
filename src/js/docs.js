@@ -185,6 +185,7 @@ function pass(checker){
         'bi-chevron-right' : '&#10095;',
         'bi-arrow-left-circle': '&#8617;',
         'bi-arrow-right-circle': '&#8618;',
+        'bi-stop': '&#9724;',
     }
 
     for(let icon in icoMap) {

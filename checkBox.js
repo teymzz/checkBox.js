@@ -7,6 +7,7 @@ class CheckBox {
         checkbox.hardchecks = [];
 
         checkbox.customListItems = {};
+        checkbox.customListData = {};
 
         if(config === true) return checkbox;
         
@@ -654,76 +655,148 @@ class CheckBox {
                     if(NavEvents === undefined) {
                         if(PrevNav){ 
                             PrevNav.addEventListener('click', function(){
-                                NavBtns.prev(1000);
+                                NavBtns.prev();
                             })
                         }
 
                         if(NextNav){
                             NextNav.addEventListener('click', function(){
-                                NavBtns.next(1000);
+                                NavBtns.next();
                             })
                         }                        
                     } else {
                         let scrollEvents = NavEvents.split(',');
-                        let intervalNext = {}; 
-                        let intervalPrev = {};
-                        let inflow = false, pushedEvents = [];
+                        let pushedEvents = [];
+
+                        let declaredEvents = scrollEvents.map((value) => {
+                            let forwards;
+                            forwards = value.split('-');
+                            if(forwards.length > 1){
+                                value = forwards[0];
+                            }
+
+                            return value.toLowerCase();
+                        })
+
                         scrollEvents.forEach( event => {
-                          
-                            if(pushedEvents.includes(event)) return;
                             
-                            let forwards, inFlow = false, timer;
+                            let forwards, timer;
                             
-                            let flowEvents = ['mouseenter','mousedown','touchstart'];
+                            let flowEvents = ['hover','click','press'];
+                            let isNavigatorEffect = false;
 
                             forwards = event.split('-');
                             if(forwards.length > 1){
                                 event = forwards[0];
                                 timer = parseInt(forwards[1]);
                             }
-                            
-                            if(event === 'touchstart') event = 'mouseenter';
-                            
-                            let eventFlip = {mouseenter:'mouseleave',touchstart:'touchend'}
-                            
-                            function NavSlider(Nav) {
-                              if(Nav){
-                                let interval = (Nav === PrevNav)? intervalPrev : intervalNext;
-                                Nav.addEventListener(event, function(e){
-                                    if(e.target === Nav){
-                                          (Nav === PrevNav)? NavBtns.prev() : NavBtns.next(); 
-                                          if(forwards && timer && (flowEvents.includes(event))) {
-                                              if(event === 'mouseenter') inFlow = true;
-                                              interval[event] = setInterval(() => { (Nav === PrevNav)? NavBtns.prev() : NavBtns.next();  }, timer)
-                                          }
-                                    }
-                                })
-                                
-                                if(flowEvents.includes(event)){
-                                   if(event === 'mouseenter') { 
-                                        Nav.addEventListener('touchend', function(){ 
-                                            //alert()
-                                            //if(interval.hasOwnProperty('mouseenter')) 
-                                            setTimeout(() => clearInterval(interval['mouseenter']), 200);
-                                        })
-                                        Nav.addEventListener('mouseleave', function(){
-                                            if(interval.hasOwnProperty('mouseenter')) clearInterval(interval['mouseenter']);
-                                            delete interval['mouseenter'];
-                                            inFlow = false;
-                                        })
-                                        Nav.addEventListener('touchstart', function(){
-                                             if(interval.hasOwnProperty('mouseenter')){
-                                               interval[event] = setInterval(() => { (Nav === PrevNav)? NavBtns.prev() : NavBtns.next();  }, timer)
-                                             }
-                                        })
-                                    }
+
+                            if(pushedEvents.includes(event)) return;
+
+                            pushedEvents.push(event);
+
+                            if(flowEvents.includes(event)){
+                                if(declaredEvents.length > 1){
+                                    console.error('Error: unsupported events combination ('+declaredEvents.join(',')+') for navigators')
+                                    return false;
+                                }else{
+                                    isNavigatorEffect = true;
                                 }
-                              }
-                              
+                            }
+
+                            // set navigation sliding handlers
+                            function NavSlide(Nav, event){
+                                if(Nav){
+                                    Nav.addEventListener(event, function(e){
+                                        (Nav === PrevNav)? NavBtns.prev(timer) : NavBtns.next(timer);
+                                    })
+                                }
+                            }
+                            function NavUnSlide(Nav, event){
+                                if(Nav){
+                                    Nav.addEventListener(event, function(e){
+                                        NavBtns.stop()
+                                    })
+                                }
+                            }
+
+                            if(isNavigatorEffect){ 
+                                let starter1, stopper1;
+                                let starter2, stopper2;
+                                if(event === 'hover') {
+                                    starter1 = 'mouseenter';
+                                    stopper1 = 'mouseleave';
+                                }else if(event === 'press') {
+                                    starter1 = 'mousedown';
+                                    stopper1 = 'mouseup';
+                                
+                                    starter2 = 'touchstart';
+                                    stopper2 = 'touchend';
+                                
+                                    NavSlide(PrevNav, starter2);
+                                    NavSlide(NextNav, starter2);
+
+                                    NavUnSlide(PrevNav, stopper2);
+                                    NavUnSlide(NextNav, stopper2);
+                                }else if(event === 'click') {
+                                    starter1 = 'click';
+                                }
+                                
+                                NavSlide(PrevNav, starter1);
+                                NavSlide(NextNav, starter1);
+
+                                if(event !== 'click'){
+                                    // apply exit effect to only hover & mousedown
+                                    NavUnSlide(PrevNav, stopper1);
+                                    NavUnSlide(NextNav, stopper1);
+                                }
+                                
+                            }else{
+                                NavSlide(PrevNav, event);
+                                NavSlide(NextNav, event);
                             }
                             
-                            NavSlider(PrevNav)
-                            NavSlider(NextNav)
+                            
+                            // if(event === 'touchstart') event = 'mouseenter';
+                            
+                            // let eventFlip = {mouseenter:'mouseleave',touchstart:'touchend'}
+                            
+                            // function NavSlider(Nav) {
+                            //   if(Nav){
+                            //     let interval = (Nav === PrevNav)? intervalPrev : intervalNext;
+                            //     Nav.addEventListener(event, function(e){
+                            //         if(e.target === Nav){
+                            //               (Nav === PrevNav)? NavBtns.prev() : NavBtns.next(); 
+                            //               if(forwards && timer && (flowEvents.includes(event))) {
+                            //                   if(event === 'mouseenter') inFlow = true;
+                            //                   interval[event] = (Nav === PrevNav)? NavBtns.prev(timer) : NavBtns.next(timer);
+                            //               }
+                            //         }
+                            //     })
+                                
+                            //     if(flowEvents.includes(event)){
+                            //        if(event === 'mouseenter') { 
+                            //             Nav.addEventListener('touchend', function(){ 
+                            //                 NavBtns.stop()
+                            //             })
+                            //             Nav.addEventListener('mouseleave', function(){
+                            //                 if(interval.hasOwnProperty('mouseenter')) clearInterval(interval['mouseenter']);
+                            //                 delete interval['mouseenter'];
+                            //                 inFlow = false;
+                            //             })
+                            //             Nav.addEventListener('touchstart', function(){
+                            //                  if(interval.hasOwnProperty('mouseenter')){
+                            //                    interval[event] =  (Nav === PrevNav)? NavBtns.prev(timer) : NavBtns.next(timer);
+                            //                  }
+                            //             })
+                            //         }
+                            //     }
+                            //   }
+                              
+                            // }
+                            
+                            // NavSlider(PrevNav)
+                            // NavSlider(NextNav)
 
 
                         })
@@ -1548,8 +1621,10 @@ class CheckBox {
           return i;
         }
         
-        let nextInterval, nextActive = false;
-        let prevInterval, prevActive = false;
+        if(!checkbox.customListData.hasOwnProperty(id)){
+            checkbox.customListData[id]= {}
+        }
+        let data = checkbox.customListData[id];
         
         return controller = {
 
@@ -1557,9 +1632,9 @@ class CheckBox {
 
             prev: (interval) => {
 
-              if(nextActive) {
-                clearInterval(nextInterval);
-                nextActive = false;
+              if(data.nextActive) {
+                clearInterval(data.nextInterval);
+                data.nextActive = false;
               }
                
               //get all custom boxes... 
@@ -1570,27 +1645,28 @@ class CheckBox {
              
               customBoxes[previous].click();
               
-              if(interval && (!prevActive)) {
-                prevActive = true;
-                prevInterval = setInterval(() => controller.prev(), interval)
+              if(interval && (!data.prevActive)) {
+                data.prevActive = true;
+                data.prevInterval = setInterval(() => controller.prev(), interval)
               }
             }, 
             
-            stop : () => {
-              if(nextActive){
-                nextActive = false;
-                clearInterval(nextInterval)
+            stop: () => { 
+              if(data.nextActive){
+                    clearInterval(data.nextInterval)
               }
-              if(prevActive){
-                prevActive = false;
-                clearInterval(prevInterval)
+              if(data.prevActive){
+                    clearInterval(data.prevInterval)
               }
+                
+              data.nextActive = false;
+              data.prevActive = false;
             },
             
             next: (interval) => {
-              if(prevActive) {
-                clearInterval(prevInterval)
-                prevActive = false;
+              if(data.prevActive) {
+                clearInterval(data.prevInterval)
+                data.prevActive = false;
               }
               //get all custom boxes... 
               let current = currentCheckbox();
@@ -1599,9 +1675,9 @@ class CheckBox {
               if(next > (customBoxesNum - 1)) next = 0;
              
               customBoxes[next].click();
-              if(interval && (!nextActive)) {
-                nextActive = true;
-                nextInterval = setInterval(() => controller.next(), interval)
+              if(interval && (!data.nextActive)) {
+                data.nextActive = true;
+                data.nextInterval = setInterval(() => controller.next(), interval)
               }
             },
 
