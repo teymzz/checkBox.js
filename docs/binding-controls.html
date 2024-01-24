@@ -403,10 +403,6 @@
                   <span class="code-btn"><i class="bi-window"></i></span>
                 </div>
             </div>
-
-            <div id="stop" style="border:solid; font-size: 30px;">
-                STOP
-            </div>
             
             <div class="checkbox-wrapper">
                  <!--parent checkbox (group)-->
@@ -472,7 +468,7 @@
             
             <div class="checkbox-wrapper">
                  <!--parent checkbox (group)-->
-              <div id="rado1" data-role="checkbox-list" data-bind="radio" data-nav="left|right|click">
+              <div id="rado1" data-role="checkbox-list" data-bind="radio" data-nav="s-prev|s-next|click-1000">
               
                 <!--first checkbox section-->
                 <div data-role="checkbox">
@@ -694,10 +690,18 @@
         
         <script src="../src/js/docs.js"></script>
         <script>
-
-          document.querySelector('#stop').addEventListener('click',function(){
-            check1.checkList('rado').stop()
-          })
+        
+            document.querySelector('#s-stop').addEventListener('click',function(){
+              check1.checkList('rado1').stop()
+            })
+  
+          window.onload = function() {
+            
+            document.querySelector('#stop').addEventListener('click',function(){
+              check1.checkList('rado').stop()
+            })
+            
+          }
         
           let buttons = document.querySelectorAll('.btn');
           
