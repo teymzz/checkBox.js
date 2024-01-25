@@ -647,10 +647,20 @@ class CheckBox {
                 if(checkListNav.length > 0 && (at(checkList,'id') !== '')) {
                     
                     //get the controller buttons 
+                    let stopNav, NavEvents;
                     let PrevNav = document.getElementById(checkListNav[0]);
                     let NextNav = document.getElementById(checkListNav[1]);
+                    
+                    if(checkListNav.length >= 3) {
+                        stopNav = checkListNav[2];
+                        NavEvents = checkListNav[3];
+                    }else{
+                        NavEvents = checkListNav[2];
+                    }
+                    
+                    if(stopNav) stopNav = document.getElementById(stopNav);
+
                     let NavBtns = checkbox.checkList(at(checkList,'id').value());
-                    let NavEvents = checkListNav[2];
 
                     if(NavEvents === undefined) {
                         if(PrevNav){ 
@@ -663,7 +673,7 @@ class CheckBox {
                             NextNav.addEventListener('click', function(){
                                 NavBtns.next();
                             })
-                        }                        
+                        } 
                     } else {
                         let scrollEvents = NavEvents.split(',');
                         let pushedEvents = [];
@@ -744,6 +754,12 @@ class CheckBox {
                                 
                                 NavSlide(PrevNav, starter1);
                                 NavSlide(NextNav, starter1);
+                        
+                                if(stopNav && timer){
+                                    stopNav.addEventListener('click', function(){
+                                        NavBtns.stop();
+                                    })
+                                }
 
                                 if(event !== 'click'){
                                     // apply exit effect to only hover & mousedown

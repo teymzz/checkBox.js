@@ -259,7 +259,7 @@
                   
                     <!--first checkbox section-->
                     <div data-role="checkbox">
-                      <div checkbox data-color="@#615c988d|lime" data-func="update">
+                      <div checkbox data-color="@#615c988d|lime">
                       
                         <div marker class=""></div>
                         <div marker class=""></div>
@@ -270,7 +270,7 @@
                     
                     <!--second checkbox section-->
                     <div data-role="checkbox">
-                      <div checkbox data-color="@#615c988d|lime" data-func="update">
+                      <div checkbox data-color="@#615c988d|lime">
                       
                         <div marker class=""></div>
                         <div marker class=""></div>
@@ -281,7 +281,7 @@
                     
                     <!--third checkbox section-->
                     <div data-role="checkbox">
-                      <div checkbox data-color="@#615c988d|lime" data-func="update">
+                      <div checkbox data-color="@#615c988d|lime">
                       
                         <div marker class=""></div>
                         <div marker class=""></div>
@@ -314,52 +314,6 @@
         </section>
         
         <script src="../src/js/docs.js"></script>
-        <script>
-
-          document.querySelector('#stop').addEventListener('click',function(){
-            check1.checkList('rado').stop()
-          })
-        
-          let buttons = document.querySelectorAll('.btn');
-          
-          buttons.forEach( button => {
-            let parent = button.closest('.controls');
-            let index = Array.prototype.indexOf.call(parent.children, button);
-            let listId = button.closest('[data-role="checkbox-list"]').getAttribute('id')
-            button.addEventListener('click', () =>{
-             // check1.checkList(listId).switch(1);
-              if(index == 0) {
-               check1.checkList(listId).prev()
-              }else{
-               check1.checkList(listId).next()
-              }
-            })
-          })
-
-          document.querySelector('#choose').addEventListener("change", function(e){
-            let value = parseInt(this.value);
-            check1.checkList('posit').switch(value)
-          })
-          
-          let switchBtns = document.querySelectorAll('.switch-btn');
-          
-          switchBtns.forEach( switchBtn => {
-            let parent = switchBtn.closest('.controls');
-            let index = Array.prototype.indexOf.call(parent.children, switchBtn);
-            let listId = switchBtn.closest('[data-role="checkbox-list"]').getAttribute('id')
-            switchBtn.addEventListener('click', () => { 
-             // check1.checkList(listId).switch(1);
-             let inputBtn = switchBtn.closest('.controls').querySelector('input');
-             let inputValue = parseInt(inputBtn.value)
-             
-              if(switchBtn.getAttribute('id') === 'on') {
-               check1.checkList(listId).switch(inputValue, 'on')
-              }else{
-               check1.checkList(listId).switch(inputValue, 'off')
-              }
-            })
-          })
-        </script>
         <script src="../src/js/navscript.js"></script>
 
     </body>
