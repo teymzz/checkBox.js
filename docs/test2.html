@@ -6,6 +6,15 @@
   <style>
     #videoContainer {
       position: relative;
+      width: 80%;
+      margin: auto;
+    }
+
+    #progressContainer {
+      position: relative;
+      height: 4px;
+      background-color: #f0f0f0;
+      cursor: pointer;
     }
 
     #progressBar {
@@ -13,9 +22,9 @@
       top: 0;
       left: 0;
       width: 0;
-      height: 4px;
+      height: 100%;
       background-color: #007bff;
-      cursor: pointer;
+      transition: width 0.3s ease-in-out;
     }
 
     video {
@@ -26,43 +35,97 @@
 <body>
 
 <div id="videoContainer">
-  <video id="myVideo" controls>
+  <video id="myVideo" muted>
     <!-- Add your video source here -->
-    <source src="../video.mp4" type="video/mp4">
+    <source src="" type="video/mp4">
     Your browser does not support the video tag.
   </video>
-
-  <div id="progressBar"></div>
+  &#x23EA;
+  &#x23E9;
+  <span id="unmuteButton">&#x1F50A</span>
+  <div id="progressContainer" onclick="handleContainerClick(event)">
+    <div id="progressBar"></div>
+  </div>
 </div>
 
 <script>
+  window.onload = function (){
+    let video = document.getElementById('myVideo')
+    video.src = '../video.mp4';
+    video.load();
+    video.play();
+    const unmuteButton = document.getElementById('unmuteButton');
+
+    // Event listener for button click
+    unmuteButton.addEventListener('click', function () {
+      // Unmute the video
+      video.muted = false;
+    });
+  }
   document.addEventListener('DOMContentLoaded', function () {
     const video = document.getElementById('myVideo');
     const progressBar = document.getElementById('progressBar');
-    const videoContainer = document.getElementById('videoContainer');
+    const progressContainer = document.getElementById('progressContainer');
 
-    // Update progress bar width based on video progress
-    video.addEventListener('timeupdate', function () {
+    let isDragging = false;
+
+    function updateProgressBar() {
       const progressPercentage = (video.currentTime / video.duration) * 100;
       progressBar.style.width = `${progressPercentage}%`;
-    });
+    }
 
-    // Update video time when progress bar is clicked
-    progressBar.addEventListener('click', function (event) {
-      const clickedPosition = event.clientX - progressBar.getBoundingClientRect().left;
-      const progressBarWidth = progressBar.offsetWidth;
+    video.addEventListener('timeupdate', updateProgressBar);
+
+    function handleDown(event) {
+      isDragging = true;
+      handleDrag(event);
+    }
+
+    function handleMove(event) {
+      if (isDragging) {
+        handleDrag(event);
+      }
+    }
+
+    function handleUp() {
+      isDragging = false;
+    }
+
+    function handleDrag(event) {
+      const clientX = event.type.includes('touch') ? event.touches[0].clientX : event.clientX;
+      const clickedPosition = clientX - progressContainer.getBoundingClientRect().left;
+      const progressBarWidth = progressContainer.offsetWidth;
       const clickedPercentage = (clickedPosition / progressBarWidth) * 100;
 
       const newTime = (clickedPercentage / 100) * video.duration;
       video.currentTime = newTime;
-    });
+      updateProgressBar();
+    }
 
-    // Ensure the progress bar follows the video's width
-    window.addEventListener('resize', function () {
-      const videoWidth = videoContainer.offsetWidth;
-      progressBar.style.width = `${(video.currentTime / video.duration) * videoWidth}px`;
-    });
+    progressContainer.addEventListener('mousedown', handleDown);
+    progressContainer.addEventListener('touchstart', handleDown);
+
+    window.addEventListener('mousemove', handleMove);
+    window.addEventListener('touchmove', handleMove);
+
+    window.addEventListener('mouseup', handleUp);
+    window.addEventListener('touchend', handleUp);
+
+    // Smooth transition for the progress bar width
+    progressBar.style.transition = 'width 0.3s ease-in-out';
   });
+
+  function handleContainerClick(event) {
+    const progressBar = document.getElementById('progressBar');
+    const progressBarWidth = event.clientX - event.currentTarget.getBoundingClientRect().left;
+    const containerWidth = event.currentTarget.offsetWidth;
+
+    progressBar.style.width = `${(progressBarWidth / containerWidth) * 100}%`;
+    
+    // Update video time based on the clicked position
+    const newTime = (progressBarWidth / containerWidth) * video.duration;
+    video.currentTime = newTime;
+  }
 </script>
 
 </body>
