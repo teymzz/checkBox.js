@@ -212,7 +212,7 @@ checkbox.<span class="func">check({
                       <div marker class=""></div>
                       
                     </div>
-                    <input type="checkbox" checked="true" value="C2">
+                    <input type="checkbox" checked="true">
                   </div>
                   
                   <!--third checkbox section-->
@@ -223,57 +223,7 @@ checkbox.<span class="func">check({
                       <div marker class=""></div>
                       
                     </div>
-                    <input type="checkbox" value="C3">
-                  </div>
-                  
-                  <div class="controls">
-                    <button id="b1"><i class="bi-chevron-left"></i></button>
-                    <button id="b2"><i class="bi-chevron-right"></i></button>
-                  </div>
-                </div>
-                
-              </div>
-              
-              <div class="checkbox-wrapper">
-                   <!--parent checkbox (group)-->
-                <div id="rade" data-role="checkbox-list" data-bind="radio">
-                
-                  <!--first checkbox section-->
-                  <div data-role="checkbox">
-                    <div checkbox data-anime="bounceIn" data-assign=":marker2" data-color="@#615c988d|orange" data-flip="true">
-                    
-                      <div marker class=""></div>
-                      <div marker class=""></div>
-                      
-                    </div>
-                    <input type="checkbox" value="C1">
-                  </div> 
-                  
-                  <!--second checkbox section-->
-                  <div data-role="checkbox">
-                    <div checkbox data-anime="bounceIn" data-assign=":marker2" data-color="@#615c988d|lime">
-                    
-                      <div marker class=""></div>
-                      <div marker class=""></div>
-                      
-                    </div>
-                    <input type="checkbox" checked="true" value="C2">
-                  </div>
-                  
-                  <!--third checkbox section-->
-                  <div data-role="checkbox">
-                    <div checkbox data-anime="bounceIn" data-assign=":marker2" data-color="@#615c988d|lime">
-                    
-                      <div marker class=""></div>
-                      <div marker class=""></div>
-                      
-                    </div>
-                    <input type="checkbox" value="C3">
-                  </div>
-                  
-                  <div class="controls">
-                    <button id="b3"><i class="bi-chevron-left"></i></button>
-                    <button id="b4"><i class="bi-chevron-right"></i></button>
+                    <input type="checkbox">
                   </div>
                 </div>
                 
@@ -303,24 +253,6 @@ checkbox.<span class="func">check({
         </section>
         
         <script src="../src/js/docs.js"></script>
-        <script>
-        
-          let buttons = document.querySelectorAll('button');
-          
-          buttons.forEach( button => {
-            let parent = button.closest('.controls');
-            let index = Array.prototype.indexOf.call(parent.children, button);
-            let listId = button.closest('[data-role="checkbox-list"]').getAttribute('id')
-            button.addEventListener('click', () =>{
-             // check1.customList(listId).to(1);
-              if(index == 0) {
-               check1.customList(listId).prev()
-              }else{
-               check1.customList(listId).next()
-              }
-            })
-          })
-        </script>
         <script src="../src/js/navscript.js"></script>
 
     </body>

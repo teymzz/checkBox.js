@@ -641,15 +641,20 @@ class CheckBox {
                 let checkListBind = at(checkList, 'data-bind');
                 let checkListSwipe = at(checkList, 'data-swipe');
                 let dataBindValue = checkListBind.value().split("-");
-                let checkListNav = at(checkList, 'data-nav').attrvals('|');
+                let checkListNav = at(checkList, 'data-nav').value().split('|');
                 let isSlide = false, slideTime = 2500;
-                
+
                 if(checkListNav.length > 0 && (at(checkList,'id') !== '')) {
-                    
+   
                     //get the controller buttons 
-                    let stopNav, NavEvents;
-                    let PrevNav = document.getElementById(checkListNav[0]);
-                    let NextNav = document.getElementById(checkListNav[1]);
+                    let stopNav, PrevNav, NextNav, NavEvents;
+
+                    if(checkListNav[0] && (checkListNav[0].trim() !== '')){
+                        PrevNav = document.getElementById(checkListNav[0]);
+                    }
+                    if(checkListNav[1] && (checkListNav[1].trim() !== '')){
+                        NextNav = document.getElementById(checkListNav[1]);
+                    }
                     
                     if(checkListNav.length >= 3) {
                         stopNav = checkListNav[2];
@@ -658,7 +663,7 @@ class CheckBox {
                         NavEvents = checkListNav[2];
                     }
                     
-                    if(stopNav) stopNav = document.getElementById(stopNav);
+                    if(stopNav && (stopNav.trim() !== '')) stopNav = document.getElementById(stopNav);
 
                     let NavBtns = checkbox.checkList(at(checkList,'id').value());
 
@@ -771,48 +776,6 @@ class CheckBox {
                                 NavSlide(PrevNav, event);
                                 NavSlide(NextNav, event);
                             }
-                            
-                            
-                            // if(event === 'touchstart') event = 'mouseenter';
-                            
-                            // let eventFlip = {mouseenter:'mouseleave',touchstart:'touchend'}
-                            
-                            // function NavSlider(Nav) {
-                            //   if(Nav){
-                            //     let interval = (Nav === PrevNav)? intervalPrev : intervalNext;
-                            //     Nav.addEventListener(event, function(e){
-                            //         if(e.target === Nav){
-                            //               (Nav === PrevNav)? NavBtns.prev() : NavBtns.next(); 
-                            //               if(forwards && timer && (flowEvents.includes(event))) {
-                            //                   if(event === 'mouseenter') inFlow = true;
-                            //                   interval[event] = (Nav === PrevNav)? NavBtns.prev(timer) : NavBtns.next(timer);
-                            //               }
-                            //         }
-                            //     })
-                                
-                            //     if(flowEvents.includes(event)){
-                            //        if(event === 'mouseenter') { 
-                            //             Nav.addEventListener('touchend', function(){ 
-                            //                 NavBtns.stop()
-                            //             })
-                            //             Nav.addEventListener('mouseleave', function(){
-                            //                 if(interval.hasOwnProperty('mouseenter')) clearInterval(interval['mouseenter']);
-                            //                 delete interval['mouseenter'];
-                            //                 inFlow = false;
-                            //             })
-                            //             Nav.addEventListener('touchstart', function(){
-                            //                  if(interval.hasOwnProperty('mouseenter')){
-                            //                    interval[event] =  (Nav === PrevNav)? NavBtns.prev(timer) : NavBtns.next(timer);
-                            //                  }
-                            //             })
-                            //         }
-                            //     }
-                            //   }
-                              
-                            // }
-                            
-                            // NavSlider(PrevNav)
-                            // NavSlider(NextNav)
 
 
                         })
@@ -1616,15 +1579,15 @@ class CheckBox {
     checkList(id) {
         let checkbox = this;
 
-        //get id from custom lists 
+        //get checklist id from custom lists 
         let customListItem = checkbox.customListItems[id];
+        
+        if(!customListItem) return {response: 'checklist id {'+id+'} not found!', exists: false}; //Accept only checkbox lists with id
         let customListSelector = checkbox.target;
         let customBoxes = customListItem.querySelectorAll(customListSelector);
         let customBoxesNum = customBoxes.length;
         let checkedOnes = []
         let controller;
-        
-        if(!customListItem) return {}; //Accept only checkbox lists with id
         
         function currentCheckbox(){
           let i = -1;
@@ -1643,6 +1606,8 @@ class CheckBox {
         let data = checkbox.customListData[id];
         
         return controller = {
+            response: 'checklist id {'+id+'}',
+            exists: true,
 
             item: () => customListItem,
 

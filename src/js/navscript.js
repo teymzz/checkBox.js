@@ -93,7 +93,7 @@ window.onload = function() {
           navArea.innerHTML = xhr.responseText
           let url = location.href.split('/');
           url = url[url.length - 1];
-          url = url.split('.html')[0];
+          url = url.split('.html')[0]; 
           let menu = document.getElementById(url);
           menu.classList.add('active');
           menu.scrollIntoView({behavior: "smooth"})
