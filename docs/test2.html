@@ -37,7 +37,7 @@
 <div id="videoContainer">
   <video id="myVideo" muted>
     <!-- Add your video source here -->
-    <source src="" type="video/mp4">
+    <source src="" type="../video1.mp4">
     Your browser does not support the video tag.
   </video>
   &#x23EA;
@@ -49,19 +49,17 @@
 </div>
 
 <script>
-  window.onload = function (){
     let video = document.getElementById('myVideo')
-    video.src = '../video.mp4';
+    video.src = '../video1.mp4';
     video.load();
     video.play();
     const unmuteButton = document.getElementById('unmuteButton');
 
     // Event listener for button click
     unmuteButton.addEventListener('click', function () {
-      // Unmute the video
-      video.muted = false;
+        // Unmute the video
+        video.muted = false;
     });
-  }
   document.addEventListener('DOMContentLoaded', function () {
     const video = document.getElementById('myVideo');
     const progressBar = document.getElementById('progressBar');
