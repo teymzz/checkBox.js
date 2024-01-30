@@ -4,65 +4,126 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    .video-container {
+    #videoContainer {
       position: relative;
-      width: 300px; /* Set the width of the video container */
+      width: 80%;
+      margin: auto;
     }
 
-    .circle-progress {
+    #progressContainer {
+      position: relative;
+      height: 4px;
+      background-color: #f0f0f0;
+      cursor: pointer;
+    }
+
+    #progressBar {
       position: absolute;
-      top: 100%;
+      top: 0;
       left: 0;
-      width: 100%;
+      width: 0;
       height: 100%;
-      border-radius: 50%;
-      background-color: transparent;
-      overflow: hidden;
-    }
-
-    .progress-bar {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-color: blue; /* Change the color of the progress bar */
-      clip-path: polygon(50% 0%, 50% 100%, 0 100%, 0 0); /* Creates a vertical line initially */
+      background-color: #007bff;
+      transition: width 0.3s ease-in-out;
     }
 
     video {
       width: 100%;
-      height: auto;
-      border-radius: 8px; /* Optional: Rounded corners for the video */
-      position: relative;
-      z-index: 1;
     }
   </style>
 </head>
 <body>
 
-<div class="video-container">
-  <div class="circle-progress" id="circleProgress">
-    <div class="progress-bar" id="progressBar"></div>
-  </div>
-  <video controls>
+<div id="videoContainer">
+  <video id="myVideo" muted>
     <!-- Add your video source here -->
-    <source src="../video2.mp4" type="video/mp4">
+    <source src="" type="../video1.mp4">
     Your browser does not support the video tag.
   </video>
+  &#x23EA;
+  &#x23E9;
+  <span id="unmuteButton">&#x1F50A</span>
+  <div id="progressContainer" onclick="handleContainerClick(event)">
+    <div id="progressBar"></div>
+  </div>
 </div>
 
 <script>
+    let video = document.getElementById('myVideo')
+    video.src = '../video1.mp4';
+    video.load();
+    video.play();
+    const unmuteButton = document.getElementById('unmuteButton');
+
+    // Event listener for button click
+    unmuteButton.addEventListener('click', function () {
+        // Unmute the video
+        video.muted = false;
+    });
   document.addEventListener('DOMContentLoaded', function () {
+    const video = document.getElementById('myVideo');
     const progressBar = document.getElementById('progressBar');
-    
-    // Function to trigger the animation
-    function animateProgressBar() {
-      progressBar.style.clipPath = 'polygon(50% 0%, 50% 100%, 0 100%, 0 0)';
-      progressBar.style.transition = 'clip-path 5s linear';
+    const progressContainer = document.getElementById('progressContainer');
+
+    let isDragging = false;
+
+    function updateProgressBar() {
+      const progressPercentage = (video.currentTime / video.duration) * 100;
+      progressBar.style.width = `${progressPercentage}%`;
     }
 
-    // Trigger the animation after a delay or on a specific event
-    setTimeout(animateProgressBar, 1000); // Delayed start, adjust as needed
+    video.addEventListener('timeupdate', updateProgressBar);
+
+    function handleDown(event) {
+      isDragging = true;
+      handleDrag(event);
+    }
+
+    function handleMove(event) {
+      if (isDragging) {
+        handleDrag(event);
+      }
+    }
+
+    function handleUp() {
+      isDragging = false;
+    }
+
+    function handleDrag(event) {
+      const clientX = event.type.includes('touch') ? event.touches[0].clientX : event.clientX;
+      const clickedPosition = clientX - progressContainer.getBoundingClientRect().left;
+      const progressBarWidth = progressContainer.offsetWidth;
+      const clickedPercentage = (clickedPosition / progressBarWidth) * 100;
+
+      const newTime = (clickedPercentage / 100) * video.duration;
+      video.currentTime = newTime;
+      updateProgressBar();
+    }
+
+    progressContainer.addEventListener('mousedown', handleDown);
+    progressContainer.addEventListener('touchstart', handleDown);
+
+    window.addEventListener('mousemove', handleMove);
+    window.addEventListener('touchmove', handleMove);
+
+    window.addEventListener('mouseup', handleUp);
+    window.addEventListener('touchend', handleUp);
+
+    // Smooth transition for the progress bar width
+    progressBar.style.transition = 'width 0.3s ease-in-out';
   });
+
+  function handleContainerClick(event) {
+    const progressBar = document.getElementById('progressBar');
+    const progressBarWidth = event.clientX - event.currentTarget.getBoundingClientRect().left;
+    const containerWidth = event.currentTarget.offsetWidth;
+
+    progressBar.style.width = `${(progressBarWidth / containerWidth) * 100}%`;
+    
+    // Update video time based on the clicked position
+    const newTime = (progressBarWidth / containerWidth) * video.duration;
+    video.currentTime = newTime;
+  }
 </script>
 
 </body>

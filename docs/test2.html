@@ -3,6 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <script src="../checkBox.js"></script>       
+  <style>
+            .controls {
+              display : inline-flex;
+              align-items: center;
+            }
+            button {
+              border: none;
+              padding: 10px;
+            }
+            button:active{
+              background-color: silver;
+            }
+            .checkbox-wrapper {
+                display: inline-flex;
+                width: fit-content;
+                align-items: center;
+                gap: .2em;
+            }
+            
+            [data-role="checkbox-list"] {
+              display: inline-flex;
+              align-items: center;
+              gap: .5em;  
+              padding: .5em;
+            }
+              
+            [data-role="checkbox-list"] [marker] {
+              width: 20px;
+              height: 20px;  
+            }
+            
+            [checkbox] {
+              display: inline-flex;
+              border: dotted 2px #7975a4dc;  
+              border-radius: 100vh;  
+              padding: 4px;  
+            }
+            [checkbox][checked="checked"] {
+              border-color: orange;
+            }
+            
+            [checkbox] [marker] {
+              width: 20px;
+              height: 20px; 
+              border-radius: inherit;    
+              background-color: currentColor;
+            }
+        </style>     
   <style>
     #videoContainer {
       position: relative;
@@ -40,24 +91,45 @@
     <source src="" type="../video1.mp4">
     Your browser does not support the video tag.
   </video>
-  &#x23EA;
-  &#x23E9;
-  <span id="unmuteButton">&#x1F50A</span>
+  
+  
+  <div id="check" style="display:nne" data-bind="radi" data-role="checkbox-list" data-nav="prev||next|:bind">
+    <div data-role="checkbox">
+      <div checkbox="" video="video.mp4"></div>
+      <input type="checkbox">
+    </div>
+    <div data-role="checkbox">
+      <div checkbox="" video="video1.mp4"></div>
+      <input type="checkbox">
+    </div>
+    <div data-role="checkbox">
+      <div checkbox="" video="video.mp4"></div>
+      <input type="checkbox">
+    </div>
+  </div>
+  
+
+  
+  <div class="controls">
+      <button id="prev" data-func="btn" class="btn-x"><i class="bi-chevron-left"></i></button>
+      <button id="stop" data-func="btn" class="btn-z"><i class="bi-stop"></i></button>
+      <button id="vol" data-func="btn" class="btn-z"><i class="bi-volume-mute"></i></button>
+      <button id="next" data-func="btn" class="btn-y"><i class="bi-chevron-right"></i></button>
+  </div>
   <div id="progressContainer" onclick="handleContainerClick(event)">
     <div id="progressBar"></div>
   </div>
+  
 </div>
 
 <script>
     let video = document.getElementById('myVideo')
     video.src = '../video1.mp4';
-    video.load();
-    video.play();
-    const unmuteButton = document.getElementById('unmuteButton');
+    video.load(); video.play();
+    const unmute = document.getElementById('vol');
 
     // Event listener for button click
-    unmuteButton.addEventListener('click', function () {
-        // Unmute the video
+    unmute.addEventListener('click', function () {
         video.muted = false;
     });
   document.addEventListener('DOMContentLoaded', function () {
@@ -124,6 +196,32 @@
     const newTime = (progressBarWidth / containerWidth) * video.duration;
     video.currentTime = newTime;
   }
+  
+  let checker = new CheckBox(true);
+
+  checker = checker.check({
+    toggle : (box) => {
+      if(box.checked){
+        let boxId = box.listId + 1;
+        let checkList = checker.checkList('check');
+        let customBox = checkList.get(boxId)
+        customBox.disable()
+       
+        setTimeout(() => { 
+          customBox.enable()
+          customBox.switch('off');
+        }, 5000)
+        
+        let newvideo = customBox.customBox().getAttribute('video')
+        video.src = '../'+newvideo;
+        video.load();
+        video.play();
+      }
+    }
+    
+  })
+  
+
 </script>
 
 </body>

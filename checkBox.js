@@ -645,141 +645,160 @@ class CheckBox {
                 let isSlide = false, slideTime = 2500;
 
                 if(checkListNav.length > 0 && (at(checkList,'id') !== '')) {
-   
-                    //get the controller buttons 
-                    let stopNav, PrevNav, NextNav, NavEvents;
-
-                    if(checkListNav[0] && (checkListNav[0].trim() !== '')){
-                        PrevNav = document.getElementById(checkListNav[0]);
-                    }
-                    if(checkListNav[1] && (checkListNav[1].trim() !== '')){
-                        NextNav = document.getElementById(checkListNav[1]);
-                    }
-                    
-                    if(checkListNav.length >= 3) {
-                        stopNav = checkListNav[2];
-                        NavEvents = checkListNav[3];
-                    }else{
-                        NavEvents = checkListNav[2];
-                    }
-                    
-                    if(stopNav && (stopNav.trim() !== '')) stopNav = document.getElementById(stopNav);
-
-                    let NavBtns = checkbox.checkList(at(checkList,'id').value());
-
-                    if(NavEvents === undefined) {
-                        if(PrevNav){ 
-                            PrevNav.addEventListener('click', function(){
-                                NavBtns.prev();
+                     
+                    if((checkListNav.length > 0) && (checkListNav[checkListNav.length - 1] === ':bind')) {
+                      checkListNav.pop();
+                      let NavBtns = checkbox.checkList(at(checkList,'id').value());
+                      
+                      checkListNav.forEach((Nav, index) => {
+                        if(checkListNav[index].trim() !== ''){
+                          let NavBtn = document.getElementById(Nav);
+                          if(NavBtn && NavBtns.exists){
+                            NavBtn.addEventListener('click', () => {
+                              NavBtns.switch(index + 1);
                             })
+                          }
                         }
-
-                        if(NextNav){
-                            NextNav.addEventListener('click', function(){
-                                NavBtns.next();
-                            })
-                        } 
+                      });
                     } else {
-                        let scrollEvents = NavEvents.split(',');
-                        let pushedEvents = [];
-
-                        let declaredEvents = scrollEvents.map((value) => {
-                            let forwards;
-                            forwards = value.split('-');
-                            if(forwards.length > 1){
-                                value = forwards[0];
-                            }
-
-                            return value.toLowerCase();
-                        })
-
-                        scrollEvents.forEach( event => {
-                            
-                            let forwards, timer;
-                            
-                            let flowEvents = ['hover','click','press'];
-                            let isNavigatorEffect = false;
-
-                            forwards = event.split('-');
-                            if(forwards.length > 1){
-                                event = forwards[0];
-                                timer = parseInt(forwards[1]);
-                            }
-
-                            if(pushedEvents.includes(event)) return;
-
-                            pushedEvents.push(event);
-
-                            if(flowEvents.includes(event)){
-                                if(declaredEvents.length > 1){
-                                    console.error('Error: unsupported events combination ('+declaredEvents.join(',')+') for navigators')
-                                    return false;
-                                }else{
-                                    isNavigatorEffect = true;
-                                }
-                            }
-
-                            // set navigation sliding handlers
-                            function NavSlide(Nav, event){
-                                if(Nav){
-                                    Nav.addEventListener(event, function(e){
-                                        (Nav === PrevNav)? NavBtns.prev(timer) : NavBtns.next(timer);
-                                    })
-                                }
-                            }
-                            function NavUnSlide(Nav, event){
-                                if(Nav){
-                                    Nav.addEventListener(event, function(e){
-                                        NavBtns.stop()
-                                    })
-                                }
-                            }
-
-                            if(isNavigatorEffect){ 
-                                let starter1, stopper1;
-                                let starter2, stopper2;
-                                if(event === 'hover') {
-                                    starter1 = 'mouseenter';
-                                    stopper1 = 'mouseleave';
-                                }else if(event === 'press') {
-                                    starter1 = 'mousedown';
-                                    stopper1 = 'mouseup';
-                                
-                                    starter2 = 'touchstart';
-                                    stopper2 = 'touchend';
-                                
-                                    NavSlide(PrevNav, starter2);
-                                    NavSlide(NextNav, starter2);
-
-                                    NavUnSlide(PrevNav, stopper2);
-                                    NavUnSlide(NextNav, stopper2);
-                                }else if(event === 'click') {
-                                    starter1 = 'click';
-                                }
-                                
-                                NavSlide(PrevNav, starter1);
-                                NavSlide(NextNav, starter1);
-                        
-                                if(stopNav && timer){
-                                    stopNav.addEventListener('click', function(){
-                                        NavBtns.stop();
-                                    })
-                                }
-
-                                if(event !== 'click'){
-                                    // apply exit effect to only hover & mousedown
-                                    NavUnSlide(PrevNav, stopper1);
-                                    NavUnSlide(NextNav, stopper1);
-                                }
-                                
-                            }else{
-                                NavSlide(PrevNav, event);
-                                NavSlide(NextNav, event);
-                            }
-
-
-                        })
+                      
+                      //get the controller buttons 
+                      let stopNav, PrevNav, NextNav, NavEvents;
+    
+                      if(checkListNav[0] && (checkListNav[0].trim() !== '')){
+                          PrevNav = document.getElementById(checkListNav[0]);
+                      }
+                      if(checkListNav[1] && (checkListNav[1].trim() !== '')){
+                          NextNav = document.getElementById(checkListNav[1]);
+                      }
+                      
+                      if(checkListNav.length >= 3) {
+                          stopNav = checkListNav[2];
+                          NavEvents = checkListNav[3];
+                      }else{
+                          NavEvents = checkListNav[2];
+                      }
+                      
+                      if(stopNav && (stopNav.trim() !== '')) stopNav = document.getElementById(stopNav);
+    
+                      let NavBtns = checkbox.checkList(at(checkList,'id').value());
+    
+                      if(NavEvents === undefined) {
+                          if(PrevNav){ 
+                              PrevNav.addEventListener('click', function(){
+                                  NavBtns.prev();
+                              })
+                          }
+    
+                          if(NextNav){
+                              NextNav.addEventListener('click', function(){
+                                  NavBtns.next();
+                              })
+                          } 
+                      } else {
+                          let scrollEvents = NavEvents.split(',');
+                          let pushedEvents = [];
+    
+                          let declaredEvents = scrollEvents.map((value) => {
+                              let forwards;
+                              forwards = value.split('-');
+                              if(forwards.length > 1){
+                                  value = forwards[0];
+                              }
+    
+                              return value.toLowerCase();
+                          })
+    
+                          scrollEvents.forEach( event => {
+                              
+                              let forwards, timer;
+                              
+                              let flowEvents = ['hover','click','press'];
+                              let isNavigatorEffect = false;
+    
+                              forwards = event.split('-');
+                              if(forwards.length > 1){
+                                  event = forwards[0];
+                                  timer = parseInt(forwards[1]);
+                              }
+    
+                              if(pushedEvents.includes(event)) return;
+    
+                              pushedEvents.push(event);
+    
+                              if(flowEvents.includes(event)){
+                                  if(declaredEvents.length > 1){
+                                      console.error('Error: unsupported events combination ('+declaredEvents.join(',')+') for navigators')
+                                      return false;
+                                  }else{
+                                      isNavigatorEffect = true;
+                                  }
+                              }
+    
+                              // set navigation sliding handlers
+                              function NavSlide(Nav, event){
+                                  if(Nav){
+                                      Nav.addEventListener(event, function(e){
+                                          (Nav === PrevNav)? NavBtns.prev(timer) : NavBtns.next(timer);
+                                      })
+                                  }
+                              }
+                              function NavUnSlide(Nav, event){
+                                  if(Nav){
+                                      Nav.addEventListener(event, function(e){
+                                          NavBtns.stop()
+                                      })
+                                  }
+                              }
+    
+                              if(isNavigatorEffect){ 
+                                  let starter1, stopper1;
+                                  let starter2, stopper2;
+                                  if(event === 'hover') {
+                                      starter1 = 'mouseenter';
+                                      stopper1 = 'mouseleave';
+                                  }else if(event === 'press') {
+                                      starter1 = 'mousedown';
+                                      stopper1 = 'mouseup';
+                                  
+                                      starter2 = 'touchstart';
+                                      stopper2 = 'touchend';
+                                  
+                                      NavSlide(PrevNav, starter2);
+                                      NavSlide(NextNav, starter2);
+    
+                                      NavUnSlide(PrevNav, stopper2);
+                                      NavUnSlide(NextNav, stopper2);
+                                  }else if(event === 'click') {
+                                      starter1 = 'click';
+                                  }
+                                  
+                                  NavSlide(PrevNav, starter1);
+                                  NavSlide(NextNav, starter1);
+                          
+                                  if(stopNav && timer){
+                                      stopNav.addEventListener('click', function(){
+                                          NavBtns.stop();
+                                      })
+                                  }
+    
+                                  if(event !== 'click'){
+                                      // apply exit effect to only hover & mousedown
+                                      NavUnSlide(PrevNav, stopper1);
+                                      NavUnSlide(NextNav, stopper1);
+                                  }
+                                  
+                              }else{
+                                  NavSlide(PrevNav, event);
+                                  NavSlide(NextNav, event);
+                              }
+    
+    
+                          })
+                      }
+                      
                     }
+                    
 
                 }
 
@@ -1608,8 +1627,101 @@ class CheckBox {
         return controller = {
             response: 'checklist id {'+id+'}',
             exists: true,
-
+            
+            //returns specified checklist item
             item: () => customListItem,
+            
+            //returns specified checklist item's direct sections 
+            section: (index) => {
+              
+              let boxes = customListItem.querySelectorAll('[data-role="checkbox"]');
+              
+              if(index) return boxes[index];
+              
+              return boxes;
+              
+            }
+            
+            /**
+             * Get all custom boxes or specified custom box 
+             **/
+            get: (number) => {
+              if(number) {
+                 if(parseInt(number)) {
+                    let cbox = customBoxes[number-1];
+                    let responder;
+                    return responder = {
+                      customBox : () => cbox, //relative custom box
+                      disable: () => {
+                        let cboxInput = cbox.nextElementSibling;
+                        let cboxCase = cbox.closest('[data-role="checkbox"]');
+                        cbox.setAttribute('disabled', 'disabled')
+                        cboxInput.setAttribute('disabled', 'disabled')
+                        cboxCase.setAttribute('disabled', 'disabled')
+                        let bindedNav = responder.nav();
+                        if(bindedNav){
+                          bindedNav.setAttribute('disabled','disabled')
+                        }
+                        return true;
+                      },
+                      enable: () => {
+                        let cboxInput = cbox.nextElementSibling;
+                        let cboxCase = cbox.closest('[data-role="checkbox"]');
+                        cbox.removeAttribute('disabled')
+                        cboxInput.removeAttribute('disabled')
+                        cboxCase.removeAttribute('disabled')
+                        let bindedNav = responder.nav();
+                        if(bindedNav){
+                          bindedNav.removeAttribute('disabled')
+                        }
+                        return true;
+                      },
+                      switch : (status) => {
+                        controller.switch(number, status)
+                      },
+                      nav: () => {
+                        // get binded controller for current number... 
+                        let dataNav = customListItem.getAttribute('data-nav'); 
+                        
+                        if(dataNav){
+                          let checkListNav = dataNav.split('|');
+                          let checkListId  = customListItem.getAttribute('id')
+                          let checkListLen = checkListNav.length
+                          
+                          if(checkListLen > 0 && (checkListId !== '')) {
+                              if(checkListNav[checkListLen - 1] === ':bind') {
+                                checkListNav.pop();
+                                let relBtn = checkListNav[number - 1];
+                                if(relBtn && relBtn.trim() !== ''){
+                                  return document.getElementById(relBtn);
+                                }
+                              }
+                          }
+                        }
+                        
+                        return false;
+                        
+                      }
+                    }
+                 }
+                 return false;
+              }
+              return {
+                customBox: () => customBoxes,
+              }
+            },
+            
+            disable: (number) => {
+              
+              controller.get(number).disable();
+
+            },
+            
+            enable: (number) => {
+              
+              controller.get(number).enable();
+
+            },
 
             prev: (interval) => {
 
