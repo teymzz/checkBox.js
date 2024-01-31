@@ -1626,33 +1626,54 @@ class CheckBox {
         
         return controller = {
             response: 'checklist id {'+id+'}',
+
             exists: true,
             
             //returns specified checklist item
             item: () => customListItem,
             
-            //returns specified checklist item's direct sections 
-            section: (index) => {
+            //returns checklist sections 
+            sections: (index) => {
               
-              let boxes = customListItem.querySelectorAll('[data-role="checkbox"]');
+                if(index && parseInt(index)){
+                    if(index < 1){
+                        index = 0;
+                    }else{
+                        index = index - 1;
+                    }
+                }
+                
+                let boxes = customListItem.querySelectorAll('[data-role="checkbox"]');
               
-              if(index) return boxes[index];
+                if(index) return boxes[index];
               
-              return boxes;
-              
-            }
+                return boxes;
+            },
+
+            // index of supplied, should runs from a minimum of 1 above
+            boxes: (index) => {                
+                if(index && parseInt(index)){
+                    if(index < 1){
+                        index = 0;
+                    }else{
+                        index = index - 1;
+                    }
+                    return customBoxes[index]   
+                } 
+                return customBoxes;
+            },
             
             /**
              * Get all custom boxes or specified custom box 
              **/
             get: (number) => {
-              if(number) {
+              if(arguments.length > 0) {
                  if(parseInt(number)) {
                     let cbox = customBoxes[number-1];
                     let responder;
                     return responder = {
                       customBox : () => cbox, //relative custom box
-                      disable: () => {
+                      disable : () => {
                         let cboxInput = cbox.nextElementSibling;
                         let cboxCase = cbox.closest('[data-role="checkbox"]');
                         cbox.setAttribute('disabled', 'disabled')
@@ -1664,7 +1685,7 @@ class CheckBox {
                         }
                         return true;
                       },
-                      enable: () => {
+                      enable : () => {
                         let cboxInput = cbox.nextElementSibling;
                         let cboxCase = cbox.closest('[data-role="checkbox"]');
                         cbox.removeAttribute('disabled')
@@ -1705,9 +1726,17 @@ class CheckBox {
                     }
                  }
                  return false;
-              }
-              return {
-                customBox: () => customBoxes,
+              } else{
+                  return { 
+                    customBox: (index) => {
+                        if(arguments.length > 0){
+                            return controller.get(index);
+                        }else{
+                            //return all custom boxes
+                            return customBoxes;
+                        }
+                    },
+                  }
               }
             },
             
@@ -1810,6 +1839,42 @@ class CheckBox {
             },
             
             choose: (number) => controller.to(number),
+
+            nav : (index) => {
+
+                if((arguments.length > 0)){
+                    if(!parseInt(index)) return false;
+                    index = (index > 0)? index - 1 : index;  
+                }
+
+                let dataNav = customListItem.getAttribute('data-nav'); 
+                        
+                if(dataNav){
+                    let checkListNav = dataNav.split('|');
+                    let checkListId  = customListItem.getAttribute('id')
+                    let checkListLen = checkListNav.length
+                    
+                    if(checkListLen > 0 && (checkListId !== '')) {
+                        if(checkListNav[checkListLen - 1] === ':bind') {
+                            checkListNav.pop();
+
+                            if(arguments.length > 0) {
+                                if(checkListNav[index].trim() === '') return undefined;
+                                return document.getElementById(checkListNav[index]);
+                            }
+
+                            checkListNav = checkListNav.map((value) => {
+                                if(value.trim() === '') return undefined;
+                                return document.getElementById(value);
+                            })
+                            return checkListNav;
+                        }
+                    }
+                }
+                
+                return false;
+
+            }
             
 
         }
