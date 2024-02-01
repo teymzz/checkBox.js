@@ -1629,46 +1629,66 @@ class CheckBox {
 
             exists: true,
             
-            //returns specified checklist item
-            item: () => customListItem,
+            /**
+             * Returns  main checklist item
+             * @returns object
+             */
+            frame: () => customListItem,
             
-            //returns checklist sections 
-            sections: (index) => {
-              
-                if(index && parseInt(index)){
-                    if(index < 1){
-                        index = 0;
-                    }else{
+            /**
+             * Returns the grouped sections (identified with data-role="checkbox") within a checkbox list
+             * @param {integer} index optional box index : runs from 1 above
+             * @returns {object} checklist sections 
+             */
+            sections: function(index) {
+
+                let sects = {}, sectionList;
+                
+                sectionList = customListItem.querySelectorAll('[data-role="checkbox"]');
+
+                if(arguments.length > 0){
+                    // resolve specified argument 
+                    index = parseInt(index);
+                    if(!Number.isNaN(index)){
                         index = index - 1;
                     }
+                    return sectionList[index];
+                } else {
+                    sectionList.forEach((section,index)=>{
+                        sects[index+1] = section;
+                    });
+                    return sects;
                 }
-                
-                let boxes = customListItem.querySelectorAll('[data-role="checkbox"]');
-              
-                if(index) return boxes[index];
-              
-                return boxes;
+
             },
 
-            // index of supplied, should runs from a minimum of 1 above
-            boxes: (index) => {                
-                if(index && parseInt(index)){
-                    if(index < 1){
-                        index = 0;
-                    }else{
+            /**
+             * Returns the custom checkboxes within a checkbox list
+             * @param {int} index optional box index runs from 1 above
+             * @returns object
+             */
+            boxes: function(index)  {     
+                if(arguments.length > 0){
+                    if(index && parseInt(index)){
                         index = index - 1;
-                    }
-                    return customBoxes[index]   
-                } 
-                return customBoxes;
+                        return customBoxes[index]   
+                    } 
+                    return undefined;
+                }           
+                let boxList = {};
+                
+                customBoxes.forEach((box, index) => {
+                    boxList[index+1] = box
+                })
+                return boxList;
             },
             
             /**
              * Get all custom boxes or specified custom box 
              **/
-            get: (number) => {
+            get: function(number) {
               if(arguments.length > 0) {
-                 if(parseInt(number)) {
+                 if(parseInt(number) && (number > 0)) {
                     let cbox = customBoxes[number-1];
                     let responder;
                     return responder = {
@@ -1725,15 +1745,19 @@ class CheckBox {
                       }
                     }
                  }
-                 return false;
+                 return undefined;
               } else{
                   return { 
-                    customBox: (index) => {
+                    customBox: function(index) {
                         if(arguments.length > 0){
                             return controller.get(index);
                         }else{
                             //return all custom boxes
-                            return customBoxes;
+                            let boxList = {};
+                            customBoxes.forEach((customBox, index) => {
+                                boxList[index + 1] = customBox
+                            })
+                            return boxList;
                         }
                     },
                   }
