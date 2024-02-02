@@ -93,7 +93,7 @@
   </video>
   
   
-  <div id="check" style="display:nne" data-bind="radi" data-role="checkbox-list" data-nav="prev||next|:bind">
+  <div id="check" style="display:nne" data-bind="radio" data-role="checkbox-list" data-nav="prev||next|:bind">
     <div data-role="checkbox">
       <div checkbox="" video="video.mp4"></div>
       <input type="checkbox">
@@ -104,7 +104,7 @@
     </div>
     <div data-role="checkbox">
       <div checkbox="" video="video.mp4"></div>
-      <input type="checkbox">
+      <input type="checkbox" data-switch="turnOff">
     </div>
   </div>
   
@@ -123,46 +123,74 @@
 </div>
 
 <script>
-    let checker;
-  
-  checker = new CheckBox(true);
+    let checkBase, checker, checkList, customBox;
 
-  checker = checker.check({
-    toggle : (box) => {
-    //   if(box.checked){
-    //     let boxId = box.listId + 1;
-    //     let checkList = checker.checkList('check');
-    //     let customBox = checkList.get(boxId)
-    //     customBox.disable();
-       
-    //     setTimeout(() => { 
-    //       customBox.enable()
-    //       customBox.switch('off');
-    //     }, 5000)
-        
-    //     let newvideo = customBox.customBox().getAttribute('video')
+    //window.onload = function() {
 
-    //     /*
-        
-    //         let checkList = checker.checkList('check');
+        checkBase = new CheckBox(true);
 
-    //         checkList.
+        checker = checkBase.check({
+            toggle : (box) => {
+                console.log('clicked!', checkList)
+                console.log()
+                if(box.checked){ 
+                    
+                    let boxId = box.listId + 1;
+                    customBox = checkList.get(boxId)
+                    // customBox.disable();
+                
+                //     // setTimeout(() => { 
+                //     //   customBox.enable()
+                //     //   customBox.switch('off');
+                //     // }, 5000)
+                    
+                // //     let newvideo = customBox.customBox().getAttribute('video')
 
-        
-    //     */
-    //   }
-    }
-    
-  })
+                // //     /*
+                    
+                // //         let checkList = checker.checkList('check');
 
-  
+                // //         checkList.
 
-  let checkList = checker.checkList('check');
+                    
+                // //     */
+                }
+            }
+            
+        })
 
-  let checkBox1 = checkList.get(1);
-  let sections = checkList.sections();
+        checkList = checker.checkList('check')
 
-  console.log(checkList.get().customBox())
+        function turnOff(mainChecker){
+            mainChecker.click();
+        }
+    //}
+
+
+//   function switchOff(mainChecker){
+//         console.log(mainChecker)
+//         // mainChecker.click();
+//         // customBox.enable()
+//         // customBox.switch('off');
+//         // console.log('hi')
+//         // setTimeout(() => { 
+//         //     //if(customBox){
+//         //     //}
+//         // }, 5000)
+//   }
+//   let checkList, checkBox1, checkBox2, sections, boxes;
+
+//   checkList = checker.checkList('check');
+
+//   checkBox1 = checkList.get(1);
+//   checkBox2 = checkList.get(2);
+
+//   sections = checkList.sections();
+//   boxes = checkList.boxes();
+
+//   console.log(checkList)
+//   console.log(checkList.get(1))
+//   console.log(checkList.boxes(1))
 
   /*
    checkList.get().customBox()  = checkList.boxes()

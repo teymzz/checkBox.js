@@ -829,7 +829,16 @@ class CheckBox {
                               
                                 if(at(mainChecker,'data-bind').not('free')){
                                     
-                                    if(!hasChecked(mainChecker)) mainChecker.click();
+                                    if(!hasChecked(mainChecker)) {
+                                        mainChecker.click();
+                                    } else{
+                                        if(at(mainChecker).hasAttr('data-switch')){
+                                            let switcher = at(mainChecker, 'data-switch').value();
+                                            if(typeof window[switcher] === 'function'){
+                                                window[switcher](mainChecker);
+                                            }
+                                        }
+                                    }
                                     
                                     //remove index from selected boxes
                                     exToggles = {...customLists};
@@ -1827,11 +1836,11 @@ class CheckBox {
               }
             },
 
-            switch: (number, type = 'both') => {
+            switch: (number, status = 'both') => {
                 let current = currentCheckbox();
                 let choice = customBoxes[number-1];
 
-                if(!(['on','off','both'].includes(type))){
+                if(!(['on','off','both'].includes(status))){
                     console.error('invalid type supplied for switch');
                     return false; 
                 }
@@ -1844,15 +1853,31 @@ class CheckBox {
                     })
                 }
 
-                if(type === 'on'){
+                if(status === 'on'){
 
                     if(choice && (choice.getAttribute('checked') !== 'checked')) {
                         choice.click();
                     }
 
-                } else if (type === 'off') {
+                } else if (status === 'off') {
                     if(choice && (choice.getAttribute('checked') === 'checked')) {
                         choice.click();
+                        if(choice && (choice.getAttribute('checked') === 'checked')){ 
+                            //fix radio buttons ... 
+                            // remove data-bind = "radio", click item, return data-bind = radio
+                            let checkList = choice.closest('[data-bind="radio"]');
+                            let caseBox = choice.nextElementSibling;
+                            choice.setAttribute('ckbx-off', true);
+                            choice.click();
+                            choice.removeAttribute('ckbx-off');
+                            // if(checkList) { alert()
+                            //     checkList.setAttribute('[data-bind = ""]');
+                            //     choice.click();
+                            //     checkList.setAttribute('[data-bind = "radio"]');
+                            // } else {
+                            //     //console.error('checkList ')
+                            // }
+                        }
                     }
                 } else {
 
