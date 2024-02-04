@@ -15,8 +15,11 @@
               border: none;
               padding: 10px;
             }
-            button:active{
+            button:not([disabled]):active{
               background-color: silver;
+            }
+            button[disabled]{
+              cursor: not-allowed;
             }
             .checkbox-wrapper {
                 display: inline-flex;
@@ -104,7 +107,7 @@
     </div>
     <div data-role="checkbox">
       <div checkbox="" video="video.mp4"></div>
-      <input type="checkbox" data-checked="off" data-unchecked="">
+      <input type="checkbox" data-checked="turnOff" data-unchecked="">
     </div>
   </div>
   
@@ -125,46 +128,39 @@
 <script>
     let checkBase, checker, checkList, customBox;
 
-    //window.onload = function() {
+    checkBase = new CheckBox(true);
 
-        checkBase = new CheckBox(true);
-
-        checker = checkBase.check({
-            toggle : (box) => {
-                console.log('clicked!', checkList)
-                console.log()
+    checker = checkBase.check({
+        init: (box) =>{
+            setTimeout(() => {
+                checkList = checker.checkList('check')
+                // console.log(checkList, box, "\n\n")
+                //     let boxId = box.listId + 1;
+                //     customBox = checkList.get(boxId)
+                //     customBox.disable();
                 if(box.checked){ 
                     
                     let boxId = box.listId + 1;
                     customBox = checkList.get(boxId)
-                    customBox.disable();
+                    // customBox.disable();
                 
-                    setTimeout(() => { 
-                     // customBox.enable()
-                     customBox.switch('off');
-                    }, 5000)
-                 
-                    //let newvideo = customBox.customBox().getAttribute('video')
-
-                // //     /*
+                    // setTimeout(() => { 
+                    // customBox.enable()
+                    // customBox.switch('off');
+                    // }, 5000)
                     
-                // //         let checkList = checker.checkList('check');
-
-                // //         checkList.
-
-                    
-                // //     */
                 }
-            }
-            
-        })
-
-        checkList = checker.checkList('check')
-
-        function turnOff(mainChecker){
-            mainChecker.click();
+            })
+        },
+        toggle : function(box) {
+            box.init(box);
         }
-    //}
+        
+    })
+
+    function turnOff(){
+        console.log('off')
+    }
 
 
 //   function switchOff(mainChecker){

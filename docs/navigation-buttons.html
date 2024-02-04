@@ -95,7 +95,7 @@
             <div class="">
                 In the sample above, the <code class="bc c-note">data-nav</code> attribute defines two unique ids <code class="bc c-var">"left"</code>  
                 and <code class="bc c-var">"right"</code> separated by pipe. 
-                Each of these id will respectively select the element whose id attribute is related. Hence the two buttons above will be 
+                Each of these id will respectively select the element whose id attribute's value is relative. Hence the two buttons above will be 
                 selected. The left button will automatically navigate the custom checkbox to the left while the right checkbox will navigate 
                 the custom checkbox to the right when it is clicked upon. This makes it easier to navigate the checkbox without adding any complex 
                 javascript code. We can similarly add the interval argument for both the left and right buttons by supplying a third option 
@@ -170,7 +170,7 @@
   
     <span class="comment">&lt;!--first checkbox section--&gt;</span>
     <span class="tag">&lt;div <span>data-role="<span>checkbox</span>"</span>&gt;</span>
-      <span class="tag">&lt;div <span>checkbox data-color="<span>@#615c988d|lime</span>" data-func="<span>update</span>"</span>&gt;</span>
+      <span class="tag">&lt;div <span>checkbox data-color="<span>@#615c988d|lime</span>"</span>&gt;</span>
         <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
         <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
       <span class="tag">&lt;/div&gt;</span>
@@ -179,7 +179,7 @@
     
     <span class="comment">&lt;!--second checkbox section--&gt;</span>
     <span class="tag">&lt;div <span>data-role="<span>checkbox</span>"</span>&gt;</span>
-      <span class="tag">&lt;div <span>checkbox data-color="<span>@#615c988d|lime</span>" data-func="<span>update</span>"</span>&gt;</span>
+      <span class="tag">&lt;div <span>checkbox data-color="<span>@#615c988d|lime</span>"</span>&gt;</span>
         <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
         <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
       <span class="tag">&lt;/div&gt;</span>
@@ -188,7 +188,7 @@
     
     <span class="comment">&lt;!--third checkbox section--&gt;</span>
     <span class="tag">&lt;div <span>data-role="<span>checkbox</span>"</span>&gt;</span>
-      <span class="tag">&lt;div <span>checkbox data-color="<span>@#615c988d|lime</span>" data-func="<span>update</span>"</span>&gt;</span>
+      <span class="tag">&lt;div <span>checkbox data-color="<span>@#615c988d|lime</span>"</span>&gt;</span>
         <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
         <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
       <span class="tag">&lt;/div&gt;</span>
@@ -202,7 +202,6 @@
     <span class="tag">&lt;button <span>id="<span>prev</span>"</span>&gt;</span>&amp;#10094;<span class="tag">&lt;/button&gt;</span>
     <span class="tag">&lt;button <span>id="<span>stop</span>"</span>&gt;</span>&amp;#9724;<span class="tag">&lt;/button&gt;</span>
     <span class="tag">&lt;button <span>id="<span>next</span>"</span>&gt;</span>&amp;#10095;<span class="tag">&lt;/button&gt;</span>
-    <span class="tag">&lt;input <span>id="<span>switch</span>" type="<span>number</span>" min="<span>1</span>" max="<span>3</span>" placeholder="<span>switch to</span>"</span>&gt;</span>
   <span class="tag">&lt;/div&gt;</span>  
   </pre>
   <pre class="js"><!-- start js -->
@@ -235,13 +234,6 @@
       <span class="var">checkList1</span>.<span class="key">stop()</span> <span class="comment">/*stop any previous animation*/</span> 
       <span class="var">checkList1</span>.<span class="key">switch(<span class="val">this.value</span>)</span> 
   }<span class="func">)</span>
-  
-  <span class="var">function</span> <span class="func">update(</span><span class="arg">e</span><span class="func">)</span> <span class="braces">{</span>
-    <span class="var">if</span><span class="func">(</span><span class="arg">e</span>.<span class="">checked</span><span class="func">)</span></span> <span class="braces">{</span>
-        <span class="comment">/*update the input field*/</span>
-        <span class="var">switchField</span>.<span class="key">value</span> = <span class="arg">e</span>.<span class="val">listId</span> + 1</span>;
-      <span class="braces">}</span>
-  <span class="braces">}</span>
   </pre>  <!-- end js -->
               </div>
   
@@ -255,7 +247,7 @@
                 
                 <div class="checkbox-wrapper">
                      <!--parent checkbox (group)-->
-                  <div id="checklist-1" data-role="checkbox-list" data-bind="radio" data-nav="prev|next|stop|hover">
+                  <div id="checklist-1" data-role="checkbox-list" data-bind="radio" data-nav="prev|next|stop|click-500">
                   
                     <!--first checkbox section-->
                     <div data-role="checkbox">
@@ -315,6 +307,6 @@
         
         <script src="../src/js/docs.js"></script>
         <script src="../src/js/navscript.js"></script>
-X xa
+
     </body>
-</html>o
+</html>

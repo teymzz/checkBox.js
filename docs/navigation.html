@@ -173,14 +173,62 @@
                         <code class="bc c-var">"both"</code> will click on the specified custom box irrespective of the checkbox state while the 
                         <code class="bc c-var">"on"</code> will click on the specified custom box only when it is not checked thereby, keeping it checked. However, the
                         <code class="bc c-var">"off"</code> will click on the specified custom box only when it is checked, thereby keeping it unchecked. It is 
-                        important to note that the <code class="bc c-var">"off"</code> method will not work for radio effects.
+                        important to note that the <code class="bc c-var">"off"</code> method will not work for disabled checkboxes.
+                      </span>
+                    </li>
+                    <li>
+                      <code class="bc c-note">disable(<i class="c-var">index</i>)</code>
+                      <span>
+                        This is used to disable a particular checkbox within a checklist using the positional index of the custom checkbox. 
+                        The least value of the <code class="bc c-note"><i class="c-var">index</i></code> starts from <code class="bc c-var">"1"</code> and above. 
+                      </span>
+                    </li>
+                    <li>
+                      <code class="bc c-note">enable(<i class="c-var">index</i>)</code>
+                      <span>
+                        This is used to enable a particularly disabled checkbox within a checklist using the positional index of the custom checkbox. 
+                        The least value of the <code class="bc c-note"><i class="c-var">index</i></code> starts from <code class="bc c-var">"1"</code> and above. 
+                      </span>
+                    </li>
+                    <li>
+                      <code class="bc c-note">item</code>
+                      <span>
+                        This method returns the specific checklist item that is targeted with the <code class="bc c-bool">checkList()</code> method.
+                      </span>
+                    </li>
+                    <li>
+                      <code class="bc c-note">sections(<i class="c-var">index</i>)</code>
+                      <span>
+                        This method returns all direct sections of a checklist identified with <code class="bc c-note">data-role=<i class="c-var">"checkbox"</i></code>. 
+                        The optional <code class="bc"><i class="c-var">index</i></code> if supplied, returns a specific child that occupies the relative positional index supplied. 
+                      </span>
+                    </li>
+                    <li>
+                      <code class="bc c-note">boxes(<i class="c-var">index</i>)</code>
+                      <span>
+                        This method returns all custom checkboxes of a checklist. The optional <code class="bc"><i class="c-var">index</i></code> if supplied, returns a specific child 
+                        that occupies the relative positional index supplied. 
+                      </span>
+                    </li>
+                    <li>
+                      <code class="bc c-note">nav(<i class="c-var">index</i>)</code>
+                      <span>
+                        This method returns all navigation buttons retrieved from the <code class="bc">data-nav</code> attribute. If the <code class="bc"><i class="c-var">index</i></code> is supplied, the 
+                        specific navigation button that occupies the specified positional index is returned.
+                      </span>
+                    </li>
+                    <li>
+                      <code class="bc c-note">get(<i class="c-var">index</i>)</code>
+                      <span>
+                        This method is used to target specific checkboxes and the controller methods for that specific checkbox is returned.
                       </span>
                     </li>
                 </ul>
             </div>
 
             <div class="">
-              An example usage is provided below for better understanding.
+              The example below uses the <code class="bc c-note">prev()</code>, <code class="bc c-note">next()</code>, 
+              <code class="bc c-note">stop()</code> and <code class="bc c-note">switch()</code> checklist navigation controller methods.
             </div> <br>
 
             <div class="code">

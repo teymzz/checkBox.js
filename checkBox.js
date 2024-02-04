@@ -1311,13 +1311,17 @@ class CheckBox {
                     if(color2 && marker2 && mColor) marker2.style.color = color2;
                 }
                 
-                let grandParent, checkedBoxes;
+                let grandParent, checkedBoxes, listId;
                 
                 // get checkbox-list and selections
                 if(customParent){
                   grandParent = customParent.closest('[data-role="checkbox-list"]');
                   if(grandParent) {
                     checkedBoxes = grandParent.querySelectorAll('input:checked').length
+                    let gpId = grandParent.getAttribute('id');
+                    if(gpId && (gpId.trim() !== '')){
+                        listId = Array.from(grandParent.children).indexOf(customParent);
+                    }
                   }
                 }
                 
@@ -1331,7 +1335,8 @@ class CheckBox {
                   value: (input.value),
                   checkList: grandParent, //checkbox list
                   parent: customParent, //data role checkbox
-                  checkedBoxes: checkedBoxes,                  
+                  checkedBoxes: checkedBoxes,       
+                  listId: listId           
                 }
 
                 if(typeof init === 'function'){
