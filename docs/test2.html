@@ -104,7 +104,7 @@
     </div>
     <div data-role="checkbox">
       <div checkbox="" video="video.mp4"></div>
-      <input type="checkbox" data-switch="turnOff">
+      <input type="checkbox" data-checked="off" data-unchecked="">
     </div>
   </div>
   
@@ -137,14 +137,14 @@
                     
                     let boxId = box.listId + 1;
                     customBox = checkList.get(boxId)
-                    // customBox.disable();
+                    customBox.disable();
                 
-                //     // setTimeout(() => { 
-                //     //   customBox.enable()
-                //     //   customBox.switch('off');
-                //     // }, 5000)
-                    
-                // //     let newvideo = customBox.customBox().getAttribute('video')
+                    setTimeout(() => { 
+                     // customBox.enable()
+                     customBox.switch('off');
+                    }, 5000)
+                 
+                    //let newvideo = customBox.customBox().getAttribute('video')
 
                 // //     /*
                     
