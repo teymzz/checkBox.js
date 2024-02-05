@@ -483,7 +483,7 @@ class CheckBox {
                 checker.value = input.value;
                 checker.label = customBox.getAttribute('data-label');
                 checker.color = customBox.getAttribute('data-color');
-                checker.listId = 0;
+                checker.listId;
                 checker.checkedBoxes = 0;
 
 
@@ -501,8 +501,11 @@ class CheckBox {
                     checker.parent = customParent;
                     let grandParent = customParent.parentNode.closest('[data-role="checkbox-list"]');
                     if(grandParent){
-                        checker.parentSuper = grandParent;
+                        checker.checkList = grandParent;
                         checker.listId = Array.from(grandParent.children).indexOf(customParent); 
+                        if(!isNaN(parseInt(checker.listId))){
+                            checker.listId += 1;
+                        }
                         checker.checkedBoxes = grandParent.querySelectorAll('input:checked').length
                     }
                 }
@@ -863,8 +866,6 @@ class CheckBox {
                     })
                     
                     if(isSlide) {
-                        //let autoSwitch = checkList; //checkbox-list
-                        //let autoCheckers = checkList.querySelectorAll('[data-role="checkbox"');
                         let timeout;
                         
                         function autoSwitch() {
@@ -1321,6 +1322,9 @@ class CheckBox {
                     let gpId = grandParent.getAttribute('id');
                     if(gpId && (gpId.trim() !== '')){
                         listId = Array.from(grandParent.children).indexOf(customParent);
+                        if(!isNaN(parseInt(listId))){
+                            listId += 1;
+                        }
                     }
                   }
                 }
@@ -1387,7 +1391,6 @@ class CheckBox {
 
                             max = parseInt(at(grandParent, 'data-max').value()); 
                             if((checkedBoxes === max) && !at(customBox,'checked').is('checked')) {
-                                  //alert()
                                 if(typeof window[callback] === 'function') {
                                     let props = {};
                                     props.checked = grandParent.querySelectorAll(checkbox.target+'[checked="checked"]');
@@ -1647,7 +1650,7 @@ class CheckBox {
              * Returns  main checklist item
              * @returns object
              */
-            frame: () => customListItem,
+            frame: customListItem,
             
             /**
              * Returns the grouped sections (identified with data-role="checkbox") within a checkbox list

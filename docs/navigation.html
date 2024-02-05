@@ -15,7 +15,8 @@
             .list-free > li{
               margin-bottom: 15px;
               background-color: #3c334e;
-              padding: 4px;
+              padding: 20px;
+              border-radius: 5px;
             }
             .controls {
               display : inline-flex;
@@ -58,6 +59,41 @@
               height: 20px; 
               border-radius: inherit;    
               background-color: currentColor;
+            }
+
+            table{
+              width: 100%; 
+              text-align: left;
+            }
+            table tr > :where(th, td){
+              background-color: #2f2742;
+              padding:6px;
+            }
+            table tr > th:nth-child(1){
+              width: fit-content;
+            }
+            table tr > th:nth-child(1){
+              border-top-left-radius: 10px;
+            }
+
+            .controls.specs{
+              background-color: #e9e9ed;
+            }
+            .controls.specs input{
+              outline:none;
+              background-color: white;
+            }
+            .controls.specs button:hover{
+              background-color: #c4c4c5;
+            }
+            .controls.specs button:nth-child(2){
+              border-right: solid 1px #c4c4c5;
+              border-left: solid 1px #c4c4c5;
+            }
+
+            .controls.specs > *{
+              background-color: transparent;
+              border:none;
             }
         </style>     
     </head>
@@ -128,97 +164,242 @@
 
             <div class="">
                 The navigation controller methods available are the 
-                <code class="bc c-note">prev()</code>,
-                <code class="bc c-note">next()</code>,
-                <code class="bc c-note">switch()</code> and
-                <code class="bc c-note">stop()</code> methods. These methods are discussed below:
+                <code class="bcr c-note">prev()</code>,
+                <code class="bcr c-note">next()</code>,
+                <code class="bcr c-note">switch()</code>,
+                <code class="bcr c-note">stop()</code> ,
+                <code class="bcr c-note">disable()</code> and
+                <code class="bcr c-note">enable()</code>,
+                methods. Other methods include 
+                <code class="bcr c-note">frame</code>,
+                <code class="bcr c-note">sections()</code>,
+                <code class="bcr c-note">boxes()</code>,
+                <code class="bcr c-note">nav()</code> and
+                <code class="bcr c-note">get()</code> methods.
+                
+                These methods are discussed below:
             </div> <br>
 
-            <div class="list-free">
+            <table>
+              <thead>
+                <tr>
+                  <th style="white-space: nowrap;"><span class="c-var">checkList</span> methods</th>
+                  <th>description</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr>
+                  <td>
+                    <code class="bcr c-note">prev(<i class="c-var">interval</i>)</code> 
+                  </td>
+                  <td>
+                    This method is used to click on the checkbox that comes before the currently selected checkbox element. 
+                    If there are no currently selected checkbox in a checkbox list, then it starts from the beginning of the 
+                    custom checkbox list. The <code class="bcr c-var"><i>interval</i></code> if supplied, determines the interval in milliseconds 
+                    that the <code class="bcr c-note">prev()</code> method should be called. For example a <code class="bcr c-note"><i>prev(<span class="c-bool">2000</span>)</i></code> 
+                    will run every 2 seconds.
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="bcr c-note">next(<i class="c-var">interval</i>)</code>
+                  </td>
+                  <td>
+                    This method is used to click on the checkbox that comes after the currently selected checkbox element.
+                    If there are no currently selected checkbox in a checkbox list, then it starts from the beginning of the 
+                    custom checkbox list. Similarly to the <code class="bcr c-note">prev()</code> method, it can be called multiple times. 
+                    Hence, it also accepts a time interval argument in milliseconds.
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="bcr c-note">stop()</code>
+                  </td>
+                  <td>
+                    This method is used to stop an iteration (or interval) effect that is initiated either by the <code class="bcr c-note">prev()</code> 
+                    or <code class="bcr c-note">next()</code> methods.
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                      <code class="bcr c-note">switch(<i class="c-var">index</i>, <i class="c-var">option</i>)</code>
+                  </td>
+                  <td>
+                    This is used to select a particular custom checkbox section in a checkbox list using the positional index of that checkbox. The minimum positional index 
+                    is <code class="bcr c-note"><span class="c-bool">"1"</></code> while the maximum index depends on the total number of custom checkbox sections 
+                    in the specified checklist. For example, <code class="bcr c-note">switch(<i class="c-bool">1</i>)</code> will click on the first custom checkbox in a checkbox list. The 
+                    <code class="bcr c-var"><i>option</i></code> argument defines the activity of the <code class="bcr c-note">switch()</code> method. The available options are 
+                    <code class="bcr c-var">"both"</code>, <code class="bcr c-var">"on"</code> and  <code class="bcr c-var">"off"</code> options. The 
+                    <code class="bcr c-var">"both"</code> option allows the specified custom box to be toggled upon while the 
+                    <code class="bcr c-var">"on"</code> ensures that a specified custom checkbox is checked if not already checked. Similarly, the
+                    <code class="bcr c-var">"off"</code> option will only click on the specified custom box when it is checked so as to ensure that it is kept unchecked. It is 
+                    important to note that the <code class="bcr c-note">switch()</code> method will not work for disabled checkboxes.
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="bcr c-note">disable(<i class="c-var">index</i>)</code>
+                  </td>
+                  <td>
+                    This is used to disable a particular checkbox within a checklist using the positional index of the custom checkbox. 
+                    The least value of the <code class="bcr c-note"><i class="c-var">index</i></code> starts from <code class="bcr c-var">"1"</code> and above. 
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="bcr c-note">enable(<i class="c-var">index</i>)</code>
+                  </td>
+                  <td>
+                    This is used to enable a particularly disabled checkbox within a checklist using the positional index of the custom checkbox. 
+                    The least value of the <code class="bcr c-note"><i class="c-var">index</i></code> starts from <code class="bcr c-var">"1"</code> and above. 
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="bcr c-note">frame</code>
+                  </td>
+                  <td>
+                    This method returns the object of the specific checklist item that is targeted with the <code class="bcr c-bool">checkList()</code> method.
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="bcr c-note">sections(<i class="c-var">index</i>)</code>
+                  </td>
+                  <td>
+                    This method returns all direct sections of a checklist identified with <code class="bcr c-note">data-role=<i class="c-var">"checkbox"</i></code> attribute. 
+                    The optional <code class="bcr"><i class="c-var">index</i></code> if supplied, returns a specific child that occupies the relative positional index supplied. 
+                    The lowest acceptable index is <code class="bcr c-bool">"1"</code> which points to the first checkbox section. If no index is supplied, then all sections within 
+                    a checkList is returned.
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="bcr c-note">boxes(<i class="c-var">index</i>)</code>
+                  </td>
+                  <td>
+                    This method returns all custom checkboxes of within a checklist. The optional <code class="bcr"><i class="c-var">index</i></code> if supplied, returns a specific child 
+                    that occupies the relative positional index supplied. 
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="bcr c-note">nav(<i class="c-var">index</i>)</code>
+                  </td>
+                  <td>
+                    This method returns all navigation buttons retrieved from the <code class="bc">data-nav</code> attribute. If the <code class="bcr"><i class="c-var">index</i></code> is supplied, the 
+                    specific navigation button that occupies the specified positional index is returned.
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <code class="bcr c-note">get(<i class="c-var">index</i>)</code>
+                  </td>
+                  <td>
+                    This method is used to target a specific custom checkbox in a checkList while returning the controller methods 
+                    for that specified custom checkbox.
+                  </td>
+                </tr>
+
+              </tbody>
+            </table> <br>
+
+            <div class="list-free" hidden>
                 <ul class="list-free">
                     <li>
-                      <code class="bc c-note">prev(<i class="c-var">interval</i>)</code> 
+                      <code class="bcr c-note">prev(<i class="c-var">interval</i>)</code> 
                       <span>
                         This method is used to click on the checkbox that comes before the currently selected checkbox element. 
                         If there are no currently selected checkbox in a checkbox list, then it starts from the beginning of the 
                         custom checkbox list. The <code class="c-var bc"><i>interval</i></code> if supplied, determines the interval in milliseconds 
-                        that the <code class="bc c-note">prev()</code> method should be called. For example a <code class="bc c-note"><i>prev(<span class="c-bool">1000</span>)</i></code> 
+                        that the <code class="bcr c-note">prev()</code> method should be called. For example a <code class="bcr c-note"><i>prev(<span class="c-bool">1000</span>)</i></code> 
                         will run every second.
                       </span>
                     </li>
                     <li>
-                      <code class="bc c-note">next(<i class="c-var">interval</i>)</code>
+                      <code class="bcr c-note">next(<i class="c-var">interval</i>)</code>
                       <span>
                         This method is used to click on the checkbox that comes after the currently selected checkbox element.
                         If there are no currently selected checkbox in a checkbox list, then it starts from the beginning of the 
-                        custom checkbox list. Similarly to the <code class="bc c-note">prev()</code> method, it can be called multiple times. 
+                        custom checkbox list. Similarly to the <code class="bcr c-note">prev()</code> method, it can be called multiple times. 
                         Hence, it also accepts a time interval argument in milliseconds.
                       </span>
                     </li>
                     <li>
-                      <code class="bc c-note">stop()</code>
+                      <code class="bcr c-note">stop()</code>
                       <span>
-                        This method is used to stop an iteration effect that is initiated either by the <code class="bc c-note">prev()</code> 
-                        or <code class="bc c-note">next()</code> methods. Unlike other methods, it does not take any argument.
+                        This method is used to stop an iteration effect that is initiated either by the <code class="bcr c-note">prev()</code> 
+                        or <code class="bcr c-note">next()</code> methods. Unlike other methods, it does not take any argument.
                       </span>
                     </li>
                     <li>
-                      <code class="bc c-note">switch(<i class="c-var">index</i>, <i class="c-var">options</i>)</code>
+                      <code class="bcr c-note">switch(<i class="c-var">index</i>, <i class="c-var">options</i>)</code>
                       <span>
                         This is used to select a particular custom checkbox section in a checkbox list using the positional index of that checkbox. The positional index 
                         runs from a minimum of range of one(1) to a maximum range that depends on the total number of available custom checkbox sections in the specified checkbox list. 
-                        For example, <code class="bc c-note">switch(<i class="c-bool">1</i>)</code> will click on the first custom checkbox in a checkbox list. The 
-                        <code class="c-var bc"><i>options</i></code> however defines the activity of the <code class="bc c-note">switch()</code> method. These options are 
-                        <code class="bc c-var">"both"</code>, <code class="bc c-var">"on"</code> and  <code class="bc c-var">"off"</code> options. The 
-                        <code class="bc c-var">"both"</code> will click on the specified custom box irrespective of the checkbox state while the 
-                        <code class="bc c-var">"on"</code> will click on the specified custom box only when it is not checked thereby, keeping it checked. However, the
-                        <code class="bc c-var">"off"</code> will click on the specified custom box only when it is checked, thereby keeping it unchecked. It is 
-                        important to note that the <code class="bc c-var">"off"</code> method will not work for disabled checkboxes.
+                        For example, <code class="bcr c-note">switch(<i class="c-bool">1</i>)</code> will click on the first custom checkbox in a checkbox list. The 
+                        <code class="c-var bc"><i>options</i></code> however defines the activity of the <code class="bcr c-note">switch()</code> method. These options are 
+                        <code class="bcr c-var">"both"</code>, <code class="bcr c-var">"on"</code> and  <code class="bcr c-var">"off"</code> options. The 
+                        <code class="bcr c-var">"both"</code> will click on the specified custom box irrespective of the checkbox state while the 
+                        <code class="bcr c-var">"on"</code> will click on the specified custom box only when it is not checked thereby, keeping it checked. However, the
+                        <code class="bcr c-var">"off"</code> will click on the specified custom box only when it is checked, thereby keeping it unchecked. It is 
+                        important to note that the <code class="bcr c-var">"off"</code> method will not work for disabled checkboxes.
                       </span>
                     </li>
                     <li>
-                      <code class="bc c-note">disable(<i class="c-var">index</i>)</code>
+                      <code class="bcr c-note">disable(<i class="c-var">index</i>)</code>
                       <span>
                         This is used to disable a particular checkbox within a checklist using the positional index of the custom checkbox. 
-                        The least value of the <code class="bc c-note"><i class="c-var">index</i></code> starts from <code class="bc c-var">"1"</code> and above. 
+                        The least value of the <code class="bcr c-note"><i class="c-var">index</i></code> starts from <code class="bcr c-var">"1"</code> and above. 
                       </span>
                     </li>
                     <li>
-                      <code class="bc c-note">enable(<i class="c-var">index</i>)</code>
+                      <code class="bcr c-note">enable(<i class="c-var">index</i>)</code>
                       <span>
                         This is used to enable a particularly disabled checkbox within a checklist using the positional index of the custom checkbox. 
-                        The least value of the <code class="bc c-note"><i class="c-var">index</i></code> starts from <code class="bc c-var">"1"</code> and above. 
+                        The least value of the <code class="bcr c-note"><i class="c-var">index</i></code> starts from <code class="bcr c-var">"1"</code> and above. 
                       </span>
                     </li>
                     <li>
-                      <code class="bc c-note">item</code>
+                      <code class="bcr c-note">frame</code>
                       <span>
-                        This method returns the specific checklist item that is targeted with the <code class="bc c-bool">checkList()</code> method.
+                        This method returns the object of the specific checklist item that is targeted with the <code class="bcr c-bool">checkList()</code> method.
                       </span>
                     </li>
                     <li>
-                      <code class="bc c-note">sections(<i class="c-var">index</i>)</code>
+                      <code class="bcr c-note">sections(<i class="c-var">index</i>)</code>
                       <span>
-                        This method returns all direct sections of a checklist identified with <code class="bc c-note">data-role=<i class="c-var">"checkbox"</i></code>. 
+                        This method returns all direct sections of a checklist identified with <code class="bcr c-note">data-role=<i class="c-var">"checkbox"</i></code>. 
                         The optional <code class="bc"><i class="c-var">index</i></code> if supplied, returns a specific child that occupies the relative positional index supplied. 
                       </span>
                     </li>
                     <li>
-                      <code class="bc c-note">boxes(<i class="c-var">index</i>)</code>
+                      <code class="bcr c-note">boxes(<i class="c-var">index</i>)</code>
                       <span>
                         This method returns all custom checkboxes of a checklist. The optional <code class="bc"><i class="c-var">index</i></code> if supplied, returns a specific child 
                         that occupies the relative positional index supplied. 
                       </span>
                     </li>
                     <li>
-                      <code class="bc c-note">nav(<i class="c-var">index</i>)</code>
+                      <code class="bcr c-note">nav(<i class="c-var">index</i>)</code>
                       <span>
                         This method returns all navigation buttons retrieved from the <code class="bc">data-nav</code> attribute. If the <code class="bc"><i class="c-var">index</i></code> is supplied, the 
                         specific navigation button that occupies the specified positional index is returned.
                       </span>
                     </li>
                     <li>
-                      <code class="bc c-note">get(<i class="c-var">index</i>)</code>
+                      <code class="bcr c-note">get(<i class="c-var">index</i>)</code>
                       <span>
                         This method is used to target specific checkboxes and the controller methods for that specific checkbox is returned.
                       </span>
@@ -227,8 +408,8 @@
             </div>
 
             <div class="">
-              The example below uses the <code class="bc c-note">prev()</code>, <code class="bc c-note">next()</code>, 
-              <code class="bc c-note">stop()</code> and <code class="bc c-note">switch()</code> checklist navigation controller methods.
+              The example below uses the <code class="bcr c-note">prev()</code>, <code class="bcr c-note">next()</code>, 
+              <code class="bcr c-note">stop()</code> and <code class="bcr c-note">switch()</code> checklist navigation controller methods.
             </div> <br>
 
             <div class="code">
@@ -316,7 +497,7 @@
 <span class="var">function</span> <span class="func">update(</span><span class="arg">e</span><span class="func">)</span> <span class="braces">{</span>
   <span class="var">if</span><span class="func">(</span><span class="arg">e</span>.<span class="">checked</span><span class="func">)</span></span> <span class="braces">{</span>
       <span class="comment">/*update the input field*/</span>
-      <span class="var">switchField</span>.<span class="key">value</span> = <span class="arg">e</span>.<span class="val">listId</span> + 1</span>;
+      <span class="var">switchField</span>.<span class="key">value</span> = <span class="arg">e</span>.<span class="val">listId</span></span>;
     <span class="braces">}</span>
 <span class="braces">}</span>
 </pre>  <!-- end js -->
@@ -381,12 +562,154 @@
 
             <div>
                 From the sample above, each controller will affect the response of the custom checkboxes in the checklist. It is important to note that the 
-                response of any checklist is dependent upon the value of the <code class="bc c-note">data-bind</code> attribute. For example the <code class="bc c-note">data-bind</code> 
-                attribute's value set on the checklist html structure above is <code class="bc c-var">"radio"</code>.
+                response of any checklist is dependent upon the value of the <code class="bcr c-note">data-bind</code> attribute. For example the <code class="bcr c-note">data-bind</code> 
+                attribute's value set on the checklist html structure above is <code class="bcr c-var">"radio"</code>. Another sample below is one which uses the <code class="bcr c-bool">switch()</code> 
+                method to control the state of the checkbox.
             </div> <br>
+
+            
+            <div class="code">
+              <div class="flex">
+                <div class="code-x">
+                  <span class="code-btn active" rel="view"><i class="bi-window"></i></span>
+                  <span class="code-btn" rel="html">HTML</span>
+                  <span class="code-btn" rel="js">JS</span>
+                </div>
+                <div class="">
+                  <span class="copy-btn"><i class="bi-clipboard"></i></span>
+                </div>
+              </div>  
+<pre class="html">  <!-- start html -->
+<span class="tag">&lt;div <span>id="<span>checklist-1</span>" data-role="<span>checkbox-list</span>" data-bind="<span>radio</span>"</span>&gt;</span>
+
+  <span class="comment">&lt;!--first checkbox section--&gt;</span>
+  <span class="tag">&lt;div <span>data-role="<span>checkbox</span>"</span>&gt;</span>
+    <span class="tag">&lt;div <span>checkbox data-color="<span>@#615c988d|lime</span>" data-func="<span>update</span>"</span>&gt;</span>
+      <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
+      <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;input <span>type="<span>checkbox</span>"</span>&gt;</span>
+  <span class="tag">&lt;/div&gt;</span> 
+  
+  <span class="comment">&lt;!--second checkbox section--&gt;</span>
+  <span class="tag">&lt;div <span>data-role="<span>checkbox</span>"</span>&gt;</span>
+    <span class="tag">&lt;div <span>checkbox data-color="<span>@#615c988d|lime</span>" data-func="<span>update</span>"</span>&gt;</span>
+      <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
+      <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;input <span>type="<span>checkbox</span>"</span>&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+  
+  <span class="comment">&lt;!--third checkbox section--&gt;</span>
+  <span class="tag">&lt;div <span>data-role="<span>checkbox</span>"</span>&gt;</span>
+    <span class="tag">&lt;div <span>checkbox data-color="<span>@#615c988d|lime</span>" data-func="<span>update</span>"</span>&gt;</span>
+      <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
+      <span class="tag">&lt;div <span>marker</span>&gt;&lt;/div&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;input <span>type="<span>checkbox</span>"</span>&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+
+<span class="tag">&lt;/div&gt;</span>  
+
+<span class="comment">&lt;!-- add some control buttons --&gt;</span>  
+<span class="tag">&lt;div <span>class="<span>controls</span>"</span>&gt;</span>
+  <span class="tag">&lt;button <span>id="<span>on</span>" class="<span>switch-btn</span>"</span>&gt;</span>on<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;button <span>id="<span>off</span>" class="<span>switch-btn</span>"</span>&gt;</span>off<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;input <span>id="<span>switch</span>" type="<span>number</span>" min="<span>1</span>" max="<span>3</span>"</span>&gt;</span>
+<span class="tag">&lt;/div&gt;</span>  
+</pre>
+<pre class="js"><!-- start js -->
+<span class="var">let</span> checkbox = <span class="var">new</span> <span class="func">CheckBox(<span class="bool">true</span>)</span>;
+
+<span class="var">checkbox</span> = <span class="var">checkbox</span>.<span class="func">check(<span class="braces">{</span> <span class="key">flip</span>: <span class="val">true</span> <span class="braces">}</span>)</span>;
+
+<span class="var">let</span> switchBtns = <span class="key">document</span>.<span class="func">querySelectorAll(<span class="string">'.switch-btn'</span>)</span>;
+
+<span class="var">switchBtns</span>.<span class="func">forEach(</span> <span class="arg">switchBtn</span> => <span class="braces">{</span>
+  
+  <span class="var">let</span> parent = <span class="arg">switchBtn</span>.<span class="func">closest(<span class="string">'.controls'</span>)</span>;
+  <span class="var">let</span> checkList = <span class="arg">switchBtn</span>.<span class="func">closest(<span class="string">'[data-role="checkbox-list"]'</span>)</span>
+  <span class="var">let</span> checkListID = <span class="var">checkList</span>.<span class="func">getAttribute(<span class="string">'id'</span>)</span>
+
+  <span class="arg">switchBtn</span>.<span class="func">addEventListener(<span class="string">'click'</span>, </span>() => <span class="braces">{</span> 
+    
+    <span class="var">const</span> inputBtn = <span class="var">parent</span>.<span class="func">querySelector(<span class="string">'input'</span>)</span>;
+    <span class="var">const</span> boxIndex = <span class="func">parseInt(<span class="var">inputBtn</span>.<span class="val">value</span>)</span> || <span class="key">0</span>;
+
+    <span class="var">const</span> checkList = <span class="var">checkbox</span>.<span class="func">checkList(<span class="var">checkListID</span>)</span>
+
+    <span class="var">const</span> state = <span class="arg">switchBtn</span>.<span class="func">getAttribute(<span class="string">'id'</span>)</span>;
+   
+    if( <span class="val">[<span class="string">'on'</span>,<span class="string">'off'</span>]</span>.<span class="func">includes(</span><span class="var">state</span><span class="func">)</span> ) <span class="braces">{</span>
+
+       <span class="comment">/* turn on or off the selected box index*/</span>
+       <span class="var">checkList</span>.<span class="func">switch(</span><span class="var">boxIndex</span>, <span class="var">state</span><span class="func">)</span>
+
+    <span class="braces">}</span>
+
+  <span class="braces">}</span><span class="func">)</span>
+
+<span class="braces">}</span><span class="func">)</span> 
+</pre>  <!-- end js -->
+            </div>            
+            <div class="code">
+              <div class="flex">
+                  <div class="code-x">
+                    <strong>SCREEN</strong>
+                    <span class="code-btn"><i class="bi-window"></i></span>
+                  </div>
+              </div>
+              
+              <div class="checkbox-wrapper">
+                   <!--parent checkbox (group)-->
+                <div id="switch" data-role="checkbox-list">
+                
+                  <!--first checkbox section-->
+                  <div data-role="checkbox">
+                    <div checkbox data-anime="bounceIn" data-assign=":marker2" data-color="@#615c988d|orange" data-flip="true">
+                    
+                      <div marker class=""></div>
+                      <div marker class=""></div>
+                      
+                    </div>
+                    <input type="checkbox">
+                  </div> 
+                  
+                  <!--second checkbox section-->
+                  <div data-role="checkbox">
+                    <div checkbox data-anime="bounceIn" data-assign=":marker2" data-color="@#615c988d|lime">
+                    
+                      <div marker class=""></div>
+                      <div marker class=""></div>
+                      
+                    </div>
+                    <input type="checkbox">
+                  </div>
+                  
+                  <!--third checkbox section-->
+                  <div data-role="checkbox">
+                    <div checkbox data-anime="bounceIn" data-assign=":marker2" data-color="@#615c988d|lime">
+                    
+                      <div marker class=""></div>
+                      <div marker class=""></div>
+                      
+                    </div>
+                    <input type="checkbox">
+                  </div>
+                  
+                  <div class="controls specs">
+                    <input id="choose" type="number" min="1" max="3" value="1" style="width:60px; padding:8px">
+                    <button id="on" class="switch-btn">ON</button>
+                    <button id="off" class="switch-btn">OFF</button>
+                  </div>
+                </div>
+                
+              </div>
+  
+            </div> <br> 
                         
             <div class="nav-pane">
-              <a href="../docs/binding-parents.html" class="nav-btn-lt">
+              <a href="../docs/polar-effect.html" class="nav-btn-lt">
                 <i class="bi-arrow-left-circle"></i> 
               </a> 
               
@@ -429,9 +752,32 @@
 
           function update(e){
             if(e.checked){
-              switchField.value = e.listId + 1;
+              switchField.value = e.listId;
             }
           }
+          
+          let switchBtns = document.querySelectorAll('.switch-btn');
+          
+          switchBtns.forEach( switchBtn => {
+
+            const parent = switchBtn.closest('.controls');
+            const checkListID = switchBtn.closest('[data-role="checkbox-list"]').getAttribute('id')
+
+            switchBtn.addEventListener('click', () => { 
+              
+              const inputBtn = parent.querySelector('input');
+              const boxIndex = parseInt(inputBtn.value) || 0;
+
+              const checkList = check1.checkList(checkListID)
+
+              const state = switchBtn.getAttribute('id');
+             
+              if(['on','off'].includes(state)) {
+               checkList.switch(boxIndex, state)
+              }
+
+            })
+          })
         </script>
         <script src="../src/js/navscript.js"></script>
 

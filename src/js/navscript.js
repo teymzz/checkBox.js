@@ -95,6 +95,9 @@ window.onload = function() {
           url = url[url.length - 1];
           url = url.split('.html')[0]; 
           let menu = document.getElementById(url);
+          if(!menu && (url.split('-')[0] === 'toggle')){
+            menu = document.getElementById('toggling-attribute');
+          }
           menu.classList.add('active');
           menu.scrollIntoView({behavior: "smooth"})
       }

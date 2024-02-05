@@ -497,7 +497,7 @@ checkbox.<span class="func">check({
 
   <span class="func">if (<span class="arg">e</span>.<span class="val">checked</span>)</span> {
 
-    <span class="comment">/*if any checkbox is checked*/</span>
+    <span class="comment">/*if a radio checkbox is checked*/</span>
     
     <span class="var">let</span> <span class="string">checkboxId</span> = <span class="arg">e</span>.<span class="val">listId</span>; <span class="comment">/*get the checked checkbox id*/</span> 
     
@@ -509,7 +509,8 @@ checkbox.<span class="func">check({
       
     })</span>;
     
-    <span class="var">slides</span>[<span class="var">checkboxId</span>].<span class="val">classList</span>.<span class="func">add(<span class="string">"active"</span>)</span>;
+    <span class="comment">/* add active class to the only checked checkbox */</span>
+    <span class="var">slides</span>[<span class="var">checkboxId <span class="braces">-</span> <span class="key">1</span></span>].<span class="val">classList</span>.<span class="func">add(<span class="string">"active"</span>)</span>;
 
   }
 
@@ -587,71 +588,6 @@ checkbox.<span class="func">check({
             </div> <br>
                         
             <div class="nav-pane">
-              <ul>
-                <li>
-                  <a class="link" href="../index.html">Home</a>
-                </li>
-                <li>
-                  <a class="link" href="../docs/basic.html">Basic</a>
-                </li>
-                <li>
-                  <a class="link" href="../docs/markers.html">Adding Markers</a>
-                </li>
-                <li>
-                  <a class="link" href="../docs/init-event.html">Init Event</a>
-                </li>
-                <li>
-                  <a class="link" href="../docs/toggle-event.html">Toggle Event</a>
-                </li>
-                <li>
-                  <a class="link" href="../docs/eager-loading.html">Eager Loading</a>
-                </li>
-                <li>
-                  <a class="link" href="../docs/adding-colors.html">Adding Colors</a>
-                </li>
-                <li>
-                  <a class="link" href="../docs/fitting-images.html">Fitting Images</a>
-                </li>
-                <li>
-                  <a class="link" href="../docs/fitting-icons.html">Fitting Icons</a>
-                </li>
-                <li>
-                  <a class="link" href="../docs/toggling-attribute.html">Toggling Attributes</a>
-                </li>
-                <li>
-                  <a class="link" href="../docs/injecting-attribute.html">Injecting Attribute</a>
-                </li>
-                <li>
-                  <a class="link" href="../docs/adding-labels.html">Adding Labels</a>
-                </li>
-                <li>
-                  <a class="link" href="../docs/adding-labels.html">Adding Colors</a>
-                </li>
-                <li>
-                  <a class="link" href="../docs/advanced-effects.html">Advanced Effects</a>
-                </li>                
-                <li>
-                  <a class="link" href="../docs/radio-effect.html">Radio Effect</a>
-                </li>
-                <li>
-                  <a class="link" href="../docs/base-effects.html">Base Effect</a>
-                </li>
-                <li>
-                  <a class="link" href="../docs/base-reversal-effect.html">Base Reversal Effect</a>
-                </li>
-                <li>
-                  <a class="link" href="../docs/slide-effect.html">Slide Effect</a>
-                </li>
-                <li>
-                  <a class="link" href="../docs/rating-effect.html">Rating Effect</a>
-                </li>
-                <li>
-                  <a class="link" href="../docs/polar-effect.html">Polar Effect</a>
-                </li>
-                <li>
-                  <a class="link" href="../docs/cool-samples.html">Cool Samples</a>
-                </li>
-              </ul>
               <a href="../docs/base-reversal-effect.html" class="nav-btn-lt">
                 <i class="bi-arrow-left-circle"></i>
               </a> 
@@ -667,13 +603,17 @@ checkbox.<span class="func">check({
         <script src="../src/js/navscript.js"></script>
         <script>
           function scroll(e){
-            if(e.checked) {
-              let slides = document.querySelectorAll('.slides .slide');
-              let slide  = slides[e.listId]
+            if(e.checked && e.listId) {
+              
+              const slides = document.querySelectorAll('.slides .slide');
+
               slides.forEach(slide => {
                 slide.classList.remove('active');
-              });
-              slide.classList.add('active');
+              }); 
+              
+              const slide = e.listId - 1;
+
+              slides[slide].classList.add('active');
             }
           }
         </script>

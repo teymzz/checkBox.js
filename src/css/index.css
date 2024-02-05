@@ -237,6 +237,21 @@ code.bc {
     background-color: rgb(40, 37, 59);
 }
 
+
+code.bcr {
+    font-size: .75em;
+    padding: .2em .2em;
+    border-radius: 10px;
+}
+
+.bcr {
+    display: inline-block;
+    width: fit-content;
+    padding: 2px 4px;
+    background-color: #1e1a31;
+    margin: 4px 0;
+}
+
 .code .copy-btn {
     border: solid 1px #151326;
     border-radius: .2em;
