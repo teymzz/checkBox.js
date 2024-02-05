@@ -206,14 +206,13 @@
                     <div class="code-x">
                         <span class="code-btn" rel="html">HTML</span>
                         <span class="code-btn" rel="js">JS</span>
-                        <span class="code-btn" rel="view"><i class="bi-window"></i></span>
                     </div>
                     <div class="">
                         <span class="copy-btn"><i class="bi-clipboard"></i></span>
                     </div>
                 </div>
 <pre class="html active">
-<span class="tag">&lt;div <span>checkbox=""</span>&gt;</span>
+<span class="tag">&lt;div <span>checkbox="" data-func="<span>myFunction</span>"</span>&gt;</span>
   <span class="tag">&lt;div <span>marker=""</span>&gt;&lt;/div&gt;</span> 
   <span class="tag">&lt;div <span>marker=""</span>&gt;&lt;/div&gt;</span>
 <span class="tag">&lt;/div&gt;</span>
@@ -222,40 +221,26 @@
 </pre>
 <pre class="js">
 <span class="tag">&lt;script&gt;</span>
-new <span class="func">CheckBox(</span>{
-    <span class="key">init</span>: <span class="func">function(</span><span class="arg">checkbox</span><span class="func">)</span> {
+<span class="var">new</span> <span class="func">CheckBox(</span>{
+    <span class="key">init</span>: <span class="func">function(</span><span class="arg">props</span><span class="func">)</span> {
         
-        let <span class="var">value</span> = <span class="arg">checkbox</span>.value;
-        let <span class="var">textField</span> = document.<span class="func">querySelector(<span class="string">".response"</span>)</span>;
-
-        if( <span class="arg">checkbox</span>.checked ) {
-            <span class="var">textField</span>.<span class="func">innerHTML = </span>`<span class="string">checkbox <span class="braces">${</span><span class="var">value</span><span class="braces">}</span> is: checked</span><span class="func"></span>`
-        } else {
-            <span class="var">textField</span>.<span class="func">innerHTML = </span>`<span class="string">checkbox <span class="braces">${</span><span class="var">value</span><span class="braces">}</span> is: unchecked</span><span class="func"></span>`
-        }
+        <span class="braces">console</span>.<span class="func">log(<span class="arg">props</span>)</span>; <span class="comment">/*checkbox properties*/</span>
 
     },
-    <span class="key">toggle</span>: <span class="func">function(</span><span class="arg">checkbox</span><span class="func">)</span> {
+    <span class="key">toggle</span>: <span class="func">function(</span><span class="arg">props</span><span class="func">)</span> {
         
-        <span class="arg">checkbox</span>.<span class="func">init(<span class="arg">checkbox</span>)</span>;
+        <span class="braces">console</span>.<span class="func">log(<span class="arg">props</span>)</span>; <span class="comment">/*checkbox properties*/</span>
 
     }
 }<span class="func">)</span>;
+
+<span class="comment">/* callback function defined by "data-func" attribute */</span>
+<span class="var">function</span> <span class="func">myFunction(</span><span class="arg">props</span><span class="func">)</span> {
+        
+    <span class="braces">console</span>.<span class="func">log(<span class="arg">props</span>)</span>; <span class="comment">/*checkbox properties*/</span>
+
+}<span class="func">)</span>;
 <span class="tag">&lt;/script&gt;</span>    
-</pre>
-<pre class="view">
-                 <div class="checkbox-field flex mid-v">
-                  <div>
-                    <div checkers data-size="20px"> 
-                      <div marker="" style="background-color:white"></div>
-                      <div marker="" style="background-color:lime"></div>
-                    </div>
-                    <input type="checkbox" value="foo"> 
-                  </div>
-                  <div class="">
-                    &nbsp; <span class="response"></span>
-                  </div>
-                </div> 
 </pre>
             </div> <br> 
             
