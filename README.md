@@ -63,7 +63,7 @@ let checkBox = new CheckBox; //initialize and start execution
 We can also use the method below to intialize the plugin 
 
 ```js
-let checkBox = new CheckBox(true) //delay execution
+let checkBox =  new CheckBox(false) //delay execution
 checkBox.check() //start execution.
 ```
 
