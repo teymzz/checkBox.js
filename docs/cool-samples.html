@@ -32,6 +32,10 @@
               height: 100%;
             }
 
+            [cool] [checker] [marker]{
+                padding: 0em 1.5em;
+            }
+
             .gold {
                 border-color:#c68811;
             }
@@ -85,7 +89,7 @@
             </div>
             
             <div class="">
-              Hi there, here are some cool samples of what the checkbox plugin can do!
+              Hi there, check out some cool checkbox samples all managed by the checkbox plugin!
             </div> <br>
             
            <div class="checkers box wid-full">
@@ -486,6 +490,107 @@
                             <div class="rootbox" style="display:flex; align-items:center;"></div>
                         </div>
                     </div>                                                       
+                </div>
+            </div>
+
+            
+
+            <div class="checkers box cool" style="width: 100%;">
+                <div>Fan Toggle</div>    
+                
+                <!--parent checkbox (grand)-->
+                <div data-role="checkbox-list" style="flex-direction: column;">
+                
+                    <div class="in-flex" style="align-items: center;">
+                        <!--first checkbox section-->
+                        <div data-role="checkbox" fan class="in-flex">
+                            <div checker data-anime="fadeIn" data-size="30px" data-assign=":marker2" data-color="@#59547a|lime" class="in-flex" style="overflow:hidden">
+                            
+                                <div marker>
+                                    <div class="f-icon">
+                                        <span class="bi bi-fan"></span>
+                                    </div>
+                                </div>
+                            
+                                <div marker>
+                                    <div class="f-icon">
+                                        <span class="bi bi-fan spin"></span>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <input type="checkbox" value="fan toggle">
+                            <span data-access="label" style="color: #030303;"></span>
+                        </div>
+                        <!-- <div data-access="label" class="in-flex" style="align-items: center;">switch on</div> -->
+                    </div>
+                   
+                </div>
+            </div>
+
+            <div class="checkers box theme" style="width: 100%;">
+                <div>Cool Toggle</div>    
+                
+                <!--parent checkbox (grand)-->
+                <div data-role="checkbox-list" style="flex-direction: column;">
+                
+                    <div class="in-flex mid-v">
+                        <!--first checkbox section-->
+                        <div data-role="checkbox" cool switch class="in-flex">
+                            <div checker data-flip="false" data-anime="fadeIn" data-assign=":markers" class="in-flex" style="overflow:hidden; background-color: white;">
+                            
+                                <div marker>
+                                    <div class="f-icon">
+                                        <span class="">OFF</span>
+                                    </div>
+                                </div>
+                            
+                                <div marker>
+                                    <div class="f-icon">
+                                        <span class="">ON</span>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <input type="checkbox" value="cool toggle">
+                            <!-- <span data-access="label" style="color: #030303;"></span> -->
+                        </div>
+                        <!-- <div data-access="label" class="in-flex" style="align-items: center;">switch on</div> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="checkers box theme wid-full">
+                <div>Cool Shift</div>    
+                
+                <!--parent checkbox (grand)-->
+                <div data-role="checkbox-list" style="flex-direction: column;">
+                
+                    <div class="in-flex mid-v">
+                        <!--first checkbox section-->
+                        <div data-role="checkbox" cool slide class="in-flex">
+                            <div checker data-flip="false" data-anime="fadeIn" data-assign=":markers" class="in-flex" style="overflow:hidden; background-color: white;">
+                            
+                                <div marker>
+                                    <div class="f-icon">
+                                        <span class="">OFF</span>
+                                    </div>
+                                </div>
+                            
+                                <div marker>
+                                    <div class="f-icon">
+                                        <span class="">ON</span>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <input type="checkbox" value="cool slide">
+                            <span class="overlay"></span>
+                            <!-- <span data-access="label" style="color: #030303;"></span> -->
+                        </div>
+                        <!-- <div data-access="label" class="in-flex" style="align-items: center;">switch on</div> -->
+                    </div>
+                   
                 </div>
             </div>
                         

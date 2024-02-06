@@ -87,8 +87,8 @@
 
 <span class="tag">&lt;/div&gt;</span> 
 
-<span class="tag">&lt;button <span>id="<span>left</span>"</span>&gt;</span><span class="tag">&lt;/button&gt;</span>
-<span class="tag">&lt;button <span>id="<span>right</span>"</span>&gt;</span><span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;button <span>id="<span>left</span>"</span>&gt;</span>&amp;#10094;<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;button <span>id="<span>right</span>"</span>&gt;</span>&amp;#10095;<span class="tag">&lt;/button&gt;</span>
 </pre> 
             </div><br>
 
@@ -117,8 +117,8 @@
 
 <span class="tag">&lt;/div&gt;</span> 
 
-<span class="tag">&lt;button <span>id="<span>prev</span>"</span>&gt;</span>&amp;#10094;<span class="tag">&lt;/button&gt;</span>
-<span class="tag">&lt;button <span>id="<span>next</span>"</span>&gt;</span>&amp;#10095;<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;button <span>id="<span>prev</span>"</span>&gt;</span>PREV<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;button <span>id="<span>next</span>"</span>&gt;</span>NEXT<span class="tag">&lt;/button&gt;</span>
 </pre> 
             </div><br>        
             
@@ -144,14 +144,14 @@
 
 <span class="tag">&lt;/div&gt;</span> 
 
-<span class="tag">&lt;button <span>id="<span>prev</span>"</span>&gt;</span>&amp;#10094;<span class="tag">&lt;/button&gt;</span>
-<span class="tag">&lt;button <span>id="<span>next</span>"</span>&gt;</span>&amp;#10095;<span class="tag">&lt;/button&gt;</span>
-<span class="tag">&lt;button <span>id="<span>stop</span>"</span>&gt;</span>&amp;#9724;<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;button <span>id="<span>prev</span>"</span>&gt;</span>PREV<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;button <span>id="<span>next</span>"</span>&gt;</span>NEXT<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;button <span>id="<span>stop</span>"</span>&gt;</span>STOP<span class="tag">&lt;/button&gt;</span>
 </pre> 
             </div><br>
 
             <div class="">
-                From the example provided below, we can see the effect of this relationship
+                From the example provided below, we can see the effect of the button's relationship on the checklist element.
             </div> <br>
             
             <div class="code">
@@ -205,7 +205,7 @@
   <span class="tag">&lt;/div&gt;</span>  
   </pre>
   <pre class="js"><!-- start js -->
-  <span class="var">let</span> checkbox = <span class="var">new</span> <span class="func">CheckBox(<span class="bool">true</span>)</span>;
+  <span class="var">let</span> checkbox = <span class="var">new</span> <span class="func">CheckBox(<span class="bool">false</span>)</span>;
   
   <span class="var">checkbox</span> = <span class="var">checkbox</span>.<span class="func">check(<span class="braces">{</span> <span class="key">flip</span>: <span class="val">true</span> <span class="braces">}</span>)</span>;
   

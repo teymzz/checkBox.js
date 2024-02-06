@@ -9,7 +9,7 @@ function pass(checker){
     }
   }
   
-    let checkbox = new CheckBox(true);
+    let checkbox =  new CheckBox(false);
   
     let check1 = checkbox.check({
         assign: {

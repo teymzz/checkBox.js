@@ -1,6 +1,6 @@
 class CheckBox {
 
-    constructor(config) {
+    constructor(config = true) {
 
         let checkbox = this;
 
@@ -9,7 +9,7 @@ class CheckBox {
         checkbox.customListItems = {};
         checkbox.customListData = {};
 
-        if(config === true) return checkbox;
+        if(config === false) return checkbox;
         
         let defaults, customBoxes, init, toggle, assign, css, size, fsize, fit, checkEvent;
 
@@ -413,12 +413,6 @@ class CheckBox {
                                 // Resolve this when checkbox is unchecked
 
                                 if(animateMarker === 1){
-                                    
-                                    //marker 1 is visible, add attribute to marker 1
-
-                                    // add source to marker 2
-                                    // M2NewDestVals = M2SourceValue.filter(val => !marker2Val.includes(val));    
-                                    // M2NewDestVals = marker2Val.concat(M2NewDestVals);
 
                                     //remove source from marker 1
                                     M1NewDestVals = marker1Val.filter(val => !M1SourceValue.includes(val));   
@@ -426,12 +420,6 @@ class CheckBox {
                                 }else if(animateMarker === 2){
 
                                     //marker 2 is hidden, remove source value from marker 2
-
-                                    // add source value to marker 1
-                                    // M1NewDestVals = M1SourceValue.filter(val => !marker1Val.includes(val));    
-                                    // M1NewDestVals = marker1Val.concat(M1NewDestVals);
-
-                                    //remove source value from marker 2
                                     M2NewDestVals = marker2Val.filter(val => !M2SourceValue.includes(val));                                    
 
                                 }else if(animateMarker === true){
@@ -453,7 +441,6 @@ class CheckBox {
                                 markers[0].setAttribute(destAttr, M1NewDestVals.join(' '));
                             }
                             if(M2NewDestVals) {                            
-                                //console.log(M2NewDestVals.join(' '));
                                 markers[1].setAttribute(destAttr, M2NewDestVals.join(' '));
                             }
         
@@ -626,7 +613,6 @@ class CheckBox {
             }
         }
 
-        // let checkLists = input.closest('[data-role="checkbox-list"');
         let checkLists = document.querySelectorAll('[data-role="checkbox-list"]:not([initialized])');
 
         checkLists.forEach(checkList => {
@@ -1031,8 +1017,8 @@ class CheckBox {
                                           }
                                         
                                           if(toggleOn && !rootChecker.checked){
-                                            //click only parent checkbox when others are checked
-                                            customLists[0].click();
+                                            
+                                            customLists[0].click(); //click only parent checkbox when others are checked
                                           }
                                           
                                         }
@@ -1069,8 +1055,8 @@ class CheckBox {
                               let checkboxItem = exToggles[i].nextElementSibling;
                               if(checkboxItem.checked){
                                 customLists[index].setAttribute('check-pause', 'true')
-                                //get next element item
-                                customLists[i].click();
+                             
+                                customLists[i].click();   //get next element item
                               }
                             }
                             
@@ -1084,7 +1070,7 @@ class CheckBox {
 
                         })
                         
-                        //allow touch effect
+                        // Allow touch effect
                         if(checkListSwipe.is('enabled')){
                           touchSlide(checkList, checkbox.target)
                         }
@@ -1377,8 +1363,6 @@ class CheckBox {
                     
                     
                     if(grandParent){
-
-                        //checkedBoxes = properties.checkedBoxes;
                         
                         checkedBoxes = grandParent.querySelectorAll('input:checked').length
          
@@ -1390,6 +1374,7 @@ class CheckBox {
                             }
 
                             max = parseInt(at(grandParent, 'data-max').value()); 
+
                             if((checkedBoxes === max) && !at(customBox,'checked').is('checked')) {
                                 if(typeof window[callback] === 'function') {
                                     let props = {};
@@ -1400,27 +1385,7 @@ class CheckBox {
                                 }
                                 return false;
                                 
-                            } else {
-                                /*
-                                if(typeof window[callback] === 'function') {
-                                    let props = {};
-                                    props.checked = grandParent.querySelectorAll(checkbox.target+'[checked="checked"]');
-                                    props.unchecked = grandParent.querySelectorAll(checkbox.target+':not([checked="checked"])');
-                                    props.max = false;
-                                    window[callback](props);
-                                }                                
-                                */
                             }
-                            
-                            // else if (checkedBoxes < max){
-                                 
-                            //         if(typeof window[callfront] === 'function') {
-                            //             let props = {};
-                            //             props.checked = grandParent.querySelectorAll(checkbox.target+'[checked="checked"]');
-                            //             props.unchecked = grandParent.querySelectorAll(checkbox.target+':not([checked="checked"])');
-                            //             window[callfront](props);
-                            //         } 
-                            // }
                         }
                     }
                     //if not e-prev defined
