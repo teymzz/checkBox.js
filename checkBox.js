@@ -1853,8 +1853,6 @@ class CheckBox {
                 }
               
             },
-            
-            choose: (number) => controller.to(number),
 
             nav : (index) => {
 
